@@ -43,18 +43,14 @@ public String map_location(String newExtension) {
          switch (fc.showOpenDialog(File_open_Controller.this))
          {
             case JFileChooser.APPROVE_OPTION:
-               JOptionPane.showMessageDialog(File_open_Controller.this, "Selected: "+
-                                             fc.getSelectedFile(),
-                                             "Open Map",
-                                             JOptionPane.OK_OPTION);File selectedFile = fc.getSelectedFile();
+          //     JOptionPane.showMessageDialog(File_open_Controller.this, "Selected: "+ fc.getSelectedFile(),"Open Map",JOptionPane.OK_OPTION);
+        File selectedFile = fc.getSelectedFile();
 		mapRead = selectedFile.getAbsolutePath();
 		
 		if(mapRead.substring(mapRead.lastIndexOf("."),mapRead.length()).equalsIgnoreCase("."+newExtension)){
 			mapRead=mapRead;
 			return mapRead;
 			}
-		
-		System.out.println(mapRead);
 		break;
 
             case JFileChooser.CANCEL_OPTION:

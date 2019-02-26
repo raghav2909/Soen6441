@@ -3,6 +3,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import Model.GameDriver;
 import view.CardsConsole;
@@ -144,12 +145,12 @@ public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 	foc= new File_open_Controller();
 	//GD.CreateMapObject(foc.map_location("map"));
-	String loc = foc.map_location("map");
-	String image = foc.map_location("bmp");
+	String map_loc = foc.map_location("map");
+	String image_loc = foc.map_location("bmp");
 
 	//System.out.println(loc);
-	System.out.println(image);
-	forward(image);
+	System.out.println(image_loc);
+	forward(image_loc);
 	
 }
 public void forward(String mapimage)
@@ -157,6 +158,7 @@ public void forward(String mapimage)
 	if(mapimage== null)
 	{
 		mpc = new MapConsole();
+		mpc.Maplook(mapimage);
 	}
 	else
 	{

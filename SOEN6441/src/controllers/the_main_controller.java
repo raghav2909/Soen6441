@@ -13,23 +13,52 @@ import view.MapConsole;
 import view.PlayerConsole;
 import view.openingdialog;
 /**
- * maincr variable stores reference of class MainController
+ * This class is the main controller class which controls the main functioning of the game in the initial phase
+ *@author raghavsharda
  */
 
 
 public class the_main_controller {
+	/** this variable stores reference of class MainController
+	 * 
+	 */
 	private static the_main_controller maincr ;
+	/**
+	 * This actionlistner for editmap
+	 */
 	
 	private ActionListener editmap;
-	
+	/**
+	 * This actionlistner for playthegame
+	 */
 	private ActionListener playthegame;
-
+	/**
+	 * This actionlistner for editthemaps
+	 */
 	private ActionListener editthemaps;
+	/**
+	 * CardsConsole Object
+	 */
 	private CardsConsole csr;
+	/**
+	 * ControlsConsole Object
+	 */
 	private ControlsConsole crc;
+	/**
+	 * DiceRollConsole Object
+	 */
 	private DiceRollConsole drc;
+	/**
+	 * MapConsole Object
+	 */
 	private MapConsole mpc;
+	/**
+	 * PlayerConsole Object
+	 */
 	private PlayerConsole plc;
+	/**
+	 * GameDriver Object
+	 */
 	private GameDriver GD;
 	
 	
@@ -50,7 +79,10 @@ public class the_main_controller {
 	{
 		
 	}
-	
+	/**
+	 * This is parameterized method that instantiated main controller class.
+	 * @return the_main_Controller object
+	 */
 	
 	public static the_main_controller getInstance() {
 		if(maincr==null) {
@@ -58,7 +90,11 @@ public class the_main_controller {
 		}
 		return maincr;
 	}
-	
+	/**
+	 * This function has the methods calls to the two main parts of the game 
+	 * 1. chooseplayoredit
+	 * 2. gameplay
+	 */
 	public void tostart()
 	{
 		chooseplayoredit();

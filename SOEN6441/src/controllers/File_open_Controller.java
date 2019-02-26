@@ -21,9 +21,10 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class File_open_Controller extends JFrame {
-		   JFileChooser fc = new JFileChooser("Map Selection");
 
 	
+JFileChooser fc = new JFileChooser("Map Selection");
+
 private  String mapRead= null;
 
 
@@ -32,30 +33,13 @@ public   File_open_Controller() {
 	}
 
 public String map_location(String newExtension) {
-	 setDefaultCloseOperation(EXIT_ON_CLOSE);
-     JPanel pnl = new JPanel();
-    // pnl.validate();
-     //pnl.setVisible(true);
-     //pnl.setLayout(new GridLayout(2, 1));
-     JButton btn = new JButton("Open Maps");
-   
-     ActionListener al;
+
      fc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
-     if(newExtension=="map")
-     {
+    
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 		fc.setFileFilter(filter);
-     }
-     else 
-     {
-    	 FileNameExtensionFilter filter = new FileNameExtensionFilter("Bmp Files", newExtension);
- 		fc.setFileFilter(filter);
-     }
-     al = new ActionListener()		  
-   {
-      @Override
-      public void actionPerformed(ActionEvent ae)
-      {
+  
+
          switch (fc.showOpenDialog(File_open_Controller.this))
          {
             case JFileChooser.APPROVE_OPTION:
@@ -67,12 +51,11 @@ public String map_location(String newExtension) {
 		
 		if(mapRead.substring(mapRead.lastIndexOf("."),mapRead.length()).equalsIgnoreCase("."+newExtension)){
 			mapRead=mapRead;
-
-			
+			return mapRead;
 			}
 		
 		System.out.println(mapRead);
-	break;
+		break;
 
             case JFileChooser.CANCEL_OPTION:
                JOptionPane.showMessageDialog(File_open_Controller.this, "Cancelled",
@@ -85,17 +68,16 @@ public String map_location(String newExtension) {
                                              "Map Opening Error",
                                              JOptionPane.OK_OPTION);
          }
-      }
-   };
-   btn.addActionListener(al);
-   pnl.add(btn);
+ 
+   if(newExtension.equals("map"))
+   {
+	//   return map_location(newExtension);
+   }
 
 System.out.println("coming here 2");
-setContentPane(pnl);
 
-pack();
-setVisible(true);
-return mapRead;
+return null;
+
 }
 
 }

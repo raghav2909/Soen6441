@@ -155,16 +155,11 @@ public void Single_Mode_Start() {
 }
 public void forward(String mapimage)
 {
-	if(mapimage== null)
-	{
-		mpc = new MapConsole();
-		mpc.Maplook(mapimage);
-	}
-	else
-	{
-		mpc = new MapConsole();
 	
-	}
+//		mpc = new MapConsole();
+//		mpc.Maplook(mapimage);
+		mpc = new MapConsole(mapimage);
+	
 	crc= new ControlsConsole();
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();

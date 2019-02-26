@@ -4,11 +4,13 @@
 package view;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -16,8 +18,9 @@ import javax.swing.JPanel;
  *@author Harman
  */
 public class MapConsole extends JPanel {
+	
 
-	public void Maplook(String mapimage) {
+	public MapConsole(String mapimage) {
 		// TODO Auto-generated constructor stub
 
 		if(mapimage!=null)
@@ -29,9 +32,12 @@ public class MapConsole extends JPanel {
 				i.printStackTrace();
 			}
 		}
-		this.setBackground(Color.WHITE);
-	    this.setOpaque(true);
+		this.setBackground(Color.MAGENTA);
+		this.setOpaque(true);
 	    this.setLayout(null);
+	    
+	}
+	
 	}
 
-}
+

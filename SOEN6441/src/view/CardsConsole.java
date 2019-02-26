@@ -26,7 +26,7 @@ public class CardsConsole extends JPanel {
 	
 	public CardsConsole()
 	{
-		JLabel lab=  new JLabel("Cards console");
+		JLabel lab=  new JLabel("Cards");
 		this.setLayout(new FlowLayout());
 		this.add(lab);
 		this.setBorder(BorderFactory.createLineBorder(Color.blue));

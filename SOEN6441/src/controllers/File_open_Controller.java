@@ -43,7 +43,7 @@ public String map_location(String newExtension) {
    
      }
      ActionListener al;
-     fc.setCurrentDirectory(new File("./Map_Data/map"));
+     fc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
      if(newExtension=="map")
      {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);

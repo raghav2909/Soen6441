@@ -20,24 +20,28 @@ import javax.swing.JPanel;
 public class MapConsole extends JPanel {
 	
 
+	private BufferedImage picture;
+	
 	public MapConsole(String mapimage) {
 		// TODO Auto-generated constructor stub
 
 		if(mapimage!=null)
 		{
 			try {
-				BufferedImage picture = ImageIO.read(new File(mapimage));
+				picture = ImageIO.read(new File(mapimage));
 			}
 			catch(IOException i){
 				i.printStackTrace();
 			}
 		}
-		this.setBackground(Color.MAGENTA);
+		this.setBackground(Color.WHITE);
 		this.setOpaque(true);
 	    this.setLayout(null);
 	    
 	}
-	
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+	    	g.drawImage(picture, 0, 0, this);
 	}
-
+	}
 

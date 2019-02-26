@@ -36,9 +36,16 @@ public String map_location(String newExtension) {
 
      fc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
     
+     if(newExtension.equals("map"))
+     {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 		fc.setFileFilter(filter);
-  
+     }
+     else
+     {
+    	 FileNameExtensionFilter filter = new FileNameExtensionFilter("Bmp File", newExtension);
+ 		fc.setFileFilter(filter);
+     }
 
          switch (fc.showOpenDialog(File_open_Controller.this))
          {
@@ -65,10 +72,10 @@ public String map_location(String newExtension) {
                                              JOptionPane.OK_OPTION);
          }
  
-   if(newExtension.equals("map"))
-   {
-	//   return map_location(newExtension);
-   }
+//   if(newExtension.equals("map"))
+//   {
+//	//   return map_location(newExtension);
+//   }
 
 System.out.println("coming here 2");
 

@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 
-import view.GameConsole;
 import view.openingdialog;
 /**
  * maincr variable stores reference of class MainController
@@ -15,16 +14,30 @@ public class the_main_controller {
 	private static the_main_controller maincr ;
 	
 	private ActionListener editmap;
-	GameConsole gmc;
+	
 	private ActionListener playthegame;
 
 	private ActionListener editthemaps;
+	
+	/**
+	 * Stores the object of File_open_Controller class
+	 */
 	private File_open_Controller foc;
+	
+	/**
+	 * Creating an object of openingdialog class of view package
+	 */
 	openingdialog opendialog= new openingdialog();
+	
+	/**
+	 *  constructor
+	 */
 	public the_main_controller()
 	{
 		
 	}
+	
+	
 	public static the_main_controller getInstance() {
 		if(maincr==null) {
 			maincr = new the_main_controller();
@@ -38,12 +51,17 @@ public class the_main_controller {
 		gameplay();
 	}
 
-
+/**
+ * calling a method of openingdialog class to choose to play or edit map
+ */
 public void chooseplayoredit()
 {
 	opendialog.chooseplayoredit();
 }
 
+/**
+ * calling for single mode or tournament mode to act as per chosen
+ */
 public void gameplay()
 {
 	playthegame = new ActionListener() {
@@ -69,12 +87,17 @@ public void gameplay()
 	this.opendialog.Actiongameplay(playthegame);
 }
 
+/**
+ * select the map file and image file to start game for single mode
+ */
 public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
-	File_open_Controller foc= new File_open_Controller("map");
-	String Map_loacation = foc.map_location();
-	System.out.println(Map_loacation);
-	//gmc.starts();
+	foc= new File_open_Controller();
+	String loc = foc.map_location("map");
+	String l = foc.map_location("bmp");
+
+	System.out.println(loc);
+	System.out.println(l);
 }
 public void single_Mode_Saved_Start() {
 

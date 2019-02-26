@@ -41,4 +41,3 @@ public class Edit_create_Map_Controller {
 		
 	}
 }
-

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 
+import Model.GameDriver;
 import view.CardsConsole;
 import view.ControlsConsole;
 import view.DiceRollConsole;
@@ -29,6 +30,7 @@ public class the_main_controller {
 	private DiceRollConsole drc;
 	private MapConsole mpc;
 	private PlayerConsole plc;
+	private GameDriver GD;
 	
 	
 	/**
@@ -105,10 +107,11 @@ public void gameplay()
 public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 	foc= new File_open_Controller();
+	//GD.CreateMapObject(foc.map_location("map"));
 	String loc = foc.map_location("map");
 	String image = foc.map_location("bmp");
 
-	System.out.println(loc);
+	//System.out.println(loc);
 	System.out.println(image);
 	forward(image);
 	

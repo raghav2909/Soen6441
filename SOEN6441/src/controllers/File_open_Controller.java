@@ -36,12 +36,9 @@ public String map_location(String newExtension) {
      JPanel pnl = new JPanel();
     // pnl.validate();
      //pnl.setVisible(true);
-     pnl.setLayout(new GridLayout(2, 1));
+     //pnl.setLayout(new GridLayout(2, 1));
      JButton btn = new JButton("Open Maps");
-     if(newExtension=="bmp")
-     {
    
-     }
      ActionListener al;
      fc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
      if(newExtension=="map")

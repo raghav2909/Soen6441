@@ -4,6 +4,12 @@ import java.awt.event.ActionEvent;
 
 import java.awt.event.ActionListener;
 
+import view.CardsConsole;
+import view.ControlsConsole;
+import view.DiceRollConsole;
+import view.GameConsole;
+import view.MapConsole;
+import view.PlayerConsole;
 import view.openingdialog;
 /**
  * maincr variable stores reference of class MainController
@@ -18,6 +24,12 @@ public class the_main_controller {
 	private ActionListener playthegame;
 
 	private ActionListener editthemaps;
+	private CardsConsole csr;
+	private ControlsConsole crc;
+	private DiceRollConsole drc;
+	private MapConsole mpc;
+	private PlayerConsole plc;
+	
 	
 	/**
 	 * Stores the object of File_open_Controller class
@@ -94,10 +106,31 @@ public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 	foc= new File_open_Controller();
 	String loc = foc.map_location("map");
-	String l = foc.map_location("bmp");
+	String image = foc.map_location("bmp");
 
 	System.out.println(loc);
-	System.out.println(l);
+	System.out.println(image);
+	forward(image);
+	
+}
+public void forward(String mapimage)
+{
+	if(mapimage== null)
+	{
+		mpc = new MapConsole();
+	}
+	else
+	{
+		mpc = new MapConsole();
+	
+	}
+	//mpc = new MapConsole();
+	crc= new ControlsConsole();
+	csr = new CardsConsole();
+	drc = new DiceRollConsole();
+	plc = new PlayerConsole();
+	GameConsole.createInstance(plc, mpc, drc, csr, crc);
+		
 }
 public void single_Mode_Saved_Start() {
 

@@ -7,7 +7,7 @@ import view.Map_Frame;
  * creating new map or modifying the existing maPS
  * @see File_open_Controller
  * @author Raghav
- * @author Haramanpreet
+ * @author Harmanpreet
  */
 public class Edit_create_Map_Controller {
 	/**

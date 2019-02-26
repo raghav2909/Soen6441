@@ -44,7 +44,7 @@ public   File_open_Controller( String newExtension) {
 	      pnl.setLayout(new GridLayout(2, 1));
 	      JButton btn = new JButton("Open Maps");
 	      ActionListener al;
-	      fc.setCurrentDirectory(new File("./Map_Data/map"));
+	      fc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
 			FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 			fc.setFileFilter(filter);
 	      al = new ActionListener()		  

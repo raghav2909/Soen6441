@@ -107,8 +107,8 @@ public void gameplay()
 public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 	foc= new File_open_Controller();
-	//GD.CreateMapObject(foc.map_location("map"));
-	String loc = foc.map_location("map");
+	GD.CreateMapObject(foc.map_location("map"));
+	//String loc = foc.map_location("map");
 	String image = foc.map_location("bmp");
 
 	//System.out.println(loc);
@@ -127,7 +127,6 @@ public void forward(String mapimage)
 		mpc = new MapConsole();
 	
 	}
-	//mpc = new MapConsole();
 	crc= new ControlsConsole();
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();

@@ -1,6 +1,18 @@
 package controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JFileChooser;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import Model.NodeOfMap;
+import Model.ReadMap;
+import view.ExistingMapModifier;
 import view.Map_Frame;
+import view.NewMapCreation;
 
 /**
  * Edit_Create_Map_Controller performs action  for 
@@ -48,14 +60,14 @@ public class Edit_create_Map_Controller {
 /**
  * object of Map class from Model
  */
-	Map mapEditor =new Map();
+	NodeOfMap mapEditor =new NodeOfMap();// needs to be verified by saman
 	/**
 	 * Calls the readMap function of ReadMap class from Model to read the map files
 	 * @param file_name address of the map file to be loaded
 	 */
 	public void readMap(String file_name) {
 		ReadMap readMap = new ReadMap();
-		 readMap.readMap(file_name); // to be done in ReadMap class in model 
+		 readMap.mapreader(file_name); // to be done in ReadMap class in model 
 	}
 	
 	/**
@@ -64,7 +76,7 @@ public class Edit_create_Map_Controller {
 	 */
 	public void MapSelectionActions() {
 		try {
-			this.mapselection = new MapSelection();
+			this.mapselection = new MapSelection();// need to create this class to work
 		} catch (IllegalAccessException e1) {
 			e1.printStackTrace();
 		} catch (UnsupportedLookAndFeelException e1) {
@@ -88,6 +100,7 @@ public class Edit_create_Map_Controller {
 					FilePath = fc.getSelectedFile().getAbsolutePath();
 					//mapReader = new Map(); //check the Map file in Model
 					MapExist mapExist = new MapExist(mapReader.readMap(fc.getSelectedFile().getAbsolutePath()));
+					// create clss  map exist
 					mapExist.addActionsToBtnEdit(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							mapExist.setVisible(false);// to be defined in MapExist
@@ -102,7 +115,7 @@ public class Edit_create_Map_Controller {
 				}
 			}
 		});
-		this.mapselection.openFileChooseBtnAction(ActionExistingBtn);// in MapSelection
+		this.mapselection.openFileChooseBtnAction(ActionExistingBtn);// in MapSelection need to create class
 	}	
 
 	public String getFilePath() {
@@ -113,8 +126,7 @@ public class Edit_create_Map_Controller {
 	 * MapNew Frame get initialize with this method
 	 */
 	public void mapNewActions() {
-		MapNew mapNew = new MapNew(); //from MapNew in View
-
+		NewMapCreation mapNew = new NewMapCreation(); //from MapNew in View
 		mapNew.addActionsToBtnAddContinent(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mapNew.enableContinentFields();

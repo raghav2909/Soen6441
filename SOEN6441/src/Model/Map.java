@@ -48,7 +48,7 @@ public class Map extends Observable
 	public Map(String FileName) 
 	{
 		ReadMap Reader = new ReadMap();
-		MapData = Reader.readMap(FileName);
+		MapData = Reader.mapreader(FileName);
 	}
 	
 	/**

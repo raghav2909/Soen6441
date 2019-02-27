@@ -11,6 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import Model.NodeOfMap;
 import Model.ReadMap;
 import view.ExistingMapModifier;
+import view.MapExist;
 import view.MapSelection;
 import view.Map_Frame;
 import view.NewMapCreation;
@@ -38,8 +39,8 @@ public class Edit_create_Map_Controller {
 	/**
 	 * object of MapSelection class used for calling  methods of MapSelection 
 	 */
-	private MapSelection mapselection;//
-	
+	private MapSelection mapselection;
+	/**
 	 * action listener linked to the button "Select Map File" for selecting map file
 	 */	
 	private ActionListener ActionExistingBtn;
@@ -90,17 +91,17 @@ public class Edit_create_Map_Controller {
 
 		ActionExistingBtn=(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				final JFileChooser fc = new JFileChooser();
-				fc.setCurrentDirectory(new java.io.File("user.home"));
+				final JFileChooser jfc = new JFileChooser();
+				jfc.setCurrentDirectory(new java.io.File("user.home"));
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", "map");
-				fc.setFileFilter(filter);
-				fc.setDialogTitle("Choose your Conquest Map File");
-				fc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+				jfc.setFileFilter(filter);
+				jfc.setDialogTitle("Choose Map File");
+				jfc.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
-				if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
-					FilePath = fc.getSelectedFile().getAbsolutePath();
+				if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
+					FilePath = jfc.getSelectedFile().getAbsolutePath();
 					//mapReader = new Map(); //check the Map file in Model
-					MapExist mapExist = new MapExist(mapReader.readMap(fc.getSelectedFile().getAbsolutePath()));
+					MapExist mapExist = new MapExist(mapReader.readMap(jfc.getSelectedFile().getAbsolutePath()));
 					// create clss  map exist
 					mapExist.addActionsToBtnEdit(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -304,7 +305,7 @@ public class Edit_create_Map_Controller {
 
 	public void ActionOnExistingMap() {
 
-		existingMapModifier.addActionsToAddContinentButton(new ActionListener() { //from ExistingMPpMODIFIER
+		existingMapModifier.addActionsToAddContinentButton(new ActionListener() { //from ExistingMapMODIFIER
 			public void actionPerformed(ActionEvent e) {
 				existingMapModifier.continentFieldsEnable();
 			}

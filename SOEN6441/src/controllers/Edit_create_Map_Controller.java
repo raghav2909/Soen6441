@@ -11,6 +11,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import Model.NodeOfMap;
 import Model.ReadMap;
 import view.ExistingMapModifier;
+import view.MapSelection;
 import view.Map_Frame;
 import view.NewMapCreation;
 
@@ -115,7 +116,7 @@ public class Edit_create_Map_Controller {
 				}
 			}
 		});
-		this.mapselection.openFileChooseBtnAction(ActionExistingBtn);// in MapSelection need to create class
+		this.mapselection.openfilebuttonaction(ActionExistingBtn);// in MapSelection need to create class
 	}	
 
 	public String getFilePath() {

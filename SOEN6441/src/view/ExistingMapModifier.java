@@ -70,12 +70,12 @@ import controllers.Edit_create_Map_Controller;
 		/**
 		 * ComboBox for continent Drop-down List.
 		 */
-		private JComboBox comboBox;
+		private JComboBox continentComboBox;
 
 		/**
 		 * ComboBox for continent Drop-down List.
 		 */
-		private JComboBox comboBox3;
+		private JComboBox continentDeletionComboBox;
 
 		/**
 		 * Stores reference to the NodeOfMap object.
@@ -120,7 +120,7 @@ import controllers.Edit_create_Map_Controller;
 		/**
 		 * Stores list of countries.
 		 */
-		private JComboBox comboBox1;
+		private JComboBox countriesComboBox;
 
 		/**
 		 * Stores list model for neighbours JList.
@@ -150,7 +150,7 @@ import controllers.Edit_create_Map_Controller;
 		/**
 		 * Stores and displays list of continents.
 		 */
-		private JComboBox comboBox2;
+		private JComboBox countryListCombobox;
 
 		/**
 		 * Button to add a new country.
@@ -281,17 +281,17 @@ import controllers.Edit_create_Map_Controller;
 			gbc_btnAddCountry.gridy = 5;
 			contentPane.add(addCountryButton, gbc_btnAddCountry);
 
-			comboBox = new JComboBox();			/*continent list*/
-			comboBox.setToolTipText("Choose continent that already exist to enable addition of new country");
+			continentComboBox = new JComboBox();			/*continent list*/
+			continentComboBox.setToolTipText("Choose continent that already exist to enable addition of new country");
 			GridBagConstraints globalPane_comboBox = new GridBagConstraints();
 			globalPane_comboBox.gridwidth = 3;
 			globalPane_comboBox.insets = new Insets(0, 0, 5, 5);
 			globalPane_comboBox.fill = GridBagConstraints.HORIZONTAL;
 			globalPane_comboBox.gridx = 2;
 			globalPane_comboBox.gridy = 5;
-			contentPane.add(comboBox, globalPane_comboBox);
+			contentPane.add(continentComboBox, globalPane_comboBox);
 			for (NodeOfMap nodeOfMap : continents) {
-				comboBox.addItem(nodeOfMap.getContinentName());//from NodeOfMap
+				continentComboBox.addItem(nodeOfMap.getContinentName());//from NodeOfMap
 			}
 
 			
@@ -329,18 +329,18 @@ import controllers.Edit_create_Map_Controller;
 			
 			contentPane.add(deleteCountryButton, gbc_deleteCountryButton);
 
-			comboBox2 = new JComboBox();			/*list of countries.*/
-			GridBagConstraints gbc_comboBox2 = new GridBagConstraints();
+			countryListCombobox = new JComboBox();			/*list of countries.*/
+			GridBagConstraints global_countryListCombobox = new GridBagConstraints();
 			ArrayList<String> choice = new ArrayList<>();
-			gbc_comboBox2.gridwidth = 3;
-			gbc_comboBox2.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBox2.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBox2.gridx = 2;
-			gbc_comboBox2.gridy = 8;
-			contentPane.add(comboBox2, gbc_comboBox2);
+			global_countryListCombobox.gridwidth = 3;
+			global_countryListCombobox.insets = new Insets(0, 0, 5, 5);
+			global_countryListCombobox.fill = GridBagConstraints.HORIZONTAL;
+			global_countryListCombobox.gridx = 2;
+			global_countryListCombobox.gridy = 8;
+			contentPane.add(countryListCombobox, global_countryListCombobox);
 			for (NodeOfMap nodeOfMap : continents) {
 				for (NodeOfCountry nodeOfCountry : nodeOfMap.getCountries()) {
-					comboBox2.addItem(nodeOfCountry.getNAmeOfCountry()); //from NodeOfcountry
+					countryListCombobox.addItem(nodeOfCountry.getNAmeOfCountry()); //from NodeOfcountry
 				}
 			}
 
@@ -366,16 +366,16 @@ import controllers.Edit_create_Map_Controller;
 			
 			contentPane.add(deleteContinentButton, gbc_btnDeleteContinent);
 
-			comboBox3 = new JComboBox(); //List of Continents
+			continentDeletionComboBox = new JComboBox(); //List of Continents
 			GridBagConstraints gbc_comboBox3 = new GridBagConstraints();
 			gbc_comboBox3.gridwidth = 3;
 			gbc_comboBox3.insets = new Insets(0, 0, 5, 5);
 			gbc_comboBox3.fill = GridBagConstraints.HORIZONTAL;
 			gbc_comboBox3.gridx = 2;
 			gbc_comboBox3.gridy = 11;
-			contentPane.add(comboBox3, gbc_comboBox3);
+			contentPane.add(continentDeletionComboBox, gbc_comboBox3);
 			for (NodeOfMap nodeOfMap : continents) {
-				comboBox3.addItem(nodeOfMap.getContinentName());//from NodeOfMap 
+				continentDeletionComboBox.addItem(nodeOfMap.getContinentName());//from NodeOfMap 
 			}
 
 			addNeighboursButton = new JButton("Choose Neighbours");
@@ -387,18 +387,18 @@ import controllers.Edit_create_Map_Controller;
 			globalPane_addNeighboursButton.gridy = 14;
 			contentPane.add(addNeighboursButton, globalPane_addNeighboursButton);
 
-			comboBox1 = new JComboBox();
+			countriesComboBox = new JComboBox();
 			GridBagConstraints gbc_comboBox11 = new GridBagConstraints();
-			comboBox1.setToolTipText("Select country for adding neighbours");
+			countriesComboBox.setToolTipText("Select country for adding neighbours");
 			gbc_comboBox11.insets = new Insets(0, 0, 5, 5);
 			gbc_comboBox11.fill = GridBagConstraints.HORIZONTAL;
 			gbc_comboBox11.gridx = 2;
 			gbc_comboBox11.gridy = 14;
-			comboBox1.setEnabled(true);
-			contentPane.add(comboBox1, gbc_comboBox11);
+			countriesComboBox.setEnabled(true);
+			contentPane.add(countriesComboBox, gbc_comboBox11);
 			for (NodeOfMap nodeOfMap : continents) {
 				for (NodeOfCountry nodeOfCountry : nodeOfMap.getCountries()) {
-					comboBox1.addItem(nodeOfCountry.getNAmeOfCountry());
+					countriesComboBox.addItem(nodeOfCountry.getNAmeOfCountry());
 				}
 			}
 
@@ -490,11 +490,11 @@ import controllers.Edit_create_Map_Controller;
 		}
 
 		public void errorcontinentAlreadyExist() {
-			JOptionPane.showMessageDialog(contentPane, "Continent already exist", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "this Continent already exist, choose other country", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		public void errorCountryAlreadyExist() {
-			JOptionPane.showMessageDialog(contentPane, "Country already exist", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "this country already exist, choose other country", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		public void errorNullContinent() {
@@ -502,7 +502,7 @@ import controllers.Edit_create_Map_Controller;
 		}
 
 		public void errorNullCountry() {
-			JOptionPane.showMessageDialog(contentPane, "Map validation error", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "Add country firstr", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		public String getControlValue() {
@@ -518,25 +518,28 @@ import controllers.Edit_create_Map_Controller;
 			continentNameText.setEnabled(false);
 			continentControlValueText.setEnabled(false);
 		}
-
-		public void clearComboBoxContents() {
-			comboBox.removeAllItems();
-			comboBox3.removeAllItems();
+	
+	/**
+	 * clearing the all data in continent lists displayed in continentComboBox
+	 */
+		public void continentContentsCleared() {
+			continentComboBox.removeAllItems();
+			continentDeletionComboBox.removeAllItems();
 		}
 
-		public void clearCountryComBoxContents() {
-			comboBox2.removeAllItems();
-			comboBox1.removeAllItems();
+		public void countriesContentsCleared() {
+			countryListCombobox.removeAllItems();
+			countriesComboBox.removeAllItems();
 		}
 
-		public void setContinentsComboBox(String continent) {
-			comboBox.addItem(continent);
-			comboBox3.addItem(continent);
+		public void setDataInContinentsComboBox(String continent) {
+			continentComboBox.addItem(continent);
+			continentDeletionComboBox.addItem(continent);
 		}
 
-		public void setCountriesComboBox(String country) {
-			comboBox1.addItem(country);
-			comboBox2.addItem(country);
+		public void setDataInCountriesComboBox(String country) {
+			countriesComboBox.addItem(country);
+			countryListCombobox.addItem(country);
 		}
 		
 		public ExistingMapModifier getFrame() {
@@ -552,7 +555,7 @@ import controllers.Edit_create_Map_Controller;
 		 * @return selected country as neighbour.
 		 */
 		public String getSelectedCountriesForNeighbours() {
-			return (comboBox1.getSelectedItem().toString());
+			return (countriesComboBox.getSelectedItem().toString());
 		}
 		
 		/**
@@ -560,7 +563,7 @@ import controllers.Edit_create_Map_Controller;
 		 * @return  country for deletion.
 		 */
 		public String getCountriesToRemove() {
-			return (comboBox2.getSelectedItem().toString());
+			return (countryListCombobox.getSelectedItem().toString());
 		}
 		
 		/**
@@ -569,7 +572,7 @@ import controllers.Edit_create_Map_Controller;
 		 */
 		public boolean continentExistCheck() {
 			Boolean ContinentPresent = false;
-			if(comboBox.getItemCount()!=0) {
+			if(continentComboBox.getItemCount()!=0) {
 				ContinentPresent = true;
 			}
 			return ContinentPresent;
@@ -627,14 +630,14 @@ import controllers.Edit_create_Map_Controller;
 		 * @return  continent for deletion.
 		 */
 		public String continentForDeletion() {
-			return (comboBox3.getSelectedItem().toString());
+			return (continentDeletionComboBox.getSelectedItem().toString());
 		}
 		/**
 		 * Function to return list of selected continents
 		 * @return list of selected continents
 		 */
 		public String getSelectedContinent() {
-			return (comboBox.getSelectedItem().toString());
+			return (continentComboBox.getSelectedItem().toString());
 		}
 		/**
 		 * Function to remove all neighbours in the list

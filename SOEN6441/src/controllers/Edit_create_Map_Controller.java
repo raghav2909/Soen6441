@@ -126,7 +126,7 @@ public class Edit_create_Map_Controller {
 		NewMapCreation mapNew = new NewMapCreation(); //from MapNew in View
 		mapNew.addActionsToAddContinentButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mapNew.enableContinentFields();
+				mapNew.continentFieldsEnable();
 			}
 		});
 
@@ -148,10 +148,10 @@ public class Edit_create_Map_Controller {
 					if(!continentExist1){
 						ArrayList<NodeOfCountry > countryArr = new ArrayList<NodeOfCountry >();
 						mapEditor.AddContinents(cn, countryArr, control_value);//from Map
-						mapNew.clearComboBoxContents();
+						mapNew.continentContentsCleared();
 						for(NodeOfMap i: mapEditor.getContinents()){ // from Map
 							String continent = i.getContinentName();//from nodeOfMap
-							mapNew.setContinentsComboBox(continent);
+							mapNew.setDataInContinentsComboBox(continent);
 						}
 					}
 				}
@@ -209,12 +209,12 @@ public class Edit_create_Map_Controller {
 					}
 				}
 				mapNew.clearNeighboursJList();
-				mapNew.clearComboBoxContents();
-				mapNew.clearCountryComBoxContents();
+				mapNew.continentContentsCleared();
+				mapNew.countriesContentsCleared();
 				for(NodeOfMap i: continents) {
-					mapNew.setContinentsComboBox(i.getContinentName());
+					mapNew.setDataInContinentsComboBox(i.getContinentName());
 					for (NodeOfCountry NodeOfCountry : i.getCountries()){
-						mapNew.setCountriesComboBox(NodeOfCountry.getNAmeOfCountry());
+						mapNew.setDataInCountriesComboBox(NodeOfCountry.getNAmeOfCountry());
 						mapNew.addPossibleNeighboursToJList(NodeOfCountry.getNAmeOfCountry());
 					}
 				}
@@ -226,7 +226,7 @@ public class Edit_create_Map_Controller {
 				if(mapEditor.CheckSaveMap()) {
 					mapEditor.SaveMapFile();
 				}else {
-					mapNew.nullCountryError();
+					mapNew.errorNullCountry();
 				}
 			}
 		});
@@ -235,7 +235,7 @@ public class Edit_create_Map_Controller {
 			public void actionPerformed(ActionEvent e) {
 				String selectedcountry = mapNew.getCountriesToRemove();
 				mapNew.clearNeighboursJList();
-				mapNew.clearCountryComBoxContents();
+				mapNew.countriesContentsCleared();
 				ArrayList<NodeOfMap> continents = mapEditor.getContinents();
 
 				for (NodeOfMap node: continents) {
@@ -247,7 +247,7 @@ public class Edit_create_Map_Controller {
 				}
 				for (NodeOfMap node: continents) {
 					for (NodeOfCountry temp : node.getCountries()) {
-						mapNew.setCountriesComboBox(temp.getNAmeOfCountry());
+						mapNew.setDataInCountriesComboBox(temp.getNAmeOfCountry());
 						mapNew.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
 					}
 				}
@@ -271,7 +271,7 @@ public class Edit_create_Map_Controller {
 								neighbours.add(cn);
 							}
 							mapNew.clearNeighboursJList();
-							mapNew.clearCountryComBoxContents();
+							mapNew.countriesContentsCleared();
 							for (NodeOfMap node: mapEditor.getContinents()) {
 								if(selectedContinent.compareTo(node.getContinentName())==0) { //from Nodeofcountyry
 									int a[]= {250,250};
@@ -280,16 +280,16 @@ public class Edit_create_Map_Controller {
 								}
 								for (NodeOfCountry temp : node.getCountries()) {
 									mapNew.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
-									mapNew.setCountriesComboBox(temp.getNAmeOfCountry());
+									mapNew.setDataInCountriesComboBox(temp.getNAmeOfCountry());
 
 								}
 							}
 						}else {
-							mapNew.countryAlreadyExistError();
+							mapNew.errorCountryAlreadyExist();
 						}
 					}
 				}else {
-					mapNew.nullContinentError();
+					mapNew.errorNullContinent();
 				}
 				mapNew.countryFieldDisable();
 			}
@@ -324,10 +324,10 @@ public class Edit_create_Map_Controller {
 					if(!continentExist1){
 						ArrayList<NodeOfCountry> countryArr = new ArrayList<NodeOfCountry>();
 						mapEditor.AddContinents(cn, countryArr, control_value);
-						existingMapModifier.clearComboBoxContents();
+						existingMapModifier.continentContentsCleared();
 						for(NodeOfMap i: mapEditor.getContinents()){
 							String continent = i.getContinentName(); //from NodeOfmap
-							existingMapModifier.setContinentsComboBox(continent);
+							existingMapModifier.setDataInContinentsComboBox(continent);
 						}
 					}
 				}
@@ -383,17 +383,17 @@ public class Edit_create_Map_Controller {
 						break;
 					}
 				}
-				existingMapModifier.clearComboBoxContents();
+				existingMapModifier.continentContentsCleared();
 				for(NodeOfMap i: continents) {
-					existingMapModifier.setContinentsComboBox(i.getContinentName());// from NodeOfMap
+					existingMapModifier.setDataInContinentsComboBox(i.getContinentName());// from NodeOfMap
 				}
 				existingMapModifier.clearNeighboursJList();
-				existingMapModifier.clearComboBoxContents();
-				existingMapModifier.clearCountryComBoxContents();
+				existingMapModifier.continentContentsCleared();
+				existingMapModifier.countriesContentsCleared();
 				for(NodeOfMap i: continents) {
-					existingMapModifier.setContinentsComboBox(i.getContinentName());
+					existingMapModifier.setDataInContinentsComboBox(i.getContinentName());
 					for (NodeOfCountry NodeOfCountry : i.getCountries()){
-						existingMapModifier.setCountriesComboBox(NodeOfCountry.getNAmeOfCountry());
+						existingMapModifier.setDataInCountriesComboBox(NodeOfCountry.getNAmeOfCountry());
 						existingMapModifier.addPossibleNeighboursToJList(NodeOfCountry.getNAmeOfCountry());
 					}
 				}
@@ -414,7 +414,7 @@ public class Edit_create_Map_Controller {
 			public void actionPerformed(ActionEvent e) {
 				String selectedcountry = existingMapModifier.getCountriesToRemove();
 				existingMapModifier.clearNeighboursJList();
-				existingMapModifier.clearCountryComBoxContents();
+				existingMapModifier.countriesContentsCleared();
 				ArrayList<NodeOfMap> continents = mapEditor.getContinents();
 				for (NodeOfMap node: continents) {
 					for (NodeOfCountry temp : node.getCountries()) {
@@ -425,7 +425,7 @@ public class Edit_create_Map_Controller {
 				}
 				for (NodeOfMap node: continents) {
 					for (NodeOfCountry temp : node.getCountries()) {
-						existingMapModifier.setCountriesComboBox(temp.getNAmeOfCountry());
+						existingMapModifier.setDataInCountriesComboBox(temp.getNAmeOfCountry());
 						existingMapModifier.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
 					}
 				}
@@ -449,7 +449,7 @@ public class Edit_create_Map_Controller {
 								neighbours.add(cn);
 							}
 							existingMapModifier.clearNeighboursJList();
-							existingMapModifier.clearCountryComBoxContents();
+							existingMapModifier.countriesContentsCleared();
 							for (NodeOfMap node: mapEditor.getContinents()) {
 								if(selectedContinent.compareTo(node.getContinentName())==0) {// from NodeOFMap
 									int a[]= {250,250};
@@ -458,7 +458,7 @@ public class Edit_create_Map_Controller {
 								}
 								for (NodeOfCountry temp : node.getCountries()) {
 									existingMapModifier.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
-									existingMapModifier.setCountriesComboBox(temp.getNAmeOfCountry());
+									existingMapModifier.setDataInCountriesComboBox(temp.getNAmeOfCountry());
 								}
 							}
 						}else {

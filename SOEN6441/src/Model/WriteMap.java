@@ -1,6 +1,12 @@
 package Model;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * This class is used to write the map file
@@ -14,11 +20,11 @@ public class WriteMap {
 		
 		Date date= new Date();
 		
-		MapPath=System.getProperty("user.dir")+"\\MapData\\Map_"+ D.format(date)+".map";
+		String MapPath = System.getProperty("user.dir")+"\\MapData\\Map_"+ D.format(date)+".map";
 		
 		FileWriter F= new FileWriter(MapPath);
 		
-		BufferdWriter B= new BufferedWriter(F);
+		BufferedWriter B= new BufferedWriter(F);
 		
 		B.write(MapAttribute);
 		
@@ -29,7 +35,7 @@ public class WriteMap {
 		}
 		B.write("[Territories]\r\n");
 		for(NodeOfMap n: maplist) {
-			for(NodeOfCountry c:n.getCountry()) {
+			for(NodeOfCountry c:n.getCountries()) {
 				String Countries="";
 				for(NodeOfCountry noc: c.getNeighboursCountries() ) {
 					Countries=Countries+","+noc.getCountryName();

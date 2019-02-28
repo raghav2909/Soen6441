@@ -3,6 +3,8 @@ package Model;
 import java.util.ArrayList;
 
 import controllers.the_main_controller;
+import view.ControlsConsole;
+import view.PlayerConsole;
 
 /**
  * This class handles the game driver.
@@ -19,7 +21,7 @@ public class GameDriver {
 	/**
 	 * the player view class object
 	 */
-	//private PlayerInfoView PlayerInfo;
+	private PlayerConsole PlayerInfo;
 	
 	
 	/**
@@ -44,7 +46,7 @@ public class GameDriver {
 	/**
 	 * ControlsConsol class object
 	 */
-	//private ControlsConsol controls;
+	private ControlsConsole controls;
 	
 	
 	
@@ -261,15 +263,185 @@ public class GameDriver {
 	
 	
 	/**
-	 * getting the countries of current player
+	 * getting the name countries of current player
 	 * @return countries name
 	 */
-	public String [] getPlayerCountries() 
+	public String [] getPlayerCountriesName() 
 	{
 		return getCurrent().getNameOfCountries();
 	}
 	
 	
-	// try to commit
+	
+	
+	/**
+	 * getting the countries of current player
+	 * @return the list of countries
+	 */
+	public ArrayList<NodeOfCountry> getPlayerCountries()
+	{
+		return getCurrent().getCountries();
+	}
+	
+	
+	
+	/**
+	 * getting the neighbours of a country
+	 * @param cn the country with nieghbours
+	 * @return list of nirghbours
+	 */
+	public NodeOfCountry [] getNeighboursCountry(NodeOfCountry cn) 
+	{
+		for (NodeOfCountry c : getCurrent().getCountries()) {
+			if (c.getCountryName().equals(cn.getCountryName())) {
+				return c.getNeighboursCountries();
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	/**
+	 * gives the country node of the country
+	 * @param cn name of the country
+	 * @return country node of the given country
+	 */
+	public NodeOfCountry getCountryNode(String cn) {
+		for (NodeOfCountry  c: getCurrent().getCountries()) {
+			if (c.getCountryName().equals(cn)) {
+				return c;
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	/**
+	 * listener for reinforcement phase
+	 */
+	public void setControlListenerForR() {
+		this.controller.setRListener();
+	}
+	
+	
+	
+	/**
+	 * creating a instance for ControlConsol class
+	 * @return ControlClass instance
+	 */
+	public ControlsConsole getControl() 
+	{
+		return this.controls();
+	}
+	
+	
+	
+	/**
+	 * change between phases
+	 */
+	public void ChangePhase() 
+	{
+		if(this.CurrentPhase.equals(GamePhase.reinforcement){
+			CurrentPhase.rphase();
+		}
+		else if (this.CurrentPhase.equals(GamePhase.attack)) {
+			CurrentPhase.aphase();
+		}
+		else if (this.CurrentPhase.equals(GamePhase.fortification)) {
+			this.getNextPlayer();
+			CurrentPhase.fphase();
+		}
+		map.UpdateMap();
+	}
+	
+	
+	
+	
+	/**
+	 * refreshes the phases
+	 */
+	public void ContinuePhase(){
+		if(this.CurrentPhase.equals(GamePhase.reinforcement){
+			CurrentPhase.rphase();
+		}
+		else if (this.CurrentPhase.equals(GamePhase.attack)) {
+			CurrentPhase.aphase();
+		}
+		else if (this.CurrentPhase.equals(GamePhase.fortification)) {
+			CurrentPhase.fphase();
+		}
+		map.UpdateMap();
+	}
+	
+	
+	/**
+	 * listener for fortification phase
+	 */
+	public void setControlListenerForF() 
+	{
+		this.controller.setFListener();
+	}
+	
+	
+	
+	/**
+	 * getting the map class object
+	 */
+	public Map getMap() 
+	{
+		return this.map;
+	}
+	
+	
+	
+	
+	/**
+	 * getting a list of neighbours of a player
+	 * @param cn country node of the country
+	 * @return array list of neighbours of a player
+	 */
+	public ArrayList<NodeOfCountry> getPlayerNeighbourCountries(NodeOfCountry cn)
+	{
+		PlayerNeighbours = new ArrayList<NodeOfCountry>();
+		for(NodeOfCountry c : getPlayerNeighbourCountries(cn)) {
+			if(cn.getOwner().equals(c.getOwner())){
+				PlayerNeighbours.add(c);
+			}
+		}
+		return PlayerNeighbours;
+	}
+	
+	
+	
+	
+	/**
+	 * getting a list of neighbours names of a player
+	 * @param cn the country node of the country
+	 * @return name of neighbours of a player
+	 */
+	public String[] getPlayerNeighbourCountriesName(String cn) 
+	{
+		PlayerNeighboursNames = new ArrayList<String>();
+		for (NodeOfCountry c : getPlayerNeighbourCountries(getCountryNode(cn))) {
+			PlayerNeighboursNames.add(c.getCountryName());
+		}
+		return (String[]) PlayerNeighboursNames.toArray();
+	}
+	
+	
+	
+	/**
+	 * adding the new player
+	 * @param np new player
+	 */
+	public void setPlayerList(Player np) 
+	{
+		if(this.players==null) {
+			this.players = new ArrayList<Player>();
+		}
+		this.players.add(np);
+	}
 }
 

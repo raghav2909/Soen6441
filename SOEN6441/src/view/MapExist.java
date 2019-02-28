@@ -190,10 +190,6 @@ public class MapExist extends JFrame{
 	public ArrayList<NodeOfMap> getMapExistsInfo() {
 		return MapExists;
 	}
-
-
-
-
 				
 	}
 

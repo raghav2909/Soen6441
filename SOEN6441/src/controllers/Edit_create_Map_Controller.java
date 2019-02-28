@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Model.*;
@@ -54,17 +55,28 @@ public class Edit_create_Map_Controller {
 	 * Stores the FilePath of the file Selected
 	 */
 	public String FilePath = "";
+	
+	/**
+	 * Object of ReadMap class from Model
+	 */
+	ReadMap readMap = new ReadMap();
 /**
  * object of Map class from Model
  */
+	 
+	
 	Map mapEditor =new Map();// 
 	/**
 	 * Calls the readMap function of ReadMap class from Model to read the map files
 	 * @param file_name address of the map file to be loaded
 	 */
 	public void readMap(String file_name) {
-		ReadMap readMap = new ReadMap();
-		 readMap.mapreader(file_name); // to be done in ReadMap class in model 
+		 try {
+			readMap.mapreader(file_name);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // to be done in ReadMap class in model 
 	}
 	
 	/**
@@ -95,13 +107,21 @@ public class Edit_create_Map_Controller {
 
 				if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 					FilePath = jfc.getSelectedFile().getAbsolutePath();
+					
+					ArrayList<NodeOfMap> x = null;
+					try {
+						x = readMap.mapreader(jfc.getSelectedFile().getAbsolutePath());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					//mapReader = new Map(); //check the Map file in Model
-					MapExist mapExist = new MapExist(mapReader.readMap(jfc.getSelectedFile().getAbsolutePath()));
+					MapExist mapExist = new MapExist(x);
 					// create clss  map exist
 					mapExist.addActionsToBtnEdit(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							mapExist.setVisible(false);// to be defined in MapExist
-							ArrayList<NodeOfMap> existing_map_Info = mapExist.getExistingMapInfo(); // to pick from MapExist
+							ArrayList<NodeOfMap> existing_map_Info = mapExist.getMapExistsInfo(); // to pick from MapExist
 							mapEditor.WritingOldMap(existing_map_Info);// to be written in Map
 							existingMapModifier = new ExistingMapModifier(existing_map_Info);// to come from ExistingMapModifier
 							existingMapModifier.setVisible(true);
@@ -150,7 +170,7 @@ public class Edit_create_Map_Controller {
 						mapEditor.AddContinents(cn, countryArr, control_value);//from Map
 						mapNew.continentContentsCleared();
 						for(NodeOfMap i: mapEditor.getContinents()){ // from Map
-							String continent = i.getContinentName();//from nodeOfMap
+							String continent = i.getContinent();//from nodeOfMap
 							mapNew.setDataInContinentsComboBox(continent);
 						}
 					}
@@ -167,9 +187,9 @@ public class Edit_create_Map_Controller {
 
 				for (NodeOfMap node : mapEditor.getContinents()){//from Map
 					for (NodeOfCountry NodeOfCountry : node.getCountries()){
-						if(sCountrytToAddNeighbour.compareTo(NodeOfCountry.getNAmeOfCountry())==0)
+						if(sCountrytToAddNeighbour.compareTo(NodeOfCountry.getNameOfCountry())==0)
 							continue;
-						mapNew.addPossibleNeighboursToJList(NodeOfCountry.getNAmeOfCountry());
+						mapNew.addPossibleNeighboursToJList(NodeOfCountry.getNameOfCountry());
 					}
 				}
 			}
@@ -188,9 +208,9 @@ public class Edit_create_Map_Controller {
 					for (NodeOfMap node : mapEditor.getContinents()){
 						for (NodeOfCountry cNode : node.getCountries()){
 							String sCountrytToAddNeighbour = mapNew.getSelectedCountriesForNeighbours();
-							if(sCountrytToAddNeighbour.compareTo(cNode.getNAmeOfCountry())==0)
+							if(sCountrytToAddNeighbour.compareTo(cNode.getNameOfCountry())==0)
 								for (NodeOfCountry neighbourNode : neighbours){
-									cNode.addNeighbour(neighbourNode);	 //from Nodeofcountry
+									cNode.AddNeighbour(neighbourNode);	 //from Nodeofcountry
 								}
 						}
 					}
@@ -203,7 +223,7 @@ public class Edit_create_Map_Controller {
 				ArrayList<NodeOfMap> continents = mapEditor.getContinents();
 				String delete_continent = mapNew.continentForDeletion();
 				for (NodeOfMap i :continents) {
-					if(i.getContinentName().compareTo(delete_continent)==0) {
+					if(i.getContinent().compareTo(delete_continent)==0) {
 						continents.remove(i);
 						break;
 					}
@@ -212,10 +232,10 @@ public class Edit_create_Map_Controller {
 				mapNew.continentContentsCleared();
 				mapNew.countriesContentsCleared();
 				for(NodeOfMap i: continents) {
-					mapNew.setDataInContinentsComboBox(i.getContinentName());
+					mapNew.setDataInContinentsComboBox(i.getContinent());
 					for (NodeOfCountry NodeOfCountry : i.getCountries()){
-						mapNew.setDataInCountriesComboBox(NodeOfCountry.getNAmeOfCountry());
-						mapNew.addPossibleNeighboursToJList(NodeOfCountry.getNAmeOfCountry());
+						mapNew.setDataInCountriesComboBox(NodeOfCountry.getNameOfCountry());
+						mapNew.addPossibleNeighboursToJList(NodeOfCountry.getNameOfCountry());
 					}
 				}
 			}
@@ -224,7 +244,12 @@ public class Edit_create_Map_Controller {
 		mapNew.addActionsToSaveMapButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mapEditor.CheckSaveMap()) {
-					mapEditor.SaveMapFile();
+					try {
+						mapEditor.SaveMapFile();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}else {
 					mapNew.errorNullCountry();
 				}
@@ -240,15 +265,15 @@ public class Edit_create_Map_Controller {
 
 				for (NodeOfMap node: continents) {
 					for (NodeOfCountry temp : node.getCountries()) {
-						if(temp.getNAmeOfCountry().compareTo(selectedcountry)==0) {
-							node.removeCountry(temp);//from NodeOfCountry
+						if(temp.getNameOfCountry().compareTo(selectedcountry)==0) {
+							node.deletecountry(temp);//from NodeOfCountry
 						}
 					}
 				}
 				for (NodeOfMap node: continents) {
 					for (NodeOfCountry temp : node.getCountries()) {
-						mapNew.setDataInCountriesComboBox(temp.getNAmeOfCountry());
-						mapNew.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
+						mapNew.setDataInCountriesComboBox(temp.getNameOfCountry());
+						mapNew.addPossibleNeighboursToJList(temp.getNameOfCountry());
 					}
 				}
 			}
@@ -273,14 +298,14 @@ public class Edit_create_Map_Controller {
 							mapNew.clearNeighboursJList();
 							mapNew.countriesContentsCleared();
 							for (NodeOfMap node: mapEditor.getContinents()) {
-								if(selectedContinent.compareTo(node.getContinentName())==0) { //from Nodeofcountyry
+								if(selectedContinent.compareTo(node.getContinent())==0) { //from Nodeofcountyry
 									int a[]= {250,250};
 									NodeOfCountry newCountry = new NodeOfCountry(cn1,  neighbours , a);
-									node.addCountry(newCountry);//from countryNode
+									node.addcountry(newCountry);//from countryNode
 								}
 								for (NodeOfCountry temp : node.getCountries()) {
-									mapNew.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
-									mapNew.setDataInCountriesComboBox(temp.getNAmeOfCountry());
+									mapNew.addPossibleNeighboursToJList(temp.getNameOfCountry());
+									mapNew.setDataInCountriesComboBox(temp.getNameOfCountry());
 
 								}
 							}
@@ -326,12 +351,12 @@ public class Edit_create_Map_Controller {
 						mapEditor.AddContinents(cn, countryArr, control_value);
 						existingMapModifier.continentContentsCleared();
 						for(NodeOfMap i: mapEditor.getContinents()){
-							String continent = i.getContinentName(); //from NodeOfmap
+							String continent = i.getContinent(); //from NodeOfmap
 							existingMapModifier.setDataInContinentsComboBox(continent);
 						}
 					}
 				}
-				existingMapModifier.continentFieldDisable();
+				existingMapModifier.continentFieldDisabled();
 			}
 		});
 
@@ -342,9 +367,9 @@ public class Edit_create_Map_Controller {
 				existingMapModifier.clearNeighboursJList();
 				for (NodeOfMap node : mapEditor.getContinents()){
 					for (NodeOfCountry NodeOfCountry : node.getCountries()){
-						if(sCountrytToAddNeighbour.compareTo(NodeOfCountry.getNAmeOfCountry())==0)
+						if(sCountrytToAddNeighbour.compareTo(NodeOfCountry.getNameOfCountry())==0)
 							continue;
-						existingMapModifier.addPossibleNeighboursToJList(NodeOfCountry.getNAmeOfCountry());
+						existingMapModifier.addPossibleNeighboursToJList(NodeOfCountry.getNameOfCountry());
 					}
 				}
 			}
@@ -363,9 +388,9 @@ public class Edit_create_Map_Controller {
 					for (NodeOfMap node : mapEditor.getContinents()){
 						for (NodeOfCountry cNode : node.getCountries()){
 							String sCountrytToAddNeighbour = existingMapModifier.getSelectedCountriesForNeighbours();
-							if(sCountrytToAddNeighbour.compareTo(cNode.getNAmeOfCountry())==0)
+							if(sCountrytToAddNeighbour.compareTo(cNode.getNameOfCountry())==0)
 								for (NodeOfCountry neighbourNode : neighbours){
-									cNode.addNeighbour(neighbourNode);	//FROM NODEoFCOUNTRY
+									cNode.AddNeighbour(neighbourNode);	//FROM NODEoFCOUNTRY
 								}
 						}
 					}
@@ -378,23 +403,23 @@ public class Edit_create_Map_Controller {
 				ArrayList<NodeOfMap> continents = mapEditor.getContinents();
 				String delete_continent = existingMapModifier.continentForDeletion();
 				for (NodeOfMap i :continents) {
-					if(i.getContinentName().compareTo(delete_continent)==0) {
+					if(i.getContinent().compareTo(delete_continent)==0) {
 						continents.remove(i);//from nodeOfMap
 						break;
 					}
 				}
 				existingMapModifier.continentContentsCleared();
 				for(NodeOfMap i: continents) {
-					existingMapModifier.setDataInContinentsComboBox(i.getContinentName());// from NodeOfMap
+					existingMapModifier.setDataInContinentsComboBox(i.getContinent());// from NodeOfMap
 				}
 				existingMapModifier.clearNeighboursJList();
 				existingMapModifier.continentContentsCleared();
 				existingMapModifier.countriesContentsCleared();
 				for(NodeOfMap i: continents) {
-					existingMapModifier.setDataInContinentsComboBox(i.getContinentName());
+					existingMapModifier.setDataInContinentsComboBox(i.getContinent());
 					for (NodeOfCountry NodeOfCountry : i.getCountries()){
-						existingMapModifier.setDataInCountriesComboBox(NodeOfCountry.getNAmeOfCountry());
-						existingMapModifier.addPossibleNeighboursToJList(NodeOfCountry.getNAmeOfCountry());
+						existingMapModifier.setDataInCountriesComboBox(NodeOfCountry.getNameOfCountry());
+						existingMapModifier.addPossibleNeighboursToJList(NodeOfCountry.getNameOfCountry());
 					}
 				}
 			}
@@ -403,7 +428,12 @@ public class Edit_create_Map_Controller {
 		existingMapModifier.addActionsToSaveMapButton(new ActionListener() {//addActionsToSaveMapButton
 			public void actionPerformed(ActionEvent e) {
 				if(mapEditor.CheckSaveMap()) { //to come from map
-					mapEditor.SaveToOldFile(getFilePath());
+					try {
+						mapEditor.SaveToOldFile(getFilePath());
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}else {
 					existingMapModifier.errorNullCountry();
 				}
@@ -418,15 +448,15 @@ public class Edit_create_Map_Controller {
 				ArrayList<NodeOfMap> continents = mapEditor.getContinents();
 				for (NodeOfMap node: continents) {
 					for (NodeOfCountry temp : node.getCountries()) {
-						if(temp.getNAmeOfCountry().compareTo(selectedcountry)==0) {
-							node.removeCountry(temp); //NodeOfCountry
+						if(temp.getNameOfCountry().compareTo(selectedcountry)==0) {
+							node.deletecountry(temp); //NodeOfCountry
 						}
 					}
 				}
 				for (NodeOfMap node: continents) {
 					for (NodeOfCountry temp : node.getCountries()) {
-						existingMapModifier.setDataInCountriesComboBox(temp.getNAmeOfCountry());
-						existingMapModifier.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
+						existingMapModifier.setDataInCountriesComboBox(temp.getNameOfCountry());
+						existingMapModifier.addPossibleNeighboursToJList(temp.getNameOfCountry());
 					}
 				}
 			}
@@ -451,14 +481,14 @@ public class Edit_create_Map_Controller {
 							existingMapModifier.clearNeighboursJList();
 							existingMapModifier.countriesContentsCleared();
 							for (NodeOfMap node: mapEditor.getContinents()) {
-								if(selectedContinent.compareTo(node.getContinentName())==0) {// from NodeOFMap
+								if(selectedContinent.compareTo(node.getContinent())==0) {// from NodeOFMap
 									int a[]= {250,250};
 									NodeOfCountry newCountry = new NodeOfCountry(cn1,  neighbours , a);
-									node.addCountry(newCountry);
+									node.addcountry(newCountry);
 								}
 								for (NodeOfCountry temp : node.getCountries()) {
-									existingMapModifier.addPossibleNeighboursToJList(temp.getNAmeOfCountry());
-									existingMapModifier.setDataInCountriesComboBox(temp.getNAmeOfCountry());
+									existingMapModifier.addPossibleNeighboursToJList(temp.getNameOfCountry());
+									existingMapModifier.setDataInCountriesComboBox(temp.getNameOfCountry());
 								}
 							}
 						}else {

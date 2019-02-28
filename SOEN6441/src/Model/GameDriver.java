@@ -252,7 +252,7 @@ public class GameDriver {
 	public String[] getNeighboursCountryName(String cn)
 	{
 		for (NodeOfCountry c : getCurrent().getCountries()) {
-			if(c.getCountryName().equals(cn)) {
+			if(c.getNameOfCountry().equals(cn)) {
 				return c.getNeighboursString();
 			}
 		}
@@ -303,7 +303,7 @@ public class GameDriver {
 	public NodeOfCountry [] getNeighboursCountry(NodeOfCountry cn) 
 	{
 		for (NodeOfCountry c : getCurrent().getCountries()) {
-			if (c.getCountryName().equals(cn.getCountryName())) {
+			if (c.getNameOfCountry().equals(cn.getNameOfCountry())) {
 				return c.getNeighboursCountries();
 			}
 		}
@@ -319,7 +319,7 @@ public class GameDriver {
 	 */
 	public NodeOfCountry getCountryNode(String cn) {
 		for (NodeOfCountry  c: getCurrent().getCountries()) {
-			if (c.getCountryName().equals(cn)) {
+			if (c.getNameOfCountry().equals(cn)) {
 				return c;
 			}
 		}
@@ -435,7 +435,7 @@ public class GameDriver {
 	{
 		PlayerNeighboursNames = new ArrayList<String>();
 		for (NodeOfCountry c : getPlayerNeighbourCountries(getCountryNode(cn))) {
-			PlayerNeighboursNames.add(c.getCountryName());
+			PlayerNeighboursNames.add(c.getNameOfCountry());
 		}
 		return (String[]) PlayerNeighboursNames.toArray();
 	}

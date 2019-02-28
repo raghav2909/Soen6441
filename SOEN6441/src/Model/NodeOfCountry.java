@@ -267,4 +267,8 @@ public class NodeOfCountry
 		 }
 		 return PlayerNeighboursName;
 	 }
+	public Player getOwner() {
+		
+		return this.PlayerCountry;
+	}
 }

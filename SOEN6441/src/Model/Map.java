@@ -45,8 +45,9 @@ public class Map extends Observable
 	 /**
 	  * this constructor handles getting map data from map reader
 	  * @param FileName the address of map
+	 * @throws IOException 
 	  */
-	public Map(String FileName) 
+	public Map(String FileName) throws IOException 
 	{
 		ReadMap Reader = new ReadMap();
 		try {
@@ -289,11 +290,11 @@ public class Map extends Observable
 	
 	
 	public String getFinalMap() {
-		if (Map_Frame.selectedAction().compareTo("new")==0) {
+		if (Map_Frame.ActionChoosen().compareTo("new")==0) {
 			System.out.println(newFileMap());
 			return newFileMap();
 		}
-		else if (Map_Frame.selectedAction().compareTo("existing")==0) {
+		else if (Map_Frame.ActionChoosen().compareTo("existing")==0) {
 			System.out.println(oldFileMap());
 			return oldFileMap();
 		}

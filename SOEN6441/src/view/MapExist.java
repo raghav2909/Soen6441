@@ -125,7 +125,7 @@ public class MapExist extends JFrame{
 					{
 						if (selectedCell.compareTo(MapExists.get(i).getContinent())==0) {
 							for (int j = 0; j < MapExists.get(i).getCountries().length; j++) {
-								String[] countryName = {MapExists.get(i).getCountries()[j].getCountryName()};
+								String[] countryName = {MapExists.get(i).getCountries()[j].getNameOfCountry()};
 								m2.addRow(countryName);
 							}
 						}
@@ -148,9 +148,9 @@ public class MapExist extends JFrame{
 					{
 						if (selectedCell1.compareTo(MapExists.get(i).getContinent())==0) {
 							for (int j = 0; j < MapExists.get(i).getCountries().length; j++) {
-								if (selectedCell2.compareTo(MapExists.get(i).getCountries()[j].getCountryName())==0) {
+								if (selectedCell2.compareTo(MapExists.get(i).getCountries()[j].getNameOfCountry())==0) {
 									for (int k = 0; k < MapExists.get(i).getCountries()[j].getNeighboursCountries().length; k++) {
-										String[] countryInfo = {MapExists.get(i).getCountries()[j].getNeighboursCountries()[k].getCountryName()};
+										String[] countryInfo = {MapExists.get(i).getCountries()[j].getNeighboursCountries()[k].getNameOfCountry()};
 										m3.addRow(countryInfo);
 									}
 									break;

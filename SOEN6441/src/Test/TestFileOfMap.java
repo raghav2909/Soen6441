@@ -11,7 +11,7 @@ import Model.ReadMap;
 import Model.NodeOfMap;
 import Model.NodeOfCountry;
 /**
- * this class is a test class for testing a file map
+ * this class is a test class for testing a file map class
  * @author samansoltani
  */
 public class TestFileOfMap {

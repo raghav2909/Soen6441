@@ -23,7 +23,7 @@ public class PlayerConsole extends JPanel {
 		JLabel lab=  new JLabel("Players");
 		this.setLayout(new FlowLayout());
 		this.add(lab);
-		this.setBorder(BorderFactory.createLineBorder(Color.blue));
+		this.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
 		this.setPreferredSize(new Dimension(450,170));
 	}
 

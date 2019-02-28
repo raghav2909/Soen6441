@@ -59,6 +59,10 @@ public class Map extends Observable
 		}
 	}
 	
+	public Map() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * returning the map data as an arraylist
 	 * @return return the map data as an arraylist

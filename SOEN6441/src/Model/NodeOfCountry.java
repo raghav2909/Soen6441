@@ -66,7 +66,7 @@ public class NodeOfCountry
 	 * @return the name of country
 	 */
 	
-	public String getCountryName()
+	public String getNameOfCountry()
 	{
 		return this.CountryName;
 	}
@@ -263,7 +263,7 @@ public class NodeOfCountry
 		 PlayerNeighboursName = new ArrayList<String>();
 		 for(NodeOfCountry country : getPlayerNeighbours())
 		 {
-			 PlayerNeighboursName.add(country.getCountryName());
+			 PlayerNeighboursName.add(country.getNameOfCountry());
 		 }
 		 return PlayerNeighboursName;
 	 }

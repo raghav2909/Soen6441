@@ -64,7 +64,7 @@ public class Map_Frame extends JFrame {
 		Map_Frame frame = this;
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(160, 160, 500, 240);
+		setBounds(140, 140, 420, 200);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLUE);
 		contentPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
@@ -83,8 +83,8 @@ public class Map_Frame extends JFrame {
 		Global_Pane_contents.gridx = 0;
 		Global_Pane_contents.gridy = 0;
 		JLabel Map_Editor = new JLabel("This is a Map Editor");
-		Map_Editor.setFont(new Font("Script Bold", Font.PLAIN,50));
-		
+		Map_Editor.setFont(new Font("Script Bold", Font.PLAIN,49));
+		Map_Editor.setForeground(Color.WHITE);		
 		contentPane.add(Map_Editor, Global_Pane_contents);
 
 		GridBagConstraints global_Choose_Label = new GridBagConstraints();
@@ -93,13 +93,14 @@ public class Map_Frame extends JFrame {
         global_Choose_Label.insets = new Insets(0, 0, 5, 5);
         global_Choose_Label.gridx = 2;
 		global_Choose_Label.gridy = 2;
-		JLabel Choose_Label = new JLabel("Choose: Either to play with an existing map or create a new map for your game.");
-		Choose_Label.setFont(new Font("Monotype Corsiva", Font.PLAIN, 28));
+		JLabel Choose_Label = new JLabel("Choose: Either to edit an existing map or create a new map for  game.");
+		Choose_Label.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC|Font.PLAIN, 28));
+		Choose_Label.setForeground(Color.WHITE);	
 		contentPane.add(Choose_Label, global_Choose_Label);
 
-		NewMap = new JButton("New Map");
+		NewMap = new JButton("Create New Map");
 		NewMap.setToolTipText("Click here for creating new map");
-		NewMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+		NewMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 18));
 		NewMap.setForeground(Color.BLACK);
 		NewMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -117,8 +118,9 @@ public class Map_Frame extends JFrame {
 		gbc_NewMap.gridx = 5;
 		gbc_NewMap.gridy = 6;
 		contentPane.add(NewMap, gbc_NewMap);
-		JLabel chooseOne = new JLabel("Select one...");
-		chooseOne.setFont(new Font("Tahoma", Font.ITALIC, 19));
+		JLabel chooseOne = new JLabel("Select one of the following...");
+		chooseOne.setFont(new Font("Tahoma", Font.ITALIC, 25));
+		chooseOne.setForeground(Color.WHITE);	
 		GridBagConstraints gbc_chooseOne = new GridBagConstraints();
 		gbc_chooseOne.fill = GridBagConstraints.VERTICAL;
 		gbc_chooseOne.gridwidth = 3;
@@ -129,11 +131,11 @@ public class Map_Frame extends JFrame {
 		
 		GridBagConstraints gbc_ExistingMap = new GridBagConstraints();
 		gbc_ExistingMap.fill = GridBagConstraints.HORIZONTAL;
-		gbc_ExistingMap.gridwidth = 3;
+		gbc_ExistingMap.gridwidth = 3	;
 		gbc_ExistingMap.insets = new Insets(0, 0, 0, 5);
 		gbc_ExistingMap.gridx = 5;
 		gbc_ExistingMap.gridy = 7;
-		ExistingMap = new JButton("Existing Map");
+		ExistingMap = new JButton("Edit Existing Map");
 		ExistingMap.setForeground(Color.BLACK);
 		ExistingMap.setToolTipText("Click here for using existing map");
 		ExistingMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));

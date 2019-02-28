@@ -84,7 +84,7 @@ public class Map extends Observable
 			for (NodeOfCountry m : n.getCountries()) 
 			{
 				String[] tempObject = new String [5];
-				tempObject[1] = m.getCountryName();
+				tempObject[1] = m.getNameOfCountry();
 				if(m.getPlayerCountry() != null)
 				{
 					tempObject [3] = m.getPlayerCountry().getPlayerName();
@@ -116,7 +116,7 @@ public class Map extends Observable
 			{
 				String[] tempObject = new String[5];
 				tempObject[0] = n.getContinent() +", "+n.getControlValue();
-				tempObject[1] = m.getCountryName();
+				tempObject[1] = m.getNameOfCountry();
 				String Neighbours ="";
 				for(String s : m.getNeighboursString())
 				{
@@ -257,7 +257,7 @@ public class Map extends Observable
 	public boolean CheckSaveMap() {
 		boolean SaveMap = true;
 		for (NodeOfMap n: continents) {
-			if (n.getCountries().size() == 0) {
+			if (n.getCountries().length == 0) {
 				SaveMap = false;
 			}
 			for(NodeOfCountry c : n.getCountries()) {
@@ -317,7 +317,7 @@ public class Map extends Observable
 		boolean ce = false;
 		for (NodeOfMap n : continents) {
 			for (NodeOfCountry i : n.getCountries()) {
-				if(i.getCountryName().compareTo(c)==0) {
+				if(i.getNameOfCountry().compareTo(c)==0) {
 					ce = true;
 				}
 			}

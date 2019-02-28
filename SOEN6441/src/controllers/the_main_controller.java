@@ -178,14 +178,7 @@ public void Single_Mode_Start() {
 	forward(image_loc);
 	
 }
-/**
- *This function Gets the player name from the user 
- *@see Player_Information_Controller
- * @return a string array containing player names.
- */
-public String[] getPlayerInfo() {
-	return pic.Information_OF_Playres();
-}
+
 public void forward(String mapimage)
 {
 	

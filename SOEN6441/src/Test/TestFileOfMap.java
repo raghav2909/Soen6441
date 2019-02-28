@@ -23,8 +23,8 @@ public class TestFileOfMap {
 	}
 
 	@Test
-	public void testReadingMap() {
-		ArrayList <NodeOfMap> result = RM.mapreader(".//Map_Data//test//testMap3.map");
+	public void testReadingMap() throws IOException {
+		ArrayList <NodeOfMap> result = RM.mapreader(".//SOEN6441//Map_Data//test//testMap3.map");
 		String Eresult = "AmericaN,5,Alaska,Canada,Canada,Alaska,Montana,Groenlandia,Montana,Montana,Canada,Groenlandia,";
 		String Aresult ="";
 		for (NodeOfMap m: result) {

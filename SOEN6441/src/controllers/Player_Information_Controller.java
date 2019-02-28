@@ -91,7 +91,7 @@ public class Player_Information_Controller {
 	 * @param countryList List of countries where the player can place armies.
 	 * @return country name selected.
 	 */
-	public String placeArmyDialog(String[] CL) {
+	public String ArmyPlacing(String[] CL) {
 		JComboBox<String> List_Of_countries = new JComboBox<String>(CL);
 		String country = CL[List_Of_countries.getSelectedIndex()];
 		return country;

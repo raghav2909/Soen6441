@@ -69,9 +69,12 @@ public class openingdialog {
 					{
 					chooseplayoredit();
 					}
-					else
+					else if(j2.isSelected())
 					{
 						tournament_mode();
+					}
+					else {
+						System.out.println("please select one option");
 					}
 				}
 			});

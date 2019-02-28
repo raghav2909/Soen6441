@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 public class PlayerConsole extends JPanel {
 	
 	public PlayerConsole() {
+		this.setBackground(Color.LIGHT_GRAY);
+
 		JLabel lab=  new JLabel("Players");
 		this.setLayout(new FlowLayout());
 		this.add(lab);

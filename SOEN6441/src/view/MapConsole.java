@@ -34,7 +34,7 @@ public class MapConsole extends JPanel {
 				i.printStackTrace();
 			}
 		}
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.LIGHT_GRAY);
 		this.setOpaque(true);
 	    this.setLayout(null);
 	    

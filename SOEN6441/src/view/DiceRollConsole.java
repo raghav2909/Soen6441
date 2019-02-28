@@ -22,7 +22,9 @@ public class DiceRollConsole extends JPanel {
 		JLabel lab=  new JLabel("Dice Roll");
 		this.setLayout(new FlowLayout());
 		this.add(lab);
-		this.setBorder(BorderFactory.createLineBorder(Color.blue));
+
+		this.setBackground(Color.LIGHT_GRAY);
+		this.setBorder(BorderFactory.createDashedBorder(Color.black));
 		this.setPreferredSize(new Dimension(450,170));
 	}
 }

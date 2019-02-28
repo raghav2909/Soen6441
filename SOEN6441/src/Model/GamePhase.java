@@ -8,6 +8,7 @@ public class GamePhase {
 	
 	/**
 	 * Name of current phase of the game(reinforcement,fortification,attack).
+	 * trying to add again 
 	 */
 	String phasename;
 	

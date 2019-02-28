@@ -8,11 +8,14 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controllers.*;
@@ -22,13 +25,58 @@ import game.messages.MessageWindow;
 public class openingdialog {
 	 private  MessageWindow messageWindow = new MessageWindow();
 
-	JFrame first_frame;
-	JButton newgame;
-	JButton loadgame;
-	JButton mapedit;
+	private JFrame first_frame;
+	private JButton newgame;
+	private JButton loadgame;
+	private JButton mapedit;
 	private Edit_create_Map_Controller ecm;
 	private String mapRead1= null;
 
+	public void start()
+	{
+		JRadioButton j1, j2;
+		j1=new JRadioButton("Single");
+		j1.setBackground(Color.cyan);
+		j2=new JRadioButton("tournament");
+		j2.setBackground(Color.cyan);
+		JButton b = new JButton("OK");
+		b.setBackground(Color.cyan);
+		ButtonGroup bg=new ButtonGroup();
+		bg.add(j1); bg.add(j2);
+		JLabel l=new JLabel("SELECT MODE TO PLAY");
+		first_frame=new JFrame("RISK GAME");
+		
+		
+		first_frame.setSize(200, 200);
+		first_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		first_frame.setLayout(new FlowLayout());
+		first_frame.add(l);
+		first_frame.add(j1);
+		first_frame.add(j2);
+		first_frame.add(b);
+		Container c = first_frame.getContentPane();
+		c.setBackground(Color.orange);
+		first_frame.setVisible(true);
+		
+		
+			b.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					first_frame.dispose();
+					if(j1.isSelected())
+					{
+					chooseplayoredit();
+					}
+					else
+					{
+						tournament_mode();
+					}
+				}
+			});
+		}
+	
 	/**
 	 * This method shows the frame to select the option 'play game' or 'edit map'
 	 */

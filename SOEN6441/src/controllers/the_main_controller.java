@@ -110,8 +110,8 @@ public class the_main_controller {
  */
 public void chooseplayoredit()
 {
-	
-	opendialog.chooseplayoredit();
+	opendialog.start();
+//	opendialog.chooseplayoredit();
 }
 
 /**

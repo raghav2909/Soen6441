@@ -2,6 +2,7 @@ package controllers;
 
 
 import java.awt.event.ActionEvent;
+
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -64,7 +65,10 @@ public class the_main_controller {
 	 * GameDriver Object
 	 */
 	private GameDriver GD;
-	
+	/**
+	 * Player_Information_Controller object
+	 */
+	private Player_Information_Controller pic;
 	
 	/**
 	 * Stores the object of File_open_Controller class
@@ -173,6 +177,14 @@ public void Single_Mode_Start() {
 	System.out.println(image_loc);
 	forward(image_loc);
 	
+}
+/**
+ *This function Gets the player name from the user 
+ *@see Player_Information_Controller
+ * @return a string array containing player names.
+ */
+public String[] getPlayerInfo() {
+	return pic.Information_OF_Playres();
 }
 public void forward(String mapimage)
 {

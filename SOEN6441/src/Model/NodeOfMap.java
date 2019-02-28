@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
+
 /**
  * Map data is updated/stored using this class
  * @author YashNarra
@@ -19,7 +20,7 @@ public class NodeOfMap {
 	 * ArrayList of countries of a continent
 	 */
 	
-	private ArrayList<NodeOfCountry> countrylist= new ArrayList<NodeOfCountry>(); 
+	private ArrayList<NodeOfCountry> countrylist;
 	
 	/**
 	 * Integer Control Value for a continent
@@ -44,9 +45,9 @@ public class NodeOfMap {
 	 * @return clsit array of countries
 	 */
 	
-	public NodeOfCountry[] getCountryList() {
-		NodeOfCountry[] clist=this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);;
-		return clist;
+	public ArrayList<NodeOfCountry>getClst() {
+		//NodeOfCountry[] clist=this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);;
+		return countrylist;
 	}
 	
 	
@@ -61,8 +62,10 @@ public class NodeOfMap {
 	 * @return countrylist list of countries
 	 */
 	
-	public ArrayList<NodeOfCountry> getCountries(){
-		return this.countrylist;	
+	public NodeOfCountry[] getCountries(){
+		//return this.countrylist;
+		return this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);
+		
 	}
 	
 

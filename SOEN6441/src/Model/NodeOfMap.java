@@ -2,7 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 
-import model.CountryNode;
 
 /**
  * Map data is updated/stored using this class
@@ -106,6 +105,13 @@ public class NodeOfMap {
 		
 		this.countrylist=ncountries;	
 	}
+
+	@Override
+	public String toString() {
+		return "NodeOfMap [Continent=" + Continent + ", countrylist=" + countrylist + ", ControlValue=" + ControlValue
+				+ "]";
+	}
+	
 		
 }
 	

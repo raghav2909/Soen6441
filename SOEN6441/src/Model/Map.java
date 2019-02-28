@@ -49,6 +49,7 @@ public class Map extends Observable
 	  */
 	public Map(String FileName) throws IOException 
 	{
+		System.out.println(" mapsssss"+FileName);
 		ReadMap Reader = new ReadMap();
 		try {
 			MapData = Reader.mapreader(FileName);
@@ -267,14 +268,14 @@ public class Map extends Observable
 	
 	
 	
-	public void SaveMapFile() {
-		MapWriter.writeMap(continents);
+	public void SaveMapFile() throws IOException {
+		MapWriter.MapWriter(continents);
 		NewFileMap = MapWriter.getMapFilePath();
 	}
 	
 	
-	public void SaveToOldFile(String p) {
-		MapWriter.writeMapExisting(continents,p);
+	public void SaveToOldFile(String p) throws IOException {
+		MapWriter.ExistingMapWriter(continents,p);
 		OldFileMap = MapWriter.getMapFilePath();
 	}
 	

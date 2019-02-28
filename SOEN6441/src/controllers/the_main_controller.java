@@ -4,8 +4,11 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Model.GameDriver;
+import Model.NodeOfMap;
+import Model.ReadMap;
 import view.CardsConsole;
 import view.ControlsConsole;
 import view.DiceRollConsole;
@@ -144,12 +147,25 @@ public void gameplay()
 public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 	foc= new File_open_Controller();
-	GD.CreateMapObject(foc.map_location("map"));
-<<<<<<< HEAD
+	//GD.CreateMapObject(foc.map_location("map"));
+	ReadMap rm= new ReadMap();
+	try {
+		ArrayList<NodeOfMap> mapinfo= rm.mapreader(foc.map_location("map"));
+		
+		for(NodeOfMap n : mapinfo) {
+			System.out.println(n.toString());
+		}
+		
+		
+
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+
 	//String map_loc = foc.map_location("map");
-=======
-	String map_loc = foc.map_location("map");
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
+
+	
 	String image_loc = foc.map_location("bmp");
 
 	//System.out.println(map_loc);

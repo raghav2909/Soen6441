@@ -1,22 +1,21 @@
 package Model;
-<<<<<<< HEAD
-=======
 
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 import controllers.the_main_controller;
 import view.ControlsConsole;
 import view.PlayerConsole;
 
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
+
 /**
  * This class handles the game driver.
  * @author samansoltani
  *@version 1.0
  */
 public class GameDriver {
-<<<<<<< HEAD
-=======
+
 	/**
 	 * the game driver class object
 	 */
@@ -234,7 +233,13 @@ public class GameDriver {
 	 * @param Path save the map path
 	 */
 	public void CreateMapObject(String Path) {
-		map = new Map(Path);
+		System.out.println(" gamedriver   "+Path);
+		try {
+			map = new Map(Path);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	
@@ -326,9 +331,9 @@ public class GameDriver {
 	/**
 	 * listener for reinforcement phase
 	 */
-	public void setControlListenerForR() {
+	/*public void setControlListenerForR() {
 		this.controller.setRListener();
-	}
+	}/*
 	
 	
 	
@@ -336,17 +341,17 @@ public class GameDriver {
 	 * creating a instance for ControlConsol class
 	 * @return ControlClass instance
 	 */
-	public ControlsConsole getControl() 
+	/*public ControlsConsole getControl() 
 	{
 		return this.controls();
-	}
+	}/*
 	
 	
 	
 	/**
 	 * change between phases
 	 */
-	public void ChangePhase() 
+	/*public void ChangePhase() 
 	{
 		if(this.CurrentPhase.equals(GamePhase.reinforcement){
 			CurrentPhase.rphase();
@@ -359,7 +364,7 @@ public class GameDriver {
 			CurrentPhase.fphase();
 		}
 		map.UpdateMap();
-	}
+	}*/
 	
 	
 	
@@ -367,7 +372,7 @@ public class GameDriver {
 	/**
 	 * refreshes the phases
 	 */
-	public void ContinuePhase(){
+	/*public void ContinuePhase(){
 		if(this.CurrentPhase.equals(GamePhase.reinforcement){
 			CurrentPhase.rphase();
 		}
@@ -378,16 +383,16 @@ public class GameDriver {
 			CurrentPhase.fphase();
 		}
 		map.UpdateMap();
-	}
+	}*/
 	
 	
 	/**
 	 * listener for fortification phase
 	 */
-	public void setControlListenerForF() 
+	/*public void setControlListenerForF() 
 	{
 		this.controller.setFListener();
-	}
+	}*/
 	
 	
 	
@@ -449,6 +454,6 @@ public class GameDriver {
 		this.players.add(np);
 	}
 }
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
 
-}
+
+

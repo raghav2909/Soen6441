@@ -15,7 +15,11 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controllers.*;
@@ -222,8 +226,49 @@ public class openingdialog {
 		new TournamentModeMenu(messageWindow);
 		
 	}
-
 	
+	/**
+	 * Ask user to enter player count.
+	 * @return number of players entered by user or by default 2.
+	 */
+	private int getCountOfPlayers(){
+		 JPanel p1 = new JPanel();
+		 SpinnerModel sm = new SpinnerNumberModel(2, 2, 6, 1); 
+		 JSpinner s1 = new JSpinner(sm);
+         p1.add(new JLabel("Number of players: "));
+         p1.add(s1);
+         
+         int r = JOptionPane.showConfirmDialog(null, p1, "Enter number of Players", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+         if (r == JOptionPane.OK_OPTION) {
+             return (int) s1.getValue();
+         }
+		return 2;
+	}
+
+	/**
+	 * user enter player names.
+	 * @return string array containing number of players.
+	 */
+	public String[] getPlayerInfo() {
+		int n = getCountOfPlayers();
+		System.out.println(n);
+		String[] Names = new String[n];
+		
+		JFrame frame = new JFrame("InputDialog");
+		for(int i=1;i<=n;i++){
+			String s = (String)JOptionPane.showInputDialog(
+					frame,
+                    "Enter name of player "+ i,
+                    "Player Info",
+                    JOptionPane.PLAIN_MESSAGE);
+
+			if ((s != null) && (s.length() > 0)) {
+				Names[i-1] = s;
+				System.out.println(s);
+			}
+		}
+		return Names;
+	}
 
 }
 

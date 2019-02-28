@@ -29,12 +29,12 @@ public class the_main_controller {
 	 */
 	private static the_main_controller maincr ;
 	/**
-	 * This actionlistner for editmap
+	 * This action listner for editmap
 	 */
 	
 	private ActionListener editmap;
 	/**
-	 * This actionlistner for playthegame
+	 * This action listner for playthegame
 	 */
 	private ActionListener playthegame;
 	/**

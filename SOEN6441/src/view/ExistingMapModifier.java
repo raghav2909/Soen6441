@@ -476,7 +476,7 @@ import controllers.Edit_create_Map_Controller;
 			addButton.addActionListener(newAction);
 		}
 		public void noNeighboursSelecteError() {
-			JOptionPane.showMessageDialog(contentPane, "Select neighbours first", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "Values are expected to select neighbours first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
 
@@ -486,7 +486,7 @@ import controllers.Edit_create_Map_Controller;
 
 				
 		public void errorEnterValues() {
-			JOptionPane.showMessageDialog(contentPane, "Enter values first", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "Values are expected to enter first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		public void errorcontinentAlreadyExist() {

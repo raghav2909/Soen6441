@@ -498,21 +498,21 @@ public class NewMapCreation extends JFrame {
 		/**
 		 * dialogue box for error messages
 		 */
-		public void enterValuesError() {
-			JOptionPane.showMessageDialog(contentPane, "Enter values first", "Error", JOptionPane.ERROR_MESSAGE);
+		public void errorEnterValues() {
+			JOptionPane.showMessageDialog(contentPane, "Values are expected to enter first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		/**
 		 * dialogue box for error messages
 		 */
-		public void noSelectedNeighboursError() {
-			JOptionPane.showMessageDialog(contentPane, "Select neighbours first", "Error", JOptionPane.ERROR_MESSAGE);
+		public void noNeighboursSelecteError() {
+			JOptionPane.showMessageDialog(contentPane, "Values are expected to select neighbours first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		/**
 		 * dialogue box for error messages
 		 */
-		public void continentAlreadyExistError() {
+		public void errorcontinentAlreadyExist() {
 			JOptionPane.showMessageDialog(contentPane, "Continent already exist", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 

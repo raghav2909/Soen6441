@@ -141,7 +141,7 @@ public class Edit_create_Map_Controller {
 				String cn = mapNew.getContinentName();
 				String cv = mapNew.getControlValue();
 				if(cn.compareTo("")==0 || cv.compareTo("")==0){
-					mapNew.enterValuesError();
+					mapNew.errorEnterValues();
 				}else{
 					int control_value= Integer.parseInt(cv);
 					Boolean continentExist1 = mapEditor.CheckContinentExist(cn);//from Map
@@ -178,7 +178,7 @@ public class Edit_create_Map_Controller {
 		mapNew.addActionsToNeighbourChooseButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mapNew.getListOfNeighbours().isEmpty()) {
-					mapNew.noSelectedNeighboursError();
+					mapNew.noNeighboursSelecteError();
 				}else {
 					ArrayList<NodeOfCountry> neighbours= new ArrayList<NodeOfCountry>();
 					for (Object ncountry : mapNew.getListOfNeighbours()){
@@ -260,7 +260,7 @@ public class Edit_create_Map_Controller {
 				if(ContinentPresent) {
 					String cn1 = mapNew.getNAmeOfCountry();
 					if(cn1.compareTo("")==0) {
-						mapNew.enterValuesError();
+						mapNew.errorEnterValues();
 					}else {
 						String selectedContinent = mapNew.getSelectedContinent();
 						Boolean countryExist = mapEditor.CheckCountryExist(cn1);

@@ -99,7 +99,7 @@ public class Player
         String[] Names = new String [this.PlayerCountries.size()];
         for (int i=0; i<Names.length;i++)
         {
-            Names[i] = this.PlayerCountries.get(i).getCountryName();
+            Names[i] = this.PlayerCountries.get(i).getNameOfCountry();
             System.out.println(Names[i]);
         }
         return Names;
@@ -114,7 +114,7 @@ public class Player
         for(NodeOfCountry c: this.PlayerCountries)
         {
             if(c.getArmyCount()==0)
-                names.add(c.getCountryName());
+                names.add(c.getNameOfCountry());
         }
         return names.toArray(new String[names.size()]);
     }

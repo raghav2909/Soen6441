@@ -53,9 +53,9 @@ public class WriteMap {
 			for(NodeOfCountry c:n.getCountries()) {
 				String Countries="";
 				for(NodeOfCountry noc: c.getNeighboursCountries() ) {
-					Countries=Countries+","+noc.getCountryName();
+					Countries=Countries+","+noc.getNameOfCountry();
 				}
-				B.write(c.getCountryName()+","+Integer.toString(250)+","+Integer.toString(250)+","+n.getContinent()+Countries+"\r\n");
+				B.write(c.getNameOfCountry()+","+Integer.toString(250)+","+Integer.toString(250)+","+n.getContinent()+Countries+"\r\n");
 				}
 			}
 		B.close();
@@ -83,9 +83,9 @@ public class WriteMap {
 			for(NodeOfCountry c:n.getCountries()) {
 				String Countries="";
 				for(NodeOfCountry noc: c.getNeighboursCountries() ) {
-					Countries=Countries+","+noc.getCountryName();
+					Countries=Countries+","+noc.getNameOfCountry();
 				}
-				B.write(c.getCountryName()+","+Integer.toString(250)+","+Integer.toString(250)+","+n.getContinent()+Countries+"\r\n");
+				B.write(c.getNameOfCountry()+","+Integer.toString(250)+","+Integer.toString(250)+","+n.getContinent()+Countries+"\r\n");
 				}
 			}
 		B.close();

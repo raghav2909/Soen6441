@@ -3,10 +3,17 @@ package Model;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+<<<<<<< HEAD
 import java.sql.Date;
+=======
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.Date;
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
 
 /**
  * This class is used to write the map file
@@ -25,6 +32,7 @@ public class WriteMap {
 		
 		//Date date= new Date(0);
 		
+<<<<<<< HEAD
 		//String MapPath = System.getProperty("user.dir")+"\\MapData\\Map_"+ D.format(date)+".map";
 		
 		String MapAttribute="[Map]\r\n" + 
@@ -33,6 +41,9 @@ public class WriteMap {
 				"wrap=no\r\n" + 
 				"scroll=vertical\r\n" + 
 				"warn=no\r\n\r\n";
+=======
+		String MapPath = System.getProperty("user.dir")+"\\MapData\\Map_"+ D.format(date)+".map";
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
 		
 		FileWriter F= new FileWriter(MapPath);
 		

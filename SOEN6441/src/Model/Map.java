@@ -50,7 +50,12 @@ public class Map extends Observable
 	public Map(String FileName) throws IOException 
 	{
 		ReadMap Reader = new ReadMap();
-		MapData = Reader.mapreader(FileName);
+		try {
+			MapData = Reader.mapreader(FileName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -285,11 +290,11 @@ public class Map extends Observable
 	
 	
 	public String getFinalMap() {
-		if (Map_Frame.selectedAction().compareTo("new")==0) {
+		if (Map_Frame.ActionChoosen().compareTo("new")==0) {
 			System.out.println(newFileMap());
 			return newFileMap();
 		}
-		else if (Map_Frame.selectedAction().compareTo("existing")==0) {
+		else if (Map_Frame.ActionChoosen().compareTo("existing")==0) {
 			System.out.println(oldFileMap());
 			return oldFileMap();
 		}

@@ -1,26 +1,29 @@
 package Model;
-/**This class is used to assign armies to players
+/**This class is used for enumeration of number of armies based on number of players.
  * @author YashNarra
  * version 1.0
  */
 public enum ArmyCount {
-	
+	/**
+	 * @param a number of players.
+	 */
 	InitalData{
 		public int getarmycount(int a) {
 			int ac=0;
-	//switch cases for army counts.
-			switch(a) {
-			case 1 : ac = 0;
-			break;
-			case 2 : ac = 0;
-			break;
-			case 3 : ac = 0;
-			break;
-			case 4 : ac = 0;
-			break;
-			case 5 : ac = 0;
-			
-			
+			if(a==2) {
+				ac=40;
+			}
+			if(a==3) {
+				ac=35;
+			}
+			if(a==4) {
+				ac=30;
+			}
+			if(a==5) {
+				ac=25;
+			}
+			if(a==6) {
+				a=20;
 			}
 			return ac;
 		}

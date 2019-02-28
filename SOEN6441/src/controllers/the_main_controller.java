@@ -99,47 +99,48 @@ public class the_main_controller {
 	 * 1. chooseplayoredit
 	 * 2. gameplay
 	 */
-	public void tostart()
-	{
-		chooseplayoredit();
-		gameplay();
-	}
+//	public void tostart()
+//	{
+//		chooseplayoredit();
+////		gameplay();
+//	}
 
 /**
  * calling a method of openingdialog class to choose to play or edit map
  */
 public void chooseplayoredit()
 {
+	
 	opendialog.chooseplayoredit();
 }
 
 /**
  * calling for single mode or tournament mode to act as per chosen
  */
-public void gameplay()
-{
-	playthegame = new ActionListener() {
-		
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			String m =opendialog.decideMode();
-			if(m=="s")
-			{
-				System.out.println("Single mode opted");
-				opendialog.games_option();
-			}
-				else if(m=="m")
-				{
-				System.out.println("tournament mode opted");
-				opendialog.tournament_mode();
-				}
-
-			opendialog.returnframe().dispose();	
-		}
-	};
-	this.opendialog.Actiongameplay(playthegame);
-}
+//public void gameplay()
+//{
+//	playthegame = new ActionListener() {
+//		
+//		@Override
+//		public void actionPerformed(ActionEvent e) {
+//			// TODO Auto-generated method stub
+//			String m =opendialog.decideMode();
+//			if(m=="s")
+//			{
+//				System.out.println("Single mode opted");
+//				opendialog.games_option();
+//			}
+//				else if(m=="m")
+//				{
+//				System.out.println("tournament mode opted");
+//				opendialog.tournament_mode();
+//				}
+//
+//			opendialog.returnframe().dispose();	
+//		}
+//	};
+//	this.opendialog.Actiongameplay(playthegame);
+//}
 
 /**
  * select the map file and image file to start game for single mode

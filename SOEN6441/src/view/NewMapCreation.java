@@ -440,7 +440,7 @@ public class NewMapCreation extends JFrame {
 		}
 
 		/**
-		 * gett the selected countries for corresponding neighbours
+		 * get the selected countries for corresponding neighbours
 		 * @return list of countries selected through comboBox2 that includes selecting the countries
 		 */
 		public String getSelectedCountriesForNeighbours() {
@@ -451,7 +451,7 @@ public class NewMapCreation extends JFrame {
 		 * get countries for deletion in map modifier
 		 * @return list of countries selected for deletion 
 		 */
-		public String getCountryForDeletion() {
+		public String getCountriesToRemove() {
 			return (comboBox2.getSelectedItem().toString());
 		}
 
@@ -459,7 +459,7 @@ public class NewMapCreation extends JFrame {
 		 * getting continents for deletion
 		 * @return list of continents to be deleted
 		 */
-		public String getContinentToDelete() {
+		public String continentForDeletion() {
 			return (comboBox3.getSelectedItem().toString());
 		}
 

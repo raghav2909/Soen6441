@@ -76,7 +76,7 @@ public class Map extends Observable
 	 * returning the map data 
 	 * @return multidimensional array of map data
 	 */
-	public String[][] GetMapInfo()
+	public String[][] GetMapDataObject()
 	{
 		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
 		for (NodeOfMap n : MapData) 
@@ -107,7 +107,7 @@ public class Map extends Observable
 	 * returning the map data
 	 * @return multidimensional array of map data
 	 */
-	public String[][] GetMap()
+	public String[][] GetMapObject()
 	{
 		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
 		for (NodeOfMap n : MapData)
@@ -143,7 +143,7 @@ public class Map extends Observable
 	 */
 	public void MapPrint()
 	{
-		Object[][] map = this.GetMapInfo();
+		Object[][] map = this.GetMapDataObject();
 		for(Object[] m : map)
 		{
 			System.out.println("Continent Name: "+ m[0]);

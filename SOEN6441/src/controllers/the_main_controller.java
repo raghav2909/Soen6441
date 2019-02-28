@@ -177,6 +177,9 @@ public void Single_Mode_Start() {
 	System.out.println(image_loc);
 	forward(image_loc);
 	
+	GD.RunGame();
+	
+	
 }
 
 public void forward(String mapimage)
@@ -191,7 +194,7 @@ public void forward(String mapimage)
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
-		
+
 }
 public void single_Mode_Saved_Start() {
 

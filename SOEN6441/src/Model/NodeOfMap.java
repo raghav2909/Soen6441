@@ -2,6 +2,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import model.CountryNode;
+
 /**
  * Map data is updated/stored using this class
  * @author YashNarra
@@ -62,7 +64,8 @@ public class NodeOfMap {
 	 */
 	
 	public ArrayList<NodeOfCountry> getCountries(){
-		return this.countrylist;	
+		return this.countrylist;
+		
 	}
 	
 

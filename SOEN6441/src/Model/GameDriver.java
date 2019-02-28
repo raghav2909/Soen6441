@@ -181,10 +181,10 @@ public void StartUpPhase()
 	 * set up the controls view
 	 * @param cv the object of control view
 	 */
-	/*public void SetConsolControl(ControlsConsol cv) 
+	public void SetConsolControl(ControlsConsole cv) 
 	{
-		this.controls = ControlsConsol;
-	}*/
+		this.controls = cv;
+	}
 	
 	
 	

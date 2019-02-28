@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
@@ -44,8 +45,9 @@ public class Map extends Observable
 	 /**
 	  * this constructor handles getting map data from map reader
 	  * @param FileName the address of map
+	 * @throws IOException 
 	  */
-	public Map(String FileName) 
+	public Map(String FileName) throws IOException 
 	{
 		ReadMap Reader = new ReadMap();
 		MapData = Reader.mapreader(FileName);

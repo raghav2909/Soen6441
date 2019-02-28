@@ -12,6 +12,10 @@ import java.util.ArrayList;
  * version 1.0
  */
 public class ReadMap{
+	
+	/**
+	 * Method to read map.
+	 */
 	public ArrayList<NodeOfMap> mapreader(String filename) throws IOException{
 		
 		FileReader F=new FileReader(filename);
@@ -39,9 +43,7 @@ public class ReadMap{
 		return maplist;		
 		
 	}
-
 	public void NewCountry(NodeOfMap n, String[] a,ArrayList<NodeOfCountry> countrylist) {
-		// TODO Auto-generated method stub
 		if(n.getContinent().equals(a[3])) {
 			if(!NodeOfCountry.Contains(countrylist,a[0])) {
 				countrylist.add(new NodeOfCountry(a[0],null,null));

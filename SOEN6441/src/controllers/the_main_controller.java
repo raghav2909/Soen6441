@@ -177,15 +177,11 @@ public void Single_Mode_Start() {
 	System.out.println(image_loc);
 	forward(image_loc);
 	
+	GD.RunGame();
+	
+	
 }
-/**
- *This function Gets the player name from the user 
- *@see Player_Information_Controller
- * @return a string array containing player names.
- */
-public String[] getPlayerInfo() {
-	return pic.Information_OF_Playres();
-}
+
 public void forward(String mapimage)
 {
 	
@@ -198,7 +194,7 @@ public void forward(String mapimage)
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
-		
+
 }
 public void single_Mode_Saved_Start() {
 

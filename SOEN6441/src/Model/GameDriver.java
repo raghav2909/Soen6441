@@ -4,6 +4,7 @@ package Model;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import controllers.Player_Information_Controller;
 import controllers.the_main_controller;
 import view.ControlsConsole;
 import view.PlayerConsole;
@@ -37,7 +38,7 @@ public class GameDriver {
 	/**
 	 * Save player types in an arraylist
 	 */
-	private ArrayList<Player> players;
+	private ArrayList<Player> Player;
 	
 	
 	
@@ -45,7 +46,10 @@ public class GameDriver {
 	 * TheMainController class object
 	 */
 	private the_main_controller controller;
-	
+	/**
+	 * Player_Information_Controller object
+	 */
+	private Player_Information_Controller pic;
 	
 	/**
 	 * ControlsConsol class object
@@ -110,7 +114,7 @@ public class GameDriver {
 	 */
 	public void RunGame() 
 	{
-		//StartUpPhase();
+		StartUpPhase();
 		CurrentPhase.rphase();
 	}
 	
@@ -119,38 +123,45 @@ public class GameDriver {
 	/**
 	 * starting the startup phase 
 	 */
-	/*public void StartUpPhase() 
+public void StartUpPhase() 
 	{
-		String [] NewPlayer = controller.getPlayerInfo();
-		players = new ArrayList<Player>();
+	int j=0;
+	int i =0 ;
+		String [] NewPlayer = pic.Information_OF_Playres();
+		Player = new ArrayList<Player>();
 		for (String np : NewPlayer) {
-			players.add(new Player(np,ArmyCount.InitalData.getarmycount(NewPlayer.length),map.GetMapData()));
+			Player.add(new Player(np,ArmyCount.InitalData.getarmycount(NewPlayer.length),map.GetMapData()));
 		}
-		players.get(0).SetTurnTrue();
-		UpdatePlayerView();
-		int i =0 ;
+		Player.get(0).SetTurnTrue();
+		UpdatePlayerConsol();
+	
 		for (NodeOfMap n: map.GetMapData()) {
 			for(NodeOfCountry m : n.getCountries()) {
-				m.SetOwner(players.get(i));
-				if(i++>= players.size()) {
+				m.SetOwner(Player.get(i));
+				if(i++>= Player.size()) {
 					i=0;
 				}
 			}
 		}
-		for (int j=0; j<players.get(0).getCountArmies();j++) {
-			for(Player p : players) {
+
+			while (j<Player.get(0).getCountArmies())
+			{
+			for(Player p : Player) {
 				String l;
 				if(p.getEmptyCountriesName().length !=0) {
-					l = controller.PlaceArmyDialog(p.getEmptyCountriesName());
+					l = pic.ArmyPlacing(p.getEmptyCountriesName());
+							
 				}
 				else {
-					l = controller.PlaceArmyDialog(p.getNameOfCountries());
+					l = pic.ArmyPlacing(p.getNameOfCountries());
+						
 				}
 				p.getCountry(l).AddArmy(1);
 			}
+			j++;
 		}
 		map.UpdateMap();
-	}*/
+	}
 	
 	
 	
@@ -170,21 +181,21 @@ public class GameDriver {
 	 * set up the controls view
 	 * @param cv the object of control view
 	 */
-	/*public void SetConsolControl(ControlsConsol cv) 
+	public void SetConsolControl(ControlsConsole cv) 
 	{
-		this.controls = ControlsConsol;
-	}*/
+		this.controls = cv;
+	}
 	
 	
 	
 	/**
-	 * show the player information on consol
+	 * Displaying the information of player on console
 	 */
 	public void UpdatePlayerConsol() 
 	{
-		String [] PlayerNames = new String[players.size()];
+		String [] PlayerNames = new String[Player.size()];
 		int i=0;
-		for (Player p : players) {
+		for (Player p : Player) {
 			PlayerNames[i] = p.getPlayerName();
 			i++;
 		}
@@ -199,7 +210,7 @@ public class GameDriver {
 	 */
 	public Player getCurrent() 
 	{
-		for (Player p : players) {
+		for (Player p : Player) {
 			if (p.getTurn()) {
 				return p;
 			}
@@ -215,14 +226,14 @@ public class GameDriver {
 	 */
 	public void getNextPlayer() 
 	{
-		int CurrentPlayer = players.indexOf(getCurrent());
+		int CurrentPlayer = Player.indexOf(getCurrent());
 		getCurrent().SetTurnFalse();
-		if (CurrentPlayer == players.size()-1) {
-			players.get(0).SetTurnTrue();
+		if (CurrentPlayer == Player.size()-1) {
+			Player.get(0).SetTurnTrue();
 		}
 		else
 		{
-			players.get(CurrentPlayer+1).SetTurnTrue();
+			Player.get(CurrentPlayer+1).SetTurnTrue();
 		}
 	}
 	
@@ -448,10 +459,10 @@ public class GameDriver {
 	 */
 	public void setPlayerList(Player np) 
 	{
-		if(this.players==null) {
-			this.players = new ArrayList<Player>();
+		if(this.Player==null) {
+			this.Player = new ArrayList<Player>();
 		}
-		this.players.add(np);
+		this.Player.add(np);
 	}
 }
 

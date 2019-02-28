@@ -51,6 +51,10 @@ public class Map extends Observable
 		MapData = Reader.mapreader(FileName);
 	}
 	
+	public Map() {
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * returning the map data as an arraylist
 	 * @return return the map data as an arraylist

@@ -340,7 +340,7 @@ import controllers.Edit_create_Map_Controller;
 			contentPane.add(comboBox2, gbc_comboBox2);
 			for (NodeOfMap nodeOfMap : continents) {
 				for (NodeOfCountry nodeOfCountry : nodeOfMap.getCountries()) {
-					comboBox2.addItem(nodeOfCountry.getCountryName()); //from NodeOfcountry
+					comboBox2.addItem(nodeOfCountry.getNAmeOfCountry()); //from NodeOfcountry
 				}
 			}
 
@@ -398,7 +398,7 @@ import controllers.Edit_create_Map_Controller;
 			contentPane.add(comboBox1, gbc_comboBox11);
 			for (NodeOfMap nodeOfMap : continents) {
 				for (NodeOfCountry nodeOfCountry : nodeOfMap.getCountries()) {
-					comboBox1.addItem(nodeOfCountry.getCountryName());
+					comboBox1.addItem(nodeOfCountry.getNAmeOfCountry());
 				}
 			}
 
@@ -551,7 +551,7 @@ import controllers.Edit_create_Map_Controller;
 		 * Function to get selected country to add as adding neighbour.
 		 * @return selected country as neighbour.
 		 */
-		public String getSelectedCountryForNeighbours() {
+		public String getSelectedCountriesForNeighbours() {
 			return (comboBox1.getSelectedItem().toString());
 		}
 		
@@ -559,7 +559,7 @@ import controllers.Edit_create_Map_Controller;
 		 *Function to delete selected country.
 		 * @return  country for deletion.
 		 */
-		public String getCountryForDeletion() {
+		public String getCountriesToRemove() {
 			return (comboBox2.getSelectedItem().toString());
 		}
 		
@@ -568,11 +568,11 @@ import controllers.Edit_create_Map_Controller;
 		 * @return true if same continent that you try to add already exist.
 		 */
 		public boolean continentExistCheck() {
-			Boolean continentExist = false;
+			Boolean ContinentPresent = false;
 			if(comboBox.getItemCount()!=0) {
-				continentExist = true;
+				ContinentPresent = true;
 			}
-			return continentExist;
+			return ContinentPresent;
 		}
 		
 		/**
@@ -586,7 +586,7 @@ import controllers.Edit_create_Map_Controller;
 		/**
 		 * Function to enable jlist.
 		 */
-		public void enableJList() {
+		public void JListEnabled() {
 			list.setEnabled(true);
 		}
 		
@@ -608,13 +608,13 @@ import controllers.Edit_create_Map_Controller;
 		 * Function to get the country name that is entered.
 		 * @return the country name entered.
 		 */
-		public String getCountryName() {
+		public String getNAmeOfCountry() {
 			return (countryNameText.getText());
 		}
 		/**
 		 * Function to disable continent fields
 		 */
-		public void continentFieldDisable() {
+		public void continentFieldDisabled() {
 			continentNameText.setText("");
 			continentControlValueText.setText("");
 			continentNameText.setEnabled(false);
@@ -626,7 +626,7 @@ import controllers.Edit_create_Map_Controller;
 		 *Function to delete the selected Continent from list.
 		 * @return  continent for deletion.
 		 */
-		public String getContinentToDelete() {
+		public String continentForDeletion() {
 			return (comboBox3.getSelectedItem().toString());
 		}
 		/**

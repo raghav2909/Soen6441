@@ -3,11 +3,14 @@ package Model;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Observer;
 
 import controllers.Player_Information_Controller;
 import controllers.the_main_controller;
 import view.ControlsConsole;
+import view.MapConsole;
 import view.PlayerConsole;
+
 
 
 /**
@@ -112,7 +115,7 @@ public class GameDriver {
 	/**
 	 * starting the game
 	 */
-	public void RunGame() 
+	public void GameOn() 
 	{
 		StartUpPhase();
 		CurrentPhase.rphase();
@@ -163,17 +166,23 @@ public void StartUpPhase()
 		map.UpdateMap();
 	}
 	
-	
+/**
+ * Sets PlayerInfo view.
+ * @param newView PlayerInfoView object initialized.
+ */
+public void setPlayerConsole(PlayerConsole newView) {
+	this.PlayerInfo= newView;
+}
 	
 	
 	/**
 	 * set up the map view
 	 * @param NewGUI the object of map view
 	 */
-	/*public void SetConsolMap(GameConsol NewGUI) 
+	public void SetConsolMap(MapConsole NewGUI) 
 	{
-		map.addObserver(NewGUI);
-	}*/
+		map.addObserver( NewGUI);
+	}
 	
 	
 	

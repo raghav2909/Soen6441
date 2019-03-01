@@ -85,7 +85,7 @@ public class the_main_controller {
 	 */
 	public the_main_controller()
 	{
-		
+		opendialog.start();
 	}
 	/**
 	 * This is parameterized method that instantiated main controller class.
@@ -109,14 +109,8 @@ public class the_main_controller {
 ////		gameplay();
 //	}
 
-/**
- * calling a method of openingdialog class to choose to play or edit map
- */
-public void chooseplayoredit()
-{
-	opendialog.start();
-//	opendialog.chooseplayoredit();
-}
+
+
 
 /**
  * calling for single mode or tournament mode to act as per chosen
@@ -176,8 +170,7 @@ public void Single_Mode_Start() {
 	//System.out.println(map_loc);
 	System.out.println(image_loc);
 	forward(image_loc);
-	
-	GD.RunGame();
+	GD.GameOn();
 	
 	
 }
@@ -194,6 +187,10 @@ public void forward(String mapimage)
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
+    GD.setPlayerConsole(plc);
+	GD.SetConsolMap(mpc);
+	GD.SetConsolControl(crc);
+	GD.GameOn();
 
 }
 public void single_Mode_Saved_Start() {

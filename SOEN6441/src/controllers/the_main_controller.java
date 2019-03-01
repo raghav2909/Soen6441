@@ -29,11 +29,7 @@ public class the_main_controller {
 	 */
 	private static the_main_controller maincr ;
 	/**
-<<<<<<< HEAD
-	 * This actionlistner for editmap option
-=======
 	 * This action listner for editmap
->>>>>>> refs/remotes/origin/master
 	 */
 	
 	private ActionListener editmap;
@@ -172,11 +168,32 @@ public void Single_Mode_Start() {
 	forward(image_loc);
 
 	GD.GameOn() ;;
+
+//	GD.GameOn();
+
+//	GD.GameOn();
+
+//	GD.GameOn();
+
+//	GD.GameOn();
+
+//	GD.GameOn();
+
+//	GD.GameOn();
+
+//	GD.GameOn();
+
+//	GD.GameOn();
+
+//	GD.GameOn();
 	
 
 	
 //	GD.RunGame();
 >>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
+
+
+
 	
 }
 
@@ -203,6 +220,7 @@ public void forward(String mapimage)
 	GD.GameOn();
 	
 >>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
+
 
 }
 public void single_Mode_Saved_Start() {

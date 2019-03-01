@@ -169,39 +169,20 @@ public void StartUpPhase()
 	}
 	
 /**
-<<<<<<< HEAD
  * Sets PlayerInfo view.
  * @param newView PlayerInfoView object initialized.
  */
 public void setPlayerConsole(PlayerConsole newView) {
 	this.PlayerInfo= newView;
 }
-=======
- * Sets Player view.
- * @param newView PlayerConsole object initialized.
- */
-public void setPlayerView(PlayerConsole view) {
-	this.PlayerInfo = view;
-}
 
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
-	
-	
 	/**
 	 * set up the map view
 	 * @param NewGUI the object of map view
 	 */
-<<<<<<< HEAD
-	public void SetConsolMap(MapConsole NewGUI) 
-=======
 	public void SetConsolMap(MapConsole view) 
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	{
-<<<<<<< HEAD
-		map.addObserver( NewGUI);
-=======
 		map.addObserver(view);
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
 	
 	
@@ -229,7 +210,7 @@ public void setPlayerView(PlayerConsole view) {
 			PlayerNames[i] = p.getPlayerName();
 			i++;
 		}
-		//PlayerInfo.setPlayerInfo(PlayerNames);
+		PlayerInfo.setPlayerData(PlayerNames);
 	}
 	
 	
@@ -387,25 +368,23 @@ public void setPlayerView(PlayerConsole view) {
 		return this.controls();
 	}/*
 	
-	
-	
 	/**
 	 * change between phases
 	 */
-	/*public void ChangePhase() 
+	public void ChangePhase() 
 	{
-		if(this.CurrentPhase.equals(GamePhase.reinforcement){
-			CurrentPhase.rphase();
-		}
-		else if (this.CurrentPhase.equals(GamePhase.attack)) {
+		if(this.CurrentPhase.equals(CurrentPhase.reinforcement)){
 			CurrentPhase.aphase();
 		}
-		else if (this.CurrentPhase.equals(GamePhase.fortification)) {
-			this.getNextPlayer();
+		else if (this.CurrentPhase.equals(CurrentPhase.attack)) {
 			CurrentPhase.fphase();
 		}
+		else if (this.CurrentPhase.equals(CurrentPhase.fortification)) {
+			this.getNextPlayer();
+			CurrentPhase.rphase();
+		}
 		map.UpdateMap();
-	}*/
+	}
 	
 	
 	
@@ -413,18 +392,18 @@ public void setPlayerView(PlayerConsole view) {
 	/**
 	 * refreshes the phases
 	 */
-	/*public void ContinuePhase(){
-		if(this.CurrentPhase.equals(GamePhase.reinforcement){
+	public void ContinuePhase(){
+		if(this.CurrentPhase.equals(CurrentPhase.reinforcement)){
 			CurrentPhase.rphase();
 		}
-		else if (this.CurrentPhase.equals(GamePhase.attack)) {
+		else if (this.CurrentPhase.equals(CurrentPhase.attack)) {
 			CurrentPhase.aphase();
 		}
-		else if (this.CurrentPhase.equals(GamePhase.fortification)) {
+		else if (this.CurrentPhase.equals(CurrentPhase.fortification)) {
 			CurrentPhase.fphase();
 		}
 		map.UpdateMap();
-	}*/
+	}
 	
 	
 	/**

@@ -6,7 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Model.*;
+
 import view.*;
+
+
 import javax.swing.JFileChooser;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -111,17 +114,16 @@ public class Edit_create_Map_Controller {
 				if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 					FilePath = jfc.getSelectedFile().getAbsolutePath();
 					
-					/*ArrayList<NodeOfMap> x = null;
+					ArrayList<NodeOfMap> x = null;
 					try {
-						x = readMap.mapreader(FilePath);
+						x = readMap.mapreader(jfc.getSelectedFile().getAbsolutePath());
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}*/
-					
+					}
 					//mapReader = new Map(); //check the Map file in Model
-					MapExist mapExist = new MapExist(readmap.m);
-					// create class  mapExist
+					MapExist mapExist = new MapExist(x);
+					// create clss  map exist
 					mapExist.addActionsToBtnEdit(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							mapExist.setVisible(false);// to be defined in MapExist

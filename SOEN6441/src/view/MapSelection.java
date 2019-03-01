@@ -33,7 +33,7 @@ public class MapSelection {
 		UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
 		JPanel jp = new JPanel();
 		JFrame jf = new JFrame("Map Selection");
-		jp.add(BorderLayout.CENTER,jp);
+		jf.add(BorderLayout.LINE_START,jp);
 		jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		jp.add(OpenMapFile);
 		jf.setSize(400,450);

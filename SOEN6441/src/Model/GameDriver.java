@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import controllers.Player_Information_Controller;
 import controllers.the_main_controller;
 import view.ControlsConsole;
+import view.MapConsole;
 import view.PlayerConsole;
+import Model.Map;
 
 
 
@@ -178,10 +180,10 @@ public void setPlayerView(PlayerConsole view) {
 	 * set up the map view
 	 * @param NewGUI the object of map view
 	 */
-	/*public void SetConsolMap(GameConsol NewGUI) 
+	public void SetConsolMap(MapConsole view) 
 	{
-		map.addObserver(NewGUI);
-	}*/
+		map.addObserver(view);
+	}
 	
 	
 	
@@ -473,6 +475,7 @@ public void setPlayerView(PlayerConsole view) {
 		}
 		this.Player.add(np);
 	}
+
 }
 
 

@@ -173,7 +173,7 @@ public void Single_Mode_Start() {
 	System.out.println(image_loc);
 	forward(image_loc);
 	
-	GD.RunGame();
+//	GD.RunGame();
 	
 }
 
@@ -189,6 +189,9 @@ public void forward(String mapimage)
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
 	GD.setPlayerView(plc);
+	GD.SetConsolMap(mpc);
+	GD.SetConsolControl(crc);
+	GD.RunGame();
 	
 
 }

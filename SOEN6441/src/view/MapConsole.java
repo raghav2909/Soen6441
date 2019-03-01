@@ -14,6 +14,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,6 +51,18 @@ public class MapConsole extends JPanel implements Observer {
 	    this.setLayout(null);
 	    
 	}
+	
+	/**
+	 * Set dimension of main frame
+	 */
+	public MapConsole() {
+		// TODO Auto-generated constructor stub
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
+	}
+	
+	 /**
+     * Display the map image on map frame
+     */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	    	g.drawImage(picture, 0, 0, this);

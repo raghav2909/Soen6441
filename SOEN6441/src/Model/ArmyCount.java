@@ -3,12 +3,12 @@ package Model;
  * @author YashNarra
  * version 1.0
  */
-public enum ArmyCount {
+public class ArmyCount {
 	/**
 	 * @param a number of players.
 	 */
-	InitalData{
-		public int getarmycount(int a) {
+	
+		public static int getarmycount(int a) {
 			int ac=0;
 			if(a==2) {
 				ac=40;
@@ -27,10 +27,9 @@ public enum ArmyCount {
 			}
 			return ac;
 		}
-	};
 	
 	//assigning armies based on number of players.
 	
-	public abstract int getarmycount(int a);
+	//public abstract int getarmycount(int a);
 
 }

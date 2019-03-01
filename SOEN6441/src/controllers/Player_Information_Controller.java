@@ -24,7 +24,7 @@ public class Player_Information_Controller {
 	/**
 	 * This array stores the player names.
 	 */
-	private String[] Name_Of_Player;
+	public static String[] Name_Of_Player;
 	/**
 	 * 
 	 */
@@ -37,7 +37,7 @@ public class Player_Information_Controller {
 	 * when the user starts the game play. 
 	 * @return This method will return the Number of players.
 	 */
-	public int NumberOfPlayer()
+	public static int NumberOfPlayer()
 	{
 		JPanel jp = new JPanel();
        SpinnerModel S_M = new SpinnerNumberModel(2, 2, 4, 1);
@@ -59,7 +59,7 @@ public class Player_Information_Controller {
 	 */
 	
 
-	public String[] Information_OF_Playres()
+	public static String[] Information_OF_Playres()
 	{
 		int n = NumberOfPlayer();
 		System.out.println("Number of players" + n);
@@ -83,6 +83,7 @@ public class Player_Information_Controller {
 			 {
 				Name_Of_Player[i-1]=name; 
 			 }
+			 i++;
 		 }
 		return Name_Of_Player;
 	}

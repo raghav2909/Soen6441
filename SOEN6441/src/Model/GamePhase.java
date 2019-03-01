@@ -15,17 +15,17 @@ public class GamePhase {
 	/**
 	 * Object of attack phase.
 	 */
-	GamePhase attack=new GamePhase("attack");
+	public static final GamePhase attack=new GamePhase("attack");
 	
 	/**
 	 * Object of reinforcement phase.
 	 */
-	GamePhase reinforcement=new GamePhase("reinforcement");
+	public static final GamePhase reinforcement=new GamePhase("reinforcement");
 	
 	/**
 	 * Object of fortification phase.
 	 */
-	GamePhase fortification=new GamePhase("fortification");
+	public static final GamePhase fortification=new GamePhase("fortification");
 	
 	/**
 	 * Constructor of GamePhase used for setting the name for the phase.

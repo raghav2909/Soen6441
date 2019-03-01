@@ -39,7 +39,7 @@ public class Map extends Observable
 	/**
 	 * creating a arraylist for saving map data
 	 */
-	private ArrayList<NodeOfMap> MapData;
+	private static ArrayList<NodeOfMap> MapData;
 	
 	
 	 /**
@@ -51,12 +51,9 @@ public class Map extends Observable
 	{
 		System.out.println(" mapsssss"+FileName);
 		ReadMap Reader = new ReadMap();
-		try {
 			MapData = Reader.mapreader(FileName);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			System.out.println(MapData);
+		 
 	}
 	
 	public Map() {
@@ -67,9 +64,12 @@ public class Map extends Observable
 	 * returning the map data as an arraylist
 	 * @return return the map data as an arraylist
 	 */
-	public ArrayList<NodeOfMap> GetMapData()
+	public static ArrayList<NodeOfMap> GetMapData()
 	{
-		return this.MapData;
+		//System.out.println("sasasas");
+		ArrayList<NodeOfMap> mm = MapData;
+		return mm;
+		//return this.MapData;
 	}
 	
 	/**

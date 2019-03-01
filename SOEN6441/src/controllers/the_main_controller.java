@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import Model.GameDriver;
+import Model.Map;
 import Model.NodeOfMap;
 import Model.ReadMap;
 import view.CardsConsole;
@@ -80,6 +81,8 @@ public class the_main_controller {
 	 */
 	openingdialog opendialog= new openingdialog();
 	
+	Map map;
+	
 	/**
 	 *  constructor
 	 */
@@ -147,20 +150,28 @@ public void Single_Mode_Start() {
 	System.out.println("Coming here new game");
 	foc= new File_open_Controller();
 	//GD.CreateMapObject(foc.map_location("map"));
-	ReadMap rm= new ReadMap();
+	//ReadMap rm= new ReadMap();
 	try {
+		map = new Map(foc.map_location("map"));
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	/*try {
 		ArrayList<NodeOfMap> mapinfo= rm.mapreader(foc.map_location("map"));
 		
 		for(NodeOfMap n : mapinfo) {
 			System.out.println(n.toString());
 		}
 		
+	
 		
 
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-	}
+	}*/
 	//String map_loc = foc.map_location("map");
 	
 	String image_loc = foc.map_location("bmp");
@@ -183,11 +194,15 @@ public void forward(String mapimage)
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
-	GameConsole.createInstance(plc, mpc, drc, csr, crc);
+	GameConsole.createInstance(plc, mpc, drc, csr, crc); 
+	System.out.println("wokringh frint");
+	GD= new GameDriver();
+	
     GD.setPlayerConsole(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);
 	GD.GameOn();
+	
 
 
 }

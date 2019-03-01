@@ -52,7 +52,7 @@ public class MapConsole extends JPanel implements Observer {
 	    this.setLayout(null);
 	    
 	}
-<<<<<<< HEAD
+
 
 	/**
 	 * Sets the coordinates on the map file image.
@@ -81,12 +81,8 @@ public class MapConsole extends JPanel implements Observer {
 		this.add(scroll);
 		this.validate();
 	}
-=======
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 
-<<<<<<< HEAD
-	/**
-	 * Sets the coordinates on the map file image.
+	 /** Sets the coordinates on the map file image.
 	 * @param newMapData Map data to be displayed.
 	 */
 	public void setGraphical(String[][] newMap) {
@@ -115,26 +111,14 @@ public class MapConsole extends JPanel implements Observer {
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 	
-=======
-
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	 /**
      * Display the map image on map frame
      */
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	    	g.drawImage(picture, 0, 0, this);
 	}
 
-<<<<<<< HEAD
-
-		
-=======
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	
 	/**
 	 * set map data on map frame
@@ -196,10 +180,7 @@ public class MapConsole extends JPanel implements Observer {
 		}else{
 			Mapset(map.GetMap());
 		}
-<<<<<<< HEAD
+	
 	}
-=======
-}
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
 

@@ -376,7 +376,7 @@ public void setPlayerConsole(PlayerConsole newView) {
 	 */
 	public void ChangePhase() 
 	{
-		if(this.CurrentPhase.equals(CurrentPhase.reinforcement){
+		if(this.CurrentPhase.equals(CurrentPhase.reinforcement)){
 			CurrentPhase.aphase();
 		}
 		else if (this.CurrentPhase.equals(CurrentPhase.attack)) {

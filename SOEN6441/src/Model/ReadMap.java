@@ -15,76 +15,83 @@ public class ReadMap{
 	
 	/**
 	 * Method to read map.
+	 * Takes Filename as input
+	 * @param filename 
+	 * @return maplist
 	 */
 	public ArrayList<NodeOfMap> mapreader(String filename) throws IOException{
-		System.out.println(" sdadas"+filename);
-		FileReader fr=new FileReader(filename);
-		BufferedReader br=new BufferedReader(fr);
+		boolean Territories = false;
+		boolean Continents= false;
+		FileReader F=new FileReader(filename);
+		BufferedReader B=new BufferedReader(F);
 		ArrayList<NodeOfMap> maplist=new ArrayList<NodeOfMap>();
 		ArrayList<NodeOfCountry> countrylist=new ArrayList<NodeOfCountry>();
-		try {
-			String sCurrentLine;
-			fr = new FileReader(filename);
-			br = new BufferedReader(fr);
-			boolean t = false;
-			boolean c = false;
-			while ((sCurrentLine = br.readLine()) != null){
-				if(!sCurrentLine.equals("")){
-					if(sCurrentLine.contains("[Territories]")){
-						t = true;
-						c = false;
+			String s;
+			
+			/**
+			 * Reads filename
+			 */
+			F= new FileReader(filename);
+			
+			/**
+			 * Reads data from file
+			 */
+			B = new BufferedReader(F);
+			while ((s =B.readLine()) != null){
+				if(!s.equals("")){
+					if(s.contains("[Territories]")){
+						Territories= true;
+						Continents = false;
 						continue;
 					}
-					if(sCurrentLine.contains("[Continents]")){
-						c = true;
-						t = false;
+					if(s.contains("[Continents]")){
+						Continents= true;
+						Territories= false;
 						continue;
 					}
-					if(c){
-						int indexEqualTo = sCurrentLine.indexOf("=");
-						maplist.add(new NodeOfMap(sCurrentLine.substring(0, indexEqualTo), null, Integer.parseInt(sCurrentLine.substring(indexEqualTo+1).trim())));
-					}else if(t){
-						String[] temp = sCurrentLine.split(",");
+					
+					/**
+					 * Adds continents to the arraylist maplist.
+					 */
+					if(Continents){
+						maplist.add(new NodeOfMap(s.substring(0, s.indexOf("=")), null, Integer.parseInt(s.substring(s.indexOf("=")+1).trim())));
+					}
+					
+					/**
+					 * Adds new countries and set coordinates
+					 */
+					else if(Territories){
+						String[] temp = s.split(",");
 						for(NodeOfMap n : maplist){
 							if(n.getContinent().equals(temp[3])){
 								if(!NodeOfCountry.Contains(countrylist, temp[0])){
 									countrylist.add(new NodeOfCountry(temp[0], null, null));
 								}
 								
-								NodeOfCountry newCountry = NodeOfCountry.getCountry(countrylist, temp[0]);
+								NodeOfCountry AddCountry= NodeOfCountry.getCountry(countrylist, temp[0]);
 								int[] newCoordinates = {Integer.parseInt(temp[1]),Integer.parseInt(temp[2])};
-								newCountry.SetCoordinate(newCoordinates);
+								AddCountry.SetCoordinate(newCoordinates);
 								if(temp.length>4) {
 									for(int i=4;i<temp.length;i++){
 										if(!NodeOfCountry.Contains(countrylist, temp[i])){
 											countrylist.add(new NodeOfCountry(temp[i], null, null));
 										}
-										newCountry.AddNeighbour(NodeOfCountry.getCountry(countrylist, temp[i]));
+										AddCountry.AddNeighbour(NodeOfCountry.getCountry(countrylist, temp[i]));
 									}
 								}
-								n.addcountry(newCountry);
+								n.addcountry(AddCountry);
 								break;
 							}
 						}
 					}
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
-		finally {
-			try {
-				if (br != null)
-					br.close();
-				if (fr != null)
-					fr.close();
-			}catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
+	B.close();
+	F.close();
 		return maplist;		
 		
 	}
+}
 
 	
-}
+

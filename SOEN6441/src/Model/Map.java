@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import view.MapConsole;
 import view.Map_Frame;
 
 /**
@@ -76,7 +77,7 @@ public class Map extends Observable
 	 * returning the map data 
 	 * @return multidimensional array of map data
 	 */
-	public String[][] GetMapDataObject()
+	public String[][] GetMapInfo()
 	{
 		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
 		for (NodeOfMap n : MapData) 
@@ -107,7 +108,7 @@ public class Map extends Observable
 	 * returning the map data
 	 * @return multidimensional array of map data
 	 */
-	public String[][] GetMapObject()
+	public String[][] GetMap()
 	{
 		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
 		for (NodeOfMap n : MapData)
@@ -324,6 +325,7 @@ public class Map extends Observable
 		}
 		return ce;
 	}
+
 }
 
 

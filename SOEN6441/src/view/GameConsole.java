@@ -3,6 +3,7 @@
 package view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -80,33 +81,32 @@ public class GameConsole extends JFrame  {
 	 */
 	public void starts() {
 		Container contentPane = this.getContentPane();
-        SpringLayout layout = new SpringLayout();
+  SpringLayout layout = new SpringLayout();
         contentPane.setLayout(layout);
-        
-        plc.setPreferredSize(new Dimension(400,drc.getHeight()));
+        this.setBackground(Color.GRAY);
+        mpc.setPreferredSize(new Dimension(400,drc.getHeight()));
         
         contentPane.add(plc);
         contentPane.add(mpc);
         contentPane.add(drc);
         contentPane.add(csc);
         contentPane.add(controlc);
-        
-		/*playerConsole constraints.*/
-        layout.putConstraint(SpringLayout.WEST, plc, 5,  SpringLayout.WEST, contentPane);
-        layout.putConstraint(SpringLayout.EAST, plc, 0,  SpringLayout.EAST, csc);
-        layout.putConstraint(SpringLayout.NORTH, plc, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, plc, -5,  SpringLayout.NORTH, csc);
-        
-        /*mapConsole constraints.*/
-        layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.EAST, plc);
+    	/*Map Console constraints.*/
+        layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.EAST, mpc, 0,  SpringLayout.EAST, csc);
         layout.putConstraint(SpringLayout.NORTH, mpc, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, mpc, 0, SpringLayout.SOUTH, plc);
-        layout.putConstraint(SpringLayout.EAST, mpc, -5, SpringLayout.WEST, drc);
+        layout.putConstraint(SpringLayout.SOUTH, mpc, -5,  SpringLayout.NORTH, csc);
+        
+        /*Player console constraints.*/
+        layout.putConstraint(SpringLayout.WEST,drc, 5,  SpringLayout.EAST, mpc);
+        layout.putConstraint(SpringLayout.NORTH, drc, 5, SpringLayout.NORTH, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, drc, 0, SpringLayout.SOUTH, mpc);
+        layout.putConstraint(SpringLayout.EAST, drc, -5, SpringLayout.WEST, plc);
         
         /*diceConsole constraints.*/
-        layout.putConstraint(SpringLayout.EAST, drc, -5,  SpringLayout.EAST, contentPane);
-        layout.putConstraint(SpringLayout.NORTH, drc, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, drc, 0, SpringLayout.SOUTH, plc);
+        layout.putConstraint(SpringLayout.EAST, plc, -5,  SpringLayout.EAST, contentPane);
+        layout.putConstraint(SpringLayout.NORTH,plc, 5, SpringLayout.NORTH, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, plc, 0, SpringLayout.SOUTH, drc);
         
         /*cardsConsole constraints.*/
         layout.putConstraint(SpringLayout.WEST, csc, 5,  SpringLayout.WEST, contentPane);
@@ -118,6 +118,10 @@ public class GameConsole extends JFrame  {
         layout.putConstraint(SpringLayout.NORTH, controlc, 0, SpringLayout.NORTH, csc);
         layout.putConstraint(SpringLayout.SOUTH, controlc, 0, SpringLayout.SOUTH, csc);
         this.pack();
+        
+        
+        
+	
 	}
 	/**
 	 * Gives the instance of the singleton MainView class.

@@ -52,86 +52,16 @@ public class MapConsole extends JPanel implements Observer {
 	    this.setLayout(null);
 	    
 	}
-<<<<<<< HEAD
-	/**
-	 * Sets the coordinates on the map file image.
-	 * @param newMap Map data to be displayed.
-	 */
-	public void setLogicalMap(String[][] newMap) {
-		this.removeAll();
-		JPanel pane = new JPanel();
-		GridBagLayout gb = new GridBagLayout();
-		pane.setLayout(gb);
-		int i = 0;
-		for(String[] o : newMap){
-			int j=0;
-			for(String k: o) {
-			    GridBagConstraints gbc = new GridBagConstraints();
-			    gbc.ipadx = 20;
-			    gbc.gridx = j;
-			    gbc.gridy = i;
-				pane.add(new JLabel(k), gbc);
-				j++;
-			}
-			i++;
-		}
-		JScrollPane scroll = new JScrollPane(pane);
-		scroll.setPreferredSize(getSize());
-		this.add(scroll);
-		this.validate();
-	}
 
-	/**
-	 * Sets the coordinates on the map file image.
-	 * @param newMapData Map data to be displayed.
-	 */
-	public void setGraphical(String[][] newMap) {
-		this.removeAll();
-		
-		for(String[] o: newMap){
-			JPanel panel = new JPanel();
-			panel.setSize(5, 5);
-			panel.setBackground(Color.BLACK);
-			panel.setLocation(Integer.parseInt(o[0]), Integer.parseInt(o[4]));
-			panel.add(new JLabel(" "));
-			String text = o[1]+" "+o[3]+" "+o[2];
-			panel.setToolTipText(text);
-			this.add(panel);
-		}
-		this.validate();
-	}
-	
-=======
-	
-	/**
-	 * Set dimension of main frame
-	 */
-	public MapConsole() {
-		// TODO Auto-generated constructor stub
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
-	}
-	
+
 	 /**
      * Display the map image on map frame
      */
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	    	g.drawImage(picture, 0, 0, this);
 	}
-<<<<<<< HEAD
-	@Override
-	public void update(Observable obs, Object arg) {
 
-	
-		if(graphicalMap){
-			setGraphical(((Map) obs).GetMapDataObject());
-		}else{
-			setLogicalMap(((Map) obs).GetMapDataObject());
-		}
-	
-=======
-	
 	
 	/**
 	 * set map data on map frame
@@ -193,7 +123,6 @@ public class MapConsole extends JPanel implements Observer {
 		}else{
 			Mapset(map.GetMap());
 		}
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
-	}
+}
 	}
 

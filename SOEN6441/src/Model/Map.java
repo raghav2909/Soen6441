@@ -144,7 +144,7 @@ public class Map extends Observable
 	 */
 	public void MapPrint()
 	{
-		Object[][] map = this.GetMapDataObject();
+		Object[][] map = this.GetMapInfo();
 		for(Object[] m : map)
 		{
 			System.out.println("Continent Name: "+ m[0]);

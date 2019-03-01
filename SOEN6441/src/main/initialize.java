@@ -19,7 +19,7 @@ public static void main(String[] args)
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		the_main_controller.getInstance().chooseplayoredit();
+		the_main_controller.getInstance();
 	}
 	});
 }

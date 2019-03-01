@@ -38,7 +38,7 @@ public class MapSelection {
 		jp.add(OpenMapFile);
 		jf.setSize(400,450);
 		jf.setVisible(true);
-		//jf.setLocationRelativeTo(null);
+		jf.setLocationRelativeTo(null);
 		
 	}
 	/**

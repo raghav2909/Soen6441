@@ -170,10 +170,10 @@ public void Single_Mode_Start() {
 	String image_loc = foc.map_location("bmp");
 	System.out.println(image_loc);
 	forward(image_loc);
-<<<<<<< HEAD
-	GD.GameOn();
+
+	GD.GameOn() ;;
 	
-=======
+
 	
 //	GD.RunGame();
 >>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
@@ -191,12 +191,12 @@ public void forward(String mapimage)
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
-<<<<<<< HEAD
+
     GD.setPlayerConsole(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);
 	GD.GameOn();
-=======
+
 	GD.setPlayerView(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);

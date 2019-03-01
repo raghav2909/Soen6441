@@ -59,6 +59,7 @@ public class Edit_create_Map_Controller {
 	/**
 	 * Object of ReadMap class from Model
 	 */
+	
 	ReadMap readMap = new ReadMap();
 /**
  * object of Map class from Model
@@ -70,9 +71,10 @@ public class Edit_create_Map_Controller {
 	 * Calls the readMap function of ReadMap class from Model to read the map files
 	 * @param file_name address of the map file to be loaded
 	 */
-	public void readMap(String file_name) {
+	public void ReadofMap(String file_name) {
 		 try {
 			readMap.mapreader(file_name);
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -109,16 +111,17 @@ public class Edit_create_Map_Controller {
 				if (jfc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION){
 					FilePath = jfc.getSelectedFile().getAbsolutePath();
 					
-					ArrayList<NodeOfMap> x = null;
+					/*ArrayList<NodeOfMap> x = null;
 					try {
-						x = readMap.mapreader(jfc.getSelectedFile().getAbsolutePath());
+						x = readMap.mapreader(FilePath);
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}
+					}*/
+					
 					//mapReader = new Map(); //check the Map file in Model
-					MapExist mapExist = new MapExist(x);
-					// create clss  map exist
+					MapExist mapExist = new MapExist(readmap.m);
+					// create class  mapExist
 					mapExist.addActionsToBtnEdit(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							mapExist.setVisible(false);// to be defined in MapExist
@@ -340,8 +343,9 @@ public class Edit_create_Map_Controller {
 
 		existingMapModifier.addActionsToBtnComplete(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String cn = existingMapModifier.getContinentName();
 				String cv = existingMapModifier.getControlValue();
+				String cn = existingMapModifier.getContinentName();
+				
 				if(cn.compareTo("")==0 || cv.compareTo("")==0){
 					existingMapModifier.errorEnterValues();
 				}else{

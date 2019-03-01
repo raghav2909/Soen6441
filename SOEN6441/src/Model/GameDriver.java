@@ -7,6 +7,7 @@ import java.util.Observer;
 
 import controllers.Player_Information_Controller;
 import controllers.the_main_controller;
+//import sun.security.provider.DSAKeyPairGenerator.Current;
 import view.ControlsConsole;
 import view.MapConsole;
 import view.PlayerConsole;
@@ -90,7 +91,7 @@ public class GameDriver {
 	
 	
 	
-	private GameDriver() 
+	public GameDriver() 
 	{
 		//controller = new the_main_controller(this);
 		CurrentPhase = new GamePhase("reinforcement");
@@ -120,7 +121,8 @@ public class GameDriver {
 	public void GameOn() 
 	{
 		StartUpPhase();
-		CurrentPhase.rphase();
+		//CurrentPhase = new GamePhase(string)
+	CurrentPhase.rphase();
 	}
 	
 	
@@ -131,26 +133,32 @@ public class GameDriver {
 public void StartUpPhase() 
 	{
 	int j=0;
-	int i =0 ;
-		String [] NewPlayer = pic.Information_OF_Playres();
+
+	//int n1 = Player_Information_Controller.NumberOfPlayer();
+		String [] NewPlayer = Player_Information_Controller.Information_OF_Playres();
+		System.out.println("starting up");
 		Player = new ArrayList<Player>();
 		for (String np : NewPlayer) {
-			Player.add(new Player(np,ArmyCount.InitalData.getarmycount(NewPlayer.length),map.GetMapData()));
+			int x=ArmyCount.getarmycount(NewPlayer.length);
+			
+			//System.out.println(map.GetMapData());
+			Player.add(new Player(np,x,map.GetMapData()));
 		}
 		Player.get(0).SetTurnTrue();
 		UpdatePlayerConsol();
-	
+		int i =0 ;
 		for (NodeOfMap n: map.GetMapData()) {
 			for(NodeOfCountry m : n.getCountries()) {
 				m.SetOwner(Player.get(i));
-				if(i++>= Player.size()) {
+				if(++i>= Player.size()) {
 					i=0;
 				}
 			}
 		}
-
+pic= new Player_Information_Controller();
 			while (j<Player.get(0).getCountArmies())
 			{
+				
 			for(Player p : Player) {
 				String l;
 				if(p.getEmptyCountriesName().length !=0) {
@@ -165,9 +173,13 @@ public void StartUpPhase()
 			}
 			j++;
 		}
+			 map = new Map();
 		map.UpdateMap();
 	}
 	
+
+/**
+
 /**
  * Sets PlayerInfo view.
  * @param newView PlayerInfoView object initialized.
@@ -182,6 +194,7 @@ public void setPlayerConsole(PlayerConsole newView) {
 	 */
 	public void SetConsolMap(MapConsole view) 
 	{
+		map = new Map();
 		map.addObserver(view);
 	}
 	
@@ -210,7 +223,11 @@ public void setPlayerConsole(PlayerConsole newView) {
 			PlayerNames[i] = p.getPlayerName();
 			i++;
 		}
-		PlayerInfo.setPlayerData(PlayerNames);
+		PlayerInfo= new PlayerConsole();
+		//System.out.println(PlayerNames);
+		
+			PlayerInfo.setPlayerData(PlayerNames);
+		
 	}
 	
 	

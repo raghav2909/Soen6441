@@ -19,7 +19,9 @@ import javax.swing.border.EmptyBorder;
  *@author Harman
  */
 public class PlayerConsole extends JPanel {
-	
+
+	private static final long serialVersionUID = -7512274442706727095L;
+
 	/**
 	 * creates view of player on main frame
 	 */
@@ -38,6 +40,7 @@ public class PlayerConsole extends JPanel {
 	 * @param playerNames Names of players.
 	 */
 	public void setPlayerData(String[] Names) {
+		System.out.println(Names);
 		for(String name : Names){
 			JLabel lbl = new JLabel(name);
 			Border border = lbl.getBorder();

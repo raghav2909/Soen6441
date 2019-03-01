@@ -184,9 +184,9 @@ public void forward(String mapimage)
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
-    //GD.setPlayerConsole(plc);
-	//GD.SetConsolMap(mpc);
-	//GD.SetConsolControl(crc);
+    GD.setPlayerConsole(plc);
+	GD.SetConsolMap(mpc);
+	GD.SetConsolControl(crc);
 	GD.GameOn();
 
 

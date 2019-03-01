@@ -169,7 +169,6 @@ public void StartUpPhase()
 	}
 	
 /**
-<<<<<<< HEAD
  * Sets PlayerInfo view.
  * @param newView PlayerInfoView object initialized.
  */
@@ -368,8 +367,6 @@ public void setPlayerConsole(PlayerConsole newView) {
 	{
 		return this.controls();
 	}/*
-	
-	
 	
 	/**
 	 * change between phases

@@ -176,32 +176,14 @@ public void StartUpPhase()
 public void setPlayerConsole(PlayerConsole newView) {
 	this.PlayerInfo= newView;
 }
-=======
- * Sets Player view.
- * @param newView PlayerConsole object initialized.
- */
-public void setPlayerView(PlayerConsole view) {
-	this.PlayerInfo = view;
-}
 
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
-	
-	
 	/**
 	 * set up the map view
 	 * @param NewGUI the object of map view
 	 */
-<<<<<<< HEAD
-	public void SetConsolMap(MapConsole NewGUI) 
-=======
 	public void SetConsolMap(MapConsole view) 
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	{
-<<<<<<< HEAD
-		map.addObserver( NewGUI);
-=======
 		map.addObserver(view);
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
 	
 	

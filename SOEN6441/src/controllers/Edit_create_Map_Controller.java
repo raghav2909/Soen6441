@@ -81,11 +81,12 @@ public class Edit_create_Map_Controller {
 	
 	/**
 	 * Function to choose from the existing map files on the local system
-	 * Implements the ActionListener events for the button performing map file selection.
+	 * Implements the ActionListener events for the button performing map file selection
+	 * while modifying existing maps.
 	 */
 	public void MapSelectionActions() {
 		try {
-			this.mapselection = new MapSelection();// need to create this class to work
+			this.mapselection = new MapSelection();
 		} catch (IllegalAccessException e1) {
 			e1.printStackTrace();
 		} catch (UnsupportedLookAndFeelException e1) {
@@ -511,17 +512,18 @@ public class Edit_create_Map_Controller {
 	public void tobegin()
 	{
 		Map_Frame newMapFrame = new Map_Frame();
-		createnewmap();
-		editexistingmap();
+		newMapFrame.start();
+		//createnewmap();
+		//editexistingmap();
 		System.out.println("hey coming in edit or create");
 		
 	}
-	private void editexistingmap() {
+	//private void editexistingmap() {
 		// TODO Auto-generated method stub
 		
-	}
-	private void createnewmap() {
+	//}
+	//private void createnewmap() {
 		// TODO Auto-generated method stub
 		
-	}
+	//}
 }

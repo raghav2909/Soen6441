@@ -64,9 +64,12 @@ public class Map_Frame extends JFrame {
 		Map_Frame frame = this;
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		//this.setSize(200, 200);
+
 		setBounds(140, 140, 420, 200);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLUE);
+		contentPane.setSize(800, 800);
 		contentPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		setContentPane(contentPane);
 		GridBagLayout Global_Pane = new GridBagLayout();
@@ -82,7 +85,7 @@ public class Map_Frame extends JFrame {
 		Global_Pane_contents.gridheight = 4;
 		Global_Pane_contents.gridx = 0;
 		Global_Pane_contents.gridy = 0;
-		JLabel Map_Editor = new JLabel("This is a Map Editor");
+		JLabel Map_Editor = new JLabel("Map Editor");
 		Map_Editor.setFont(new Font("Script Bold", Font.PLAIN,49));
 		Map_Editor.setForeground(Color.WHITE);		
 		contentPane.add(Map_Editor, Global_Pane_contents);
@@ -90,10 +93,10 @@ public class Map_Frame extends JFrame {
 		GridBagConstraints global_Choose_Label = new GridBagConstraints();
 		global_Choose_Label.gridheight = 4;
         global_Choose_Label.gridwidth = 11;
-        global_Choose_Label.insets = new Insets(0, 0, 5, 5);
+        global_Choose_Label.insets = new Insets(0, 0, 2, 2);
         global_Choose_Label.gridx = 2;
 		global_Choose_Label.gridy = 2;
-		JLabel Choose_Label = new JLabel("Choose: Either to edit an existing map or create a new map for  game.");
+		JLabel Choose_Label = new JLabel("Choose:  	Edit an existing map or create New map for  Game.");
 		Choose_Label.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC|Font.PLAIN, 28));
 		Choose_Label.setForeground(Color.WHITE);	
 		contentPane.add(Choose_Label, global_Choose_Label);
@@ -103,10 +106,14 @@ public class Map_Frame extends JFrame {
 		NewMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 18));
 		NewMap.setForeground(Color.BLACK);
 		NewMap.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
 				ActionChoosen = "new";
 				frame.setVisible(true);
-				objct.mapNewActions();//define this method in Edit_create_Map_Controller
+				System.out.println("Make New Map ..here");
+				objct.mapNewActions();
+				
+				//define this method in Edit_create_Map_Controller
 			}
 		});
 
@@ -114,27 +121,27 @@ public class Map_Frame extends JFrame {
 		GridBagConstraints gbc_NewMap = new GridBagConstraints();
 		gbc_NewMap.gridwidth = 3;
 		gbc_NewMap.fill = GridBagConstraints.HORIZONTAL;
-		gbc_NewMap.insets = new Insets(0, 0, 5, 5);
-		gbc_NewMap.gridx = 5;
-		gbc_NewMap.gridy = 6;
+		gbc_NewMap.insets = new Insets(0, 0, 0, 2);
+		gbc_NewMap.gridx = 2;
+		gbc_NewMap.gridy = 5;
 		contentPane.add(NewMap, gbc_NewMap);
-		JLabel chooseOne = new JLabel("Select one of the following...");
-		chooseOne.setFont(new Font("Tahoma", Font.ITALIC, 25));
-		chooseOne.setForeground(Color.WHITE);	
-		GridBagConstraints gbc_chooseOne = new GridBagConstraints();
-		gbc_chooseOne.fill = GridBagConstraints.VERTICAL;
-		gbc_chooseOne.gridwidth = 3;
-		gbc_chooseOne.insets = new Insets(0, 0, 5, 0);
-		gbc_chooseOne.gridx = 4;
-		gbc_chooseOne.gridy = 4;
-		contentPane.add(chooseOne, gbc_chooseOne);
+		//JLabel chooseOne = new JLabel("Select one of the following...");
+		//chooseOne.setFont(new Font("Tahoma", Font.ITALIC, 25));
+		//chooseOne.setForeground(Color.WHITE);	
+		//GridBagConstraints gbc_chooseOne = new GridBagConstraints();
+		//gbc_chooseOne.fill = GridBagConstraints.VERTICAL;
+		//gbc_chooseOne.gridwidth = 3;
+		//gbc_chooseOne.insets = new Insets(0, 0, 5, 0);
+		//gbc_chooseOne.gridx = 4;
+		//gbc_chooseOne.gridy = 4;
+		//contentPane.add(chooseOne, gbc_chooseOne);
 		
 		GridBagConstraints gbc_ExistingMap = new GridBagConstraints();
 		gbc_ExistingMap.fill = GridBagConstraints.HORIZONTAL;
 		gbc_ExistingMap.gridwidth = 3	;
-		gbc_ExistingMap.insets = new Insets(0, 0, 0, 5);
-		gbc_ExistingMap.gridx = 5;
-		gbc_ExistingMap.gridy = 7;
+		gbc_ExistingMap.insets = new Insets(0, 0, 2, 2);
+		gbc_ExistingMap.gridx = 2;
+		gbc_ExistingMap.gridy = 4;
 		ExistingMap = new JButton("Edit Existing Map");
 		ExistingMap.setForeground(Color.BLACK);
 		ExistingMap.setToolTipText("Click here for using existing map");
@@ -143,9 +150,11 @@ public class Map_Frame extends JFrame {
 		
 		contentPane.add(ExistingMap, gbc_ExistingMap);
 		ExistingMap.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent arg0) {
 				ActionChoosen = "existing";
-			//	obj.mapFileChooserActions();
+				System.out.println("Edit Existing Map ..here");
+			objct.MapSelectionActions();
 			}
 		});
 		this.setVisible(true);

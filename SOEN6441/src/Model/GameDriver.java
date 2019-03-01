@@ -211,7 +211,7 @@ public void setPlayerConsole(PlayerConsole newView) {
 			PlayerNames[i] = p.getPlayerName();
 			i++;
 		}
-		//PlayerInfo.setPlayerInfo(PlayerNames);
+		PlayerInfo.setPlayerData(PlayerNames);
 	}
 	
 	
@@ -374,20 +374,20 @@ public void setPlayerConsole(PlayerConsole newView) {
 	/**
 	 * change between phases
 	 */
-	/*public void ChangePhase() 
+	public void ChangePhase() 
 	{
-		if(this.CurrentPhase.equals(GamePhase.reinforcement){
-			CurrentPhase.rphase();
-		}
-		else if (this.CurrentPhase.equals(GamePhase.attack)) {
+		if(this.CurrentPhase.equals(CurrentPhase.reinforcement){
 			CurrentPhase.aphase();
 		}
-		else if (this.CurrentPhase.equals(GamePhase.fortification)) {
-			this.getNextPlayer();
+		else if (this.CurrentPhase.equals(CurrentPhase.attack)) {
 			CurrentPhase.fphase();
 		}
+		else if (this.CurrentPhase.equals(CurrentPhase.fortification)) {
+			this.getNextPlayer();
+			CurrentPhase.rphase();
+		}
 		map.UpdateMap();
-	}*/
+	}
 	
 	
 	
@@ -395,18 +395,18 @@ public void setPlayerConsole(PlayerConsole newView) {
 	/**
 	 * refreshes the phases
 	 */
-	/*public void ContinuePhase(){
-		if(this.CurrentPhase.equals(GamePhase.reinforcement){
+	public void ContinuePhase(){
+		if(this.CurrentPhase.equals(CurrentPhase.reinforcement)){
 			CurrentPhase.rphase();
 		}
-		else if (this.CurrentPhase.equals(GamePhase.attack)) {
+		else if (this.CurrentPhase.equals(CurrentPhase.attack)) {
 			CurrentPhase.aphase();
 		}
-		else if (this.CurrentPhase.equals(GamePhase.fortification)) {
+		else if (this.CurrentPhase.equals(CurrentPhase.fortification)) {
 			CurrentPhase.fphase();
 		}
 		map.UpdateMap();
-	}*/
+	}
 	
 	
 	/**

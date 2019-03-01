@@ -10,6 +10,7 @@ import view.ControlsConsole;
 import view.PlayerConsole;
 
 
+
 /**
  * This class handles the game driver.
  * @author samansoltani
@@ -163,7 +164,14 @@ public void StartUpPhase()
 		map.UpdateMap();
 	}
 	
-	
+/**
+ * Sets Player view.
+ * @param newView PlayerConsole object initialized.
+ */
+public void setPlayerView(PlayerConsole view) {
+	this.PlayerInfo = view;
+}
+
 	
 	
 	/**
@@ -177,6 +185,7 @@ public void StartUpPhase()
 	
 	
 	
+
 	/**
 	 * set up the controls view
 	 * @param cv the object of control view

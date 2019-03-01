@@ -167,33 +167,29 @@ public void Single_Mode_Start() {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-
 	//String map_loc = foc.map_location("map");
-
 	
 	String image_loc = foc.map_location("bmp");
-
-	//System.out.println(map_loc);
 	System.out.println(image_loc);
 	forward(image_loc);
 	
 	GD.RunGame();
-	
 	
 }
 
 public void forward(String mapimage)
 {
 	
-//		mpc = new MapConsole();
-//		mpc.Maplook(mapimage);
-		mpc = new MapConsole(mapimage);
+
+	mpc = new MapConsole(mapimage);
 	
 	crc= new ControlsConsole();
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
+	GD.setPlayerView(plc);
+	
 
 }
 public void single_Mode_Saved_Start() {

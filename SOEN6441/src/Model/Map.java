@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import view.MapConsole;
 import view.Map_Frame;
 
 /**
@@ -324,6 +325,7 @@ public class Map extends Observable
 		}
 		return ce;
 	}
+
 }
 
 

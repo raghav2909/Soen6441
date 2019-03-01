@@ -31,9 +31,9 @@ public class GamePhase {
 	 * Constructor of GamePhase used for setting the name for the phase.
 	 * @param string takes the name of phase as string.
 	 */
-	public GamePhase(String string) {
+	public GamePhase(String phaseip) {
 		// TODO Auto-generated constructor stub
-		this.phasename= string;
+		this.phasename= phaseip;
 	}
 
 	/**
@@ -41,6 +41,7 @@ public class GamePhase {
 	 */
 	public void aphase() {
 		this.phasename="attack";
+		GameDriver.getInstance().ChangePhase();
 	}
 	
 	/**
@@ -48,14 +49,14 @@ public class GamePhase {
 	 */
 	public void rphase() {
 		this.phasename="reinforcement";
+		GameDriver.getInstance().ChangePhase();
 	}
-	
 	/**
-	 * method for fortification phase.
+	 * method for fortification phase.	
 	 */
 	public void fphase() {
 		this.phasename="fortification";
-		
+		GameDriver.getInstance().ChangePhase();
 	}
 	
 

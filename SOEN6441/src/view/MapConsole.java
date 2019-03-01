@@ -14,6 +14,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,9 +28,12 @@ import Model.Map;
  */
 public class MapConsole extends JPanel implements Observer {
 	
+	Map map= new Map();
 
 	private BufferedImage picture;
 	private boolean graphicalMap = false;
+	
+	private boolean mapgraph = false;
 	
 	public MapConsole(String mapimage) {
 		// TODO Auto-generated constructor stub
@@ -48,6 +52,7 @@ public class MapConsole extends JPanel implements Observer {
 	    this.setLayout(null);
 	    
 	}
+<<<<<<< HEAD
 	/**
 	 * Sets the coordinates on the map file image.
 	 * @param newMap Map data to be displayed.
@@ -96,10 +101,25 @@ public class MapConsole extends JPanel implements Observer {
 		this.validate();
 	}
 	
+=======
+	
+	/**
+	 * Set dimension of main frame
+	 */
+	public MapConsole() {
+		// TODO Auto-generated constructor stub
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
+	}
+	
+	 /**
+     * Display the map image on map frame
+     */
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 	    	g.drawImage(picture, 0, 0, this);
 	}
+<<<<<<< HEAD
 	@Override
 	public void update(Observable obs, Object arg) {
 
@@ -110,6 +130,70 @@ public class MapConsole extends JPanel implements Observer {
 			setLogicalMap(((Map) obs).GetMapDataObject());
 		}
 	
+=======
+	
+	
+	/**
+	 * set map data on map frame
+	 * @param newMapData contains map data
+	 */
+	public void Mapset(String[][] mapinfo) {
+		this.removeAll();
+		JPanel jpane = new JPanel();
+		GridBagLayout gbl = new GridBagLayout();
+		jpane.setLayout(gbl);
+		int i = 0;
+		for(String[] r : mapinfo){
+			int j=0;
+			for(String k: r) {
+			    GridBagConstraints gbc = new GridBagConstraints();
+			    gbc.ipadx = 20;
+			    gbc.gridx = j;
+			    gbc.gridy = i;
+				jpane.add(new JLabel(k), gbc);
+				j++;
+			}
+			i++;
+		}
+		JScrollPane scrollpane = new JScrollPane(jpane);
+		scrollpane.setPreferredSize(getSize());
+		this.add(scrollpane);
+		this.validate();
+	}
+	
+	/**
+	 * set coordinates on image file
+	 * @param mapinfo contains map data
+	 */
+	public void setCoordinates(String[][] mapinfo) {
+		this.removeAll();
+		
+		for(String[] r: mapinfo){
+			JPanel jpanel = new JPanel();
+			jpanel.setSize(5, 5);
+			jpanel.setBackground(Color.BLACK);
+			jpanel.setLocation(Integer.parseInt(r[0]), Integer.parseInt(r[4]));
+			jpanel.add(new JLabel(" "));
+			String s = r[1]+" "+r[3]+" "+r[2];
+			jpanel.setToolTipText(s);
+			this.add(jpanel);
+		}
+		this.validate();
+	}
+
+	/**
+	 * method of observer pattern which to update if there are updates from observable
+	 */
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		if(mapgraph){
+			setCoordinates(map.GetMapInfo());
+		}else{
+			Mapset(map.GetMap());
+		}
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
 	}
 

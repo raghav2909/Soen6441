@@ -161,36 +161,44 @@ public void Single_Mode_Start() {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-
 	//String map_loc = foc.map_location("map");
-
 	
 	String image_loc = foc.map_location("bmp");
-
-	//System.out.println(map_loc);
 	System.out.println(image_loc);
 	forward(image_loc);
+<<<<<<< HEAD
 	GD.GameOn();
 	
+=======
+	
+//	GD.RunGame();
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	
 }
 
 public void forward(String mapimage)
 {
 	
-//		mpc = new MapConsole();
-//		mpc.Maplook(mapimage);
-		mpc = new MapConsole(mapimage);
+
+	mpc = new MapConsole(mapimage);
 	
 	crc= new ControlsConsole();
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
 	GameConsole.createInstance(plc, mpc, drc, csr, crc);
+<<<<<<< HEAD
     GD.setPlayerConsole(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);
 	GD.GameOn();
+=======
+	GD.setPlayerView(plc);
+	GD.SetConsolMap(mpc);
+	GD.SetConsolControl(crc);
+	GD.RunGame();
+	
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 
 }
 public void single_Mode_Saved_Start() {

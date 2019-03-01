@@ -22,9 +22,6 @@ public class ArmyCount {
 			if(a==5) {
 				ac=25;
 			}
-			if(a==6) {
-				a=20;
-			}
 			return ac;
 		}
 	

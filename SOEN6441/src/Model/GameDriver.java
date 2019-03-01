@@ -177,8 +177,12 @@ pic= new Player_Information_Controller();
 		map.UpdateMap();
 	}
 	
+<<<<<<< HEAD
 /**
 
+=======
+/**
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
  * Sets PlayerInfo view.
  * @param newView PlayerInfoView object initialized.
  */
@@ -382,8 +386,6 @@ public void setPlayerConsole(PlayerConsole newView) {
 	{
 		return this.controls();
 	}/*
-	
-	
 	
 	/**
 	 * change between phases

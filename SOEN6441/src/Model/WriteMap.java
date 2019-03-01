@@ -21,13 +21,6 @@ public class WriteMap {
 	
 	public void MapWriter(ArrayList<NodeOfMap> maplist) throws IOException{
 		
-		//DateFormat D= new SimpleDateFormat("yyyy-MM-dd-HH-mm");
-		
-		//Date date= new Date(0);
-		
-
-		//String MapPath = System.getProperty("user.dir")+"\\MapData\\Map_"+ D.format(date)+".map";
-		
 		String MapAttribute="[Map]\r\n" + 
 				"author=Iceworm72\r\n" + 
 				"image=001_I72_Ghtroc 720.bmp\r\n" + 

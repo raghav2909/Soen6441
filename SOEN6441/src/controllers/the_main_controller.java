@@ -191,7 +191,7 @@ public void forward(String mapimage)
 	GD.setPlayerView(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);
-	GD.RunGame();
+	GD.GameOn();
 	
 
 }

@@ -115,7 +115,7 @@ public class GameDriver {
 	/**
 	 * starting the game
 	 */
-	public void RunGame() 
+	public void GameOn() 
 	{
 		StartUpPhase();
 		CurrentPhase.rphase();

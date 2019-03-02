@@ -201,8 +201,6 @@ public void Single_Mode_Start() {
 
 	
 //	GD.RunGame();
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
-
 
 
 	
@@ -218,27 +216,19 @@ public void forward(String mapimage)
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
-<<<<<<< HEAD
-	GameConsole.createInstance(plc, mpc, drc, csr, crc);
 
-=======
 	GameConsole.createInstance(plc, mpc, drc, csr, crc); 
 	System.out.println("wokringh frint");
 	GD= new GameDriver();
 	
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
+
     GD.setPlayerConsole(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);
 	GD.GameOn();
 	
 
-	GD.setPlayerView(plc);
-	GD.SetConsolMap(mpc);
-	GD.SetConsolControl(crc);
-	GD.GameOn();
-	
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
+
 
 
 }

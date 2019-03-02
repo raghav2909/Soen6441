@@ -113,10 +113,10 @@ public class openingdialog {
 			@Override
 			public void actionPerformed(ActionEvent e)
 			{
-				
+				first_frame.dispose();
 				 ecm.getInstance().tobegin();
 		System.out.println("hello1");
-		first_frame.dispose();}
+		}
 	
 	});
 		newgame.addActionListener(new ActionListener() {
@@ -124,8 +124,9 @@ public class openingdialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				the_main_controller.getInstance().Single_Mode_Start();
 				first_frame.dispose();
+				the_main_controller.getInstance().Single_Mode_Start();
+				
 			}
 		});
 		
@@ -134,9 +135,9 @@ public class openingdialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
-				the_main_controller.getInstance().single_Mode_Saved_Start();
 				first_frame.dispose();
+				the_main_controller.getInstance().single_Mode_Saved_Start();
+				
 			}
 		});
 

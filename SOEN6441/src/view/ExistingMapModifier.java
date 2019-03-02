@@ -453,7 +453,7 @@ import controllers.Edit_create_Map_Controller;
 			gbc_btnSaveMap.gridx = 5;
 			gbc_btnSaveMap.gridy = 28;saveMapButton = new JButton("Save Modified Map");
 			saveMapButton.setBackground(new Color(192, 192, 192));
-			saveMapButton.setFont(new Font("Bookman Old Style", Font.BOLD, 17));
+			saveMapButton.setFont(new Font("Bookman Old Style", Font.BOLD, 18));
 			
 			contentPane.add(saveMapButton, gbc_btnSaveMap);
 		

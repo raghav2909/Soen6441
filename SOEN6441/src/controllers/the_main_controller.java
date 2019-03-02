@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import Model.GameDriver;
 import Model.Map;
+import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.ReadMap;
 import view.CardsConsole;
@@ -42,6 +43,11 @@ public class the_main_controller {
 	 * This actionlistner for editthemaps
 	 */
 	private ActionListener editthemaps;
+	
+	/**
+	 * ActionListener to add listener to "Add Armies" button.
+	 */
+	private ActionListener addArmiesListner;
 	/**
 	 * CardsConsole Object
 	 */
@@ -111,9 +117,97 @@ public class the_main_controller {
 //		chooseplayoredit();
 ////		gameplay();
 //	}
+	
+	/**
+	 * Sets Action Listeners for reinforcement controls.
+	 */
+	public void setActionListner() {
+		addArmiesListner = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+				NodeOfCountry country = GD.getCountryNode(crc.SelectedCountry());
+				int armies = crc.ValueOfArmies();
+				shiftArmiesOnReinforcement(country, armies);
+				GD.ContinuePhase();
+			}
+		};
+		crc.Armies_Add_Button_Action(this.addArmiesListner);
+		
+		crc.End_Phase_Button_Action(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GD.ChangePhase();
+			}
+		});
+	}
+	
+	/**
+	 * Shifts(or places) the armies of the player on each reinforcement.
+	 * @param country the country node to which armies are added.
+	 * @param armies the number of armies to be reinforced.
+	 * @return the army count left for the player.
+	 */
+	public int shiftArmiesOnReinforcement(NodeOfCountry country, int armies) {
+		country.AddArmy(armies);
+		GD.getCurrent().RemovedArmies(armies);
+		return GD.getArmyCount();
+	}
 
+	/**
+	 * Sets Action Listeners for fortification controls.
+	 */
+	public void setFortificationListeners() {
+		crc.countrieslistAction(new ActionListener() {
+			@Override
+            public void actionPerformed(ActionEvent e) {
+				String countrySelected = (String) crc.SelectedCountry();
+				NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
+				if(countrySelect.getArmyCount()>1) {
+					ArrayList<String> neighborList = getNeighbors(countrySelect);
+					crc.updateFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()]));
+				}
+			}
+		});
+		
+		crc.Play_Move_Button_Action(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(crc.isNeighbourSelected()) {
+					String countrySelected = (String) crc.SelectedCountry();
+					int selectedArmies = crc.ValueOfArmies();
+					NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
+					String neighbourSelected = crc.getNeighborSelected();
+					getArmiesShiftedAfterFortification(countrySelect, neighbourSelected, selectedArmies);
+				}
+				GD.ChangePhase();
+			}
+		});
+	}
+	
+	/**
+	 * Gets the neighbor countries owned by the current player for a given country.
+	 * @param countrySelect Country Node whose neighbors are to be displayed.
+	 * @return list of owned neighbors.
+	 */
+	public ArrayList<String> getNeighbors(NodeOfCountry countrySelect){
+		ArrayList<String> neighborList = new ArrayList<String>();
+		for(String name: countrySelect.getPlayerNeighboursName()) {
+			neighborList.add(name);
+		}
+		return neighborList;
+	}
 
-
+	public int getArmiesShiftedAfterFortification(NodeOfCountry countrySelect, String neighbourSelected, int selectedArmies){
+		NodeOfCountry required = null;
+		countrySelect.SetArmies(countrySelect.getArmyCount()-selectedArmies); 
+		for(NodeOfCountry j : countrySelect.getNeighboursCountries()) {
+			if(j.getNameOfCountry() == neighbourSelected) {
+				required = j;
+				j.SetArmies(j.getArmyCount() + selectedArmies);
+			}
+		}
+		return required.getArmyCount();
+	}
 
 /**
  * calling for single mode or tournament mode to act as per chosen

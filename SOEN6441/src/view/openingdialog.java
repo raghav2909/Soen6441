@@ -48,7 +48,7 @@ public class openingdialog {
 		ButtonGroup bg=new ButtonGroup();
 		bg.add(j1); bg.add(j2);
 		JLabel l=new JLabel("SELECT MODE TO PLAY");
-		first_frame=new JFrame("RISK GAME");
+		first_frame=new JFrame("RISK GAME- Team 35");
 		
 		
 		first_frame.setSize(200, 200);

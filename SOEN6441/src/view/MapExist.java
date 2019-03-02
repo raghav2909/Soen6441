@@ -54,10 +54,10 @@ public class MapExist extends JFrame{
 		// TODO Auto-generated method stub
 		this.setTitle("Existing Map");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(150, 150, 500, 340);
+		setBounds(80, 80, 450, 310);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		jp = new JPanel();
-		jp.setBackground(Color.LIGHT_GRAY);
+		jp.setBackground(new Color(0, 0, 128));
 		setContentPane(jp);
 		GridBagLayout gbl = new GridBagLayout();
 		gbl.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -80,6 +80,7 @@ public class MapExist extends JFrame{
 		gbc_Table_1.insets = new Insets(1, 1, 6, 1);
 		gbc_Table_1.gridwidth = 3;
 		gbc_Table_1.fill = GridBagConstraints.BOTH;
+		
 		gbc_Table_1.gridx = 0;
 		gbc_Table_1.gridy = 0;
 		jp.add(getContentPane().add(new JScrollPane(Table_1)), gbc_Table1);
@@ -163,15 +164,15 @@ public class MapExist extends JFrame{
 			}
 		});
 
-		bEdit = new JButton("Edit Map");
-		bEdit.setBackground(new Color(152, 251, 152));
-		bEdit.setFont(new Font("Script MT Bold", Font.BOLD, 18));
+		bEdit = new JButton("CLICK TO EDIT MAP");
+		bEdit.setBackground(new Color(192,192,192));
+		bEdit.setFont(new Font("Bookman Old Style", Font.BOLD, 18));
 		GridBagConstraints gbc_bEdit = new GridBagConstraints();
 		gbc_bEdit.fill = GridBagConstraints.HORIZONTAL;
-		gbc_bEdit.gridwidth = 3;
+		gbc_bEdit.gridwidth = 2;
 		gbc_bEdit.insets = new Insets(0, 0, 5, 0);
-		gbc_bEdit.gridx = 13;
-		gbc_bEdit.gridy = 2;
+		gbc_bEdit.gridx = 0;
+		gbc_bEdit.gridy = 1;
 		jp.add(bEdit, gbc_bEdit);
 	}
 	

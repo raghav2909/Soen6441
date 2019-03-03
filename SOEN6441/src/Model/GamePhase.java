@@ -1,4 +1,5 @@
 package Model;
+
 /**
  * This class is used for Attack, Reinforcement, Fortification.
  * @author YashNarra
@@ -49,7 +50,8 @@ public class GamePhase {
 	 */
 	public void rphase() {
 		this.phasename="reinforcement";
-		GameDriver.getInstance().ChangePhase();
+		GameDriver.getInstance().getControl().reinforcementConrols(GameDriver.getInstance().getArmyCount(),GameDriver.getInstance().getPlayerCountriesName());
+		//GameDriver.getInstance().setControlListenerForF();
 	}
 	//trying to commit
 	/**

@@ -53,6 +53,7 @@ public class Edit_create_Map_Controller {
 	 */
 	
 	ExistingMapModifier existingMapModifier;
+	NewMapCreation mapNew = new NewMapCreation();
 
 	/**
 	 * Stores the FilePath of the file Selected
@@ -149,13 +150,19 @@ public class Edit_create_Map_Controller {
 	 * MapNew Frame get initialize with this method
 	 */
 	public void mapNewActions() {
-		NewMapCreation mapNew = new NewMapCreation();
+		
 		mapNew.setVisible(true);//from MapNew in View
-		mapNew.addActionsToAddContinentButton(new ActionListener() {
+		mapNew.addActionsToAddContinentButton(new ActionListener() { //from ExistingMapMODIFIER
 			public void actionPerformed(ActionEvent e) {
 				mapNew.continentFieldsEnable();
 			}
 		});
+/*
+		mapNew.addActionsToAddContinentButton(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mapNew.continentFieldsEnable();
+			}
+		});*/
 
 		mapNew.addActionsToAddCountryButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

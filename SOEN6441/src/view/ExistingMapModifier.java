@@ -232,6 +232,7 @@ import controllers.Edit_create_Map_Controller;
 			continentNameText = new JTextField();
 			continentNameText.setFont(new Font("Tahoma", Font.ITALIC, 13));
 			continentNameText.setForeground(Color.BLACK);
+			continentNameText.setText("Enter new Continent Name here");
 			continentNameText.setEnabled(false);
 			
 			
@@ -244,7 +245,7 @@ import controllers.Edit_create_Map_Controller;
 			gbc_continentControlValueText.gridx = 6;
 			gbc_continentControlValueText.gridy = 5;
 			continentControlValueText = new JTextField();
-			continentControlValueText.setText("Enter new Continent Name here");
+			continentControlValueText.setText("Enter new Continent CONTROL VALUE Name here");
 			continentControlValueText.setFont(new Font("Tahoma", Font.ITALIC, 13));
 			continentControlValueText.setForeground(Color.BLACK);
 			continentControlValueText.setEnabled(false);

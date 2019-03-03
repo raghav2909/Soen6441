@@ -17,6 +17,10 @@ public class Player
      */
     private String PlayerName;
     /**
+     * cards that used once
+     */
+    private int UsedCards =1;
+    /**
      * Player Turn
      */
     private boolean PlayerTurn = false;
@@ -41,6 +45,10 @@ public class Player
      */
     private ArrayList<NodeOfMap> AllContinents;
     /**
+     * number of card player have
+     */
+    int CountCards;
+    /**
      * Set up Player with name
      * @param name Player Name
      */
@@ -64,7 +72,7 @@ public class Player
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
         this.PlayerArmies = Narmies;
-        this.AllContinents = new ArrayList<NodeOfMap>();
+        this.AllContinents = AllContinents;
     }
     /**
      * return Player Name
@@ -97,10 +105,13 @@ public class Player
     public String[] getNameOfCountries()
     {
         String[] Names = new String [this.PlayerCountries.size()];
-        for (int i=0; i<Names.length;i++)
+    int i=0;
+        	while(i<Names.length)
         {
             Names[i] = this.PlayerCountries.get(i).getNameOfCountry();
             System.out.println(Names[i]);
+            i++;
+     
         }
         return Names;
     }
@@ -166,7 +177,7 @@ public class Player
         for (NodeOfMap continent : this.AllContinents)
         {
             System.out.println(continent.getContinent());
-            if(this.PlayerCountries.contains(continent.getCountries()))
+            if(this.PlayerCountries.containsAll(continent.getClst()))
             {
                 AddContinent(continent);
                 System.out.println("Added :" + continent.getContinent());
@@ -182,12 +193,9 @@ public class Player
         ContinentCheck();
         int CountCountries = this.PlayerCountries.size();
         int CountContinents = this.PlayerContinents.size();
-        int CountCards = this.Cards.size();
-        int CountArmies = CountCountries/3;
-        if(CountArmies < 3)
-        {
-            CountArmies =3;
-        }
+        CountCards = this.Cards.size();
+        
+
         if (CountContinents > 0)
         {
             CountContinents =0;
@@ -196,7 +204,12 @@ public class Player
                 CountContinents += Continent.getControlValue();
             }
         }
-        CountArmies = CountContinents;
+        int CountArmies = (int) Math.ceil(CountCountries/3)+CountContinents;
+        if (CountCards >5) {
+        	CountArmies = +5*this.UsedCards;
+        	this.UsedCards++;
+        }
+       // CountArmies = CountContinents;
         System.out.println(CountArmies);
         return CountArmies;
     }

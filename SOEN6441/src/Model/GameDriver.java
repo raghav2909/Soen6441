@@ -32,7 +32,7 @@ public class GameDriver {
 	/**
 	 * the player view class object
 	 */
-	private PlayerConsole PlayerInfo;
+	private PlayerConsole PlayerInfo = new PlayerConsole();
 	
 	
 	/**
@@ -44,7 +44,7 @@ public class GameDriver {
 	/**
 	 * Save player types in an arraylist
 	 */
-	private ArrayList<Player> Player;
+	private ArrayList<Player> Player ;
 	
 	
 	
@@ -139,10 +139,10 @@ public void StartUpPhase()
 		System.out.println("starting up");
 		Player = new ArrayList<Player>();
 		for (String np : NewPlayer) {
-			int x=ArmyCount.getarmycount(NewPlayer.length);
 			
 			//System.out.println(map.GetMapData());
-			Player.add(new Player(np,x,map.GetMapData()));
+			Player.add(new Player(np,ArmyCount.getarmycount(NewPlayer.length),map.GetMapData()));
+			System.out.println(Player.toString());
 		}
 		Player.get(0).SetTurnTrue();
 		UpdatePlayerConsol();
@@ -170,10 +170,12 @@ pic= new Player_Information_Controller();
 						
 				}
 				p.getCountry(l).AddArmy(1);
+				
 			}
 			j++;
 		}
-			 map = new Map();
+			System.out.println();
+			 //map = new Map();
 		map.UpdateMap();
 	}
 	
@@ -223,7 +225,7 @@ public void setPlayerConsole(PlayerConsole newView) {
 			PlayerNames[i] = p.getPlayerName();
 			i++;
 		}
-		PlayerInfo= new PlayerConsole();
+		
 		//System.out.println(PlayerNames);
 		
 			PlayerInfo.setPlayerData(PlayerNames);
@@ -238,11 +240,15 @@ public void setPlayerConsole(PlayerConsole newView) {
 	 */
 	public Player getCurrent() 
 	{
+		System.out.println(Player);
 		for (Player p : Player) {
+			System.out.println("fdgagsdf"+Player);
 			if (p.getTurn()) {
+				System.out.println("fdgagsdf"+p.toString());
 				return p;
 			}
 		}
+		System.out.println("fdgagsdf");
 		return null;
 	}
 	
@@ -306,6 +312,7 @@ public void setPlayerConsole(PlayerConsole newView) {
 	 */
 	public int getArmyCount() 
 	{
+		//Player = new Player();
 		return getCurrent().getCountArmies();
 	}
 	

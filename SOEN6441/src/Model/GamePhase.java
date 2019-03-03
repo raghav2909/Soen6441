@@ -51,7 +51,7 @@ public class GamePhase {
 	public void rphase() {
 		this.phasename="reinforcement";
 		GameDriver.getInstance().getControl().reinforcementConrols(GameDriver.getInstance().getArmyCount(),GameDriver.getInstance().getPlayerCountriesName());
-		//GameDriver.getInstance().setControlListenerForF();
+	       GameDriver.getInstance().setControlListenerForF();
 	}
 	//trying to commit
 	/**
@@ -59,7 +59,16 @@ public class GamePhase {
 	 */
 	public void fphase() {
 		this.phasename="fortification";
+		//GameDriver.getInstance().getControl().fortificationConrols(GameDriver.getInstance().getArmyCount(),GameDriver.getInstance().getPlayerCountriesName());
 		GameDriver.getInstance().ChangePhase();
+	}
+	
+	
+	public boolean equals(Object o){
+		if(o instanceof GamePhase && ((GamePhase) o).phasename == this.phasename) {
+			return true;
+		}
+		return false;
 	}
 	
 

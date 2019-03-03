@@ -64,7 +64,7 @@ public class Map extends Observable
 	 * returning the map data as an arraylist
 	 * @return return the map data as an arraylist
 	 */
-	public static ArrayList<NodeOfMap> GetMapData()
+	public  ArrayList<NodeOfMap> GetMapData()
 	{
 		//System.out.println("sasasas");
 		ArrayList<NodeOfMap> mm = MapData;

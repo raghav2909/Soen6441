@@ -156,7 +156,7 @@ public class the_main_controller {
 	/**
 	 * Sets Action Listeners for fortification controls.
 	 */
-	public void setFortificationListeners() {
+	public void setListenersFortification() {
 		crc.countrieslistAction(new ActionListener() {
 			@Override
             public void actionPerformed(ActionEvent e) {
@@ -274,27 +274,6 @@ public void Single_Mode_Start() {
 
 	GD.GameOn() ;;
 
-//	GD.GameOn();
-
-//	GD.GameOn();
-
-//	GD.GameOn();
-
-//	GD.GameOn();
-
-//	GD.GameOn();
-
-//	GD.GameOn();
-
-//	GD.GameOn();
-
-//	GD.GameOn();
-
-//	GD.GameOn();
-	
-
-	
-//	GD.RunGame();
 
 
 	
@@ -333,3 +312,4 @@ public void single_Mode_Saved_Start() {
 	//File_open_Controller foc= new File_open_Controller();
 }
 }
+

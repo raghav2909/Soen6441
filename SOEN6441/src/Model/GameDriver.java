@@ -370,9 +370,9 @@ public void setPlayerConsole(PlayerConsole newView) {
 	/**
 	 * listener for reinforcement phase
 	 */
-	/*public void setControlListenerForR() {
-		this.controller.setRListener();
-	}/*
+	public void setControlListenerForR() {
+		this.controller.setActionListner();
+	}
 	
 	
 	
@@ -380,10 +380,10 @@ public void setPlayerConsole(PlayerConsole newView) {
 	 * creating a instance for ControlConsol class
 	 * @return ControlClass instance
 	 */
-	/*public ControlsConsole getControl() 
+	public ControlsConsole getControl() 
 	{
-		return this.controls();
-	}/*
+		return this.controls;
+	}
 	
 	/**
 	 * change between phases
@@ -400,6 +400,7 @@ public void setPlayerConsole(PlayerConsole newView) {
 			this.getNextPlayer();
 			CurrentPhase.rphase();
 		}
+		
 		map.UpdateMap();
 	}
 	
@@ -426,10 +427,10 @@ public void setPlayerConsole(PlayerConsole newView) {
 	/**
 	 * listener for fortification phase
 	 */
-	/*public void setControlListenerForF() 
+	public void setControlListenerForF() 
 	{
-		this.controller.setFListener();
-	}*/
+		this.controller.setListenersFortification();
+	}
 	
 	
 	

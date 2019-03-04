@@ -1,6 +1,10 @@
-package Test;
+package TestCases;
 
 import static org.junit.Assert.*;
+/**
+ * this test class is testing reinforcement phase
+ * @author samansoltani
+ */
 
 import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
@@ -12,11 +16,12 @@ import Model.GameDriver;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.Player;
+import view.ControlsConsole;
 
 public class ReinforcementTest {
 
 	ArrayList<String> AON;
-	Controller controle;
+	ControlsConsole controle;
 	NodeOfCountry c1 = new NodeOfCountry("Country1", null, null);
 	NodeOfCountry c2 = new NodeOfCountry("Country2", null, null);
 	NodeOfCountry c3 = new NodeOfCountry("Country3", null, null);
@@ -26,7 +31,7 @@ public class ReinforcementTest {
 	
 	@Before
 	public void setPlayerAndMapData(){
-		controle = new Controller(GameDriver.getInstance());
+		controle = new ControlsConsole();
 		ArrayList<NodeOfMap> MD = new ArrayList<NodeOfMap>();
 		c1.AddNeighbour(c2);
 		c2.AddNeighbour(c1);

@@ -57,6 +57,7 @@ public class ControlsConsole extends JPanel {
 	/**
 	 * button for the move of player
 	 */
+	private ActionListener addarmies;
 	GameDriver GD;
 	JButton Player_Move;
 	private static final long serialVersionUID = -2537153242382941763L;
@@ -238,6 +239,7 @@ public class ControlsConsole extends JPanel {
 				if (isNeighbourSelected()) {
 					String countrySelected = (String) SelectedCountry();
 					int selectedArmies = ValueOfArmies();
+					//NodeOfCountry countrySelect = NodeOfCountry.getCountry(pla,countrySelected));
 					NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
 					String neighbourSelected = getNeighborSelected();
 					getArmiesShiftedAfterFortification(countrySelect, neighbourSelected, selectedArmies);
@@ -268,5 +270,38 @@ public class ControlsConsole extends JPanel {
 		}
 		return required.getArmyCount();
 	}
-
+	/**
+	 * Sets Action Listeners for reinforcement controls.
+	 */
+	public void setActionListner() {
+		addarmies = new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {				
+			NodeOfCountry country = GameDriver.getInstance().getCountryNode(SelectedCountry());
+				int armies = ValueOfArmies();
+				shiftArmiesOnReinforcement(country, armies);
+				GD.ContinuePhase();
+			}
+		};
+		Armies_Add_Button_Action(this.addarmies);
+		
+		End_Phase_Button_Action(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				GD.ChangePhase();
+			}
+		});
+	}
+	/**
+	 * Shifts(or places) the armies of the player on each reinforcement.
+	 * @param country the country node to which armies are added.
+	 * @param armies the number of armies to be reinforced.
+	 * @return the army count left for the player.
+	 */
+	public int shiftArmiesOnReinforcement(NodeOfCountry country, int armies) {
+		country.AddArmy(armies);
+		GD.getCurrent().RemovedArmies(armies);
+		return GD.getArmyCount();
+	}
+	
 }

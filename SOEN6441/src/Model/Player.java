@@ -121,7 +121,7 @@ public class Player
         	for(int i=0;i<Names.length;i++)
         {
             Names[i] = this.PlayerCountries.get(i).getNameOfCountry();
-            System.out.println("India");
+           // System.out.println("India");
             
         }
         return Names;
@@ -261,6 +261,7 @@ public class Player
         return NodeOfCountry.getCountry(PlayerCountries,NewCountry);
     }
     /**
+     * 
      * Set player turn to true
      */
     public void SetTurnTrue()

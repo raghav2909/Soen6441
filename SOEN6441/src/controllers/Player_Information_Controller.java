@@ -28,9 +28,7 @@ public class Player_Information_Controller {
 	/**
 	 * 
 	 */
-	public Player_Information_Controller() {
-		// TODO Auto-generated constructor stub
-	}
+	
 	/**
 	 * This function will give the information regarding the player.
 	 * In this function Spinner  model is used to define the minimum and maximum number of players
@@ -46,11 +44,11 @@ public class Player_Information_Controller {
        jp.add(jsm);
        
        int result = JOptionPane.showConfirmDialog(null, jp, "Enter Number Of Players", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-       if (result != JOptionPane.OK_OPTION) {
-          
-    	   return 2;
+       if (result == JOptionPane.OK_OPTION) {
+    	   return (int) jsm.getValue();
+    	   
        }
-       return (int) jsm.getValue();
+       return 2;
 	
 	}
 	/**

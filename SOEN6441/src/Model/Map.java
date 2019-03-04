@@ -39,7 +39,7 @@ public class Map extends Observable
 	/**
 	 * creating a arraylist for saving map data
 	 */
-	private static ArrayList<NodeOfMap> MapData;
+	private  ArrayList<NodeOfMap> MapData;
 	
 	
 	 /**
@@ -56,9 +56,7 @@ public class Map extends Observable
 		 
 	}
 	
-	public Map() {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 	/**
 	 * returning the map data as an arraylist
@@ -67,9 +65,9 @@ public class Map extends Observable
 	public  ArrayList<NodeOfMap> GetMapData()
 	{
 		//System.out.println("sasasas");
-		ArrayList<NodeOfMap> mm = MapData;
-		return mm;
-		//return this.MapData;
+		//ArrayList<NodeOfMap> mm = MapData;
+		return MapData;
+	
 	}
 	
 	/**
@@ -313,7 +311,7 @@ public class Map extends Observable
 	}
 	
 	
-	public boolean CheckCountryExist(String c) {
+	/*public boolean CheckCountryExist(String c) {
 		boolean ce = false;
 		for (NodeOfMap n : continents) {
 			for (NodeOfCountry i : n.getCountries()) {
@@ -323,7 +321,7 @@ public class Map extends Observable
 			}
 		}
 		return ce;
-	}
+	}*/
 }
 
 

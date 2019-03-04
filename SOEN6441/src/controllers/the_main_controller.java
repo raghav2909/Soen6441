@@ -94,6 +94,7 @@ public class the_main_controller {
 	 */
 	public the_main_controller()
 	{
+		GD = new GameDriver();
 		opendialog.start();
 	}
 	/**
@@ -272,7 +273,7 @@ public void Single_Mode_Start() {
 	System.out.println(image_loc);
 	forward(image_loc);
 
-	GD.GameOn() ;;
+//	GD.GameOn() ;;
 
 
 
@@ -281,7 +282,7 @@ public void Single_Mode_Start() {
 
 public void forward(String mapimage)
 {
-	
+	GD.CreateMapObject(mapimage);
 
 	mpc = new MapConsole(mapimage);
 	
@@ -292,7 +293,7 @@ public void forward(String mapimage)
 
 	GameConsole.createInstance(plc, mpc, drc, csr, crc); 
 	System.out.println("wokringh frint");
-	GD= new GameDriver();
+	//GD= new GameDriver();
 	
 
     GD.setPlayerConsole(plc);

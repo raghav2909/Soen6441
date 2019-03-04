@@ -28,7 +28,7 @@ import Model.Map;
  */
 public class MapConsole extends JPanel implements Observer {
 	
-	Map map= new Map();
+	Map map;
 
 	private BufferedImage picture;
 	private boolean graphicalMap = false;

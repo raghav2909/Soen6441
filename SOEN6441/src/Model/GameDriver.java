@@ -32,7 +32,7 @@ public class GameDriver {
 	/**
 	 * the player view class object
 	 */
-	private PlayerConsole PlayerInfo = new PlayerConsole();
+	private PlayerConsole PlayerInfo ;
 	
 	
 	/**
@@ -55,7 +55,7 @@ public class GameDriver {
 	/**
 	 * Player_Information_Controller object
 	 */
-	private Player_Information_Controller pic;
+	private Player_Information_Controller pic= new Player_Information_Controller();;
 	
 	/**
 	 * ControlsConsol class object
@@ -132,7 +132,7 @@ public class GameDriver {
 	 */
 public void StartUpPhase() 
 	{
-	int j=0;
+	
 
 	//int n1 = Player_Information_Controller.NumberOfPlayer();
 		String [] NewPlayer = Player_Information_Controller.Information_OF_Playres();
@@ -155,8 +155,8 @@ public void StartUpPhase()
 				}
 			}
 		}
-pic= new Player_Information_Controller();
-			while (j<Player.get(0).getCountArmies())
+               
+			for (int j=0;j<Player.get(0).getCountArmies();j++)
 			{
 				
 			for(Player p : Player) {
@@ -170,13 +170,14 @@ pic= new Player_Information_Controller();
 						
 				}
 				p.getCountry(l).AddArmy(1);
+
+				System.out.println(l);
 				
 			}
-			j++;
+			
 		}
-			System.out.println();
 			 //map = new Map();
-		map.UpdateMap();
+		     map.UpdateMap();
 	}
 	
 
@@ -194,9 +195,10 @@ public void setPlayerConsole(PlayerConsole newView) {
 	 * set up the map view
 	 * @param NewGUI the object of map view
 	 */
+	@SuppressWarnings("deprecation")
 	public void SetConsolMap(MapConsole view) 
 	{
-		map = new Map();
+		//map = new Map();
 		map.addObserver(view);
 	}
 	
@@ -219,7 +221,7 @@ public void setPlayerConsole(PlayerConsole newView) {
 	 */
 	public void UpdatePlayerConsol() 
 	{
-		String [] PlayerNames = new String[Player.size()];
+	String [] PlayerNames = new String[Player.size()];
 		int i=0;
 		for (Player p : Player) {
 			PlayerNames[i] = p.getPlayerName();

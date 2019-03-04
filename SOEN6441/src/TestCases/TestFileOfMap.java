@@ -1,4 +1,4 @@
-package Test;
+package TestCases;
 
 import static org.junit.Assert.*;
 
@@ -24,8 +24,8 @@ public class TestFileOfMap {
 
 	@Test
 	public void testReadingMap() throws IOException {
-		ArrayList <NodeOfMap> result = RM.mapreader(".//SOEN6441//Map_Data//test//testMap3.map");
-		String Eresult = "AmericaN,5,Alaska,Canada,Canada,Alaska,Montana,Groenlandia,Montana,Montana,Canada,Groenlandia,";
+		ArrayList <NodeOfMap> result = RM.mapreader(".//SOEN6441//Map_Data//test//MapTest3.map");
+		String Eresult = "AsiaE,5,Vietnan,ChinaE,Birmania,India,ChinaE,Pakistan,Iran,ChinaE,Vietnan,Birmania,ChinaW,Mongolia,";
 		String Aresult ="";
 		for (NodeOfMap m: result) {
 			Aresult += (m.getContinent()+","+m.getControlValue()+",");

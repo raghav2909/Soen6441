@@ -1,4 +1,4 @@
-package Test;
+package TestCases;
 
 import static org.junit.Assert.*;
 
@@ -30,7 +30,7 @@ public class TestOfMapValidition {
 	 */
 	@Test
 	public void testisMapNodesContainUniqueCountries() throws IOException {
-		FileName = ".//SOEN6441//Map_Data//test//testMap.map";
+		FileName = ".//SOEN6441//Map_Data//test//MapTest1.map";
 		map = new Map(FileName);
 		boolean t = map.isMapNodesContainUniqueCountries();
 		assertTrue(t);
@@ -44,7 +44,7 @@ public class TestOfMapValidition {
 	 */
 	@Test
 	public void testisMapNodesContainUniqueCountries2() throws IOException{
-		FileName = ".//SOEN6441//Map_Data//test//testMap4.map";
+		FileName = ".//SOEN6441//Map_Data//test//MapTest4.map";
 		map = new Map (FileName);
 		boolean t = map.isMapNodesContainUniqueCountries();
 		assertFalse(t);
@@ -57,7 +57,7 @@ public class TestOfMapValidition {
 	 */
 	@Test
 	public void testisMapConnectedGragh() throws IOException{
-		FileName = ".//SOEN6441//Map_Data//test//testMap.map";
+		FileName = ".//SOEN6441//Map_Data//test//MapTest1.map";
 		map = new Map(FileName);
 		assertTrue(map.isMapConnectedGragh());
 	}
@@ -69,7 +69,7 @@ public class TestOfMapValidition {
 	 */
 	@Test
 	public void testMapValid() throws IOException{
-		FileName = ".//SOEN6441//Map_Data//test//testMap2.map";
+		FileName = ".//SOEN6441//Map_Data//test//MapTest2.map";
 		map = new Map(FileName);
 		assertFalse(map.MapValid());
 	}

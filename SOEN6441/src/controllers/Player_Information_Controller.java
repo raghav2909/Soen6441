@@ -66,22 +66,20 @@ public class Player_Information_Controller {
 		 JFrame jf = new JFrame("Player Names");
 		 
 		jf.setBackground(Color.BLUE);
-		 int i=1;
-		 while(i<=n)
+		 
+		for (int i=1;i<=n;i++)
 		 {
 			 String name= (String)JOptionPane.showInputDialog(
 						jf,
 	                    "Enter name "+ i,
 	                    "Player Information",
 	                    JOptionPane.PLAIN_MESSAGE);
-			 if(name== null && name.length()<=0)
+			 if((name!= null )&& (name.length()>0))
 			 {
+				 Name_Of_Player[i-1]=name; 
 			 }
-			 else
-			 {
-				Name_Of_Player[i-1]=name; 
-			 }
-			 i++;
+			
+			 System.out.println(name);
 		 }
 		return Name_Of_Player;
 	}

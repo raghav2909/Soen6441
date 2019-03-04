@@ -68,6 +68,9 @@ public class NodeOfMap {
 		
 	}
 	
+	public ArrayList<NodeOfCountry> getCountryList(){
+		return this.countrylist;
+	}
 
 	/** method to get the control value of a continent
 	 * @return ContolValue control value of a continent

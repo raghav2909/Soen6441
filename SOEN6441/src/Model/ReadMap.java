@@ -20,23 +20,24 @@ public class ReadMap{
 	 * @return maplist
 	 */
 	public ArrayList<NodeOfMap> mapreader(String filename) throws IOException{
-		boolean Territories = false;
-		boolean Continents= false;
-		FileReader F=new FileReader(filename);
-		BufferedReader B=new BufferedReader(F);
+		
+		FileReader F=null;;
+		BufferedReader B= null;
 		ArrayList<NodeOfMap> maplist=new ArrayList<NodeOfMap>();
 		ArrayList<NodeOfCountry> countrylist=new ArrayList<NodeOfCountry>();
 			String s;
-			
 			/**
 			 * Reads filename
 			 */
-			F= new FileReader(filename);
 			
+			F=new FileReader(filename);
 			/**
 			 * Reads data from file
 			 */
-			B = new BufferedReader(F);
+			 B=new BufferedReader(F);
+			 boolean Territories = false;
+			 boolean Continents= false;
+			
 			while ((s =B.readLine()) != null){
 				if(!s.equals("")){
 					if(s.contains("[Territories]")){
@@ -88,6 +89,7 @@ public class ReadMap{
 			}
 	B.close();
 	F.close();
+	System.out.println(maplist.toString());
 		return maplist;		
 		
 	}

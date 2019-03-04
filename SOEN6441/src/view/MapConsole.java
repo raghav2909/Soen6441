@@ -98,7 +98,7 @@ public class MapConsole extends JPanel implements Observer {
 			panel.setToolTipText(text);
 			this.add(panel);
 		}
-		this.validate();
+		this.validate(); 
 	}
 	
 

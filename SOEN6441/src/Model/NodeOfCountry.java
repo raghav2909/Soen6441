@@ -182,7 +182,7 @@ public class NodeOfCountry
 	 {
 		 if (C instanceof NodeOfCountry)
 		 {
-			 if(((NodeOfCountry) C).CountryName.equals(CountryName))
+			 if(((NodeOfCountry) C).CountryName.equals(this.CountryName))
 			 {
 				 for (int i=0; i< this.getNeighboursString().length;i++)
 				 {
@@ -247,7 +247,7 @@ public class NodeOfCountry
 		 PlayerNeighbours = new ArrayList<NodeOfCountry>();
 		 for (NodeOfCountry country : getNeighbours())
 		 {
-			 if(country.getPlayerCountry().equals(this.PlayerCountry))
+			 if(country.getOwner().equals(this.getOwner()))
 			 {
 				 PlayerNeighbours.add(country);
 			 }

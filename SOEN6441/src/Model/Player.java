@@ -27,7 +27,7 @@ public class Player
     /**
      * List of Countries owned by player
      */
-    private ArrayList<NodeOfCountry> PlayerCountries;
+    private ArrayList<NodeOfCountry> PlayerCountries = new ArrayList<NodeOfCountry>();
     /**
      * List of Continents owned by player
      */
@@ -35,7 +35,7 @@ public class Player
     /**
      * Number of Armies owned by player
      */
-    private int PlayerArmies;
+    public int PlayerArmies;
     /**
      * List of Cards owned by player
      */ 
@@ -47,15 +47,15 @@ public class Player
     /**
      * number of card player have
      */
-    int CountCards;
+  // private int CountCards;
     /**
      * Set up Player with name
      * @param name Player Name
      */
     public Player(String name)
-    {
+    { 
         this.PlayerName = name;
-        this.PlayerCountries = new ArrayList<NodeOfCountry>();
+       this.PlayerCountries = new ArrayList<NodeOfCountry>();
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
     }
@@ -68,13 +68,24 @@ public class Player
     public Player (String name, int Narmies,ArrayList<NodeOfMap> AllContinents)
     {
         this.PlayerName = name;
-        this.PlayerCountries = new ArrayList<NodeOfCountry>();
+        System.out.println("Player name "+name);
+       this.PlayerCountries = new ArrayList<NodeOfCountry>();
+       for(NodeOfMap node: AllContinents) {
+    	      this.PlayerCountries.addAll(node.getCountryList());
+    	         	   
+       }
+        System.out.println("hey "+PlayerCountries.toString());
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
         this.PlayerArmies = Narmies;
+        System.out.println(Narmies);
         this.AllContinents = AllContinents;
+        System.out.println(AllContinents.toString());
     }
-    /**
+   public Player() {
+		// TODO Auto-generated constructor stub
+	}
+	/**
      * return Player Name
      * @return Player Name
      */
@@ -103,15 +114,15 @@ public class Player
      * @return List Of Countries Name
      */
     public String[] getNameOfCountries()
-    {
+    {   //this.PlayerCountries = new ArrayList<NodeOfCountry>();
+    	
         String[] Names = new String [this.PlayerCountries.size()];
-    int i=0;
-        	while(i<Names.length)
+    
+        	for(int i=0;i<Names.length;i++)
         {
             Names[i] = this.PlayerCountries.get(i).getNameOfCountry();
-            System.out.println(Names[i]);
-            i++;
-     
+            System.out.println("India");
+            
         }
         return Names;
     }
@@ -193,7 +204,7 @@ public class Player
         ContinentCheck();
         int CountCountries = this.PlayerCountries.size();
         int CountContinents = this.PlayerContinents.size();
-        CountCards = this.Cards.size();
+       int CountCards = this.Cards.size();
         
 
         if (CountContinents > 0)
@@ -208,6 +219,10 @@ public class Player
         if (CountCards >5) {
         	CountArmies = +5*this.UsedCards;
         	this.UsedCards++;
+        }
+        if(CountArmies<3)
+        {
+        	CountArmies=3;
         }
        // CountArmies = CountContinents;
         System.out.println(CountArmies);

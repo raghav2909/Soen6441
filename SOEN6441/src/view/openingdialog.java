@@ -6,11 +6,13 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -114,7 +116,8 @@ public class openingdialog {
 			public void actionPerformed(ActionEvent e)
 			{
 				first_frame.dispose();
-				 ecm.getInstance().tobegin();
+				 ecm.tobegin();
+				
 		System.out.println("hello1");
 		}
 	
@@ -125,7 +128,13 @@ public class openingdialog {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				first_frame.dispose();
-				the_main_controller.getInstance().Single_Mode_Start();
+				try {
+					the_main_controller.getInstance().Single_Mode_Start();
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -137,6 +146,7 @@ public class openingdialog {
 				// TODO Auto-generated method stub
 				first_frame.dispose();
 				the_main_controller.getInstance().single_Mode_Saved_Start();
+				
 				
 			}
 		});
@@ -206,7 +216,13 @@ public class openingdialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				f2.dispose();
-				the_main_controller.getInstance().Single_Mode_Start();
+				try {
+					the_main_controller.getInstance().Single_Mode_Start();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 			}
 		});
@@ -217,6 +233,7 @@ public class openingdialog {
 				{
 			f2.dispose();
 			the_main_controller.getInstance().single_Mode_Saved_Start();
+			
 			//File_open_Controller foc= new File_open_Controller();
 			}
 		});
@@ -270,7 +287,7 @@ public class openingdialog {
 //		}
 //		return Names;
 //	}
-
+	
 }
 
 

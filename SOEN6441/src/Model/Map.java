@@ -50,13 +50,23 @@ public class Map extends Observable
 	public Map(String FileName) throws IOException 
 	{
 		System.out.println(" mapsssss"+FileName);
-		ReadMap Reader = new ReadMap();
+		    ReadMap Reader = new ReadMap();
 			MapData = Reader.mapreader(FileName);
 			System.out.println(MapData);
 		 
 	}
 	
+
+
 	
+
+	public Map() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 
 	/**
 	 * returning the map data as an arraylist
@@ -64,8 +74,7 @@ public class Map extends Observable
 	 */
 	public  ArrayList<NodeOfMap> GetMapData()
 	{
-		//System.out.println("sasasas");
-		//ArrayList<NodeOfMap> mm = MapData;
+		
 		return MapData;
 	
 	}
@@ -96,7 +105,7 @@ public class Map extends Observable
 				tempObject[0] = Integer.toString(m.getCoordinate()[0]);
 				tempObject[4] = Integer.toString(m.getCoordinate()[1]);
 			}
-		}
+		} 
 		return NewData.toArray(new String[NewData.size()][]);
 	}
 	
@@ -155,9 +164,11 @@ public class Map extends Observable
 	 */
 	public void UpdateMap() 
 	{
+		notifyObservers(this); 
 		setChanged();
-		notifyObservers(this);
 	}
+
+	
 	
 	
 	/**
@@ -190,7 +201,7 @@ public class Map extends Observable
 				}
 				for (NodeOfCountry b : m.getNeighboursCountries()) 
 				{
-					if(b.getNeighbours().contains(m)) 
+					if(!b.getNeighbours().contains(m)) 
 					{
 						return false;
 					}
@@ -302,7 +313,7 @@ public class Map extends Observable
 			return oldFileMap();
 		}
 		return null;
-	}
+	} 
 	
 	
 	
@@ -311,7 +322,7 @@ public class Map extends Observable
 	}
 	
 	
-	/*public boolean CheckCountryExist(String c) {
+	public boolean CheckCountryExist(String c) {
 		boolean ce = false;
 		for (NodeOfMap n : continents) {
 			for (NodeOfCountry i : n.getCountries()) {
@@ -321,7 +332,7 @@ public class Map extends Observable
 			}
 		}
 		return ce;
-	}*/
+	} 
 }
 
 

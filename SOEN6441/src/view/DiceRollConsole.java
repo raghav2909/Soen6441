@@ -17,6 +17,7 @@ import javax.swing.JPanel;
  *
  */
 public class DiceRollConsole extends JPanel {
+	private static final long serialVersionUID = 2080098977850432494L;
 
 	public DiceRollConsole() {
 		JLabel lab=  new JLabel("Dice Roll");

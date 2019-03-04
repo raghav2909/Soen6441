@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
 import Model.GameDriver;
 import Model.Map;
 import Model.NodeOfCountry;
@@ -17,6 +18,7 @@ import view.ControlsConsole;
 import view.DiceRollConsole;
 import view.GameConsole;
 import view.MapConsole;
+
 import view.PlayerConsole;
 import view.openingdialog;
 /**
@@ -85,17 +87,23 @@ public class the_main_controller {
 	/**
 	 * Creating an object of openingdialog class of view package
 	 */
-	openingdialog opendialog= new openingdialog();
-	
+	openingdialog opendialog;
+
 	Map map;
 	
 	/**
 	 *  constructor
 	 */
+	
 	public the_main_controller()
-	{
+	{ 
+		
+		opendialog= new openingdialog();
 		GD = new GameDriver();
 		opendialog.start();
+	}
+	public the_main_controller(String s) {
+		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * This is parameterized method that instantiated main controller class.
@@ -106,7 +114,7 @@ public class the_main_controller {
 		if(maincr==null) {
 			maincr = new the_main_controller();
 		}
-		return maincr;
+		return maincr; 
 	}
 	/**
 	 * This function has the methods calls to the two main parts of the game 
@@ -139,7 +147,7 @@ public class the_main_controller {
 			public void actionPerformed(ActionEvent e) {
 				GD.ChangePhase();
 			}
-		});
+		}); 
 	}
 	
 	/**
@@ -210,81 +218,32 @@ public class the_main_controller {
 		return required.getArmyCount();
 	}
 
-/**
- * calling for single mode or tournament mode to act as per chosen
- */
-//public void gameplay()
-//{
-//	playthegame = new ActionListener() {
-//		
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			// TODO Auto-generated method stub
-//			String m =opendialog.decideMode();
-//			if(m=="s")
-//			{
-//				System.out.println("Single mode opted");
-//				opendialog.games_option();
-//			}
-//				else if(m=="m")
-//				{
-//				System.out.println("tournament mode opted");
-//				opendialog.tournament_mode();
-//				}
-//
-//			opendialog.returnframe().dispose();	
-//		}
-//	};
-//	this.opendialog.Actiongameplay(playthegame);
-//}
+
 
 /**
  * select the map file and image file to start game for single mode
+ * @throws IOException 
  */
-public void Single_Mode_Start() {
+public void Single_Mode_Start() throws IOException {
 	System.out.println("Coming here new game");
 	foc= new File_open_Controller();
-	//GD.CreateMapObject(foc.map_location("map"));
-	//ReadMap rm= new ReadMap();
 	try {
-		map = new Map(foc.map_location("map"));
+		GD.CreateMapObject(foc.map_location("map"));
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
-	/*try {
-		ArrayList<NodeOfMap> mapinfo= rm.mapreader(foc.map_location("map"));
-		
-		for(NodeOfMap n : mapinfo) {
-			System.out.println(n.toString());
-		}
-		
-	
-		
-
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}*/
-	//String map_loc = foc.map_location("map");
+	ReadMap rm= new ReadMap();
 	
 	String image_loc = foc.map_location("bmp");
-	System.out.println(image_loc);
-	forward(image_loc);
-
-//	GD.GameOn() ;;
-
-
-
-	
+   if(image_loc!=null) {
+		mpc = new MapConsole(image_loc);
+}else {
+		 mpc = new MapConsole();
 }
+	System.out.println(image_loc);
 
-public void forward(String mapimage)
-{
-	GD.CreateMapObject(mapimage);
-
-	mpc = new MapConsole(mapimage);
+	mpc = new MapConsole(image_loc);
 	
 	crc= new ControlsConsole();
 	csr = new CardsConsole();
@@ -293,14 +252,14 @@ public void forward(String mapimage)
 
 	GameConsole.createInstance(plc, mpc, drc, csr, crc); 
 	System.out.println("wokringh frint");
-	//GD= new GameDriver();
+	
 	
 
     GD.setPlayerConsole(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);
 	GD.GameOn();
-	
+
 
 
 

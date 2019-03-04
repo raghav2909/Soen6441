@@ -1,0 +1,8 @@
+[Continents]
+AsiaE=5
+
+[Territories]
+Vietnan,63,56,AsiaE,ChinaE
+Birmania,111,75,AsiaE,India,ChinaE
+Pakistan,165,76,AsiaE,Iran
+ChinaE,242,93,AsiaE,ChinaW,Mongolia

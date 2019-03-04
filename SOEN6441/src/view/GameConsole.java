@@ -53,14 +53,14 @@ public class GameConsole extends JFrame  {
 	 * ControlsConsole class object.
 	 */
 	private ControlsConsole controlc;
-	/**
+	
+	/**class constructor setting main game window by calling starts method
 	 * @param palyerinfo PlayerConsole object 
 	 * @param mapsinfo MapConsole object
 	 * @param diceinfo DiceRollConsole object
 	 * @param cardsinfo CardsConsole object
 	 * @param controlsinfo ControlsConsole object
 	 */
-	
 	public GameConsole(PlayerConsole playerinfo, MapConsole mapsinfo, DiceRollConsole diceinfo, CardsConsole cardsinfo, ControlsConsole controlsinfo )
 	{
 		plc = playerinfo;
@@ -130,6 +130,15 @@ public class GameConsole extends JFrame  {
 	public static GameConsole getInstance() {
 		return gmc;
     }
+	
+	/**
+	 * creates instance of this class
+	 * @param palyerinfo PlayerConsole object 
+	 * @param mapsinfo MapConsole object
+	 * @param diceinfo DiceRollConsole object
+	 * @param cardsinfo CardsConsole object
+	 * @param controlsinfo ControlsConsole object
+	 */
 	public static void createInstance(PlayerConsole playerinfo, MapConsole mapsinfo, DiceRollConsole diceinfo, CardsConsole cardsinfo, ControlsConsole controlsinfo ){
 		if(gmc == null){
 			gmc = new GameConsole(playerinfo,mapsinfo,diceinfo, cardsinfo, controlsinfo);

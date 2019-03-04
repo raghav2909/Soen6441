@@ -60,7 +60,7 @@ public class openingdialog {
 		first_frame.add(j1);
 		first_frame.add(j2);
 		first_frame.add(b);
-		Container c = first_frame.getContentPane();
+		Container c = first_frame.getContentPane(); 
 		c.setBackground(Color.orange);
 		first_frame.setVisible(true);
 		
@@ -116,6 +116,7 @@ public class openingdialog {
 			public void actionPerformed(ActionEvent e)
 			{
 				first_frame.dispose();
+				ecm = new Edit_create_Map_Controller();
 				 ecm.tobegin();
 				
 		System.out.println("hello1");

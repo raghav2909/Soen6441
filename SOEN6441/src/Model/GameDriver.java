@@ -36,12 +36,12 @@ public class GameDriver {
 	/**
 	 * the map class object
 	 */
-	private Map map;
+	public static Map map;
 
 	/**
 	 * Save player types in an arraylist
 	 */
-	private ArrayList<Player> Player;
+	public static ArrayList<Player> Player;
 
 	/**
 	 * TheMainController class object
@@ -60,7 +60,7 @@ public class GameDriver {
 	/**
 	 * GamePhase class object
 	 */
-	private GamePhase CurrentPhase;
+	private static GamePhase CurrentPhase;
 
 	/**
 	 * Player class object
@@ -334,6 +334,7 @@ public class GameDriver {
 	 * change between phases
 	 */
 	public void ChangePhase() {
+		System.out.println("current"+CurrentPhase);
 		if (this.CurrentPhase.equals(CurrentPhase.reinforcement)) {
 			CurrentPhase.aphase();
 		} else if (this.CurrentPhase.equals(CurrentPhase.attack)) {

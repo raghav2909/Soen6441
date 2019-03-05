@@ -105,7 +105,7 @@ public class NewMapCreation extends JFrame {
 
 			
 //2.
-			JButton addContinentButton = new JButton("New Continent");
+			 addContinentButton = new JButton("New Continent");
 			addContinentButton.setForeground(Color.blue);
 			GridBagConstraints grid_addContinentButton = new GridBagConstraints();
 			grid_addContinentButton.fill = GridBagConstraints.HORIZONTAL;

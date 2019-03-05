@@ -39,7 +39,7 @@ public class Map extends Observable
 	/**
 	 * creating a arraylist for saving map data
 	 */
-	private  ArrayList<NodeOfMap> MapData;
+	public static  ArrayList<NodeOfMap> MapData;
 	
 	
 	 /**

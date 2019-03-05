@@ -66,7 +66,8 @@ public class ControlsConsole extends JPanel {
 		JLabel lab = new JLabel("Controls");
 		this.setLayout(new FlowLayout());
 		this.add(lab);
-
+		GD = GameDriver.getInstance();
+		ListOfNeighbors = new JComboBox<String>();
 		this.setBackground(Color.LIGHT_GRAY);
 		this.setBorder(BorderFactory.createDashedBorder(Color.black));
 		this.setPreferredSize(new Dimension(450, 170));
@@ -89,6 +90,7 @@ public class ControlsConsole extends JPanel {
 		ListOfCountries.setSelectedIndex(0);
 		Add_Armies = new JButton("Add Armies");
 		End_Phase = new JButton(" To End Reinforcement Phase");
+		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(cl));
 
 		this.add(new Label(AvailableArmies));
 		this.add(new Label("Country Name"));
@@ -112,7 +114,6 @@ public class ControlsConsole extends JPanel {
 		ListOfCountries = new JComboBox<String>(countryList);
 		ListOfCountries.setSelectedIndex(0);
 
-		ListOfNeighbors = new JComboBox<String>();
 		ListOfNeighbors.setEnabled(false);
 		spinnerArmies = new JSpinner();
 		spinnerArmies.setEnabled(false);
@@ -170,13 +171,10 @@ public class ControlsConsole extends JPanel {
 	public void updateFortification(int a, String[] NeighbourNames) {
 		this.spinnerArmies.setModel(new SpinnerNumberModel(1, 0, a - 1, 1));
 		this.spinnerArmies.setEnabled(true);
-		;
 		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(NeighbourNames));
 		this.ListOfNeighbors.setSelectedIndex(0);
 		this.ListOfNeighbors.setEnabled(true);
-		;
 		this.Player_Move.setEnabled(true);
-		;
 
 	}
 
@@ -239,10 +237,12 @@ public class ControlsConsole extends JPanel {
 				if (isNeighbourSelected()) {
 					String countrySelected = (String) SelectedCountry();
 					int selectedArmies = ValueOfArmies();
-					//NodeOfCountry countrySelect = NodeOfCountry.getCountry(pla,countrySelected));
+					// NodeOfCountry countrySelect = NodeOfCountry.getCountry(pla,countrySelected));
 					NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
 					String neighbourSelected = getNeighborSelected();
-					getArmiesShiftedAfterFortification(countrySelect, neighbourSelected, selectedArmies);
+					System.out.println("ROHIT " + countrySelect + "neighbourSelected" + neighbourSelected
+							+ "selectedArmies" + selectedArmies);
+					shiftArmiesOnReinforcement(countrySelect, selectedArmies);
 				}
 				GD.ChangePhase();
 			}
@@ -270,21 +270,22 @@ public class ControlsConsole extends JPanel {
 		}
 		return required.getArmyCount();
 	}
+
 	/**
 	 * Sets Action Listeners for reinforcement controls.
 	 */
 	public void setActionListner() {
 		addarmies = new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {				
-			NodeOfCountry country = GameDriver.getInstance().getCountryNode(SelectedCountry());
+			public void actionPerformed(ActionEvent e) {
+				NodeOfCountry country = GameDriver.getInstance().getCountryNode(SelectedCountry());
 				int armies = ValueOfArmies();
 				shiftArmiesOnReinforcement(country, armies);
 				GD.ContinuePhase();
 			}
 		};
 		Armies_Add_Button_Action(this.addarmies);
-		
+
 		End_Phase_Button_Action(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -292,10 +293,12 @@ public class ControlsConsole extends JPanel {
 			}
 		});
 	}
+
 	/**
 	 * Shifts(or places) the armies of the player on each reinforcement.
+	 * 
 	 * @param country the country node to which armies are added.
-	 * @param armies the number of armies to be reinforced.
+	 * @param armies  the number of armies to be reinforced.
 	 * @return the army count left for the player.
 	 */
 	public int shiftArmiesOnReinforcement(NodeOfCountry country, int armies) {
@@ -303,5 +306,5 @@ public class ControlsConsole extends JPanel {
 		GD.getCurrent().RemovedArmies(armies);
 		return GD.getArmyCount();
 	}
-	
+
 }

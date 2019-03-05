@@ -28,14 +28,13 @@ import Model.Map;
  */
 public class MapConsole extends JPanel implements Observer {
 	
-<<<<<<< HEAD
+
 	Map map = new Map();
-=======
+
 	/**
 	 * object of Map class
 	 */
-	Map map;
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
+
 
 	/**
 	 * object of BufferedImage for image data

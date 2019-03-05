@@ -89,7 +89,7 @@ public class ControlsConsole extends JPanel {
 		this.setBackground(Color.LIGHT_GRAY);
 		this.setBorder(BorderFactory.createDashedBorder(Color.black));
 		this.setPreferredSize(new Dimension(450, 170));
-	}
+	}  
 
 	/**
 	 * displays the reinforcement part
@@ -191,12 +191,12 @@ public class ControlsConsole extends JPanel {
 	public void updateFortification(int count, String[] Neighbours) {
 		this.spinnerArmies.setModel(new SpinnerNumberModel(1, 0, count - 1, 1));
 		this.spinnerArmies.setEnabled(true);
-<<<<<<< HEAD
-		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(NeighbourNames));
-=======
+
+		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(Neighbours));
+
 		;
 		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(Neighbours));
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
+
 		this.ListOfNeighbors.setSelectedIndex(0);
 		this.ListOfNeighbors.setEnabled(true);
 		this.Player_Move.setEnabled(true);

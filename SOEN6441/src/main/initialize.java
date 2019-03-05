@@ -5,8 +5,12 @@ import javax.swing.SwingUtilities;
 import Model.GameDriver;
 import controllers.the_main_controller;
 
+/**
+ * This is the main  class from where the game starts by calling the getinstance of main controller class 
+ * @author Harman
+ *
+ */
 public class initialize {
-
 	
 public static void main(String[] args)
 {
@@ -22,7 +26,6 @@ public static void main(String[] args)
 		// TODO Auto-generated method stub
 		//GameDriver.getInstance();
 		the_main_controller.getInstance();
-	
 	}
 	});
 }

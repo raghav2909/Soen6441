@@ -21,13 +21,11 @@ import javax.swing.SpinnerNumberModel;
  *@version 1.0
  */
 public class Player_Information_Controller {
+	
 	/**
 	 * This array stores the player names.
 	 */
 	public static String[] Name_Of_Player;
-	/**
-	 * 
-	 */
 	
 	/**
 	 * This function will give the information regarding the player.
@@ -51,12 +49,11 @@ public class Player_Information_Controller {
        return 2;
 	
 	}
+	
 	/**
 	 * This function will give the information regarding the players
 	 * @return It will return the names of players as string array
 	 */
-	
-
 	public static String[] Information_OF_Playres()
 	{
 		int n = NumberOfPlayer();
@@ -83,6 +80,7 @@ public class Player_Information_Controller {
 		 }
 		return Name_Of_Player;
 	}
+
 	/**
 	 *The countries that are selected to place army
 	 * @param countryList List of countries where the player can place armies.

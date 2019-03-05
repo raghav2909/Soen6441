@@ -19,30 +19,34 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * Edit_Create_Map_Controller performs action  for creating a new map or modifying the existing maps
  * 
  * @author Raghav
- * @author Harmanpreet
+ * @author Harman
  * @author Gursharan
  * @see File_open_Controller
  */
 public class Edit_create_Map_Controller {
+	
 	/**
 	 * object of Edit_Create_Map_Controller class used for calling the class methods 
 	 */
 	private static Edit_create_Map_Controller ecm ;
-	/*
+	
+	/**
 	 * constructor of the class
-	 */
-			
+	 */		
 	public Edit_create_Map_Controller() {
 		
 	}
+	
 	/**
 	 * object of MapSelection class used for calling  methods of MapSelection 
 	 */
 	private MapSelection mapselection;
+	
 	/**
 	 * action listener linked to the button "Select Map File" for selecting map file
 	 */	
 	private ActionListener ActionExistingBtn;
+	
 	/**
 	 * action listener applied on button "Choose Map File" for selecting map file
 	 */
@@ -51,7 +55,6 @@ public class Edit_create_Map_Controller {
 	/**
 	 * object of ExistingMapModifier class used for calling the its methods.
 	 */
-	
 	ExistingMapModifier existingMapModifier;
 
 	/**
@@ -62,14 +65,13 @@ public class Edit_create_Map_Controller {
 	/**
 	 * Object of ReadMap class from Model
 	 */
-	
 	ReadMap readMap = new ReadMap();
-/**
- * object of Map class from Model
- */
-	 
-	
+
+	/** 
+ 	*object of Map class from Model
+ 	*/
 	Map mapEditor =new Map();// 
+	
 	/**
 	 * Calls the readMap function of ReadMap class from Model to read the map files
 	 * @param file_name address of the map file to be loaded
@@ -141,6 +143,10 @@ public class Edit_create_Map_Controller {
 		this.mapselection.openfilebuttonaction(ActionExistingBtn);// in MapSelection need to create class
 	}	
 
+	/**
+	 * gets the map file path
+	 * @return path
+	 */
 	public String getFilePath() {
 		return FilePath;
 	}
@@ -157,6 +163,7 @@ public class Edit_create_Map_Controller {
 			}
 		});
 
+		//listener for Add country
 		mapNew.addActionsToAddCountryButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mapNew.countryfieldEnable();
@@ -186,6 +193,7 @@ public class Edit_create_Map_Controller {
 			}
 		});
 
+		//listener for add neighbours
 		mapNew.addActionsToAddNeighboursButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mapNew.JListEnabled();
@@ -202,6 +210,7 @@ public class Edit_create_Map_Controller {
 			}
 		});
 
+		//listener to choose neighbor
 		mapNew.addActionsToNeighbourChooseButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mapNew.getListOfNeighbours().isEmpty()) {
@@ -225,6 +234,7 @@ public class Edit_create_Map_Controller {
 			}
 		});
 
+		//listener to delete continent
 		mapNew.addActionsToDeleteContinentButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ArrayList<NodeOfMap> continents = mapEditor.getContinents();
@@ -248,6 +258,7 @@ public class Edit_create_Map_Controller {
 			}
 		});
 
+		//listener to save map
 		mapNew.addActionsToSaveMapButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(mapEditor.CheckSaveMap()) {
@@ -263,6 +274,7 @@ public class Edit_create_Map_Controller {
 			}
 		});
 
+		//listener to delete country
 		mapNew.addActionsToDeleteCountryButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String selectedcountry = mapNew.getCountriesToRemove();
@@ -286,6 +298,7 @@ public class Edit_create_Map_Controller {
 			}
 		});
 
+		//listener to add button
 		mapNew.addActionsToAddButton(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Boolean ContinentPresent = mapNew.continentExistCheck();
@@ -330,8 +343,10 @@ public class Edit_create_Map_Controller {
 		mapNew.setVisible(true);
 	}
 
+	/**
+	 * sets Listener for exist map 
+	 */
 	public void ActionOnExistingMap() {
-
 		existingMapModifier.addActionsToAddContinentButton(new ActionListener() { //from ExistingMapMODIFIER
 			public void actionPerformed(ActionEvent e) {
 				existingMapModifier.continentFieldsEnable();
@@ -510,12 +525,21 @@ public class Edit_create_Map_Controller {
 			}
 		});
 	}
+	
+	/**
+	 * gets instance of class
+	 * @return
+	 */
 	public static Edit_create_Map_Controller getInstance() {
 		if(ecm==null) {
 			ecm = new Edit_create_Map_Controller();
 		}
 		return ecm;
 	}
+	
+	/**
+	 * starts the game window
+	 */
 	public void tobegin()
 	{
 		Map_Frame newMapFrame = new Map_Frame();
@@ -525,12 +549,4 @@ public class Edit_create_Map_Controller {
 		System.out.println("hey coming in edit or create");
 		
 	}
-	//private void editexistingmap() {
-		// TODO Auto-generated method stub
-		
-	//}
-	//private void createnewmap() {
-		// TODO Auto-generated method stub
-		
-	//}
 }

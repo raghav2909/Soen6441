@@ -20,19 +20,36 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * This class handles the map location request by providing the path of .map and .bmp file
+ * @author Harman
+ *
+ */
 public class File_open_Controller extends JFrame {
 
-	
-JFileChooser fc = new JFileChooser("Map Selection");
+	/**
+	 * Jfilechooser to choose file
+	 */
+	JFileChooser fc = new JFileChooser("Map Selection");
 
-private  String mapRead= null;
+	/**
+	 * string variable to check mapread value
+	 */
+	private  String mapRead= null;
 
-
-public   File_open_Controller() {
+	/**
+	 * constructor of class
+	 */
+	public   File_open_Controller() {
 		
 	}
 
-public String map_location(String newExtension) {
+	/**
+	 * provides the map file and bmp file location
+	 * @param newExtension either 'map' or 'bmp' to differ which file to take
+	 * @return file path
+	 */
+	public String map_location(String newExtension) {
 
      fc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
     
@@ -71,16 +88,7 @@ public String map_location(String newExtension) {
                                              "Map Opening Error",
                                              JOptionPane.OK_OPTION);
          }
- 
-//   if(newExtension.equals("map"))
-//   {
-//	//   return map_location(newExtension);
-//   }
-
 System.out.println("coming here 2");
-
 return null;
-
 }
-
 }

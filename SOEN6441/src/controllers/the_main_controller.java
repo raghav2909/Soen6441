@@ -110,7 +110,7 @@ public class the_main_controller {
 	{ 
 		opendialog= new openingdialog();
 		GD = new GameDriver();
-		opendialog.start();
+		opendialog.chooseplayoredit();
 	}
 	public the_main_controller(String s) {
 		// TODO Auto-generated constructor stub

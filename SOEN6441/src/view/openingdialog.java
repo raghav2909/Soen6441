@@ -47,10 +47,10 @@ public class openingdialog {
 	  */
 	private JButton newgame;
 	
-	/**
-	 * Button for load game
-	 */
-	private JButton loadgame;
+//	/**
+//	 * Button for load game
+//	 */
+//	private JButton loadgame;
 	
 	/**
 	 * button to edit map
@@ -125,15 +125,15 @@ public class openingdialog {
 		first_frame = new JFrame("Select an option");
 		newgame = new JButton("New Game");
 		newgame.setBackground(Color.CYAN);
-		loadgame = new JButton("Load Game");
-		loadgame.setBackground(Color.CYAN);
+		//loadgame = new JButton("Load Game");
+		//loadgame.setBackground(Color.CYAN);
 		mapedit = new JButton("Edit Map");
 		mapedit.setBackground(Color.CYAN);
 		first_frame.setSize(150, 150);
 		first_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		first_frame.setLayout(new FlowLayout());
 		first_frame.add(newgame);
-		first_frame.add(loadgame);
+//		first_frame.add(loadgame);
 		first_frame.add(mapedit);
 		Container c = first_frame.getContentPane();
 		c.setBackground(Color.black);
@@ -176,21 +176,21 @@ public class openingdialog {
 			}
 		});
 		
-		/**
-		 * load game listener
-		 */
-		loadgame.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				first_frame.dispose();
-				the_main_controller.getInstance().single_Mode_Saved_Start();
-				
-				
-			}
-		});
-
+//		/**
+//		 * load game listener
+//		 */
+//		loadgame.addActionListener(new ActionListener() {
+//			
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				// TODO Auto-generated method stub
+//				first_frame.dispose();
+//				the_main_controller.getInstance().single_Mode_Saved_Start();
+//				
+//				
+//			}
+//		});
+//
 	}
 	
 	/**

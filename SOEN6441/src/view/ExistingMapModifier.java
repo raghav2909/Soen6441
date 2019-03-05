@@ -30,7 +30,6 @@ import controllers.Edit_create_Map_Controller;
 
 	/** class opens the JFrame view for  
 	 *  delete/add country and continent while modifying Map
-	 * 
 	 * @author Gursharan
 	 *
 	 */
@@ -205,7 +204,6 @@ import controllers.Edit_create_Map_Controller;
 			contentPane.add(labl_MapExist, gbc_labl_MapExist);
 
 			addContinentButton = new JButton("New Continent");
-			//addContinentButton.setForeground(Color.BLACK);
 			addContinentButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 17));
 			addContinentButton.setForeground(new Color(0, 0, 255));
 			GridBagConstraints gbc_addContinentBtn = new GridBagConstraints();
@@ -460,70 +458,130 @@ import controllers.Edit_create_Map_Controller;
 		
 		}
 		
+		/**
+		 * add Listener to add country
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToAddCountryButton(ActionListener newAction) {
 			addCountryButton.addActionListener(newAction);
 		}
 		
+		/**
+		 * add Listener to delete continent
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToDeleteContinentButton(ActionListener newAction) {
 			deleteContinentButton.addActionListener(newAction);
 		}
 
+		/**
+		 * add Listener to add continent 
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToAddContinentButton(ActionListener newAction) {
 			addContinentButton.addActionListener(newAction);
 		}
+		
+		/**
+		 * add Listener to add Neighbor
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToAddNeighboursButton(ActionListener newAction) {
 			addNeighboursButton.addActionListener(newAction);
 		}
+		
+		/**
+		 * add Listener to save map
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToSaveMapButton(ActionListener newAction) {
 			saveMapButton.addActionListener(newAction);
 		}
 
+		/**
+		 * add Listener to delete country
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToDeleteCountryButton(ActionListener newAction) {
 			deleteCountryButton.addActionListener(newAction);
 		} 
+		
+		/**
+		 * add Listener to add a button to add continent
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToBtnComplete(ActionListener newAction) {
 			btnComplete.addActionListener(newAction);
 		}
 
+		/**
+		 * adds Listener to add a button to add country
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToAddButton(ActionListener newAction) {
 			addButton.addActionListener(newAction);
 		}
+		
+		/**
+		 * shows error message for not selecting neighbours
+		 */
 		public void noNeighboursSelecteError() {
 			JOptionPane.showMessageDialog(contentPane, "Values are expected to select neighbours first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
 
+		/**
+		 * add Listener to select neighbors
+		 * @param newAction Listener to be attached
+		 */
 		public void addActionsToNeighbourChooseButton(ActionListener newAction) {
 			neighbourChooseButton.addActionListener(newAction);
 		}
 
-				
+		/**
+		 * display error message for not entering value
+		 */
 		public void errorEnterValues() {
 			JOptionPane.showMessageDialog(contentPane, "Values are expected to enter first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
+		/**
+		 * displays error message for already existing continent
+		 */
 		public void errorcontinentAlreadyExist() {
 			JOptionPane.showMessageDialog(contentPane, "this Continent already exist, choose other country", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
+		/**
+		 * displays error message for already existing country
+		 */
 		public void errorCountryAlreadyExist() {
 			JOptionPane.showMessageDialog(contentPane, "this country already exist, choose other country", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
+		/**
+		 * displays error message for null continent
+		 */
 		public void errorNullContinent() {
 			JOptionPane.showMessageDialog(contentPane, "Add continent first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
+		/**
+		 * displays error message for null country
+		 */
 		public void errorNullCountry() {
-			JOptionPane.showMessageDialog(contentPane, "Add country firstr", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "Add country first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
+		/**
+		 * provides control value from textfield
+		 */
 		public String getControlValue() {
 			cv = (continentControlValueText.getText());
 			return cv;
 		}
 		/**
-		 * Function to remove all continents from continent
+		 * removes all continents
 		 */
 		public void removeContinentFields() {
 			continentNameText.setText("");
@@ -532,47 +590,65 @@ import controllers.Edit_create_Map_Controller;
 			continentControlValueText.setEnabled(false);
 		}
 	
-	/**
-	 * clearing the all data in continent lists displayed in continentComboBox
-	 */
+	
+		/**
+		 * clears all data in continent lists displayed in continentComboBox
+		 */
 		public void continentContentsCleared() {
 			continentComboBox.removeAllItems();
 			continentDeletionComboBox.removeAllItems();
 		}
 
+		/**
+		 * clears all data in country lists displayed in country ComboBox
+		 */
 		public void countriesContentsCleared() {
 			countryListCombobox.removeAllItems();
 			countriesComboBox.removeAllItems();
 		}
 
+		/**
+		 * adds data in continent lists displayed in continentComboBox
+		 */
 		public void setDataInContinentsComboBox(String continent) {
 			continentComboBox.addItem(continent);
 			continentDeletionComboBox.addItem(continent);
 		}
 
+		/**
+		 * adds data in country lists displayed in country ComboBox
+		 */
 		public void setDataInCountriesComboBox(String country) {
 			countriesComboBox.addItem(country);
 			countryListCombobox.addItem(country);
 		}
 		
+		/**
+		 * provides object of this class
+		 * @return object
+		 */
 		public ExistingMapModifier getFrame() {
 			return this;
 		}
+		
+		/**
+		 * enables continent fields
+		 */
 		public void continentFieldsEnable() {
 			continentNameText.setEnabled(true);
 			continentControlValueText.setEnabled(true);
 		}
 		
 		/**
-		 * Function to get selected country to add as adding neighbour.
-		 * @return selected country as neighbour.
+		 * Function to get selected country to add as neighbor.
+		 * @return selected country as neighbor.
 		 */
 		public String getSelectedCountriesForNeighbours() {
 			return (countriesComboBox.getSelectedItem().toString());
 		}
 		
 		/**
-		 *Function to delete selected country.
+		 *delete selected country.
 		 * @return  country for deletion.
 		 */
 		public String getCountriesToRemove() {
@@ -580,7 +656,7 @@ import controllers.Edit_create_Map_Controller;
 		}
 		
 		/**
-		 * Function to check for unique continents.
+		 * checks for unique continents.
 		 * @return true if same continent that you try to add already exist.
 		 */
 		public boolean continentExistCheck() {
@@ -592,7 +668,7 @@ import controllers.Edit_create_Map_Controller;
 		}
 		
 		/**
-		 * Function to return complete list of selected neighbours.
+		 * return complete list of selected neighbours.
 		 * @return list of selected neighbours.
 		 */
 		public List getListOfNeighbours() {
@@ -600,35 +676,35 @@ import controllers.Edit_create_Map_Controller;
 		}
 		
 		/**
-		 * Function to enable jlist.
+		 * enables jlist.
 		 */
 		public void JListEnabled() {
 			list.setEnabled(true);
 		}
 		
 		/**
-		 * Function to clear and disable the country-name-field.
+		 *clears and disables the country-name-field.
 		 */
 		public void countryFieldDisable() {
 			countryNameText.setText("");
 			countryNameText.setEnabled(false);
 		}
 		/**
-		 * Function to Enable the country-name-field.
+		 * Enable the country-name-field.
 		 */
 		public void countryfieldEnable() {
 			countryNameText.setEnabled(true);
 		}
 		
 		/**
-		 * Function to get the country name that is entered.
+		 * get the country name that is entered.
 		 * @return the country name entered.
 		 */
 		public String getNAmeOfCountry() {
 			return (countryNameText.getText());
 		}
 		/**
-		 * Function to disable continent fields
+		 * disable continent fields
 		 */
 		public void continentFieldDisabled() {
 			continentNameText.setText("");
@@ -639,39 +715,41 @@ import controllers.Edit_create_Map_Controller;
 		
 		
 		/**
-		 *Function to delete the selected Continent from list.
+		 *delete the selected Continent from list.
 		 * @return  continent for deletion.
 		 */
 		public String continentForDeletion() {
 			return (continentDeletionComboBox.getSelectedItem().toString());
 		}
 		/**
-		 * Function to return list of selected continents
+		 * return list of selected continents
 		 * @return list of selected continents
 		 */
 		public String getSelectedContinent() {
 			return (continentComboBox.getSelectedItem().toString());
 		}
 		/**
-		 * Function to remove all neighbours in the list
+		 * remove all neighbours in the list
 		 */
 		public void clearNeighboursJList() {
 			model2.removeAllElements();
 		}
 
+		/**
+		 * adds coming neighbor to list
+		 * @param neighbour neighbor country
+		 */
 		public void addPossibleNeighboursToJList(String neighbour) {
 			model2.addElement(neighbour);
 		}
 		/**
-		 * function to get name of continent
-		 * @return
+		 * get name of continent
+		 * @return continent name
 		 */
 		public String getContinentName() {
 			nameContinent = continentNameText.getText();
 			return nameContinent;
 		}
-
-		
 	}
 
 

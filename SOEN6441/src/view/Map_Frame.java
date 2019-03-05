@@ -168,6 +168,10 @@ public class Map_Frame extends JFrame {
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 	}
 
+	/**
+	 * return the action chosen to create new map or edit existing
+	 * @return ActionChooser
+	 */
 	public static String ActionChoosen() {
 		return ActionChoosen;
 	}

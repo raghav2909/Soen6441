@@ -235,7 +235,7 @@ public class NewMapCreation extends JFrame {
 			grid_deleteCountryButton.gridy = 8;
 			MaincontentPane.add(deleteCountryButton, grid_deleteCountryButton);
 
-		//13.
+//13.
 			/**
 			 * includes list of countries to be deleted
 			 */

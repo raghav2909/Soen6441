@@ -15,11 +15,16 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 
 /**
+ * This class displays the player view on main window
  * @author raghavsharda
  *@author Harman
  */
 public class PlayerConsole extends JPanel {
 
+	/**
+	 * Serial Version id for JFrame.
+	 * {@inheritDoc}
+	 */
 	private static final long serialVersionUID = -7512274442706727095L;
 
 	/**

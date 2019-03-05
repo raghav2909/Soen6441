@@ -27,17 +27,49 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import controllers.*;
 import game.messages.MessageWindow;
 
-
+/**
+ * This class is from where the game starts
+ * 1. asks player to play game or edit map
+ * 2. displays frame for those options
+ * @author Harman
+ *
+ */
 public class openingdialog {
 	 private  MessageWindow messageWindow = new MessageWindow();
 
-	private JFrame first_frame;
+	 /**
+	  * frame declared
+	  */
+	 private JFrame first_frame;
+	 
+	 /**
+	  * Button for new game
+	  */
 	private JButton newgame;
+	
+	/**
+	 * Button for load game
+	 */
 	private JButton loadgame;
+	
+	/**
+	 * button to edit map
+	 */
 	private JButton mapedit;
+	
+	/**
+	 * object of edit create map controller class
+	 */
 	private Edit_create_Map_Controller ecm;
+	
+	/**
+	 * declared a null string
+	 */
 	private String mapRead1= null;
 
+	/**
+	 * asks player to go for 'single' or 'tournament' mode 
+	 */
 	public void start()
 	{
 		JRadioButton j1, j2;
@@ -64,7 +96,9 @@ public class openingdialog {
 		c.setBackground(Color.orange);
 		first_frame.setVisible(true);
 		
-		
+		/**
+		 * listener for radiobutton
+		 */
 			b.addActionListener(new ActionListener() {
 				
 				@Override
@@ -108,7 +142,6 @@ public class openingdialog {
 		
 		/**
 		 * Map edit button action listener 
-		 * 
 		 */
 		mapedit.addActionListener(new ActionListener() {
 			
@@ -123,6 +156,9 @@ public class openingdialog {
 		}
 	
 	});
+		/**
+		 * new game listener
+		 */
 		newgame.addActionListener(new ActionListener() {
 			
 			@Override
@@ -140,6 +176,9 @@ public class openingdialog {
 			}
 		});
 		
+		/**
+		 * load game listener
+		 */
 		loadgame.addActionListener(new ActionListener() {
 			
 			@Override
@@ -155,90 +194,13 @@ public class openingdialog {
 	}
 	
 	/**
-	 * This method returns the mode of the game selected by the player either 'single' or 'tournament'
-	 */
-	public String decideMode()
-	{
-		JFrame fr= new JFrame("Choose Mode of the Game");
-		fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fr.setVisible(true);
-		String[] choices = {"Single","Tournament"};
-		int h;
-		h=JOptionPane.showOptionDialog(fr, "Select the game mode to play", "CHOOSE", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, choices, choices[0]);
-		if(h==0)
-		{
-			fr.dispose();
-			return "s";
-		}
-		else
-		{
-			fr.dispose();
-			return "m";
-		}
-//		return "single";
-	
-	}
-	
-	/**
-	 * This method returns the initial frame 
+	 * returns the initial frame 
 	 */
 	public JFrame returnframe()
 	{
 		return this.first_frame;
 	}
 	
-	/**
-	 * Sets the action for Play Game button
-	 */
-	public void Actiongameplay(ActionListener action)
-	{
-//		this.newgame.addActionListener(action);
-	}
-
-	
-	
-	
-	/**
-	 * This method shows the frame to 'Load game' or 'New game' option
-	 * Sets action on each button
-	 */
-	public void games_option() {
-		JFrame f2 = new JFrame();
-		f2.setLayout(new BoxLayout(f2.getContentPane(),BoxLayout.Y_AXIS));
-		JButton New_Game = new JButton("New Game");
-		JButton Load_Game = new JButton("Load Game");
-		f2.add(Load_Game);
-		f2.add(New_Game);
-		f2.pack();
-		f2.setVisible(true);
-		
-		New_Game.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				f2.dispose();
-				try {
-					the_main_controller.getInstance().Single_Mode_Start();
-				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				
-			}
-		});
-		Load_Game.addActionListener(new ActionListener() {
-			
-				@Override
-				public void actionPerformed(ActionEvent e)
-				{
-			f2.dispose();
-			the_main_controller.getInstance().single_Mode_Saved_Start();
-			
-			//File_open_Controller foc= new File_open_Controller();
-			}
-		});
-	}
 	
 	public void tournament_mode() {
 		

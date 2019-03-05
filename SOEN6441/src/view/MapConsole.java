@@ -22,19 +22,37 @@ import javax.swing.JScrollPane;
 
 import Model.Map;
 
-/**
+/**This class provides the view of the map on the main window class
  * @author raghavsharda
  *@author Harman
  */
 public class MapConsole extends JPanel implements Observer {
 	
+<<<<<<< HEAD
 	Map map = new Map();
+=======
+	/**
+	 * object of Map class
+	 */
+	Map map;
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441.git
 
+	/**
+	 * object of BufferedImage for image data
+	 */
 	private BufferedImage picture;
-	private boolean graphicalMap = false;
+	
+	/**
+	 * boolean variable
+	 */
+//	private boolean graphicalMap = false;
 	
 	private boolean mapgraph = false;
 	
+	/**
+	 * class constructor locating image of map
+	 * @param mapimage location of map file
+	 */
 	public MapConsole(String mapimage) {
 		// TODO Auto-generated constructor stub
 
@@ -171,7 +189,6 @@ public class MapConsole extends JPanel implements Observer {
 	/**
 	 * method of observer pattern which to update if there are updates from observable
 	 */
-
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub

@@ -29,15 +29,25 @@ import Model.NodeOfMap;
  *
  */
 public class MapExist extends JFrame{
+	/**
+	 * Jpanel object
+	 */
 	JPanel jp;
 	
+	/**
+	 * List declared to contain Node of map class attributes
+	 */
 	ArrayList<NodeOfMap> MapExists = new ArrayList<NodeOfMap>();
 	
+	/**
+	 * button declared
+	 */
     JButton bEdit;
 
-	private Object gbc_Table1;
-
-	private Object gbc_table3;
+    /**
+     * GridBagConstraints objects
+     */
+	private GridBagConstraints gbc_Table1, gbc_table3;
 	
 	/**
 	 * Start method of the class is called by MapExist constructor

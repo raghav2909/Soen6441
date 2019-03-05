@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * this class creates the cards view on main game console
+ * this class creates the cards view on main game window
  * @author raghavsharda
  *
  */
@@ -23,7 +23,9 @@ public class CardsConsole extends JPanel {
 	 */
 	private static final long serialVersionUID = 91213123892139L;
 
-	
+	/**
+	 * class constructor creating view of card option on main window of game
+	 */
 	public CardsConsole()
 	{
 		JLabel lab=  new JLabel("Cards");

@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 import game.messages.MessageWindow;
 
-/*
+/**
+ * This class provides a menu to go for tournament mode by providing the info asked
  * @author: Gursharan
  * for Tournament mode maximum 4 players can play
 */
@@ -46,6 +47,10 @@ public class TournamentModeMenu extends JFrame {
          public JComboBox GamesInTournament = new JComboBox(ListoftournamentGames);
          public JComboBox TurnsInTournament = new JComboBox(ListoftournamentTurns);
          
+         /**
+          * class constructor displaying the frame
+          * @param messageWindow
+          */
          public TournamentModeMenu(MessageWindow messageWindow) {
                 super("Tournament Mode Game");
                 this.messageWindow = messageWindow;
@@ -78,14 +83,15 @@ public class TournamentModeMenu extends JFrame {
                 setVisible(true);
             }
          
-         /*
-          * This method returns the panel to select number of players for game
+         /**
+          * returns the panel to select number of players for game
           */
-private JPanel playernumber() {
-	JPanel playernumberpanel = new JPanel();
+         private JPanel playernumber() {
+        	 JPanel playernumberpanel = new JPanel();
 	
-	TitledBorder title = BorderFactory.createTitledBorder("Select Player count");
-	playernumberpanel.setBorder(title);
+	
+        	 TitledBorder title = BorderFactory.createTitledBorder("Select Player count");
+        	 playernumberpanel.setBorder(title);
 	
 	playernumberpanel.setLayout(new GridBagLayout());
 	GridBagConstraints grid_bag = new GridBagConstraints();
@@ -102,8 +108,8 @@ private JPanel playernumber() {
 	return playernumberpanel;
 }
 
-        /*
-         * This methods allows selection of maps in tournament mode . At max 4 maps can be selected
+        /**
+         * allows selection of maps in tournament mode . At max 4 maps can be selected
          */
 private JPanel mapSelector() {
     JPanel mapSelectionPanel = new JPanel();
@@ -153,7 +159,7 @@ private JPanel mapSelector() {
        mapSelection.add(mapSelectionPanel);
     return mapSelection;
 }
-/*
+/**
  * This method returns player strategies and create separate panel for it
  */
         private JPanel player_strategy_selector() {
@@ -163,7 +169,7 @@ private JPanel mapSelector() {
     TitledBorder title = BorderFactory.createTitledBorder("Select strategies for each player.");
     strategy_selector_panel.setBorder(title);
 
-//   strategy_selector_panel.setPreferredSize(new Dimension(1000, 100));
+
     strategy_selector_panel.setLayout(new GridBagLayout());
     GridBagConstraints grid_bag_cons = new GridBagConstraints();
     grid_bag_cons.insets = new Insets(5, 15, 5, 15);
@@ -201,7 +207,8 @@ private JPanel mapSelector() {
    strategyButton.add(strategy_selector_panel);
    return strategyButton;
         }
-        /*
+    
+        /**
          * This method set settings like number of maps, number of games to play for each game in Tournament mode
          */
         private JPanel numberSelector() {
@@ -236,6 +243,10 @@ private JPanel mapSelector() {
 
         return numberSelectorButtons;
     }
+        /**
+         * starts the tournament mode
+         * @return the jpanel
+         */
          private JPanel initializeGame() {
                 JPanel initializeGamePanel = new JPanel();
                 JPanel initializeGameButtons = new JPanel();

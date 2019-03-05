@@ -55,6 +55,12 @@ public class WriteMap {
 		F.close();
 		}
 	
+	/**
+	 * write to the map file
+	 * @param maplist list of node of map class
+	 * @param Address path of map file
+	 * @throws IOException
+	 */
 	public void ExistingMapWriter(ArrayList<NodeOfMap> maplist,String Address) throws IOException {
 		Address=MapPath;
 		
@@ -85,6 +91,10 @@ public class WriteMap {
 		F.close();
 	}
 	
+	/**
+	 * gets the map file path
+	 * @return
+	 */
 	public String getMapFilePath() {
 		return MapPath;
 	}

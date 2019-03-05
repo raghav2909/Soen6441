@@ -16,38 +16,42 @@ public class Player
      * Name of Player
      */
     private String PlayerName;
+    
     /**
      * cards that used once
      */
     private int UsedCards =1;
+    
     /**
      * Player Turn
      */
     private boolean PlayerTurn = false;
+    
     /**
      * List of Countries owned by player
      */
     private ArrayList<NodeOfCountry> PlayerCountries = new ArrayList<NodeOfCountry>();
+    
     /**
      * List of Continents owned by player
      */
     private ArrayList<NodeOfMap> PlayerContinents;
+    
     /**
      * Number of Armies owned by player
      */
     public int PlayerArmies;
+    
     /**
      * List of Cards owned by player
      */ 
     private ArrayList<Card> Cards;
+    
     /**
      * List of all continents
      */
     private ArrayList<NodeOfMap> AllContinents;
-    /**
-     * number of card player have
-     */
-  // private int CountCards;
+    
     /**
      * Set up Player with name
      * @param name Player Name
@@ -59,6 +63,7 @@ public class Player
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
     }
+ 
     /**
      * Set up Player with name and armies
      * @param name Player Name
@@ -82,9 +87,14 @@ public class Player
         this.AllContinents = AllContinents;
         System.out.println(AllContinents.toString());
     }
+    
+    /**
+     * constructor of class
+     */
    public Player() {
 		// TODO Auto-generated constructor stub
 	}
+   
 	/**
      * return Player Name
      * @return Player Name
@@ -93,6 +103,7 @@ public class Player
     {
         return this.PlayerName;
     }
+   
     /**
      * Add Country to the Player Countries
      * @param Country Name of Country own by Player
@@ -101,6 +112,7 @@ public class Player
     {
         this.PlayerCountries.add(Country);
     }
+    
     /**
      * Return List of Countries owned by PLayer
      * @return ArrayList of Countries
@@ -109,6 +121,7 @@ public class Player
     {
         return this.PlayerCountries;
     }
+    
     /**
      * Gets the List of Countries Owned by Player
      * @return List Of Countries Name
@@ -126,6 +139,7 @@ public class Player
         }
         return Names;
     }
+    
     /**
      * Shows Countries owned by Player with No Armies
      * @return List of Countries with no army
@@ -140,6 +154,7 @@ public class Player
         }
         return names.toArray(new String[names.size()]);
     }
+    
     /**
      * Removes country from a Player Countries
      * @prarm Country removed country
@@ -148,6 +163,7 @@ public class Player
     {
         this.PlayerCountries.remove(Country);
     }
+    
     /**
      * Add a card to Player
      * @param card added card
@@ -156,6 +172,7 @@ public class Player
     {
         this.Cards.add(card);
     }
+    
     /**
      * Remove a card from Player
      * @param card Removed card
@@ -164,6 +181,7 @@ public class Player
     {
         this.Cards.remove(card);
     }
+    
     /**
      * Add a continent to Player continents
      * @param continent added continent
@@ -172,6 +190,7 @@ public class Player
     {
         this.PlayerContinents.add(continent);
     }
+    
     /**
      * Remove a continent from Player continent
      * @param continent removed continent
@@ -180,6 +199,7 @@ public class Player
     {
         this.PlayerContinents.remove(continent);
     }
+    
     /**
      * checking for continent own by player
      */
@@ -195,6 +215,7 @@ public class Player
             }
         }
     }
+    
     /**
      * Calculation of armies
      * @return armies count
@@ -224,10 +245,10 @@ public class Player
         {
         	CountArmies=3;
         }
-       // CountArmies = CountContinents;
         System.out.println(CountArmies);
         return CountArmies;
     }
+    
     /**
      * Add armies to player
      * @param count added armies
@@ -236,6 +257,7 @@ public class Player
     {
         this.PlayerArmies += count;
     }
+    
     /**
      * Remove armies to player
      * @param count removed armies
@@ -244,6 +266,7 @@ public class Player
     {
         this.PlayerArmies -= count;
     }
+    
     /**
      * Number of Player armies
      * @return number of player armies
@@ -252,6 +275,7 @@ public class Player
     {
        return this.PlayerArmies;
     }
+    
     /**
      * Node of country by country name
      * @param NewCountry the given country
@@ -260,6 +284,7 @@ public class Player
     public NodeOfCountry getCountry(String NewCountry) {
         return NodeOfCountry.getCountry(PlayerCountries,NewCountry);
     }
+    
     /**
      * 
      * Set player turn to true
@@ -268,6 +293,7 @@ public class Player
     {
         this.PlayerTurn =true;
     }
+    
     /**
      * Set player turn to false
      */
@@ -275,6 +301,7 @@ public class Player
     {
         this.PlayerTurn =false;
     }
+    
     /**
      * give the player turn
      * @return turn of player
@@ -283,6 +310,7 @@ public class Player
     {
         return this.PlayerTurn;
     }
+    
     /**
      * set the new value of PLayer armies
      * @param NewArmies number of armies
@@ -292,5 +320,3 @@ public class Player
     	this.PlayerArmies = NewArmy;
     }
 }
-
-

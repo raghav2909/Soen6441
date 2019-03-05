@@ -31,12 +31,6 @@ public class Map extends Observable
 	WriteMap MapWriter = new WriteMap();
 	
 	/**
-	 * new controller object
-	 */
-	
-	
-	
-	/**
 	 * creating a arraylist for saving map data
 	 */
 	public static  ArrayList<NodeOfMap> MapData;
@@ -56,31 +50,24 @@ public class Map extends Observable
 		 
 	}
 	
-
-
-	
-
+	/**
+	 * contructor of class
+	 */
 	public Map() {
 		// TODO Auto-generated constructor stub
 	}
-
-
-
-
 
 	/**
 	 * returning the map data as an arraylist
 	 * @return return the map data as an arraylist
 	 */
 	public  ArrayList<NodeOfMap> GetMapData()
-	{
-		
+	{	
 		return MapData;
-	
 	}
 	
 	/**
-	 * returning the map data 
+	 * gets map info 
 	 * @return multidimensional array of map data
 	 */
 	public String[][] GetMapInfo()
@@ -236,7 +223,10 @@ public class Map extends Observable
 		return true;
 	}
 	
-	
+	/**
+	 * updates the continent list
+	 * @param continents contains list of Node of map class
+	 */
 	public void WritingOldMap(ArrayList<NodeOfMap> continents) {
 		this.continents = continents;
 	}
@@ -251,18 +241,28 @@ public class Map extends Observable
 		return ContinentExist;
 	}
 	
-	
+	/**
+	 * adds a continent into the continent list
+	 * @param c1 name of continent
+	 * @param CountryArray node of country list
+	 * @param v1 control value
+	 */
 	public void AddContinents(String c1,ArrayList<NodeOfCountry> CountryArray,int v1) {
 		continents.add(new NodeOfMap(c1,CountryArray,v1));
 	}
 	
-	
-	
+	/**
+	 * gets the continent list
+	 * @return arraylist of node of map 
+	 */
 	public ArrayList<NodeOfMap> getContinents(){
 		return continents;
 	}
 	
-	
+	/**
+	 * checks for map to be saved
+	 * @return boolean value
+	 */
 	public boolean CheckSaveMap() {
 		boolean SaveMap = true;
 		for (NodeOfMap n: continents) {
@@ -278,31 +278,45 @@ public class Map extends Observable
 		return SaveMap;
 	}
 	
-	
-	
-	
+	/**
+	 * map data is saved to new file
+	 * @throws IOException
+	 */
 	public void SaveMapFile() throws IOException {
 		MapWriter.MapWriter(continents);
 		NewFileMap = MapWriter.getMapFilePath();
 	}
 	
-	
+	/**
+	 * map data is saved to old map file
+	 * @param p
+	 * @throws IOException
+	 */
 	public void SaveToOldFile(String p) throws IOException {
 		MapWriter.ExistingMapWriter(continents,p);
 		OldFileMap = MapWriter.getMapFilePath();
 	}
 	
-	
-	
+	/**
+	 * gets path to new map file
+	 * @return
+	 */
 	public String newFileMap() {
 		return NewFileMap;
 	}
 	
+	/**
+	 * gets path to old map file
+	 * @return
+	 */
 	public String oldFileMap() {
 		return OldFileMap;
 	}
 	
-	
+	/**
+	 * gets the new or old map file based on chosen action
+	 * @return file path or null
+	 */
 	public String getFinalMap() {
 		if (Map_Frame.ActionChoosen().compareTo("new")==0) {
 			System.out.println(newFileMap());
@@ -314,14 +328,13 @@ public class Map extends Observable
 		}
 		return null;
 	} 
-	
-	
-	
-	public String getOlfFileMap() {
-		return OldFileMap;
-	}
-	
-	
+
+
+	/**
+	 * check for existance of country
+	 * @param c name of the country
+	 * @return boolean value
+	 */
 	public boolean CheckCountryExist(String c) {
 		boolean ce = false;
 		for (NodeOfMap n : continents) {
@@ -334,5 +347,3 @@ public class Map extends Observable
 		return ce;
 	} 
 }
-
-

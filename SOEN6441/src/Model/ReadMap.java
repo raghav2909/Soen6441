@@ -90,10 +90,6 @@ public class ReadMap{
 	B.close();
 	F.close();
 	System.out.println(maplist.toString());
-		return maplist;		
-		
+		return maplist;				
 	}
 }
-
-	
-

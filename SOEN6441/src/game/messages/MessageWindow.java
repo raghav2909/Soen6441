@@ -46,7 +46,7 @@ package game.messages;
 
 	    /**
 	     * Append new notification to the notificaton window
-	     * @param message
+	     * @param message message passed for apending
 	     */
 	    public void setNotification(String message) {
 	        notification.append("Action: "+message+"\n");

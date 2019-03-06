@@ -163,7 +163,7 @@ public class GameDriver {
 	/**
 	 * set up the map view
 	 * 
-	 * @param NewGUI the object of map view
+	 * @param view the object of map view
 	 */
 	@SuppressWarnings("deprecation")
 	public void SetConsolMap(MapConsole view) {
@@ -232,6 +232,7 @@ public class GameDriver {
 	 * getting object of map class
 	 * 
 	 * @param Path save the map path
+	 * @throws IOException exception for no path found
 	 */
 	public void CreateMapObject(String Path) throws IOException {
 		
@@ -369,6 +370,7 @@ public class GameDriver {
 
 	/**
 	 * getting the map class object
+	 * @return map Map object is returned
 	 */
 	public Map getMap() {
 		return this.map;

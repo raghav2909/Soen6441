@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="false" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
+  <class id="1" language="java" name="controllers.Edit_create_Map_Controller" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/controllers/Edit_create_Map_Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="56" width="183" x="1112" y="425"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="controllers.File_open_Controller" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/controllers/File_open_Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="80" width="141" x="946" y="305"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="controllers.Player_Information_Controller" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/controllers/Player_Information_Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="195" x="1684" y="305"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="controllers.the_main_controller" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/controllers/the_main_controller.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="144" x="933" y="176"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="game.messages.MessageWindow" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/game/messages/MessageWindow.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="122" x="684" y="425"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="main.initialize" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/main/initialize.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="113" x="933" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="Model.ArmyCount" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/Model/ArmyCount.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="125" x="426" y="176"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="Model.Card" project="Soen6441" file="/Soen6441/SOEN6441/src/Model/Card.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="116" x="1538" y="810"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="Model.Dice" project="Soen6441" file="/Soen6441/SOEN6441/src/Model/Dice.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="87" x="424" y="37"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="Model.GameDriver" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/Model/GameDriver.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="63" width="141" x="1538" y="37"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="Model.GamePhase" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/Model/GamePhase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="59" width="115" x="591" y="176"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="Model.Map" project="Soen6441" file="/Soen6441/SOEN6441/src/Model/Map.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="64" width="121" x="755" y="531"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="Model.NodeOfCountry" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/Model/NodeOfCountry.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="57" width="120" x="1456" y="941"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="Model.NodeOfMap" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/Model/NodeOfMap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="91" width="117" x="1001" y="810"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="Model.Player" project="Soen6441" file="/Soen6441/SOEN6441/src/Model/Player.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="54" width="140" x="1498" y="649"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="Model.ReadMap" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/Model/ReadMap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="122" x="837" y="649"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="Model.WriteMap" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/Model/WriteMap.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="121" width="143" x="1165" y="649"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="view.CardsConsole" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/CardsConsole.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="58" width="131" x="41" y="305"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="view.ControlsConsole" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/ControlsConsole.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="63" width="123" x="1127" y="305"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="view.DiceRollConsole" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/DiceRollConsole.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="116" x="368" y="305"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="view.ExistingMapModifier" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/ExistingMapModifier.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="143" x="1083" y="531"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="view.GameConsole" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/GameConsole.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="164" x="212" y="176"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="view.Map_Frame" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/Map_Frame.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="61" width="187" x="1290" y="305"/>    
+    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="view.MapConsole" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/MapConsole.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="42" width="116" x="212" y="305"/>    
+    <display autosize="false" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="view.MapExist" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/MapExist.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="53" width="84" x="1041" y="649"/>    
+    <display autosize="false" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="view.MapSelection" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/MapSelection.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="78" width="106" x="937" y="531"/>    
+    <display autosize="false" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="view.NewMapCreation" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/NewMapCreation.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="42" width="148" x="1287" y="531"/>    
+    <display autosize="false" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="view.openingdialog" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/openingdialog.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="37" width="125" x="781" y="305"/>    
+    <display autosize="false" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="view.PlayerConsole" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/PlayerConsole.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="39" width="106" x="1538" y="305"/>    
+    <display autosize="false" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="view.TournamentModeMenu" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/view/TournamentModeMenu.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="38" width="154" x="587" y="305"/>    
+    <display autosize="false" stereotype="false" package="true" initial-value="false" signature="false" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="false" package="false" protected="false" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <association id="31">    
+    <bendpoint x="1507" y="810"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="32" name="PlayerCountry"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="35" name="plc"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="37">    
+    <bendpoint x="1010" y="649"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="38" name="nodeOfMap"/>      
+      <multiplicity id="39" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="40">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="41" name="mapWriter"/>      
+      <multiplicity id="42" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="43">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="44" name="CurrentPhase"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="46">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="47" name="drc"/>      
+      <multiplicity id="48" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="50" name="PlayerContinents"/>      
+      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="53" name="countrylist"/>      
+      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="55">    
+    <bendpoint x="1256" y="531"/>    
+    <bendpoint x="1338" y="649"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="56">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="57" name="writerMap"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <bendpoint x="1930" y="176"/>    
+    <bendpoint x="1930" y="305"/>    
+    <bendpoint x="1930" y="425"/>    
+    <bendpoint x="1930" y="531"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="60" name="Player"/>      
+      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="62">    
+    <bendpoint x="1909" y="176"/>    
+    <bendpoint x="1909" y="305"/>    
+    <bendpoint x="1697" y="425"/>    
+    <bendpoint x="1486" y="531"/>    
+    <bendpoint x="1444" y="649"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="63">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="64" name="opendialog"/>      
+      <multiplicity id="65" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="66">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="67">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="68" name="foc"/>      
+      <multiplicity id="69" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="71" name="csc"/>      
+      <multiplicity id="72" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="74" name="messageWindow"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="77" name="driver"/>      
+      <multiplicity id="78" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="80" name="objct"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <dependency id="82">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <association id="83">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="84" name="Cards"/>      
+      <multiplicity id="85" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="86">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="87" name="mapEditor"/>      
+      <multiplicity id="88" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="89">    
+    <bendpoint x="1507" y="305"/>    
+    <bendpoint x="1507" y="425"/>    
+    <bendpoint x="1507" y="531"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <association id="90">    
+    <bendpoint x="989" y="649"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="91" name="continents"/>      
+      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="93">    
+    <bendpoint x="1359" y="649"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="94" name="nodeOfMap"/>      
+      <multiplicity id="95" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="96">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="97" name="pic"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="99">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="100" name="MapWriter"/>      
+      <multiplicity id="101" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="102">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="103" name="mapselection"/>      
+      <multiplicity id="104" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="26" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="105">    
+    <bendpoint x="806" y="649"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="106" name="continents"/>      
+      <multiplicity id="107" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="108">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="109" name="ecm"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="111">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="112" name="gmc"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="22" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="115" name="plc"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="118" name="drc"/>      
+      <multiplicity id="119" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <dependency id="120">    
+    <bendpoint x="1465" y="531"/>    
+    <bendpoint x="1465" y="649"/>    
+    <bendpoint x="1465" y="810"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="121">    
+    <bendpoint x="970" y="810"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="122">    
+    <bendpoint x="906" y="531"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="123" name="readMap"/>      
+      <multiplicity id="124" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="125">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="126" name="mapNew"/>      
+      <multiplicity id="127" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="128">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="129" name="GD">        
+        <position height="18" width="23" x="392" y="197"/>      
+      </attribute>      
+      <multiplicity id="130" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="131">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="132" name="fortification">        
+        <position height="18" width="64" x="524" y="452"/>      
+      </attribute>      
+      <multiplicity id="133" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="134">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="135" name="mpc"/>      
+      <multiplicity id="136" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="137">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="138" name="maincr"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="140">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="141" name="csr"/>      
+      <multiplicity id="142" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="143">    
+    <bendpoint x="1951" y="176"/>    
+    <bendpoint x="1951" y="305"/>    
+    <bendpoint x="1951" y="425"/>    
+    <bendpoint x="1951" y="531"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="144" name="CurrentPlayer"/>      
+      <multiplicity id="145" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="146">    
+    <bendpoint x="743" y="649"/>    
+    <bendpoint x="743" y="810"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="147">    
+    <bendpoint x="1547" y="176"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="148" name="PlayerInfo"/>      
+      <multiplicity id="149" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="150">    
+    <bendpoint x="1972" y="176"/>    
+    <bendpoint x="1972" y="305"/>    
+    <bendpoint x="1972" y="425"/>    
+    <bendpoint x="1972" y="531"/>    
+    <bendpoint x="1972" y="649"/>    
+    <bendpoint x="1972" y="810"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="151" name="PlayerNeighbours"/>      
+      <multiplicity id="152" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <bendpoint x="764" y="649"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="154" name="MapData"/>      
+      <multiplicity id="155" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="156">    
+    <bendpoint x="1342" y="176"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="157" name="controls"/>      
+      <multiplicity id="158" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="159">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="160" name="attack">        
+        <position height="18" width="39" x="533" y="468"/>      
+      </attribute>      
+      <multiplicity id="161" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="163" name="Neighbours"/>      
+      <multiplicity id="164" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="165">    
+    <bendpoint x="785" y="649"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="166" name="MapNode"/>      
+      <multiplicity id="167" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="168">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="169" name="crc"/>      
+      <multiplicity id="170" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="171">    
+    <bendpoint x="493" y="425"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="172" name="map"/>      
+      <multiplicity id="173" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="174">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="175" name="existingMapModifier"/>      
+      <multiplicity id="176" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="177">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="178" name="PlayerNeighbours"/>      
+      <multiplicity id="179" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="180">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="181" name="controlc"/>      
+      <multiplicity id="182" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="183">    
+    <bendpoint x="766" y="176"/>    
+    <bendpoint x="514" y="305"/>    
+    <bendpoint x="535" y="425"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="184" name="map"/>      
+      <multiplicity id="185" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="186">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <dependency id="187">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <association id="188">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="189" name="mpc"/>      
+      <multiplicity id="190" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="191">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="192" name="messageWindow"/>      
+      <multiplicity id="193" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="194">    
+    <bendpoint x="556" y="305"/>    
+    <bendpoint x="556" y="425"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="195" name="map"/>      
+      <multiplicity id="196" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="197">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="198" name="AllContinents"/>      
+      <multiplicity id="199" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="200">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="201" name="controller">        
+        <position height="18" width="53" x="367" y="219"/>      
+      </attribute>      
+      <multiplicity id="202" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="203">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="204" name="reinforcement">        
+        <position height="18" width="77" x="528" y="485"/>      
+      </attribute>      
+      <multiplicity id="205" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="206">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="207" name="ecm"/>      
+      <multiplicity id="208" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="209">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="210">    
+    <bendpoint x="535" y="305"/>    
+    <bendpoint x="514" y="425"/>    
+    <bendpoint x="514" y="531"/>    
+    <bendpoint x="514" y="649"/>    
+    <bendpoint x="514" y="810"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="211">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="212" name="MapExists"/>      
+      <multiplicity id="213" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="214">    
+    <bendpoint x="1620" y="176"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="215" name="pic"/>      
+      <multiplicity id="216" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="217">    
+    <bendpoint x="1486" y="810"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="218" name="PlayerCountries"/>      
+      <multiplicity id="219" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="220">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <classifier-display autosize="true" stereotype="false" package="true" initial-value="true" signature="false" 
+    sort-features="false" accessors="true" visibility="false">    
+    <attributes public="false" package="false" protected="false" private="false" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="false" multiplicity="false"/>
+</class-diagram>

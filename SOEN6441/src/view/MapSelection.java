@@ -51,9 +51,9 @@ public class MapSelection {
 		OpenMapFile.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 15));
 		jp.add(OpenMapFile);
 		
-		//jf.setSize(200,200);
+		
 		jf.setVisible(true);
-		//jf.setLocationRelativeTo(null);
+		
 		
 	}
 	/**

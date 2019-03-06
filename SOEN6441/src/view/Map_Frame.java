@@ -116,7 +116,7 @@ public class Map_Frame extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				ActionChoosen = "new";
 				frame.setVisible(true);
-				System.out.println("Make New Map ..here");
+				
 				objct.mapNewActions();
 				
 				//define this method in Edit_create_Map_Controller
@@ -132,21 +132,10 @@ public class Map_Frame extends JFrame {
 		gbc_NewMap.gridx = 4;
 		gbc_NewMap.gridy = 5;
 		contentPanel.add(NewMap, gbc_NewMap);
-		//JLabel chooseOne = new JLabel("Select one of the following...");
-		//chooseOne.setFont(new Font("Tahoma", Font.ITALIC, 25));
-		//chooseOne.setForeground(Color.WHITE);	
-		//GridBagConstraints gbc_chooseOne = new GridBagConstraints();
-		//gbc_chooseOne.fill = GridBagConstraints.VERTICAL;
-		//gbc_chooseOne.gridwidth = 3;
-		//gbc_chooseOne.insets = new Insets(0, 0, 5, 0);
-		//gbc_chooseOne.gridx = 4;
-		//gbc_chooseOne.gridy = 4;
-		//contentPanel.add(chooseOne, gbc_chooseOne);
 		
 		GridBagConstraints gbc_ExistingMap = new GridBagConstraints();
 		gbc_ExistingMap.fill = GridBagConstraints.HORIZONTAL;
 		gbc_ExistingMap.gridwidth = 2	;
-		//gbc_NewMap.gridheight=4;
 		gbc_ExistingMap.insets = new Insets(0, 0, 2, 2);
 		gbc_ExistingMap.gridx = 4;
 		gbc_ExistingMap.gridy = 4;

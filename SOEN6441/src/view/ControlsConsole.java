@@ -250,7 +250,7 @@ public class ControlsConsole extends JPanel {
 							neighborList.toArray(new String[neighborList.size()]));
 				}
 			}
-		});
+		});    
 
 		/**
 		 * Sets Action Listeners for play move button

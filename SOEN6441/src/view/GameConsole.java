@@ -91,28 +91,28 @@ public class GameConsole extends JFrame  {
         contentPane.add(drc);
         contentPane.add(csc);
         contentPane.add(controlc);
-    	/*Map Console constraints.*/
+    	
         layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.WEST, contentPane);
         layout.putConstraint(SpringLayout.EAST, mpc, 0,  SpringLayout.EAST, csc);
         layout.putConstraint(SpringLayout.NORTH, mpc, 5, SpringLayout.NORTH, contentPane);
         layout.putConstraint(SpringLayout.SOUTH, mpc, -5,  SpringLayout.NORTH, csc);
         
-        /*Player console constraints.*/
+       
         layout.putConstraint(SpringLayout.WEST,drc, 5,  SpringLayout.EAST, mpc);
         layout.putConstraint(SpringLayout.NORTH, drc, 5, SpringLayout.NORTH, contentPane);
         layout.putConstraint(SpringLayout.SOUTH, drc, 0, SpringLayout.SOUTH, mpc);
         layout.putConstraint(SpringLayout.EAST, drc, -5, SpringLayout.WEST, plc);
         
-        /*diceConsole constraints.*/
+       
         layout.putConstraint(SpringLayout.EAST, plc, -5,  SpringLayout.EAST, contentPane);
         layout.putConstraint(SpringLayout.NORTH,plc, 5, SpringLayout.NORTH, contentPane);
         layout.putConstraint(SpringLayout.SOUTH, plc, 0, SpringLayout.SOUTH, drc);
         
-        /*cardsConsole constraints.*/
+        
         layout.putConstraint(SpringLayout.WEST, csc, 5,  SpringLayout.WEST, contentPane);
         layout.putConstraint(SpringLayout.SOUTH, csc, -5, SpringLayout.SOUTH, contentPane);
         
-        /*controlsConsole constraints.*/
+       
         layout.putConstraint(SpringLayout.WEST, controlc, 5,  SpringLayout.EAST, csc);
         layout.putConstraint(SpringLayout.EAST, controlc, -5,  SpringLayout.EAST, contentPane);
         layout.putConstraint(SpringLayout.NORTH, controlc, 0, SpringLayout.NORTH, csc);

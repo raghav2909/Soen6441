@@ -65,13 +65,12 @@ public class Map_Frame extends JFrame {
 		Map_Frame frame = this;
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		//this.setBackground(Color.DARK_GRAY);
-		//this.setSize(200, 200);
+		
 
 		setBounds(80, 80, 460, 240);
 		contentPanel = new JPanel();
 		contentPanel.setBackground(new Color(0, 0, 255));
-		//contentPanel.setSize(800, 800);
+		
 		contentPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
 		setContentPane(contentPanel);
 		GridBagLayout Global_Pane = new GridBagLayout();
@@ -95,17 +94,7 @@ public class Map_Frame extends JFrame {
 		Map_Editor.setBackground(Color.BLACK);
 		contentPanel.add(Map_Editor, Global_Pane_contents);
 
-		/*GridBagConstraints global_Choose_Label = new GridBagConstraints();
-		global_Choose_Label.gridheight = 5;
-        global_Choose_Label.gridwidth = 7;
-        global_Choose_Label.insets = new Insets(0, 0, 2, 2);
-        global_Choose_Label.gridx = 1;
-		global_Choose_Label.gridy = 1;
-		JLabel Choose_Label = new JLabel("Select:  	Edit an existing map or "
-				+ "create New map for  Game.");
-		Choose_Label.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC|Font.PLAIN, 25));
-		Choose_Label.setForeground(Color.WHITE);	
-		contentPanel.add(Choose_Label, global_Choose_Label);*/
+
 
 		NewMap = new JButton("Create New Map");
 		NewMap.setToolTipText("Click here for creating new map");
@@ -119,7 +108,6 @@ public class Map_Frame extends JFrame {
 				
 				objct.mapNewActions();
 				
-				//define this method in Edit_create_Map_Controller
 			}
 		});
 

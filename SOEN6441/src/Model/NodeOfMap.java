@@ -46,7 +46,6 @@ public class NodeOfMap {
 	 */
 	
 	public ArrayList<NodeOfCountry>getClst() {
-		//NodeOfCountry[] clist=this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);;
 		return countrylist;
 	}
 	
@@ -63,7 +62,7 @@ public class NodeOfMap {
 	 */
 	
 	public NodeOfCountry[] getCountries(){
-		//return this.countrylist;
+
 		return this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);
 		
 	}

@@ -60,7 +60,7 @@ public class MapExist extends JFrame{
  * This method will help to initialize the contents of the frame
  */
 	private void start() {
-		// TODO Auto-generated method stub
+	
 		this.setTitle("Existing Map");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(80, 80, 450, 310);

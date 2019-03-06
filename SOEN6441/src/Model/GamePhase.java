@@ -40,7 +40,6 @@ public class GamePhase {
 	 * @param string takes the name of phase as string.
 	 */
 	public GamePhase(String phaseip) {
-		// TODO Auto-generated constructor stub
 		this.phasename = phaseip;
 
 	}

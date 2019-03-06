@@ -52,7 +52,7 @@ public class Map extends Observable
 		
 		    ReadMap Reader = new ReadMap();
 			MapData = Reader.mapreader(FileName);
-			System.out.println(MapData);
+			
 		 
 	}
 	

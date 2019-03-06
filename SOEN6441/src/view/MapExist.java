@@ -19,8 +19,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import Model.NodeOfMap;
-//import model.MapNode;
-//import view.mapeditor.mapEditorController;
+
 
 /**This class opens jframe to open map file 
  * @author raghavsharda

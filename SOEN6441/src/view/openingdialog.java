@@ -152,7 +152,7 @@ public class openingdialog {
 				ecm = new Edit_create_Map_Controller();
 				 ecm.tobegin();
 				
-		System.out.println("hello1");
+		
 		}
 	
 	});

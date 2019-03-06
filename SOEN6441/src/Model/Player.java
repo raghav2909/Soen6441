@@ -79,7 +79,7 @@ public class Player
     	      this.PlayerCountries.addAll(node.getCountryList());
     	         	   
        }
-        System.out.println("hey "+PlayerCountries.toString());
+        System.out.println("Player countries"+PlayerCountries.toString());
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
         this.PlayerArmies = Narmies;
@@ -127,14 +127,14 @@ public class Player
      * @return List Of Countries Name
      */
     public String[] getNameOfCountries()
-    {   //this.PlayerCountries = new ArrayList<NodeOfCountry>();
+    {   
     	
         String[] Names = new String [this.PlayerCountries.size()];
     
         	for(int i=0;i<Names.length;i++)
         {
             Names[i] = this.PlayerCountries.get(i).getNameOfCountry();
-           // System.out.println("India");
+           
             
         }
         return Names;

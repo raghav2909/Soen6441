@@ -261,11 +261,9 @@ public class ControlsConsole extends JPanel {
 				if (isNeighbourSelected()) {
 					String countrySelected = (String) SelectedCountry();
 					int selectedArmies = ValueOfArmies();
-					// NodeOfCountry countrySelect = NodeOfCountry.getCountry(pla,countrySelected));
+					
 					NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
 					String neighbourSelected = getNeighborSelected();
-					System.out.println("ROHIT " + countrySelect + "neighbourSelected" + neighbourSelected
-							+ "selectedArmies" + selectedArmies);
 					shiftArmiesOnReinforcement(countrySelect, selectedArmies);
 				}
 				GD.ChangePhase();

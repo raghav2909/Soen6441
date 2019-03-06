@@ -92,7 +92,6 @@ public class Player
      * constructor of class
      */
    public Player() {
-		// TODO Auto-generated constructor stub
 	}
    
 	/**

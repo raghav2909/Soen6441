@@ -45,7 +45,7 @@ public class MapConsole extends JPanel implements Observer {
 	/**
 	 * boolean variable
 	 */
-//	private boolean graphicalMap = false;
+
 	
 	private boolean mapgraph = false;
 	
@@ -54,7 +54,7 @@ public class MapConsole extends JPanel implements Observer {
 	 * @param mapimage location of map file
 	 */
 	public MapConsole(String mapimage) {
-		// TODO Auto-generated constructor stub
+	
 
 		if(mapimage!=null)
 		{
@@ -125,7 +125,7 @@ public class MapConsole extends JPanel implements Observer {
 	 * Set dimension of main frame
 	 */
 	public MapConsole() {
-		// TODO Auto-generated constructor stub
+	
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 	
@@ -191,7 +191,6 @@ public class MapConsole extends JPanel implements Observer {
 	 */
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
 		if(mapgraph){
 			setCoordinates(map.GetMapInfo());
 		}else{

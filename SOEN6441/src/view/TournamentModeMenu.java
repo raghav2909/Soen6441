@@ -35,9 +35,6 @@ public class TournamentModeMenu extends JFrame {
          public String map4fromFile="";
 
          public String[] str1 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-//         public String[] str2 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-//         public String[] str3 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
-//         public String[] str4 = {"Nothing", "Aggressive", "Benevolent", "Random", "Cheater"};
          public JComboBox tournamentstr1 = new JComboBox(str1);
          public JComboBox tournamentstr2 = new JComboBox(str1);
          public JComboBox tournamentstr3 = new JComboBox(str1);
@@ -141,12 +138,8 @@ private JPanel mapSelector() {
     mapSelectionPanel.add(map4, grid_bag_cons);
     grid_bag_cons.gridx = 5;
     grid_bag_cons.gridy = 1;
-
-
-    //  Labels on mapSelectionPanel1
     grid_bag_cons.gridx = 1;
     grid_bag_cons.gridy = 2;
-
     mapSelectionPanel.add(mapLabel1, grid_bag_cons);
     grid_bag_cons.gridx = 2;
     grid_bag_cons.gridy = 2;

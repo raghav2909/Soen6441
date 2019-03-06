@@ -167,7 +167,6 @@ public class GameDriver {
 	 */
 	@SuppressWarnings("deprecation")
 	public void SetConsolMap(MapConsole view) {
-		// map = new Map();
 		map.addObserver(view);
 	}
 
@@ -261,7 +260,7 @@ public class GameDriver {
 	 */
 	public int getArmyCount() {
 		return getCurrent().getCountArmies();
-		// return 40;
+		
 	}
 
 	/**
@@ -269,9 +268,9 @@ public class GameDriver {
 	 * 
 	 * @return countries name
 	 */
-	public String[] getPlayerCountriesName() { // String[] X= {"CandaW","hello"};
+	public String[] getPlayerCountriesName() { 
 		return getCurrent().getNameOfCountries();
-		// return X;
+	
 	}
 
 	/**

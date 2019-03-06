@@ -104,7 +104,6 @@ public class the_main_controller {
 		opendialog.chooseplayoredit();
 	}
 	public the_main_controller(String s) {
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * This is parameterized method that instantiated main controller class.
@@ -117,16 +116,6 @@ public class the_main_controller {
 		}
 		return maincr; 
 	}
-	/**
-	 * This function has the methods calls to the two main parts of the game 
-	 * 1. chooseplayoredit
-	 * 2. gameplay
-	 */
-//	public void tostart()
-//	{
-//		chooseplayoredit();
-////		gameplay();
-//	}
 	
 	/**
 	 * Sets Action Listeners for reinforcement controls.
@@ -231,7 +220,6 @@ public void Single_Mode_Start() throws IOException {
 	try {
 		GD.CreateMapObject(foc.map_location("map"));
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	ReadMap rm= new ReadMap();

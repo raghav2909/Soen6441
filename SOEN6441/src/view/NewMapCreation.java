@@ -105,7 +105,7 @@ public class NewMapCreation extends JFrame {
 			setContentPane(MaincontentPane);
 
 			
-//2.
+
 			 addContinentButton = new JButton("New Continent");
 			addContinentButton.setForeground(Color.blue);
 			GridBagConstraints grid_addContinentButton = new GridBagConstraints();
@@ -126,7 +126,7 @@ public class NewMapCreation extends JFrame {
 			grid_createOwnMapLabel.gridx = 0;
 			grid_createOwnMapLabel.gridy = 0;
 			MaincontentPane.add(createOwnMapLabel, grid_createOwnMapLabel);
-//3.
+
 			JLabel continentNameLabel = new JLabel("Continent-Name");
 			continentNameLabel.setForeground(Color.WHITE);
 			GridBagConstraints global_continentNameLabel = new GridBagConstraints();
@@ -135,7 +135,7 @@ public class NewMapCreation extends JFrame {
 			global_continentNameLabel.gridx = 5;
 			global_continentNameLabel.gridy = 4;
 			MaincontentPane.add(continentNameLabel, global_continentNameLabel);
-//4.
+
 			continentNameText = new JTextField();
 			continentNameText.setFont(new Font("Bookman Old Style", Font.ITALIC, 13));
 			continentNameText.setForeground(Color.BLACK);
@@ -149,7 +149,7 @@ public class NewMapCreation extends JFrame {
 			continentNameText.setEnabled(false);
 			MaincontentPane.add(continentNameText, gbc_continentNameText);
 			continentNameText.setColumns(10);
-//5.
+
 			continentControlValueText = new JTextField();
 			continentControlValueText.setFont(new Font("Bookman Old Style", Font.ITALIC, 13));
 			continentControlValueText.setForeground(Color.BLUE);
@@ -162,7 +162,7 @@ public class NewMapCreation extends JFrame {
 			global_continentControlValueText.gridy = 5;
 			MaincontentPane.add(continentControlValueText, global_continentControlValueText);
 			continentControlValueText.setColumns(10);
-//6.
+
 			JLabel controlValueLabel = new JLabel("Control Value");
 			controlValueLabel.setForeground(Color.WHITE);
 			GridBagConstraints gbc_lblValue = new GridBagConstraints();
@@ -171,7 +171,7 @@ public class NewMapCreation extends JFrame {
 			gbc_lblValue.gridx = 5;
 			gbc_lblValue.gridy = 5;
 			MaincontentPane.add(controlValueLabel, gbc_lblValue);
-//7.
+
 			btnComplete = new JButton("Add Continent");
 			btnComplete.setBackground(new Color(240, 255, 255));
 			btnComplete.setFont(new Font("Bookman Old Style", Font.BOLD, 13));
@@ -182,7 +182,7 @@ public class NewMapCreation extends JFrame {
 			global_btnComplete.gridx = 6;
 			global_btnComplete.gridy = 6;
 			MaincontentPane.add(btnComplete, global_btnComplete);
-//8.
+
 			addCountryButton = new JButton("New Country");
 			addCountryButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
 			addCountryButton.setForeground(Color.BLUE);
@@ -193,7 +193,7 @@ public class NewMapCreation extends JFrame {
 			global_addCountryButton.gridx = 1;
 			global_addCountryButton.gridy = 5;
 			MaincontentPane.add(addCountryButton, global_addCountryButton);
-//9.
+
 			continentComboBox = new JComboBox();			/*continent list.*/
 			continentComboBox.setToolTipText("Choose Already Existing Continent to Add New Country");
 			GridBagConstraints global_continentComboBox = new GridBagConstraints();
@@ -203,7 +203,7 @@ public class NewMapCreation extends JFrame {
 			global_continentComboBox.gridx = 2;
 			global_continentComboBox.gridy = 5;
 			MaincontentPane.add(continentComboBox, global_continentComboBox);
-//10.
+
 			JLabel CountryNameLabel = new JLabel("Enter Name of Country");
 			CountryNameLabel.setForeground(Color.WHITE);
 			GridBagConstraints grid_CountryNameLabel = new GridBagConstraints();
@@ -212,7 +212,7 @@ public class NewMapCreation extends JFrame {
 			grid_CountryNameLabel.gridx = 5;
 			grid_CountryNameLabel.gridy = 7;
 			MaincontentPane.add(CountryNameLabel, grid_CountryNameLabel);
-//11.
+
 			countryNameText = new JTextField();
 			countryNameText.setFont(new Font("Bookman Old Style", Font.ITALIC, 13));
 			countryNameText.setForeground(Color.BLUE);
@@ -224,7 +224,7 @@ public class NewMapCreation extends JFrame {
 			grid_countryNameText.gridy = 7;
 			MaincontentPane.add(countryNameText, grid_countryNameText);
 			countryNameText.setColumns(10);
-//12.
+
 			deleteCountryButton = new JButton("Delete Country");
 			deleteCountryButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
 			deleteCountryButton.setForeground(Color.BLUE);
@@ -236,7 +236,7 @@ public class NewMapCreation extends JFrame {
 			grid_deleteCountryButton.gridy = 8;
 			MaincontentPane.add(deleteCountryButton, grid_deleteCountryButton);
 
-//13.
+
 			/**
 			 * includes list of countries to be deleted
 			 */
@@ -249,7 +249,6 @@ public class NewMapCreation extends JFrame {
 			grid_countryListCombobox.gridx = 2;
 			grid_countryListCombobox.gridy = 8;
 			MaincontentPane.add(countryListCombobox, grid_countryListCombobox);
-//14.
 			addButton = new JButton("Click to Add Country");			/*adding countries*/
 			addButton.setBackground(new Color(240, 255, 255));
 			addButton.setForeground(Color.BLUE);
@@ -260,7 +259,7 @@ public class NewMapCreation extends JFrame {
 			grid_addButton.gridx = 6;
 			grid_addButton.gridy = 8;
 			MaincontentPane.add(addButton, grid_addButton);
-//15.
+
 			deleteContinentButton = new JButton("Delete Continent");			/*deleting continent*/
 			deleteContinentButton.setBackground(new Color(240, 255, 255));
 			deleteContinentButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
@@ -271,7 +270,7 @@ public class NewMapCreation extends JFrame {
 			grid_deleteContinentButton.gridx = 1;
 			grid_deleteContinentButton.gridy = 11;
 			MaincontentPane.add(deleteContinentButton, grid_deleteContinentButton);
-//16.
+
 			/**
 			 * includes list of continents to be deleted 
 			 */
@@ -284,7 +283,7 @@ public class NewMapCreation extends JFrame {
 			grid_continentDeletionComboBox.gridy = 11;
 
 			MaincontentPane.add(continentDeletionComboBox, grid_continentDeletionComboBox);
-//17.
+
 			addNeighboursButton = new JButton("Choose Neighbours to add");
 			addNeighboursButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
 			addNeighboursButton.setForeground(Color.BLUE);
@@ -294,7 +293,7 @@ public class NewMapCreation extends JFrame {
 			gbc_btnAddNeighbours.gridx = 1;
 			gbc_btnAddNeighbours.gridy = 14;
 			MaincontentPane.add(addNeighboursButton, gbc_btnAddNeighbours);
-//18.
+
 			/**
 			 * include list of neighbours to be included
 			 */
@@ -307,7 +306,7 @@ public class NewMapCreation extends JFrame {
 			grid_countriesComboBox.gridy = 14;
 			countriesComboBox.setEnabled(true);
 			MaincontentPane.add(countriesComboBox, grid_countriesComboBox);
-//19.
+
 			GridBagConstraints grid_chooseNeighbourLabel = new GridBagConstraints();
 			grid_chooseNeighbourLabel.insets = new Insets(0, 0, 5, 5);
 			grid_chooseNeighbourLabel.gridx = 1;
@@ -331,7 +330,7 @@ public class NewMapCreation extends JFrame {
 		
 			MaincontentPane.add(scrollPane, grid_list);
 			list.setEnabled(false);
-//20.
+
 			GridBagConstraints grid_neighboutchooseButton = new GridBagConstraints();
 			grid_neighboutchooseButton.anchor = GridBagConstraints.EAST;
 			grid_neighboutchooseButton.insets = new Insets(0, 0, 5, 5);
@@ -342,7 +341,7 @@ public class NewMapCreation extends JFrame {
 			neighbourChooseButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 12));
 	
 			MaincontentPane.add(neighbourChooseButton, grid_neighboutchooseButton);
-			//21. newly added
+			
 			DeleteNeighboursButton = new JButton("Delete Neighbours");
 			DeleteNeighboursButton.setForeground(Color.BLUE);
 			DeleteNeighboursButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
@@ -353,7 +352,7 @@ public class NewMapCreation extends JFrame {
 			gbc_btnDeleteNeighbours.gridx = 1;
 			gbc_btnDeleteNeighbours.gridy = 20;
 			MaincontentPane.add(DeleteNeighboursButton, gbc_btnDeleteNeighbours);
-			//22.Newly Added
+			
 			comboBox_4 = new JComboBox();
 			GridBagConstraints gbc_comboBox_4 = new GridBagConstraints();
 			gbc_comboBox_4.insets = new Insets(0, 0, 5, 5);
@@ -361,7 +360,7 @@ public class NewMapCreation extends JFrame {
 			gbc_comboBox_4.gridx = 2;
 			gbc_comboBox_4.gridy = 20;
 			MaincontentPane.add(comboBox_4, gbc_comboBox_4);
-			//23. newly added
+			
 			NeighboursOfSelectedLabel = new JLabel("Neighbours of selected country");
 			NeighboursOfSelectedLabel.setForeground(Color.WHITE);
 			NeighboursOfSelectedLabel.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
@@ -370,7 +369,7 @@ public class NewMapCreation extends JFrame {
 			gbc_lblNeighboursOfSelected.gridx = 1;
 			gbc_lblNeighboursOfSelected.gridy = 22;
 			MaincontentPane.add(NeighboursOfSelectedLabel, gbc_lblNeighboursOfSelected);
-			//24. newly added
+			
 			model1 = new DefaultListModel<String>();
 			list1 = new JList();
 			list1.setModel(model1);
@@ -383,7 +382,7 @@ public class NewMapCreation extends JFrame {
 			gbc_list_1.gridy = 22;
 			MaincontentPane.add(list1, gbc_list_1);
 			list1.setEnabled(false);
-			//25. 
+			 
 			DeleteSelectedNeighbours = new JButton("Delete selected neighbours");
 			DeleteSelectedNeighbours.setForeground(Color.BLUE);
 			DeleteSelectedNeighbours.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 12));
@@ -541,7 +540,7 @@ public class NewMapCreation extends JFrame {
 		public void addActionsToSaveMapButton(ActionListener newAction) {
 			saveMapButton.addActionListener(newAction);
 		}
-//newly added
+
 		public void addActionstoDeleteNeighboursButton(ActionListener newAction) {
 			DeleteNeighboursButton.addActionListener(newAction);
 		}
@@ -566,7 +565,7 @@ public class NewMapCreation extends JFrame {
 		 * gets list of selected neighbors to delete.
 		 * @return list of selected neighbors for deletion.
 		 */
-		//need to check this method in other classes
+		
 		public List getNeighboursList_1() {
 			return (list1.getSelectedValuesList());
 		}

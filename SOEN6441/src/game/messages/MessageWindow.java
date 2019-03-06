@@ -9,7 +9,7 @@ package game.messages;
 	/** 
 	 * Message notification window 
 	 * @author Gursharan
-	 *
+	 *@version 1.0
 	 */
 	public class MessageWindow extends JFrame {
 
@@ -40,7 +40,6 @@ package game.messages;
 	        this.add(scroll);
 	        setLocationRelativeTo(null);
 
-	        // pack(); // ignore sizing
 	        setLocationRelativeTo(null);
 	        setVisible(false);
 	    }

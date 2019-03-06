@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * class creates the dice roll view on main game window
  * @author raghavsharda
  * @author Harman
- *
+ *@version 1.0
  */
 public class DiceRollConsole extends JPanel {
 	

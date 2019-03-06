@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * This is class is used for storing the data of country
  * @author samansoltani
- * version 1.0
+ * @version 1.0
  */
 
 public class NodeOfCountry 
@@ -14,44 +14,45 @@ public class NodeOfCountry
 	/**
 	 * Save the country name
 	 */
-	private String CountryName;
 	
+	private String CountryName;
 	/**
 	 * Save country neighbours
 	 */
-	private ArrayList<NodeOfCountry> Neighbours;
 	
+	private ArrayList<NodeOfCountry> Neighbours;
 	/**
 	 * Save the country coordinates with 1 and 0 index in x and y 
 	 */
-	private int[] Coordinate;
 	
+	private int[] Coordinate;
 	/**
 	 * Save the player name who owns the country
 	 */
-	private Player PlayerCountry;
 	
+	private Player PlayerCountry;
 	/**
 	 * Save the number of armies in this country
 	 */
-	private int Armies;
 	
+	private int Armies;
 	/**
 	 * Save the neighbours of player
 	 */
-	private ArrayList<NodeOfCountry> PlayerNeighbours;
 	
+	private ArrayList<NodeOfCountry> PlayerNeighbours;
 	/**
 	 * Save the name of neighbours f player
 	 */
-	private ArrayList<String> PlayerNeighboursName;
 	
+	private ArrayList<String> PlayerNeighboursName;
 	/**
 	 * Set up country 
 	 * @param name name of country
 	 * @param neighbor neighbour countries
 	 * @param coordinate coordinate of the country
 	 */
+	
 	public NodeOfCountry (String name , ArrayList<NodeOfCountry> neighbour , int[] coordinate)
 	{
 		this.CountryName = name;
@@ -60,11 +61,11 @@ public class NodeOfCountry
 		this.PlayerCountry = null;
 		this.Armies = 0;
 	}
-	
 	/**
 	 * Give the name of country
 	 * @return the name of country
 	 */
+	
 	public String getNameOfCountry()
 	{
 		return this.CountryName;
@@ -79,6 +80,7 @@ public class NodeOfCountry
 		return this.Neighbours;
 	}
 	
+	
 	/**
 	 * give a list of neighbours country
 	 * @return Array of countries
@@ -89,6 +91,7 @@ public class NodeOfCountry
 	    return this.Neighbours.toArray(new NodeOfCountry[this.Neighbours.size()]);
 		return null;
 	}
+	
 	
 	/**
 	 * Save a list of neighbour countries of a country
@@ -121,7 +124,6 @@ public class NodeOfCountry
 	 {
 		 return this.PlayerCountry;
 	 }
-	
 	 /**
 	  * Save the number of armies in the country
 	  * @return number of armies 
@@ -130,7 +132,6 @@ public class NodeOfCountry
 	 {
 		 return this.Armies;
 	 }
-	 
 	 /**
 	  * Sets owner
 	  * @param player 
@@ -140,7 +141,6 @@ public class NodeOfCountry
 		 this.PlayerCountry = player;
 		 player.AddCountry(this);
 	 }
-	 
 	 /**
 	  * places armies in the country
 	  * @param armies number of armies
@@ -149,7 +149,6 @@ public class NodeOfCountry
 	 {
 		 this.Armies = armies;
 	 }
-	 
 	 /**
 	  * Add armies to the  country
 	  * @param NewArmy number of armies
@@ -158,7 +157,6 @@ public class NodeOfCountry
 	 {
 		 this.Armies += NewArmy;
 	 }
-	 
 	 /**
 	  * Add new neighbour
 	  * @param NewNieghbour 
@@ -175,8 +173,7 @@ public class NodeOfCountry
 			 NewNeighbour.AddNeighbour(this);
 		 }
 	 }
-	 
-	 /**
+	  /**
 	   * checking for same countries 
 	   * @param C country
 	   * @return true or false
@@ -199,7 +196,6 @@ public class NodeOfCountry
 		 }
 		 return false;
 	 }
-	 
 	 /**
 	  * checking for arraylist contains country
 	  * @param list ArrayList list of countries
@@ -217,7 +213,6 @@ public class NodeOfCountry
 		 }
 		 return false;
 	 }
-	 
 	 /**
 	  * getting a country using name
 	  * @param list ArrayList of countries
@@ -235,7 +230,6 @@ public class NodeOfCountry
 		 }
 		 return null;
 	 }
-	 
 	 /**
 	  * Set coordinate of country
 	  * @param NewCoo new coordinate
@@ -244,7 +238,6 @@ public class NodeOfCountry
 	 {
 		 this.Coordinate =NewCoo;
 	 }
-	 
 	 /**
 	  * give a ArrayList of neighbours of country with same player
 	  * @return PlayerNeighbours ArrayList
@@ -261,7 +254,6 @@ public class NodeOfCountry
 		 }
 		 return PlayerNeighbours;
 	 }
-	 
 	 /**
 	  * give a ArrayList of name of neighbours of country with same player
 	  * @return PlayerNeighboursName List
@@ -275,12 +267,8 @@ public class NodeOfCountry
 		 }
 		 return PlayerNeighboursName;
 	 }
-	
-	 /**
-	  * gets the owner of country
-	  * @return player name
-	  */
-	 public Player getOwner() {
+	public Player getOwner() {
+		
 		return this.PlayerCountry;
 	}
 }

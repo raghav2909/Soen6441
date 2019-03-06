@@ -2,26 +2,30 @@ package Model;
 
 import java.util.ArrayList;
 
+
 /**
  * Map data is updated/stored using this class
  * @author YashNarra
- * version 1.0
+ * @version 1.0
  */
 public class NodeOfMap {
 	
 	/**
 	 * String of the name of continent
 	 */
+	
 	private String Continent; 
 	
 	/**
 	 * ArrayList of countries of a continent
 	 */
+	
 	private ArrayList<NodeOfCountry> countrylist;
 	
 	/**
 	 * Integer Control Value for a continent
 	 */
+	
 	private int ControlValue;
 	
 	/** Constructor of NodeOfMap
@@ -30,6 +34,7 @@ public class NodeOfMap {
 	 * @param newcountrylist list of countries in the continent
 	 * @param newcv control value of the continent
 	 */
+	
 	public NodeOfMap(String name, ArrayList<NodeOfCountry> newcountrylist, int newcv) {
 		this.Continent=name;
 		this.countrylist=newcountrylist;
@@ -39,6 +44,7 @@ public class NodeOfMap {
 	/**method to return array of countries in a continent
 	 * @return clsit array of countries
 	 */
+	
 	public ArrayList<NodeOfCountry>getClst() {
 		//NodeOfCountry[] clist=this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);;
 		return countrylist;
@@ -55,16 +61,13 @@ public class NodeOfMap {
 	/**method to return arraylist of countries in a continent 
 	 * @return countrylist list of countries
 	 */
+	
 	public NodeOfCountry[] getCountries(){
 		//return this.countrylist;
 		return this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);
 		
 	}
 	
-	/**
-	 * gets the list of countries
-	 * @return countrylist
-	 */
 	public ArrayList<NodeOfCountry> getCountryList(){
 		return this.countrylist;
 	}
@@ -72,6 +75,7 @@ public class NodeOfMap {
 	/** method to get the control value of a continent
 	 * @return ContolValue control value of a continent
 	 */
+	
 	public int getControlValue() {
 		return this.ControlValue;
 	}
@@ -99,8 +103,10 @@ public class NodeOfMap {
 	 * Method to assign list of countries to a continent
 	 * @param newCountries arraylist containing countries
 	 */
+	
 	public void setCountries(ArrayList<NodeOfCountry> newCountries) {
 		ArrayList<NodeOfCountry> ncountries= newCountries; 
+		
 		this.countrylist=ncountries;	
 	}
 
@@ -109,4 +115,9 @@ public class NodeOfMap {
 		return "NodeOfMap [Continent=" + Continent + ", countrylist=" + countrylist + ", ControlValue=" + ControlValue
 				+ "]";
 	}
+	
+		
 }
+	
+
+

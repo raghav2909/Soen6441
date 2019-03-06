@@ -17,7 +17,11 @@ import org.junit.Test;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.Player;
-
+/**
+ * 
+ * @verison 1.0
+ *
+ */
 public class FortificationTest {
 	ArrayList<String> RealNeighboursOfOwner;
 	ControlsConsole controller = new ControlsConsole();

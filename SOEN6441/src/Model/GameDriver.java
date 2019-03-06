@@ -26,10 +26,6 @@ public class GameDriver {
 	 * the game driver class object
 	 */
 	private static GameDriver driver;
-	
-	/**
-	 * object of player class
-	 */
 	public static Player play;
 
 	/**
@@ -107,11 +103,11 @@ public class GameDriver {
 	public void StartUpPhase() {
 
 		String[] NewPlayer = Player_Information_Controller.Information_OF_Playres();
-		System.out.println("starting up");
+		
 		Player = new ArrayList<Player>();
 		for (String np : NewPlayer) {
 
-			// System.out.println(NewPlayer.length);
+			
 			Player.add(new Player(np, ArmyCount.getarmycount(NewPlayer.length), map.GetMapData()));
 			System.out.println(Player.toString());
 		}
@@ -136,17 +132,17 @@ public class GameDriver {
 
 				} else {
 					l = pic.ArmyPlacing(p.getNameOfCountries());
-					System.out.println("wokring2");
+				
 
 				}
 				p.getCountry(l).AddArmy(1);
 
-				System.out.println(l);
+			
 
 			}
 
 		}
-		// map = new Map();
+		
 		map.UpdateMap();
 		play = Player.get(0);
 		CurrentPhase = new GamePhase("reinforcement");
@@ -155,7 +151,9 @@ public class GameDriver {
 	}
 
 	/**
-	 * Sets PlayerInfo view.
+	 * 
+	 * /** Sets PlayerInfo view.
+	 * 
 	 * @param newView PlayerInfoView object initialized.
 	 */
 	public void setPlayerConsole(PlayerConsole newView) {
@@ -164,6 +162,7 @@ public class GameDriver {
 
 	/**
 	 * set up the map view
+	 * 
 	 * @param NewGUI the object of map view
 	 */
 	@SuppressWarnings("deprecation")
@@ -174,6 +173,7 @@ public class GameDriver {
 
 	/**
 	 * set up the controls view
+	 * 
 	 * @param cv the object of control view
 	 */
 	public void SetConsolControl(ControlsConsole cv) {
@@ -190,23 +190,29 @@ public class GameDriver {
 			PlayerNames[i] = p.getPlayerName();
 			i++;
 		}
+
+		
+
 		PlayerInfo.setPlayerData(PlayerNames);
+
 	}
 
 	/**
 	 * getting the player with the correct turn
+	 * 
 	 * @return current player
 	 */
 	public Player getCurrent() {
+	
 		System.out.println(Player);
 		for (Player p : Player) {
-			System.out.println("fdgagsdf" + Player);
+			
 			if (p.getTurn()) {
-				System.out.println("fdgagsdf" + p.toString());
+			
 				return p;
 			}
 		}
-		System.out.println("fdgagsdf");
+	
 		return null;
 	}
 
@@ -225,15 +231,17 @@ public class GameDriver {
 
 	/**
 	 * getting object of map class
+	 * 
 	 * @param Path save the map path
 	 */
 	public void CreateMapObject(String Path) throws IOException {
-		System.out.println(" gamedriver   " + Path);
+		
 		map = new Map(Path);
 	}
 
 	/**
 	 * show the country neighbours as a parameter
+	 * 
 	 * @param cn name of the country
 	 * @return a list containing of country neighbours
 	 */
@@ -248,6 +256,7 @@ public class GameDriver {
 
 	/**
 	 * getting the army count of the player
+	 * 
 	 * @return army count of the current player
 	 */
 	public int getArmyCount() {
@@ -257,6 +266,7 @@ public class GameDriver {
 
 	/**
 	 * getting the name countries of current player
+	 * 
 	 * @return countries name
 	 */
 	public String[] getPlayerCountriesName() { // String[] X= {"CandaW","hello"};
@@ -266,6 +276,7 @@ public class GameDriver {
 
 	/**
 	 * getting the countries of current player
+	 * 
 	 * @return the list of countries
 	 */
 	public ArrayList<NodeOfCountry> getPlayerCountries() {
@@ -274,6 +285,7 @@ public class GameDriver {
 
 	/**
 	 * getting the neighbours of a country
+	 * 
 	 * @param cn the country with nieghbours
 	 * @return list of nirghbours
 	 */
@@ -288,6 +300,7 @@ public class GameDriver {
 
 	/**
 	 * gives the country node of the country
+	 * 
 	 * @param cn name of the country
 	 * @return country node of the given country
 	 */
@@ -309,6 +322,7 @@ public class GameDriver {
 
 	/**
 	 * creating a instance for ControlConsol class
+	 * 
 	 * @return ControlClass instance
 	 */
 	public ControlsConsole getControl() {
@@ -363,6 +377,7 @@ public class GameDriver {
 
 	/**
 	 * getting a list of neighbours of a player
+	 * 
 	 * @param cn country node of the country
 	 * @return array list of neighbours of a player
 	 */
@@ -378,6 +393,7 @@ public class GameDriver {
 
 	/**
 	 * getting a list of neighbours names of a player
+	 * 
 	 * @param cn the country node of the country
 	 * @return name of neighbours of a player
 	 */
@@ -391,6 +407,7 @@ public class GameDriver {
 
 	/**
 	 * adding the new player
+	 * 
 	 * @param np new player
 	 */
 	public void setPlayerList(Player np) {

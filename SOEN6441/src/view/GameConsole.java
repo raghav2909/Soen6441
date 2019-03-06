@@ -17,7 +17,7 @@ import javax.swing.plaf.BorderUIResource;
  *This class is the main view of the front end of the game console where the players will play the game
  *and all other information while playing the game will be displayed.
  * @author raghavsharda
- *
+ *@verison 1.0
  */
 public class GameConsole extends JFrame  {
 	/**

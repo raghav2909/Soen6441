@@ -21,18 +21,18 @@ import view.MapConsole;
 
 import view.PlayerConsole;
 import view.openingdialog;
-
 /**
  * This class is the main controller class which controls the main functioning of the game in the initial phase
  *@author raghavsharda
+ *@version 1.0
  */
+
+
 public class the_main_controller {
-	
 	/** this variable stores reference of class MainController
 	 * 
 	 */
 	private static the_main_controller maincr ;
-	
 	/**
 	 * This action listner for editmap
 	 */
@@ -42,7 +42,6 @@ public class the_main_controller {
 	 * This action listner for playthegame
 	 */
 	private ActionListener playthegame;
-	
 	/**
 	 * This actionlistner for editthemaps
 	 */
@@ -52,37 +51,30 @@ public class the_main_controller {
 	 * ActionListener to add listener to "Add Armies" button.
 	 */
 	private ActionListener addArmiesListner;
-	
 	/**
 	 * CardsConsole Object
 	 */
 	private CardsConsole csr;
-	
 	/**
 	 * ControlsConsole Object
 	 */
 	private ControlsConsole crc;
-	
 	/**
 	 * DiceRollConsole Object
 	 */
 	private DiceRollConsole drc;
-	
 	/**
 	 * MapConsole Object
 	 */
 	private MapConsole mpc;
-	
 	/**
 	 * PlayerConsole Object
 	 */
 	private PlayerConsole plc;
-	
 	/**
 	 * GameDriver Object
 	 */
 	private GameDriver GD;
-	
 	/**
 	 * Player_Information_Controller object
 	 */
@@ -98,34 +90,43 @@ public class the_main_controller {
 	 */
 	openingdialog opendialog;
 
-	/**
-	 * object of map class
-	 */
 	Map map;
 	
 	/**
-	 *  constructor of class
+	 *  constructor
 	 */
+	
 	public the_main_controller()
 	{ 
+		
 		opendialog= new openingdialog();
 		GD = new GameDriver();
-		opendialog.chooseplayoredit();
+		opendialog.start();
 	}
 	public the_main_controller(String s) {
 		// TODO Auto-generated constructor stub
 	}
-	
 	/**
 	 * This is parameterized method that instantiated main controller class.
 	 * @return the_main_Controller object
 	 */
+	
 	public static the_main_controller getInstance() {
 		if(maincr==null) {
 			maincr = new the_main_controller();
 		}
 		return maincr; 
 	}
+	/**
+	 * This function has the methods calls to the two main parts of the game 
+	 * 1. chooseplayoredit
+	 * 2. gameplay
+	 */
+//	public void tostart()
+//	{
+//		chooseplayoredit();
+////		gameplay();
+//	}
 	
 	/**
 	 * Sets Action Listeners for reinforcement controls.
@@ -206,13 +207,6 @@ public class the_main_controller {
 		return neighborList;
 	}
 
-	/**
-	 * gets the armies after they get shifted
-	 * @param countrySelect node of country object
-	 * @param neighbourSelected selected neighbor country name
-	 * @param selectedArmies number of armies selected
-	 * @return
-	 */
 	public int getArmiesShiftedAfterFortification(NodeOfCountry countrySelect, String neighbourSelected, int selectedArmies){
 		NodeOfCountry required = null;
 		countrySelect.SetArmies(countrySelect.getArmyCount()-selectedArmies); 
@@ -227,13 +221,12 @@ public class the_main_controller {
 
 
 
-
-	/**
-	 * select the map file and image file to start game for single mode
-	 * @throws IOException 
-	 */
-	public void Single_Mode_Start() throws IOException {
-	System.out.println("Coming here new game");
+/**
+ * select the map file and image file to start game for single mode
+ * @throws IOException 
+ */
+public void Single_Mode_Start() throws IOException {
+	System.out.println("New Game");
 	foc= new File_open_Controller();
 	try {
 		GD.CreateMapObject(foc.map_location("map"));
@@ -246,10 +239,9 @@ public class the_main_controller {
 	String image_loc = foc.map_location("bmp");
    if(image_loc!=null) {
 		mpc = new MapConsole(image_loc);
-   }else {
+}else {
 		 mpc = new MapConsole();
-   }
-	System.out.println(image_loc);
+}
 
 	mpc = new MapConsole(image_loc);
 	
@@ -259,21 +251,23 @@ public class the_main_controller {
 	plc = new PlayerConsole();
 
 	GameConsole.createInstance(plc, mpc, drc, csr, crc); 
-	System.out.println("working right");
+	
+	
 
     GD.setPlayerConsole(plc);
 	GD.SetConsolMap(mpc);
 	GD.SetConsolControl(crc);
 	GD.GameOn();
+
+
+
+
+
+}
+public void single_Mode_Saved_Start() {
+
+	System.out.println("Saved Mode");
+	
+}
 }
 
-	/**
-	 * starts the saved mode in game
-	 */
-	public void single_Mode_Saved_Start() {
-
-	System.out.println("Coming here saved mode");
-	// TODO Auto-generated method stub
-	//File_open_Controller foc= new File_open_Controller();
-}
-}

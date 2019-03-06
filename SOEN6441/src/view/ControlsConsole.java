@@ -24,7 +24,7 @@ import Model.NodeOfCountry;
 /**
  * class containing methods for various controls in reinforcement and fortification phase
  * @author raghavsharda
- *
+ *@version 1.0
  */
 public class ControlsConsole extends JPanel {
 	/**

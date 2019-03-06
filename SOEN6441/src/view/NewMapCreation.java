@@ -35,6 +35,7 @@ import Model.*;
  * This class opens the view for addition and deletion of continents and countries while creating new map 
  * @author raghavsharda
  *@author Gursharan
+ *@version 1.0
  */
 public class NewMapCreation extends JFrame {
 	/**

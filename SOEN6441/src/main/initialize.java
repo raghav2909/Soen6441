@@ -4,19 +4,17 @@ import javax.swing.SwingUtilities;
 
 import Model.GameDriver;
 import controllers.the_main_controller;
-
 /**
- * This is the main  class from where the game starts by calling the getinstance of main controller class 
- * @author Harman
+ * 
+ * @verison 1.0
  *
  */
 public class initialize {
+
 	
 public static void main(String[] args)
 {
-	/* created the instance of the_main_Controller for future use
-	 * not  commenting it for now */
-	//GameDriver maincr= new GameDriver();
+	
 	
 	SwingUtilities.invokeLater(new Runnable() {
 	 
@@ -26,6 +24,7 @@ public static void main(String[] args)
 		// TODO Auto-generated method stub
 		//GameDriver.getInstance();
 		the_main_controller.getInstance();
+	
 	}
 	});
 }

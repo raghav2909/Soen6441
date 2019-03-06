@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 /**
  * this class creates the cards view on main game window
  * @author raghavsharda
- *
+ *@version 1.0
  */
 public class CardsConsole extends JPanel {
 	/**

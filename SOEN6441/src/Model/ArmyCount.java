@@ -4,10 +4,10 @@ package Model;
  * version 1.0
  */
 public class ArmyCount {
-	
-	/**return army count based on number of players
+	/**
 	 * @param a number of players.
 	 */
+	
 		public static int getarmycount(int a) {
 			int ac=0;
 			if(a==2) {
@@ -24,4 +24,5 @@ public class ArmyCount {
 			}
 			return ac;
 		}
+
 }

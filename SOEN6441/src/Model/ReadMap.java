@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * This class is used to read the map file
  * @author YashNarra
- * version 1.0
+ * @version 1.0
  */
 public class ReadMap{
 	
@@ -90,6 +90,10 @@ public class ReadMap{
 	B.close();
 	F.close();
 	System.out.println(maplist.toString());
-		return maplist;				
+		return maplist;		
+		
 	}
 }
+
+	
+

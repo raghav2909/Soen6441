@@ -16,8 +16,8 @@ import game.messages.MessageWindow;
 
 /**
  * This class provides a menu to go for tournament mode by providing the info asked
- * for Tournament mode maximum 4 players can play
  * @author: Gursharan
+ * for Tournament mode maximum 4 players can play
  * @version 1.0
 */
 

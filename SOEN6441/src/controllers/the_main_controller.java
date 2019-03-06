@@ -212,7 +212,7 @@ public class the_main_controller {
 
 /**
  * select the map file and image file to start game for single mode
- * @throws IOException exception for input output
+ * @throws IOException 
  */
 public void Single_Mode_Start() throws IOException {
 	System.out.println("New Game");

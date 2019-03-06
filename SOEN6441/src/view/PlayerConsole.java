@@ -43,7 +43,7 @@ public class PlayerConsole extends JPanel {
 	
 	/**
 	 * Set the player content.
-	 * @param Names Names of players.
+	 * @param playerNames Names of players.
 	 */
 	public void setPlayerData(String[] Names) {
 		System.out.println(Names);

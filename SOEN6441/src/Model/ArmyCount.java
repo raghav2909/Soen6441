@@ -6,7 +6,6 @@ package Model;
 public class ArmyCount {
 	/**
 	 * @param a number of players.
-	 * @return ac Number of army count
 	 */
 	
 		public static int getarmycount(int a) {

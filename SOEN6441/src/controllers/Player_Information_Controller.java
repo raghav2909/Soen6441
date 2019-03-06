@@ -83,7 +83,7 @@ public class Player_Information_Controller {
 
 	/**
 	 *The countries that are selected to place army
-	 * @param CL List of countries where the player can place armies.
+	 * @param countryList List of countries where the player can place armies.
 	 * @return country name selected.
 	 */
 	public String ArmyPlacing(String[] CL) {

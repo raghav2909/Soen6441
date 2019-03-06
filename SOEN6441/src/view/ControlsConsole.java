@@ -40,7 +40,7 @@ public class ControlsConsole extends JPanel {
 	/**
 	 * creating combo-box for list of countries
 	 */
-	JComboBox<String> ListOfCountries;
+	JComboBox<String> ListOfCountries;  
 	
 	/**
 	 * combo box for neighbor List

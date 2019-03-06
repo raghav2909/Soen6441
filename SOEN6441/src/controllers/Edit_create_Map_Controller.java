@@ -123,9 +123,9 @@ public class Edit_create_Map_Controller {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
-					//mapReader = new Map(); //check the Map file in Model
+					
 					MapExist mapExist = new MapExist(x);
-					// create clss  map exist
+					
 					mapExist.addActionsToBtnEdit(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							mapExist.setVisible(false);// to be defined in MapExist
@@ -544,9 +544,7 @@ public class Edit_create_Map_Controller {
 	{
 		Map_Frame newMapFrame = new Map_Frame();
 		newMapFrame.start();
-		//createnewmap();
-		//editexistingmap();
-		System.out.println("hey coming in edit or create");
+	
 		
 	}
 }

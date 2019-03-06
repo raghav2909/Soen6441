@@ -40,7 +40,7 @@ public class ControlsConsole extends JPanel {
 	/**
 	 * creating combo-box for list of countries
 	 */
-	JComboBox<String> ListOfCountries;
+	JComboBox<String> ListOfCountries;  
 	
 	/**
 	 * combo box for neighbor List
@@ -250,7 +250,7 @@ public class ControlsConsole extends JPanel {
 							neighborList.toArray(new String[neighborList.size()]));
 				}
 			}
-		});
+		});    
 
 		/**
 		 * Sets Action Listeners for play move button

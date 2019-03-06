@@ -43,7 +43,7 @@ public class PlayerTest {
 		
 		NodeOfMap C = new NodeOfMap("Continent1",c,6);
 		MD.add(C);
-		TP = new Player("TestPlayer",0,MD);
+		TP = new Player("TestPlayer",3,MD);
 		TP.AddCountry(c1);
 		TP.AddCountry(c2);
 		TP.AddCountry(c3);

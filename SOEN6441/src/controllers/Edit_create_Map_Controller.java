@@ -528,7 +528,7 @@ public class Edit_create_Map_Controller {
 	
 	/**
 	 * gets instance of class
-	 * @return
+	 * @return ecm
 	 */
 	public static Edit_create_Map_Controller getInstance() {
 		if(ecm==null) {

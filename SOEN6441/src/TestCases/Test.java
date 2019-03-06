@@ -14,6 +14,9 @@ import org.junit.runners.Suite.SuiteClasses;
 	ReinforcementTest.class,
 	TestFileOfMap.class,
 	TestOfMapValidition.class,
+	MapConnected.class,
+	MapContainUnique.class,
+	MapDoesNotContainUnique.class,
 })
 public class Test{
 	

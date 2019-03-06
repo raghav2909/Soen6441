@@ -6,34 +6,27 @@ import java.io.IOException;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import Model.Map;
 /**
- * this test class is testing the validition of a map 
+ * this test class is testing that map containing unique countries
  * @author samansoltani
  *
  */
-public class TestOfMapValidition {
-
+public class MapContainUnique {
 	private Map map;
 	private String FileName;
-	
-	
+
 	@Before
 	public void setUp() throws Exception {
-		
 	}
-	
-	
-	
-	/**
-	 * this test case is checking the map is valid or not
-	 * @throws
-	 */
+
 	@Test
-	public void testMapValid() throws IOException{
-		FileName = ".//SOEN6441//Map_Data//test//MapTest2.map";
+	public void testisMapNodesContainUniqueCountries() throws IOException {
+		FileName = ".//SOEN6441//Map_Data//test//MapTest1.map";
 		map = new Map(FileName);
-		assertFalse(map.MapValid());
+		boolean t = map.isMapNodesContainUniqueCountries();
+		assertTrue(t);
 	}
 
 }

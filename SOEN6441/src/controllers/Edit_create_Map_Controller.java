@@ -120,7 +120,7 @@ public class Edit_create_Map_Controller {
 					try {
 						x = readMap.mapreader(jfc.getSelectedFile().getAbsolutePath());
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
+					
 						e1.printStackTrace();
 					}
 					
@@ -128,19 +128,19 @@ public class Edit_create_Map_Controller {
 					
 					mapExist.addActionsToBtnEdit(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
-							mapExist.setVisible(false);// to be defined in MapExist
-							ArrayList<NodeOfMap> existing_map_Info = mapExist.getMapExistsInfo(); // to pick from MapExist
-							mapEditor.WritingOldMap(existing_map_Info);// to be written in Map
-							existingMapModifier = new ExistingMapModifier(existing_map_Info);// to come from ExistingMapModifier
+							mapExist.setVisible(false);
+							ArrayList<NodeOfMap> existing_map_Info = mapExist.getMapExistsInfo();
+							mapEditor.WritingOldMap(existing_map_Info);
+							existingMapModifier = new ExistingMapModifier(existing_map_Info);
 							existingMapModifier.setVisible(true);
 							ActionOnExistingMap();
 						}
 					});
-					mapExist.setVisible(true);// to be defined in MapExist
+					mapExist.setVisible(true);
 				}
 			}
 		});
-		this.mapselection.openfilebuttonaction(ActionExistingBtn);// in MapSelection need to create class
+		this.mapselection.openfilebuttonaction(ActionExistingBtn);
 	}	
 
 	/**
@@ -200,7 +200,7 @@ public class Edit_create_Map_Controller {
 				String sCountrytToAddNeighbour = mapNew.getSelectedCountriesForNeighbours();
 				mapNew.clearNeighboursJList();
 
-				for (NodeOfMap node : mapEditor.getContinents()){//from Map
+				for (NodeOfMap node : mapEditor.getContinents()){
 					for (NodeOfCountry NodeOfCountry : node.getCountries()){
 						if(sCountrytToAddNeighbour.compareTo(NodeOfCountry.getNameOfCountry())==0)
 							continue;
@@ -528,7 +528,7 @@ public class Edit_create_Map_Controller {
 	
 	/**
 	 * gets instance of class
-	 * @return
+	 * @return ecm
 	 */
 	public static Edit_create_Map_Controller getInstance() {
 		if(ecm==null) {

@@ -194,11 +194,11 @@ public class ControlsConsole extends JPanel {
 
 		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(Neighbours));
 
-		;
 		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(Neighbours));
 
 		this.ListOfNeighbors.setSelectedIndex(0);
 		this.ListOfNeighbors.setEnabled(true);
+		
 		this.Player_Move.setEnabled(true);
 
 	}

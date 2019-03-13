@@ -51,6 +51,18 @@ public class Player
      * List of all continents
      */
     private ArrayList<NodeOfMap> AllContinents;
+
+	private String countrySelected;
+
+	private int armiesMoved;
+
+	private int armiesCount;
+
+	private boolean lost = false;
+
+	private NodeOfCountry SNeighbour;
+
+	private NodeOfCountry SelectedCountry;
     
     /**
      * Set up Player with name
@@ -88,6 +100,19 @@ public class Player
         System.out.println(AllContinents.toString());
     }
     
+    /**
+	 * Initialize player object with name and armies.
+	 * @param name name of the player.
+	 * @param newArmies armies of the player.
+	 */
+	public Player(String name, int armies) {
+		this.PlayerName = name;
+		this.PlayerCountries = new ArrayList<NodeOfCountry>();
+		this.PlayerContinents = new ArrayList<NodeOfMap>();
+		this.Cards = new ArrayList<Card>();
+		this.PlayerArmies = armies;
+		this.AllContinents = new ArrayList<NodeOfMap>();
+	}
     /**
      * constructor of class
      */
@@ -318,4 +343,360 @@ public class Player
     {
     	this.PlayerArmies = NewArmy;
     }
+
+
+/**
+ * This method runs the reinforcement phase
+ */
+public void RPhase(){
+	GameDriver.getInstance().getControl().reinforcementConrols(GameDriver.getInstance().play.getCountArmies(),
+			GameDriver.getInstance().play.getNameOfCountries());
+	  GameDriver.getInstance().setControlListenerForF();
 }
+
+/**
+ * This method runs attack phase.
+ */
+public void APhase(){
+	ArrayList<String> list = new ArrayList<String>();
+	for(NodeOfCountry c : this.PlayerCountries) {
+		if(c.getArmyCount()>1) {
+			for(NodeOfCountry n: c.getNeighbours()) {
+				if(!n.getOwner().equals(this)) {
+					list.add(c.getNameOfCountry());
+					break;
+				}
+			}
+		}
+	}
+	if(list.isEmpty()) {
+		GameDriver.getInstance().ChangePhase();
+	}
+	else {
+		GameDriver.getInstance().getControl().attackControls(list.toArray(new String[list.size()]));
+		GameDriver.getInstance().setAttackListeners();
+	}
+}
+
+/**
+ * This method runs the fortification phase
+ */
+public void FPhase(){
+	ArrayList<String> list = new ArrayList<String>();
+	for(NodeOfCountry c : this.PlayerCountries) {
+		if(c.getArmyCount()>1) {
+			for(NodeOfCountry n: c.getNeighbours()) {
+				if(n.getOwner().equals(this)) {
+					list.add(c.getNameOfCountry());
+					break;
+				}
+			}
+		}
+	}
+	if(list.isEmpty()) {
+		GameDriver.getInstance().ChangePhase();
+	}
+	else {
+		GameDriver.getInstance().getControl().fortificationControls(list.toArray(new String[list.size()]));
+		GameDriver.getInstance().setFortificationLiteners();
+	}
+}
+
+/**
+ * Shifts the armies of the player on each reinforcement.
+ * @param country the country name to which armies are added.
+ * @param armies the number of armies to be reinforced.
+ * @return the army count left for the player.
+ */
+public int shiftArmiesOnReinforcement(String country, int armies) {
+	this.countrySelected = country;
+	this.armiesMoved = armies;
+	getCountry(this.countrySelected).AddArmy(this.armiesMoved);
+	RemovedArmies(this.armiesMoved);
+	return this.armiesCount;
+}
+
+/**
+ * Shifts the armies of the player from one country to another.
+ * @param sCountry the country name from which armies are moved.
+ * @param sNeighbour the country name to which armies are added.
+ * @param selectedArmies the number of armies to be moved.
+ * @return the army count left in sNeighbour country.
+ */
+public int getArmiesShiftedAfterFortification(String Country, String Neighbour, int armies){
+	this.SelectedCountry = getCountry(Country);
+	this.SNeighbour = getCountry(Neighbour);
+	SelectedCountry.SetArmies(SelectedCountry.getArmyCount()-armies);
+	SNeighbour.SetArmies(SNeighbour.getArmyCount() + armies);
+	return SNeighbour.getArmyCount();
+}
+
+/**
+ * Get the country selected to move armies from.
+ * @return country selected to move armies from.
+ */
+public NodeOfCountry getCountrySelected(){
+	return this.SelectedCountry;
+}
+
+/**
+ * Get the neighbour selected to move armies to.
+ * @return neighbour selected to move armies to.
+ */
+public NodeOfCountry getNeighbourSelected(){
+	return this.SNeighbour;
+}
+
+/**
+ * This method calculate the number of dice a player can roo during attack phase
+ * @param country country selected as attacking or attacked
+ * @return number of dice to roll
+ */
+public int selectDiceForAttack(String country) {
+	NodeOfCountry c = getCountry(country);
+	int armies = c.getArmyCount();
+	if(getTurn() && armies>4) {
+		armies = 3;
+	}
+	else if(getTurn()) {
+		armies -= 1;
+	}
+	else if(armies>2) {
+		armies = 2;
+	}
+	return GameDriver.getInstance().setUpBoxInput(1, armies,this.PlayerName+"! Please select number of dice to roll.");
+}
+
+/**
+ * Get the number of countries owned by player.
+ * @return number of countries owned by player
+ */
+public int getPlayerCountryCount(){
+	return getCountries().size();
+}
+
+/**
+ * This methods returns value of lost attribute. 
+ * @return value of lost
+ */
+public boolean GetStateOfPlayer() {
+	return lost ;
+}
+
+/**
+ * This method set value of lost attribute.
+ * @param value Boolean value for lost attribute.
+ */
+public void SetStateOfPlayer(boolean value) {
+	this.lost = value;
+
+}
+
+/**
+ * {@inheritDoc}
+ */
+public String toString() {
+	return PlayerName;
+}
+
+/**
+ * Checks if player have Infantry Card
+ * @return true if player have Infantry Card otherwise false
+ */
+public boolean HaveICard(){
+	for (Card card: this.Cards){
+		if (card.getName().equals("Infantry")){
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Checks if player have Cavalry Card
+ * @return true if player have Cavalry Card otherwise false
+ */
+public boolean HaveCCard(){
+	for (Card card: this.Cards){
+		if (card.getName().equals("Cavalry")){
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Checks if player have Artillery Card
+ * @return true if player have Artillery Card otherwise false
+ */
+public boolean HaveACard(){
+	for (Card card: this.Cards){
+		if (card.getName().equals("Artillery")){
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Checks if player have Infantry, Artillery and Cavalry Cards
+ * @return true if player have Infantry, Artillery and Cavalry Cards otherwise false
+ */
+public boolean HaveDCard(){
+	if (this.HaveICard() && this.HaveACard() && this.HaveCCard()){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+/**
+ * Checks if player have three Artillery cards
+ * @return true if player have three Artillery cards otherwise false
+ */
+public boolean HaveThreeACards(){
+	int artillery = 0;
+	for (Card card :this.Cards){
+		if (card.getName().equals("Artillery")){
+			artillery++;
+		}
+	}
+	if(artillery == 3){
+		return true;
+	}
+	else{
+		return false;
+	}
+		
+}
+
+/**
+ * Checks if player have three Cavalry cards
+ * @return true if player have three Cavalry cards otherwise false
+ */
+public boolean HaveThreeCCards(){
+	int cavalry = 0;
+	for (Card card :this.Cards){
+		if (card.getName().equals("Cavalry")){
+			cavalry++;
+		}
+	}
+	if(cavalry == 3){
+		return true;
+	}
+	else{
+		return false;
+	}
+		
+}
+
+/**
+ * Checks if player have three Infantry cards
+ * @return true if player have three Infantry Cards otherwise false
+ */
+public boolean HaveThreeICards(){
+	int infantry = 0;
+	for (Card card :this.Cards){
+		if (card.getName().equals("Infantry")){
+			infantry++;
+		}
+	}
+	if(infantry == 3){
+		return true;
+	}
+	else{
+		return false;
+	}
+		
+}
+
+/**
+ * Checks if player have either three Cavalry, Artillery or Infantry cards
+ * @return true if player have either three Cavalry, Artillery or Infantry cards otherwise false
+ */
+public boolean SameTypeCards(){
+	if(this.HaveThreeCCards() || this.HaveThreeACards() || this.HaveThreeICards()){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+
+/**
+ * 
+ * @return list of cards player has.
+ */
+public ArrayList<Card> GetCards(){
+	return this.Cards;
+}
+
+/**
+ * Removes one Infantry, Artillery and Cavalry cards
+ */
+public void RemoveDistinctCards(){
+	this.RemoveCard(this.GetCard("Cavalry"));
+	this.RemoveCard(this.GetCard("Infantry"));
+	this.RemoveCard(this.GetCard("Artillery"));
+	this.AddedArmies(5*this.UsedCards++);
+}
+
+/**
+ * Returns the card from player cardlist
+ * @param cardname name of the card
+ * @return card with cardname equals to parameter
+ */
+public Card GetCard(String cardname){
+	for (Card c : this.Cards){
+		if ( c.getName().equals(cardname)){
+			return c;
+		}
+	}
+	return null;
+}
+
+/**
+ * Removes either of three Infantry or Artillery or Cavalry cards
+ */
+public void RemoveSimilarThreeCards(){
+	if (this.HaveThreeACards()){
+		this.RemoveCard(this.GetCard("Artillery"));
+		this.RemoveCard(this.GetCard("Artillery"));
+		this.RemoveCard(this.GetCard("Artillery"));
+	}
+	else if (this.HaveThreeCCards()){
+		this.RemoveCard(this.GetCard("Cavalry"));
+		this.RemoveCard(this.GetCard("Cavalry"));
+		this.RemoveCard(this.GetCard("Cavalry"));
+	}
+	else if (this.HaveThreeICards()){
+		this.RemoveCard(this.GetCard("Infantry"));
+		this.RemoveCard(this.GetCard("Infantry"));
+		this.RemoveCard(this.GetCard("Infantry"));
+	}
+	this.AddedArmies(5*this.UsedCards++);
+	
+}
+
+/**
+ * Checks if two objects are equal.
+ */
+public boolean equals(Object o) {
+	if(o instanceof Player) {
+		if(((Player) o).getPlayerName().equals(this.getPlayerName())){
+			return true;
+		}
+	}
+	return false;
+  }
+
+/**
+ * Set a new strategy for player
+ */
+public void setStrategy(PlayerStrategy newStrategy) {
+	this.strategy = newStrategy;
+}
+}
+

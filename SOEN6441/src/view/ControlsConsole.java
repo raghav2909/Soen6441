@@ -341,4 +341,9 @@ public class ControlsConsole extends JPanel {
 		return GD.getArmyCount();
 	}
 
+	public void attackControls(String[] array) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

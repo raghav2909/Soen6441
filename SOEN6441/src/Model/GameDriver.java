@@ -174,8 +174,14 @@ public class GameDriver extends Observable {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Setting Map console.
 	 * @param ng MapView object initialized.
+=======
+	 * set up the map view
+	 * 
+	 * @param view the object of map view
+>>>>>>> refs/remotes/origin/master
 	 */
 	public void setMapView(MapView ng) {
 		map.addObserver(ng);
@@ -240,10 +246,44 @@ public class GameDriver extends Observable {
 	 * @param countryname Name of the country.
 	 * @return Neighbors of the country.
 	 */
+<<<<<<< HEAD
 	public String [] getNeighbourCountryNames(String countryname) {
 		for(NodeOfCountry country: getCurrentPlayer().getCountries()){
 			if(country.getCountryName().equals(countryname)){
 				return country.getNeighbourCountriesString();
+=======
+	public void getNextPlayer() {
+		int CurrentPlayer = Player.indexOf(getCurrent());
+		getCurrent().SetTurnFalse();
+		if (CurrentPlayer == Player.size() - 1) {
+			Player.get(0).SetTurnTrue();
+		} else {
+			Player.get(CurrentPlayer + 1).SetTurnTrue();
+		}
+	}
+
+	/**
+	 * getting object of map class
+	 * 
+	 * @param Path save the map path
+	 * @throws IOException exception for no path found
+	 */
+	public void CreateMapObject(String Path) throws IOException {
+		
+		map = new Map(Path);
+	}
+
+	/**
+	 * show the country neighbours as a parameter
+	 * 
+	 * @param cn name of the country
+	 * @return a list containing of country neighbours
+	 */
+	public String[] getNeighboursCountryName(String cn) {
+		for (NodeOfCountry c : getCurrent().getCountries()) {
+			if (c.getNameOfCountry().equals(cn)) {
+				return c.getNeighboursString();
+>>>>>>> refs/remotes/origin/master
 			}
 		}
 		return null;
@@ -331,7 +371,12 @@ public class GameDriver extends Observable {
 	}
 	
 	/**
+<<<<<<< HEAD
 	 * Adds listener for fortification phase.
+=======
+	 * getting the map class object
+	 * @return map Map object is returned
+>>>>>>> refs/remotes/origin/master
 	 */
 	public void setFortificationLiteners() {
 		this.controller.setFortificationListeners();

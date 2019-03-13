@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="javadoc">
-    <target name="javadoc">
-        <javadoc access="public" author="true" classpath="." destdir="/Users/raghavsharda/git/Soen6441-2019winter-latest1" doctitle="RISK GAME 6441 TEAM NUMBER 35" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="Model.Player" source="1.8" sourcepath="src:Map_Data" splitindex="true" use="true" version="true">
-            <link href="file:/Users/raghavsharda/git/Soen6441-2019winter-latest1/"/>
-        </javadoc>
-    </target>
-</project>

@@ -73,6 +73,17 @@ public class GameTurnDriver {
 	public boolean GameStatus() {
 		return gamestatus;
 	}
+	public void runningPhase() {
+		if(this.getPhase().equals("Reinforcement")) {
+			ongoingPlayer().RPhase();
+		}
+		else if(this.getPhase().equals("Attack")) {
+			ongoingPlayer().APhase();
+		}
+		else if(this.getPhase().equals("Fortification")) {
+			ongoingPlayer().FPhase();
+		}
+	}
 
 	public void setGameStatus(boolean gamestatus) {
 		this.gamestatus = gamestatus;

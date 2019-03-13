@@ -315,6 +315,20 @@ public class Map extends Observable
 		return null;
 	} 
 	
+	public ArrayList<String> getPlayerNeighbours(NodeOfCountry newCountry,Player newPLayer,boolean v){
+		ArrayList<String> NeighbourCountries= new ArrayList<String>();
+		for (NodeOfCountry country : newCountry.getNeighboursCountries()){
+			if(v && country.getOwner().equals(newPLayer)) 
+					NeighbourCountries.add(country.getNameOfCountry());
+			
+			if(!v && !country.getOwner().equals(newPLayer)) 
+					NeighbourCountries.add(country.getNameOfCountry());	
+			
+		}
+		return NeighbourCountries;
+		
+	}
+	
 	
 	
 	public String getOlfFileMap() {
@@ -332,7 +346,9 @@ public class Map extends Observable
 			}
 		}
 		return ce;
-	} 
+	}
+	
+
 }
 
 

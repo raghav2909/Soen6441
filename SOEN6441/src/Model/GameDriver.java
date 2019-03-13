@@ -174,11 +174,11 @@ public class GameDriver extends Observable {
 	}
 
 	/**
-	 * Sets Map view.
-	 * @param newGui MapView object initialized.
+	 * Setting Map console.
+	 * @param ng MapView object initialized.
 	 */
-	public void setMapView(MapView newGui) {
-		map.addObserver(newGui);
+	public void setMapView(MapView ng) {
+		map.addObserver(ng);
 	}
 
 	/**

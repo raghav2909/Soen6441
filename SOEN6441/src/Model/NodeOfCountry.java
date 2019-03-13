@@ -41,6 +41,9 @@ public class NodeOfCountry
 	 */
 	
 	private ArrayList<NodeOfCountry> PlayerNeighbours;
+	
+	private NodeOfMap continent;
+	
 	/**
 	 * Save the name of neighbours f player
 	 */
@@ -267,6 +270,9 @@ public class NodeOfCountry
 		 }
 		 return PlayerNeighboursName;
 	 }
+	 public NodeOfMap getContinent() {
+			return this.continent;
+		}
 	public Player getOwner() {
 		
 		return this.PlayerCountry;

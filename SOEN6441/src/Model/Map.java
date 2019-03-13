@@ -335,6 +335,19 @@ public class Map extends Observable
 		return OldFileMap;
 	}
 	
+	public boolean WonPlayerContinent(Player player,NodeOfCountry c) {
+		boolean b=false;
+		NodeOfMap m = c.getContinent();	
+		for(NodeOfCountry noc : m.getCountries()) {
+			if(c.getOwner()!=player) {
+				b=false;
+			}
+			else b=true;
+		}
+		return b;
+
+	}
+	
 	
 	public boolean CheckCountryExist(String c) {
 		boolean ce = false;

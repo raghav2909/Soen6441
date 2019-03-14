@@ -36,7 +36,7 @@ public class GameTurnDriver {
 		phaseswitch(switchp);
 	}
 	private Player ongoingPlayer() {
-		return GameDriver.GetInit().getCurrentPlayer();
+		return GameDriver.GetInit().GetCurrent();
 	}
 	
 	public void cardwinset(boolean cardwin) {
@@ -55,7 +55,7 @@ public class GameTurnDriver {
 			break;
 		case "a":
 			if(cardwin) {
-				GameDriver.GetInit().issueCard();
+				GameDriver.GetInit().GivenCard();
 				cardwin=false;
 			}
 			this.setPhase("Fortification");
@@ -67,7 +67,7 @@ public class GameTurnDriver {
 			ongoingPlayer().RPhase();
 			break;
 		case "go":
-			GameDriver.GetInit().announceGameOver();	
+			GameDriver.GetInit().CallGameOver();	
 		}
 	}
 	public boolean GameStatus() {

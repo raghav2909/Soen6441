@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Random;
 
 import controllers.Player_Information_Controller;
 import controllers.the_main_controller;
@@ -19,7 +20,7 @@ import Model.Map;
  * 
  * @author samansoltani
  * @author raghavsharda
- * @version 1.0
+ * @version 2.0
  */
 public class GameDriver extends Observable {
 	
@@ -54,9 +55,9 @@ public class GameDriver extends Observable {
 	private ControlsConsole Controls;
 		
 	/**
-	 * Object of GameTurnManager class.
+	 * Object of GameTurnDriver class.
 	 */
-	private GameTurnManager TurnManagment;
+	private GameTurnDriver TurnManagment;
 	
 	/**
 	 * Object of Player class.
@@ -77,7 +78,7 @@ public class GameDriver extends Observable {
 	 * Constructor for initializing .
 	 */
 	private GameDriver() {
-		TurnManagment = new GameTurnManager("Reinforcement");
+		TurnManagment = new GameTurnDriver("Reinforcement");
 		Cards = Card.CardGeneration();
 	}
 
@@ -107,7 +108,7 @@ public class GameDriver extends Observable {
 		notifyObservers("Startup");
 		String[] NewPlayer = InfoOfPlayer.Information_OF_Playres();
 		StartUp(NewPlayer);
-		TurnManagment.startTurn(this.CurrentP);
+		TurnManagment.StartPlayerTurn(this.CurrentP);
 		setChanged();
 		notifyObservers("Reinforcement");
 	}
@@ -136,7 +137,7 @@ public class GameDriver extends Observable {
 				p.RemovedArmies(1);
 			}
 		}
-		updateMap();
+		UpdateMap();
 	}
 	
 	/**
@@ -174,16 +175,11 @@ public class GameDriver extends Observable {
 	}
 
 	/**
-<<<<<<< HEAD
+
 	 * Setting Map console.
-	 * @param ng MapView object initialized.
-=======
-	 * set up the map view
-	 * 
-	 * @param view the object of map view
->>>>>>> refs/remotes/origin/master
+	 * @param ng MapConsole object initialized.
 	 */
-	public void setMapView(MapView ng) {
+	public void setMapView(MapConsole ng) {
 		map.addObserver(ng);
 	}
 
@@ -209,10 +205,10 @@ public class GameDriver extends Observable {
 	}
 
 	/**
-	 * Gets the player with the current turn.
+	 * Gets the current player.
 	 * @return current player 
 	 */
-	public Player getCurrentPlayer() {
+	public Player GetCurrent() {
 		return this.CurrentP;
 	}
 
@@ -220,41 +216,25 @@ public class GameDriver extends Observable {
 	 * Sets the next player's turn.
 	 */
 	public void setNextPlayerTurn() {
-		int currentPlayerIndex = players.indexOf(getCurrentPlayer());
-		this.CurrentP.setTurnFalse();
+		int currentPlayerIndex = players.indexOf(GetCurrent());
+		this.CurrentP.SetTurnFalse();
 		if (currentPlayerIndex == players.size()-1){
 			this.CurrentP = players.get(0);
 		}else{
 			this.CurrentP = players.get(currentPlayerIndex+1);
 		}
 		this.CurrentP.SetTurnTrue();
-		this.getCurrentPlayer().setArmies(this.getCurrentPlayer().getArmies());
+		this.GetCurrent().AddedArmies(this.GetCurrent().getCountArmies());
 		setChanged();
 		notifyObservers("Cards");
 	}
 
-	/**
-	 * Creates the object of Map Class by passing the map file path.
-	 * @param mapPath stores the path of the map file.
-	 */
-	public void createMapObject(String mapPath) {
-		map = new Map(mapPath);
-	}
+
 	
-	/**
-	 * Gives the list of the neighbors of the country passed as a parameter.
-	 * @param countryname Name of the country.
-	 * @return Neighbors of the country.
-	 */
-<<<<<<< HEAD
-	public String [] getNeighbourCountryNames(String countryname) {
-		for(NodeOfCountry country: getCurrentPlayer().getCountries()){
-			if(country.getCountryName().equals(countryname)){
-				return country.getNeighbourCountriesString();
-=======
-	public void getNextPlayer() {
-		int CurrentPlayer = Player.indexOf(getCurrent());
-		getCurrent().SetTurnFalse();
+	
+	public void NextPlayer() {
+		int CurrentPlayer = Player.indexOf(GetCurrent());
+		GetCurrent().SetTurnFalse();
 		if (CurrentPlayer == Player.size() - 1) {
 			Player.get(0).SetTurnTrue();
 		} else {
@@ -264,11 +244,10 @@ public class GameDriver extends Observable {
 
 	/**
 	 * getting object of map class
-	 * 
 	 * @param Path save the map path
 	 * @throws IOException exception for no path found
 	 */
-	public void CreateMapObject(String Path) throws IOException {
+	public void CreateMap(String Path) throws IOException {
 		
 		map = new Map(Path);
 	}
@@ -279,11 +258,10 @@ public class GameDriver extends Observable {
 	 * @param cn name of the country
 	 * @return a list containing of country neighbours
 	 */
-	public String[] getNeighboursCountryName(String cn) {
-		for (NodeOfCountry c : getCurrent().getCountries()) {
+	public String[] getNeighboursNames(String cn) {
+		for (NodeOfCountry c : GetCurrent().getCountries()) {
 			if (c.getNameOfCountry().equals(cn)) {
 				return c.getNeighboursString();
->>>>>>> refs/remotes/origin/master
 			}
 		}
 		return null;
@@ -294,7 +272,7 @@ public class GameDriver extends Observable {
 	 * @return army count of the current player.
 	 */
 	public int getPlayerArmies() {
-		return getCurrentPlayer().getArmiesCount();
+		return GetCurrent().getCountArmies();
 	}
 
 	/**
@@ -302,18 +280,18 @@ public class GameDriver extends Observable {
 	 * @return The list of country nodes.
 	 */
 	public ArrayList<NodeOfCountry> getPlayerCountries() {
-		return getCurrentPlayer().getCountries();
+		return GetCurrent().getCountries();
 	}
 
 	/**
 	 * Gives the neighbors of a particular country.
-	 * @param countrynode Country whose neighbors are to be fetched.
+	 * @param c Country whose neighbors are to be fetched.
 	 * @return list of neighbor countries.
 	 */
-	public NodeOfCountry [] getNeighbourCountries(NodeOfCountry countrynode) {
-		for(NodeOfCountry country: getCurrentPlayer().getCountries()){
-			if(country.getCountryName().equals(countrynode.getCountryName())){
-				return country.getNeighbourCountries();
+	public NodeOfCountry [] getNeighbourCountries(NodeOfCountry c) {
+		for(NodeOfCountry country: GetCurrent().getCountries()){
+			if(country.getNameOfCountry().equals(c.getNameOfCountry())){
+				return country.getNeighboursCountries();
 			}
 		}
 		return null;
@@ -321,17 +299,17 @@ public class GameDriver extends Observable {
 	
 	/**
 	 * Gives the country node of the given country name.
-	 * @param countryname name of a country
+	 * @param cn name of a country
 	 * @return country node for the given country name
 	 */
-	public NodeOfCountry getCountry(String countryname) {
-		return this.CurrentP.getCountry(countryname);
+	public NodeOfCountry getCountry(String cn) {
+		return this.CurrentP.getCountry(cn);
 	}
 	
 	/**
 	 * Sets action listener for reinforcement phase.
 	 */
-	public void setControlsActionListeners() {
+	public void SetActionListeners() {
 		this.controller.setActionListner();
 	}
 	
@@ -339,101 +317,96 @@ public class GameDriver extends Observable {
 	 * Gives the instance of ControlsConsole class.
 	 * @return ControlsConsole class object.
 	 */
-	public ControlsConsole getControlGUI() {
+	public ControlsConsole GetControle() {
 		return this.Controls;
 	}
 
 	/**
-	 * Delegate method to call method from GameTurnManager class to continue phases.
+	 * Delegate method to call method from GameTurnDriver class to continue phases.
 	 */
-	public void continuePhase() {
-		TurnManagment.continuePhase();
-		updateMap();
+	public void ContinuePhase() {
+		TurnManagment.runningPhase();
+		UpdateMap();
 		setChanged();
 		notifyObservers(TurnManagment.getPhase());
 	}
 	
 	/**
-	 * Delegate method to call method from GameTurnManager class to change between phases.
+	 *  method to call method from GameTurnDriver class to change between phases.
 	 */
-	public void changePhase() {
-		TurnManagment.changePhase();
-		updateMap();
+	public void ChangePhase() {
+		TurnManagment.switchphase();;
+		UpdateMap();
 		setChanged();
 		notifyObservers(TurnManagment.getPhase());
 	}
 	
 	/**
-	 * Delegate method to call updateMap method from map class.
+	 *  method to call UpdateMap method from map class.
 	 */
-	public void updateMap() {
-		map.updateMap();
+	public void UpdateMap() {
+		map.UpdateMap();
 	}
 	
 	/**
-<<<<<<< HEAD
 	 * Adds listener for fortification phase.
-=======
 	 * getting the map class object
 	 * @return map Map object is returned
->>>>>>> refs/remotes/origin/master
 	 */
-	public void setFortificationLiteners() {
-		this.controller.setFortificationListeners();
+	public void SetFLiteners() {
+		this.controller.setListenersFortification();;
 	}
 	
 	/**
 	 * Returns object of Map class
 	 *  @return map 
 	 */
-	public Map getMap(){
+	public Map GetMap(){
 		return this.map;
 	}
 	
 	/**
 	 * Adds the new player to the arraylist of players.
-	 * @param newPlayer Player object.
+	 * @param np Player object.
 	 */
-	public void setPlayerList(Player newPlayer){
+	public void ListOfPlayers(Player np){
 		if(this.players==null) {
 			this.players = new ArrayList<Player>();
 		}
-		this.players.add(newPlayer);
+		this.players.add(np);
 	}
 
 	/**
-	 * This method call the shiftArmiesOnReinforcement method from player class, depending on the result returned by method
-	 * either changes the Phase or continue with the current phase.
-	 * @param countrySelected Country where armies should be placed
-	 * @param armies number of armies to be placed
+	 * This method call the shiftArmiesOnReinforcement method from player class
+	 * @param SelectedCountry Country where Army should be placed
+	 * @param Army number of Army to be placed
 	 */
-	public void shiftArmiesOnReinforcement(String countrySelected, int armies) {
-		if(this.CurrentP.shiftArmiesOnReinforcement(countrySelected, armies)==0) {
-			changePhase();
+	public void shiftArmiesOnReinforcement(String SelectedCountry, int Army) {
+		if(this.CurrentP.shiftArmiesOnReinforcement(SelectedCountry, Army)==0) {
+			ChangePhase();
 		}
 		else {
-			continuePhase();
+			ContinuePhase();
 		}
 	}
 	
 	/**
-	 * This method get list of neighbor countries of the specified country owned by same player from map class
-	 * and update the controls view through controller.
-	 * @param countrySelected the country whose neighbors are to be listed
+	 * This method get list of neighbor countries of the specified country owned by same player.
+	 * @param SelectedCountry the country whose neighbors are to be listed
 	 */
-	public void fortificationNeighbourListUpdate(String countrySelected) {
-		NodeOfCountry countrySelect = this.CurrentP.getCountry(countrySelected);
-		if(countrySelect.getArmiesCount()>1) {
-			ArrayList<String> neighborList = map.getPlayerNeighbourCountries(countrySelect,this.CurrentP,true);
-			controller.updateControlsFortification(countrySelect.getArmiesCount(), neighborList.toArray(new String[neighborList.size()])); 
+	public void UpdateFNeighbour(String SelectedCountry) {
+		NodeOfCountry countrySelect = this.CurrentP.getCountry(SelectedCountry);
+		if(countrySelect.getArmyCount()>1) {
+			ArrayList<String> neighborList = map.getPlayerNeighbours(countrySelect,this.CurrentP,true);
+			controller.updateControlsFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()])); 
 		}
 	}
 	
 	/**
 	 * A delegate method to call getArmiesShiftedAfterFortification in Player class.
-	 * @param newCountry country from where armies are to be moved
-	 * @param newNeighbour country where armies are to be moved
-	 * @param newArmies number of armies to be moved
+	 * @param newCountry country from where Army are to be moved
+	 * @param newNeighbour country where Army are to be moved
+	 * @param newArmies number of Army to be moved
 	 */
 	public void getArmiesShiftedAfterFortification(String newCountry, String newNeighbour, int newArmies) {
 		this.CurrentP.getArmiesShiftedAfterFortification(newCountry, newNeighbour, newArmies);
@@ -449,206 +422,196 @@ public class GameDriver extends Observable {
 	/**
 	 * This method create a list of neighbour countries for a selected country whith different owners than the current player.
 	 * Then update list on the controls view through controller.
-	 * @param countrySelected selected country whose neighbors are required.
+	 * @param SelectedCountry selected country whose neighbors are required.
 	 */
-	public void attackNeighbourListUpdate(String countrySelected) {
-		NodeOfCountry countrySelect = this.CurrentP.getCountry(countrySelected);
-		if(countrySelect.getArmiesCount()>1) {
-			ArrayList<String> neighborList = map.getPlayerNeighbourCountries(countrySelect,this.CurrentP,false);
+	public void attackNeighbourListUpdate(String SelectedCountry) {
+		NodeOfCountry countrySelect = this.CurrentP.getCountry(SelectedCountry);
+		if(countrySelect.getArmyCount()>1) {
+			ArrayList<String> neighborList = map.getPlayerNeighbours(countrySelect,this.CurrentP,false);
 			controller.updateNeighborList(neighborList.toArray(new String[neighborList.size()]));
 		}
 	}
 	
 	/**
-	 * This method announce the attack, get number of dice from both attacker and defender. If a country loose all its armies, the other player occupy the country.
-	 * @param attackerCountry country attacking
-	 * @param defenderCountry country defending against attack
+	 * This method call the attack, get number of dice from both attacker and def.
+	 * @param AttackerC country of attacker
+	 * @param DefenderC country of def
 	 */
-	public void announceAttack(String attackerCountry, String defenderCountry) {
-		this.Notification = "Attack Attacker Country: "+attackerCountry+"  Defender Country: "+defenderCountry+"  ";
+	public void AttackCall(String AttackerC, String DefenderC) {
+		this.Notification = "Attacker Country: "+AttackerC+"  Defender Country: "+DefenderC+"  ";
 		setChanged();
 		notifyObservers(Notification);
-		/*Announce attack on phase view.*/
-		NodeOfCountry dCountry = map.getCountry(defenderCountry);
-		Player defender = dCountry.getOwner();
-		NodeOfCountry aCountry = CurrentP.getCountry(attackerCountry);
-		/*Show dialog boxes and get input from attacker and defender on how many dice to roll.*/
-		int aArmies = this.CurrentP.selectDiceForAttack(attackerCountry);
-		int dArmies = defender.selectDiceForAttack(defenderCountry);
-		/*Rolling dice for attacker and defender.*/
-		ArrayList<Integer> aResults = diceRoll(aArmies);
-		ArrayList<Integer> dResults = diceRoll(dArmies);
+		NodeOfCountry DC = map.getCountry(DefenderC);
+		Player def = DC.getOwner();
+		NodeOfCountry AC = CurrentP.getCountry(AttackerC);
+		int AA = this.CurrentP.AttackDice(AttackerC);
+		int DA = def.AttackDice(DefenderC);
+		ArrayList<Integer> AR = DiceRoll(AA);
+		ArrayList<Integer> DR = DiceRoll(DA);
 		String s = this.CurrentP+" dice : ";
-		for(int i : aResults) {
+		for(int i : AR) {
 			s += i +" ";
 		}
-		s+= "<br>" + defender+" dice: ";
-		for(int j : dResults) {
+		s+= "<br>" + def+" dice: ";
+		for(int j : DR) {
 			s += j +" ";
 		}
 		Notification += "<br>" + s;
 		System.out.println(Notification);
 		setChanged();
 		notifyObservers(Notification);
-		battle(dCountry, defender, aCountry, aArmies, dArmies, aResults, dResults);
+		Fight(DC, def, AC, AA, DA, AR, DR);
 		setChanged();
 		notifyObservers(Notification);
-		/*check if defender country has armies left.*/
-		if(dCountry.getArmiesCount()==0) {
-			dCountry.SetOwner(CurrentP);
-			TurnManagment.setWonCard(true);
-			/*Notify change in ownership of a country.*/
-			Notification += "<br>" + " Country "+ dCountry.getCountryName() +" won by " + dCountry.getOwner().getName() + ", new armies "+dCountry.getArmiesCount();
+		if(DC.getArmyCount()==0) {
+			DC.SetOwner(CurrentP);
+			TurnManagment.cardwinset(true);
+			Notification += "<br>" + " Country "+ DC.getNameOfCountry() +" won by " + DC.getOwner().getPlayerName() + ", new Army "+DC.getArmyCount();
 			setChanged();
 			notifyObservers(Notification);
-			System.out.println("Country "+ dCountry.getCountryName() +" won by " + dCountry.getOwner().getName() + ", new armies "+dCountry.getArmiesCount());
-			/*move countries from attacker country to new acquired country.*/
-			int moveArmies = controller.setUpBoxInput(aArmies, aCountry.getArmiesCount()-1, "Select armies to move:");
-			dCountry.addArmy(moveArmies);
-			aCountry.removeArmies(moveArmies);
-			if(map.continentWonByPlayer(CurrentP, dCountry)) {
-				CurrentP.addContinent(dCountry.getContinent());
+			System.out.println("Country "+ DC.getNameOfCountry() +" won by " + DC.getOwner().getPlayerName() + ", new Army "+DC.getArmyCount());
+			int moveArmies = controller.InputSetUp(AA, AC.getArmyCount()-1, "Select Army to move:");
+			DC.AddArmy(moveArmies);
+			AC.RemoveArmies(moveArmies);
+			if(map.WonContinentPlayer(CurrentP, DC)) {
+				CurrentP.AddContinent(DC.getContinent());
 			}
 		}
-		map.updateMap();
-		setPlayerOut(defender);
-		checkGameState();
-		continuePhase();
+		map.UpdateMap();
+		setPlayerOutOfGame(def);
+		GameStateCheck();
+		ContinuePhase();
 	}
 	
 	/**
-	 * This method decides the result of battle between attacking country and defecding country and update the state of countries.
-	 * @param dCountry country defending the attack
-	 * @param defender player defending the attack
-	 * @param aCountry attacking country
-	 * @param aArmies number of dice rolled by attacker for battle
-	 * @param dArmies number of dice rolled by defender
-	 * @param aResults results of the dice rolled by attacker
-	 * @param dResults results of dice rolled by defender
+	 * this method contains attack results and update the countries.
+	 * @param DC country defending the attack
+	 * @param def player defending the attack
+	 * @param AC attacking country
+	 * @param AA number of dice rolled by attacker for Fight
+	 * @param DA number of dice rolled by def
+	 * @param AR results of the dice rolled by attacker
+	 * @param DR results of dice rolled by def
 	 */
-	public void battle(NodeOfCountry dCountry, Player defender, NodeOfCountry aCountry, int aArmies, int dArmies,ArrayList<Integer> aResults,ArrayList<Integer> dResults) {
-		/*Compare the results to decide battle result.*/
-		while(!aResults.isEmpty() && !dResults.isEmpty()) {
-			int aMax = max(aResults);
-			int dMax = max(dResults);
-			if(aResults.get(aMax)>dResults.get(dMax)) {
-				dCountry.removeArmy();
-				/*Show army removed from defender country.*/
-				Notification += "<br>" + " Winner Country: "+aCountry.getCountryName();
-				System.out.println("Army removed from defender country, new armies "+dCountry.getArmiesCount());
+	public void Fight(NodeOfCountry DC, Player def, NodeOfCountry AC, int AA, int DA,ArrayList<Integer> AR,ArrayList<Integer> DR) {
+		while(!AR.isEmpty() && !DR.isEmpty()) {
+			int AM = Maximum(AR);
+			int DM = Maximum(DR);
+			if(AR.get(AM)>DR.get(DM)) {
+				DC.removeArmy();
+				Notification += "<br>" + " Winner Country: "+AC.getNameOfCountry();
+				System.out.println("Army removed from defender country, new Army "+DC.getArmyCount());
 			}
 			else {
-				aCountry.removeArmy();
-				Notification += "<br>" + "Winner Country: "+dCountry.getCountryName();
-				/*Show army removed from attacker country*/
-				System.out.println("Army removed from attacker country, new armies "+aCountry.getArmiesCount());
+				AC.removeArmy();
+				Notification += "<br>" + "Winner Country: "+DC.getNameOfCountry();
+				System.out.println("Army removed from attacker country, new Army "+AC.getArmyCount());
 			}
-			aResults.remove(aMax);
-			dResults.remove(dMax);
+			AR.remove(AM);
+			DR.remove(DM);
 		}
 	}
 	
 	/**
-	 * This method declares the game end if all the countries are owned by one player only.
-	 * @return true if game if over, false if there is at least two players own at least one country on map
+	 * This method show the winner if a player own all countries.
+	 * @return true if game if over
 	 */
-	public boolean checkGameState() {
+	public boolean GameStateCheck() {
 		if(players.size()<2) {
-			TurnManagment.setGameOver(true);
+			TurnManagment.setGameStatus(true);
 			return true;
 		}
 		return false;
 	}
 	
 	/**
-	 * remove player from players list, if player has not country.
-	 * @param defenderPlayer player to be removed
+	 * player with no country removed by this class.
+	 * @param DPlayer player to be removed
 	 */
-	public void setPlayerOut(Player defenderPlayer) {
-		if(defenderPlayer.getCountries().isEmpty()) {
-			players.remove(defenderPlayer);
+	public void setPlayerOutOfGame(Player DPlayer) {
+		if(DPlayer.getCountries().isEmpty()) {
+			players.remove(DPlayer);
 		}
 	}
 	
 	/**
-	 * delegate method to call setUpBoxInput from controller class.
-	 * @param min minimum value user can select 
-	 * @param max maximum vlaue user can select
-	 * @param message message explaining the purpose of input
+	 *  method to call InputSetUp from controller class.
+	 * @param min  value user can select 
+	 * @param Maximum  value user can select
+	 * @param message  explaining the purpose 
 	 * @return a number selected by user
 	 */
-	public int setUpBoxInput(int min, int max, String message) {
-		return controller.setUpBoxInput(min, max, message);
+	public int InputSetUp(int min, int Maximum, String message) {
+		return controller.InputSetUp(min, Maximum, message);
 	}
 	
 	/**
-	 * Generate random values between 1 and 6 and add them to an arraylist.
+	 *  random values between 1 and 6 
 	 * @param n number of values to be generated.
-	 * @return integer number that represents the value on the dice.
+	 * @return  number that shows the value on the dice.
 	 */
-	public ArrayList<Integer> diceRoll(int n) {
-		Random rand = new Random();
-		ArrayList<Integer> diceResults = new ArrayList<Integer>();
+	public ArrayList<Integer> DiceRoll(int n) {
+		Random random = new Random();
+		ArrayList<Integer> result = new ArrayList<Integer>();
 		for(int i=0;i<n;i++) {
-			diceResults.add(rand.nextInt(6) + 1);
+			result.add(random.nextInt(6) + 1);
 		}		
-		return diceResults;
+		return result;
 	}
 	
 	/**
-	 * This method return maxuimum value in a arraylist.
-	 * @param array list from which max value to be searched
-	 * @return index of maximum value in list
+	 * This method return maximum value 
+	 * @param a list from which Maximum value to be found
+	 * @return  maximum value in list
 	 */
-	public int max(ArrayList<Integer> array) {
-        int n = array.size();
-        int max = 0;
+	public int Maximum(ArrayList<Integer> a) {
+        int n = a.size();
+        int Maximum = 0;
         for(int i=1;i<n;i++) {
-			if(array.get(i)>array.get(max)) {
-				max = i;
+			if(a.get(i)>a.get(Maximum)) {
+				Maximum = i;
 			}
 		}
-        return max;
+        return Maximum;
     }
 	
 	/**
 	 * This method returns the number of countries owned by current player.
 	 * @return countries owned by current player
 	 */
-	public int getCurrentplayerCountryCount(){
-		return getCurrentPlayer().getPlayerCountryCount();
+	public int getNumberOfCountryOwnedByCurrentPlayer(){
+		return GetCurrent().getPlayerCountryCount();
 	}
 	
 	/**
 	 * 
 	 * @return list of all players
 	 */
-	public ArrayList<Player> getPlayers(){
+	public ArrayList<Player> getAllPlayers(){
 		return this.players;
 	}
 
 	/**
-	 * Call Phase View to show game over
+	 * Call game over
 	 */
-	public void announceGameOver() {
+	public void CallGameOver() {
 		notifyObservers("GameOver");
 		controller.removeAllControls();
 	}
 	
 	/**
-	 * If a player wins a territory during a attack, at the end of the attack phase one card 
-	 * is removed from pile and given to player.
+	 * getting a card to player who won a attack.
 	 */
-	public void issueCard() {
-		this.CurrentP.addCard(Cards.remove(0));
+	public void GivenCard() {
+		this.CurrentP.AddCard(Cards.remove(0));
 	}
 
 	/**
 	 * Set current player
-	 * @param player1 player to be set as current player
+	 * @param p player to be current player
 	 */
-	public void setCurrentPlayer(Player player1) {
-		this.CurrentP = player1;
+	public void setCurrentPlayer(Player p) {
+		this.CurrentP = p;
 	}
 
 }

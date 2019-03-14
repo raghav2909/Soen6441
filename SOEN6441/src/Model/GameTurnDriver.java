@@ -15,7 +15,7 @@ public class GameTurnDriver {
 		this.setPhase(phase);
 	}
 	public void StartPlayerTurn(Player turnplayer) {
-	//	turnplayer.ArmySet();
+		turnplayer.ArmySet(this.ongoingPlayer().getCountArmies());
 		turnplayer.RPhase();
 	}
 	

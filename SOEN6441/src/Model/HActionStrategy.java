@@ -4,23 +4,23 @@ import java.util.ArrayList;
 
 public class HActionStrategy implements StrategyOfPlayer{
 
-	@Override
-	public void PhaseFortification(ArrayList<String> Country) {
-		// TODO Auto-generated method stub
-		
+	public void FPhase(ArrayList<String> Country) {
+	GameDriver.GetInit().GetControle().fortificationControls(Country.toArray(new String[Country.size()]));
+	GameDriver.GetInit().SetFLiteners();
 	}
 
-	@Override
-	public void PhaseAttack(ArrayList<String> Countries) {
-		// TODO Auto-generated method stub
-		
+	public void APhase(ArrayList<String> Countries) {
+		GameDriver.GetInit().GetControle().attackControls(Countries.toArray(new String[Countries.size()]));
+		GameDriver.GetInit().setAttackListeners();
 	}
 
-	@Override
-	public void PhaseReinforcement(int armies, String[] clist) {
-		// TODO Auto-generated method stub
-		
+	public void RPhase(int armies, String[] clist) {
+		GameDriver.GetInit().GetControle().reinforcementConrols(armies, clist);
+		GameDriver.GetInit().SetActionListeners();
+
 	}
+
+
 	
 
 }

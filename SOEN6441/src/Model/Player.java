@@ -51,18 +51,34 @@ public class Player
      * List of all continents
      */
     private ArrayList<NodeOfMap> AllContinents;
-
+    /**
+     * selected country by player
+     */
 	private String countrySelected;
-
+	/**
+	 * number of armies moved by player
+	 */
 	private int armiesMoved;
-
+	/**
+	 * number of armies owned by player
+	 */
 	private int armiesCount;
-
+	/**
+	 * state of player
+	 */
 	private boolean lost = false;
-
+	/**
+	 * neighbours of selected country
+	 */
 	private NodeOfCountry SNeighbour;
-
+	/**
+	 * node of selected country
+	 */
 	private NodeOfCountry SelectedCountry;
+	/**
+	 * Strategy of Player
+	 */
+	private StrategyOfPlayer strategy;
     
     /**
      * Set up Player with name
@@ -74,6 +90,7 @@ public class Player
        this.PlayerCountries = new ArrayList<NodeOfCountry>();
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
+        this.strategy = new HActionStrategy();
     }
  
     /**
@@ -349,32 +366,29 @@ public class Player
  * This method runs the reinforcement phase
  */
 public void RPhase(){
-	GameDriver.getInstance().getControl().reinforcementConrols(GameDriver.getInstance().play.getCountArmies(),
-			GameDriver.getInstance().play.getNameOfCountries());
-	  GameDriver.getInstance().setControlListenerForF();
+	strategy.RPhase(PlayerArmies,getNameOfCountries());
 }
 
 /**
  * This method runs attack phase.
  */
 public void APhase(){
-	ArrayList<String> list = new ArrayList<String>();
+	ArrayList<String> cl = new ArrayList<String>();
 	for(NodeOfCountry c : this.PlayerCountries) {
 		if(c.getArmyCount()>1) {
-			for(NodeOfCountry n: c.getNeighbours()) {
+			for(NodeOfCountry n: c.getNeighboursCountries()) {
 				if(!n.getOwner().equals(this)) {
-					list.add(c.getNameOfCountry());
+					cl.add(c.getNameOfCountry());
 					break;
 				}
 			}
 		}
 	}
-	if(list.isEmpty()) {
-		GameDriver.getInstance().ChangePhase();
+	if(cl.isEmpty()) {
+		GameDriver.GetInit().ChangePhase();
 	}
 	else {
-		GameDriver.getInstance().getControl().attackControls(list.toArray(new String[list.size()]));
-		GameDriver.getInstance().setAttackListeners();
+		strategy.APhase(cl);
 	}
 }
 
@@ -394,11 +408,10 @@ public void FPhase(){
 		}
 	}
 	if(list.isEmpty()) {
-		GameDriver.getInstance().ChangePhase();
+		GameDriver.GetInit().ChangePhase();
 	}
 	else {
-		GameDriver.getInstance().getControl().fortificationControls(list.toArray(new String[list.size()]));
-		GameDriver.getInstance().setFortificationLiteners();
+		strategy.FPhase(list);
 	}
 }
 
@@ -435,7 +448,7 @@ public int getArmiesShiftedAfterFortification(String Country, String Neighbour, 
  * Get the country selected to move armies from.
  * @return country selected to move armies from.
  */
-public NodeOfCountry getCountrySelected(){
+public NodeOfCountry getSelectCountry(){
 	return this.SelectedCountry;
 }
 
@@ -443,7 +456,7 @@ public NodeOfCountry getCountrySelected(){
  * Get the neighbour selected to move armies to.
  * @return neighbour selected to move armies to.
  */
-public NodeOfCountry getNeighbourSelected(){
+public NodeOfCountry getSelectNeighbour(){
 	return this.SNeighbour;
 }
 
@@ -452,8 +465,8 @@ public NodeOfCountry getNeighbourSelected(){
  * @param country country selected as attacking or attacked
  * @return number of dice to roll
  */
-public int selectDiceForAttack(String country) {
-	NodeOfCountry c = getCountry(country);
+public int AttackDice(String co) {
+	NodeOfCountry c = getCountry(co);
 	int armies = c.getArmyCount();
 	if(getTurn() && armies>4) {
 		armies = 3;
@@ -464,7 +477,7 @@ public int selectDiceForAttack(String country) {
 	else if(armies>2) {
 		armies = 2;
 	}
-	return GameDriver.getInstance().setUpBoxInput(1, armies,this.PlayerName+"! Please select number of dice to roll.");
+	return GameDriver.GetInit().InputSetUp(1, armies,this.PlayerName+"! Please select number of dice to roll.");
 }
 
 /**
@@ -493,7 +506,7 @@ public void SetStateOfPlayer(boolean value) {
 }
 
 /**
- * {@inheritDoc}
+ * 
  */
 public String toString() {
 	return PlayerName;
@@ -660,7 +673,7 @@ public Card GetCard(String cardname){
 /**
  * Removes either of three Infantry or Artillery or Cavalry cards
  */
-public void RemoveSimilarThreeCards(){
+public void SameThreeCardsRemoved(){
 	if (this.HaveThreeACards()){
 		this.RemoveCard(this.GetCard("Artillery"));
 		this.RemoveCard(this.GetCard("Artillery"));
@@ -695,8 +708,8 @@ public boolean equals(Object o) {
 /**
  * Set a new strategy for player
  */
-public void setStrategy(PlayerStrategy newStrategy) {
-	this.strategy = newStrategy;
+public void setStrategy(StrategyOfPlayer ns) {
+	this.strategy = ns;
 }
 }
 

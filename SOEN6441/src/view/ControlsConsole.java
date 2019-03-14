@@ -90,6 +90,18 @@ public class ControlsConsole extends JPanel {
 		this.setBorder(BorderFactory.createDashedBorder(Color.black));
 		this.setPreferredSize(new Dimension(450, 170));
 	}  
+	/**
+	 * This method sets the list of neighbours in combobox
+	 * @param NameOfNeigbour neighbors list
+	 */
+	public void SetNList(String[]NameOfNeigbour)
+	{
+		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(NameOfNeigbour));
+		this.ListOfNeighbors.setSelectedIndex(0);
+		this.ListOfNeighbors.setEnabled(true);
+		this.Player_Move.setEnabled(true);
+
+	}
 
 	/**
 	 * displays the reinforcement part 
@@ -191,17 +203,13 @@ public class ControlsConsole extends JPanel {
 	public void updateFortification(int count, String[] Neighbours) {
 		this.spinnerArmies.setModel(new SpinnerNumberModel(1, 0, count - 1, 1));
 		this.spinnerArmies.setEnabled(true);
-
 		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(Neighbours));
-
-		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(Neighbours));
-
 		this.ListOfNeighbors.setSelectedIndex(0);
 		this.ListOfNeighbors.setEnabled(true);
-		
 		this.Player_Move.setEnabled(true);
 
 	}
+	
 
 	/**
 	 * Checks for neighbor list combo-box enabled or not.

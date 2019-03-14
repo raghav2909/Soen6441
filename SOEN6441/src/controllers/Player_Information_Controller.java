@@ -33,10 +33,10 @@ public class Player_Information_Controller {
 	 * when the user starts the game play. 
 	 * @return This method will return the Number of players.
 	 */
-	public static int NumberOfPlayer()
+	public int NumberOfPlayer(int minimum,String Mesg,int maximum)
 	{
 		JPanel jp = new JPanel();
-       SpinnerModel S_M = new SpinnerNumberModel(2, 2, 4, 1);
+       SpinnerModel S_M = new SpinnerNumberModel(minimum, minimum, maximum, 1);
        JSpinner jsm= new JSpinner(S_M);
        jp.add(new JLabel("Enter Number Of Players"));
        jp.add(jsm);
@@ -46,7 +46,7 @@ public class Player_Information_Controller {
     	   return (int) jsm.getValue();
     	   
        }
-       return 2;
+       return minimum;
 	
 	}
 	
@@ -54,9 +54,9 @@ public class Player_Information_Controller {
 	 * This function will give the information regarding the players
 	 * @return It will return the names of players as string array
 	 */
-	public static String[] Information_OF_Playres()
+	public String[] Information_OF_Playres()
 	{
-		int n = NumberOfPlayer();
+		int n = NumberOfPlayer(2,"Player Numbers",6);
 		System.out.println("Number of players" + n);
 		
 		 Name_Of_Player= new String[n];

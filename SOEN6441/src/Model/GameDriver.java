@@ -403,10 +403,10 @@ public class GameDriver extends Observable {
 		NodeOfCountry countrySelect = this.CurrentP.getCountry(SelectedCountry);
 		if(countrySelect.getArmyCount()>1) {
 			ArrayList<String> neighborList = map.getPlayerNeighbours(countrySelect,this.CurrentP,true);
-			controller.updateControlsFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()])); 
+			Controls.updateFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()])); 
 		}
 	}  
-	  
+	   
 	/**
 	 * A delegate method to call getArmiesShiftedAfterFortification in Player class.
 	 * @param newCountry country from where Army are to be moved
@@ -421,7 +421,7 @@ public class GameDriver extends Observable {
 	 * A delegate method to call setAttackListeners in the_main_controller class
 	 */
 	public void setAttackListeners() {
-		controller.setAttackListeners();
+		controller.ListenerForAttackPhase();
 	}
 	
 	/**
@@ -433,7 +433,7 @@ public class GameDriver extends Observable {
 		NodeOfCountry countrySelect = this.CurrentP.getCountry(SelectedCountry);
 		if(countrySelect.getArmyCount()>1) {
 			ArrayList<String> neighborList = map.getPlayerNeighbours(countrySelect,this.CurrentP,false);
-			controller.updateNeighborList(neighborList.toArray(new String[neighborList.size()]));
+			Controls.SetNList(neighborList.toArray(new String[neighborList.size()]));
 		}
 	}
 	
@@ -546,8 +546,8 @@ public class GameDriver extends Observable {
 	 * @param message  explaining the purpose 
 	 * @return a number selected by user
 	 */
-	public int InputSetUp(int min, int Maximum, String message) {
-		return controller.InputSetUp(min, Maximum, message);
+	public int InputSetUp(int minimum, String message, int Maximum) {
+		return InfoOfPlayer.NumberOfPlayer(minimum,message, Maximum);
 	}
 	
 	/**
@@ -601,7 +601,7 @@ public class GameDriver extends Observable {
 	 */
 	public void CallGameOver() {
 		notifyObservers("GameOver");
-		controller.removeAllControls();
+		controller.AllControlsOver();
 	}
 	
 	/**

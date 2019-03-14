@@ -177,7 +177,7 @@ public class the_main_controller {
 //					ArrayList<String> neighborList = getNeighbors(countrySelect);
 //				crc.updateFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()]));
 //				}
-				GD.fortificationNeighbourListUpdate(selectedCountry);
+				GD.UpdateFNeighbour(selectedCountry);
 			}
 		});
 		
@@ -193,8 +193,14 @@ public class the_main_controller {
 		});
 	}
 	
-	
-
+	/**
+	 * This method will remove the controllers after the game
+	 * is over.
+	 */
+public void AllControlsOver()
+{
+crc.removeAll();
+}
 
 
 /**
@@ -239,6 +245,9 @@ public void Single_Mode_Start() throws IOException {
 
 
 }
+/**This method starts the saved mode of the game
+ * 
+ */
 public void single_Mode_Saved_Start() {
 
 	System.out.println("Saved Mode");

@@ -406,7 +406,7 @@ public class GameDriver extends Observable {
 			controller.updateControlsFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()])); 
 		}
 	}
-	
+	  
 	/**
 	 * A delegate method to call getArmiesShiftedAfterFortification in Player class.
 	 * @param newCountry country from where Army are to be moved

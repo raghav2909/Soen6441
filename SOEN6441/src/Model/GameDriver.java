@@ -100,7 +100,7 @@ public class GameDriver extends Observable {
 		this.controller = NewC;
 	}
 	
-	/**
+	/** 
 	 * Starting the game.
 	 */
 	public void Start() {
@@ -247,7 +247,7 @@ public class GameDriver extends Observable {
 	 * @param Path save the map path
 	 * @throws IOException exception for no path found
 	 */
-	public void CreateMap(String Path) throws IOException {
+	public void MapCreation(String Path) throws IOException {
 		
 		map = new Map(Path);
 	}

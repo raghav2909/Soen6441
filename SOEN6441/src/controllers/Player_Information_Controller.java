@@ -25,7 +25,7 @@ public class Player_Information_Controller {
 	/**
 	 * This array stores the player names.
 	 */
-	public static String[] Name_Of_Player;
+	public static String[] Name_Of_Player; 
 	
 	/**
 	 * This function will give the information regarding the player.
@@ -86,8 +86,11 @@ public class Player_Information_Controller {
 	 * @param CL List of countries where the player can place armies.
 	 * @return country name selected.
 	 */
-	public String ArmyPlacing(String[] CL) {
+	public String ArmyPlacing(String[] CL, String Msg) {
 		JComboBox<String> List_Of_countries = new JComboBox<String>(CL);
+		String[] opt= {"O"};
+		JOptionPane.showOptionDialog(null, CL, Msg, JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, null,		
+				opt, opt[0]);
 		String country = CL[List_Of_countries.getSelectedIndex()];
 		return country;
 	}

@@ -92,7 +92,7 @@ public class ControlsConsole extends JPanel {
 	}  
 
 	/**
-	 * displays the reinforcement part
+	 * displays the reinforcement part 
 	 * 
 	 * @param ac armies available for reinforcement part to the player
 	 * @param cl array containing all countries owned by current player
@@ -152,7 +152,7 @@ public class ControlsConsole extends JPanel {
 	 * 
 	 * @param ae ActionListener to be attached to the combo-box.
 	 */
-	public void countrieslistAction(ActionListener ae) {
+	public void ListOfCountriesAction(ActionListener ae) {
 		this.ListOfCountries.addActionListener(ae);
 	}
 

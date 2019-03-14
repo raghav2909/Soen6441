@@ -69,6 +69,11 @@ public class GameDriver extends Observable {
 	 */
 	private ArrayList<Card> Cards;
 	
+	
+	/**
+	 * Object for playerConsole 
+	 */
+	private PlayerConsole plc;
 	/**
 	 * Observer notification string.
 	 */
@@ -77,7 +82,7 @@ public class GameDriver extends Observable {
 	/**
 	 * Constructor for initializing .
 	 */
-	private GameDriver() {
+	public GameDriver() {
 		TurnManagment = new GameTurnDriver("Reinforcement");
 		Cards = Card.CardGeneration();
 	}
@@ -129,9 +134,9 @@ public class GameDriver extends Observable {
 			for(Player p: players){
 				String s;
 				if(p.getEmptyCountriesName().length!=0){
-					s = controller.placeArmyDialog(p.getEmptyCountriesName(), p.getPlayerName()+" Place your army");
+					s = InfoOfPlayer.ArmyPlacing(p.getEmptyCountriesName(), p.getPlayerName()+" Place your army");
 				}else{
-					s= controller.placeArmyDialog(p.getEmptyCountriesName(),p.getPlayerName()+" Place your army");
+					s= InfoOfPlayer.ArmyPlacing(p.getEmptyCountriesName(),p.getPlayerName()+" Place your army");
 				}
 				p.getCountry(s).AddArmy(1);
 				p.RemovedArmies(1);
@@ -201,7 +206,7 @@ public class GameDriver extends Observable {
 			playerNames[i] = p.getPlayerName();
 			i++;
 		}
-		InfoOfPlayer.setPlayerInfo(playerNames);
+		plc.setPlayerData(playerNames);
 	}
 
 	/**

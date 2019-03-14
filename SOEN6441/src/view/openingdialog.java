@@ -36,7 +36,7 @@ import game.messages.MessageWindow;
  */
 public class openingdialog {
 	 private  MessageWindow messageWindow = new MessageWindow();
-
+ 
 	 /**
 	  * frame declared
 	  */

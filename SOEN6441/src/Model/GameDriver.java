@@ -405,7 +405,7 @@ public class GameDriver extends Observable {
 			ArrayList<String> neighborList = map.getPlayerNeighbours(countrySelect,this.CurrentP,true);
 			controller.updateControlsFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()])); 
 		}
-	}
+	}  
 	  
 	/**
 	 * A delegate method to call getArmiesShiftedAfterFortification in Player class.

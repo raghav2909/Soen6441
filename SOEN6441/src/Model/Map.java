@@ -31,15 +31,15 @@ public class Map extends Observable
 	WriteMap MapWriter = new WriteMap();
 	
 	/**
-	 * new controller object
+	 * Number of Map's total countries
 	 */
-	
+	private int count_Country;
 	
 	
 	/**
 	 * creating a arraylist for saving map data
 	 */
-	public static  ArrayList<NodeOfMap> MapData;
+	public   ArrayList<NodeOfMap> DataMap;
 	
 	
 	 /**
@@ -51,7 +51,7 @@ public class Map extends Observable
 	{
 		
 		    ReadMap Reader = new ReadMap();
-			MapData = Reader.mapreader(FileName);
+			DataMap = Reader.mapreader(FileName);
 			
 		 
 	}
@@ -75,7 +75,7 @@ public class Map extends Observable
 	public  ArrayList<NodeOfMap> GetMapData()
 	{
 		
-		return MapData;
+		return this.DataMap;
 	
 	}
 	
@@ -86,7 +86,7 @@ public class Map extends Observable
 	public String[][] GetMapInfo()
 	{
 		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
-		for (NodeOfMap n : MapData) 
+		for (NodeOfMap n : DataMap) 
 		{
 			for (NodeOfCountry m : n.getCountries()) 
 			{
@@ -117,7 +117,7 @@ public class Map extends Observable
 	public String[][] GetMap()
 	{
 		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
-		for (NodeOfMap n : MapData)
+		for (NodeOfMap n : DataMap)
 		{
 			for(NodeOfCountry m : n.getCountries()) 
 			{
@@ -146,7 +146,7 @@ public class Map extends Observable
 	}
 	
 	/**
-	 * show the map data on console
+	 * This method displays the data on the console
 	 */
 	public void MapPrint()
 	{
@@ -191,7 +191,7 @@ public class Map extends Observable
 	 */
 	public boolean isMapConnectedGragh() 
 	{
-		for (NodeOfMap n : this.MapData) 
+		for (NodeOfMap n : this.DataMap) 
 		{
 			for (NodeOfCountry m : n.getCountries()) 
 			{
@@ -219,7 +219,7 @@ public class Map extends Observable
 	public boolean isMapNodesContainUniqueCountries() 
 	{
 		ArrayList <NodeOfCountry> s = new ArrayList<NodeOfCountry>();
-		for (NodeOfMap n : this.MapData) 
+		for (NodeOfMap n : this.DataMap) 
 		{
 			for (NodeOfCountry m : n.getCountries()) 
 			{
@@ -334,7 +334,12 @@ public class Map extends Observable
 	public String getOlfFileMap() {
 		return OldFileMap;
 	}
-	
+	/**
+	 * to check if the continent is owned by the player who won the  country.
+	 * @param player For whom the continent is checked
+	 * @param c COuntry for which continent check is done.
+	 * @return  false is continent does not belong to the player  and true if it belongs
+	 */
 	public boolean WonPlayerContinent(Player player,NodeOfCountry c) {
 		boolean b=false;
 		NodeOfMap m = c.getContinent();	
@@ -361,6 +366,26 @@ public class Map extends Observable
 		return ce;
 	}
 	
+	
+	
+	/**
+	 * This method gets the object of country from its name
+	 * @return Total map countries
+	 */
+	
+	public NodeOfCountry gettingCountry(String CN)
+	{
+		NodeOfCountry noc= null;
+		for(NodeOfMap nom: this.DataMap)
+		{
+			noc= NodeOfCountry.getCountry(nom.getClst(), CN);
+			if(noc!=null)
+			{
+			break;	
+			}
+		}
+		return noc;
+	}
 
 }
 

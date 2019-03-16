@@ -129,7 +129,7 @@ public class GameDriver extends Observable {
 		UpdatePlayer();
 		
 		int AllArmies= players.get(0).getCountArmies();
-		for(int i1=0;i1<AllArmies;i1++){
+		for(int i=0;i<AllArmies;i++){
 			System.out.print("Armies allocated"+players.get(0).getCountArmies());
 			for(Player p: players){
 				String s;
@@ -220,7 +220,7 @@ public class GameDriver extends Observable {
 	/**
 	 * Sets the next player's turn.
 	 */
-	public void setNextPlayerTurn() {
+	public void setNextPlayer() {
 		int currentPlayerIndex = players.indexOf(GetCurrent());
 		this.CurrentP.SetTurnFalse();
 		if (currentPlayerIndex == players.size()-1){
@@ -237,15 +237,15 @@ public class GameDriver extends Observable {
 
 	
 	
-	public void NextPlayer() {
-		int CurrentPlayer = Player.indexOf(GetCurrent());
-		GetCurrent().SetTurnFalse();
-		if (CurrentPlayer == Player.size() - 1) {
-			Player.get(0).SetTurnTrue();
-		} else {
-			Player.get(CurrentPlayer + 1).SetTurnTrue();
-		}
-	}
+//	public void NextPlayer() {
+//		int CurrentPlayer = Player.indexOf(GetCurrent());
+//		GetCurrent().SetTurnFalse();
+//		if (CurrentPlayer == Player.size() - 1) {
+//			Player.get(0).SetTurnTrue();
+//		} else {
+//			Player.get(CurrentPlayer + 1).SetTurnTrue();
+//		}
+//	}
 
 	/**
 	 * getting object of map class
@@ -294,9 +294,9 @@ public class GameDriver extends Observable {
 	 * @return list of neighbor countries.
 	 */
 	public NodeOfCountry [] getNeighbourCountries(NodeOfCountry c) {
-		for(NodeOfCountry country: GetCurrent().getCountries()){
-			if(country.getNameOfCountry().equals(c.getNameOfCountry())){
-				return country.getNeighboursCountries();
+		for(NodeOfCountry C: GetCurrent().getCountries()){
+			if(C.getNameOfCountry().equals(c.getNameOfCountry())){
+				return C.getNeighboursCountries();
 			}
 		}
 		return null;
@@ -371,7 +371,7 @@ public class GameDriver extends Observable {
 	}
 	
 	/**
-	 * Adds the new player to the arraylist of players.
+	 * Adds the new player to the players arraylist.
 	 * @param np Player object.
 	 */
 	public void ListOfPlayers(Player np){
@@ -387,11 +387,12 @@ public class GameDriver extends Observable {
 	 * @param Army number of Army to be placed
 	 */
 	public void shiftArmiesOnReinforcement(String SelectedCountry, int Army) {
-		if(this.CurrentP.shiftArmiesOnReinforcement(SelectedCountry, Army)==0) {
-			ChangePhase();
+		if(this.CurrentP.shiftArmiesOnReinforcement(SelectedCountry, Army)!=0) {
+			ContinuePhase();
 		}
 		else {
-			ContinuePhase();
+			
+			ChangePhase();
 		}
 	}
 	
@@ -413,8 +414,8 @@ public class GameDriver extends Observable {
 	 * @param newNeighbour country where Army are to be moved
 	 * @param newArmies number of Army to be moved
 	 */
-	public void getArmiesShiftedAfterFortification(String newCountry, String newNeighbour, int newArmies) {
-		this.CurrentP.getArmiesShiftedAfterFortification(newCountry, newNeighbour, newArmies);
+	public void getArmiesShiftedAfterFortification(String nc, String nn, int na) {
+		this.CurrentP.getArmiesShiftedAfterFortification(nc, nn, na);
 	}
 	
 	/**
@@ -442,15 +443,15 @@ public class GameDriver extends Observable {
 	 * @param AttackerC country of attacker
 	 * @param DefenderC country of def
 	 */
-	public void AttackCall(String AttackerC, String DefenderC) {
-		this.Notification = "Attacker Country: "+AttackerC+"  Defender Country: "+DefenderC+"  ";
+	public void AttackCall(String AttackerCountry, String DefenderCountry) {
+		this.Notification = "Attacker Country: "+AttackerCountry+"  Defender Country: "+DefenderCountry+"  ";
 		setChanged();
 		notifyObservers(Notification);
-		NodeOfCountry DC = map.getCountry(DefenderC);
+		NodeOfCountry DC = map.gettingCountry(DefenderCountry);
 		Player def = DC.getOwner();
-		NodeOfCountry AC = CurrentP.getCountry(AttackerC);
-		int AA = this.CurrentP.AttackDice(AttackerC);
-		int DA = def.AttackDice(DefenderC);
+		NodeOfCountry AC = CurrentP.getCountry(AttackerCountry);
+		int AA = this.CurrentP.AttackDice(AttackerCountry);
+		int DA = def.AttackDice(DefenderCountry);
 		ArrayList<Integer> AR = DiceRoll(AA);
 		ArrayList<Integer> DR = DiceRoll(DA);
 		String s = this.CurrentP+" dice : ";
@@ -475,10 +476,10 @@ public class GameDriver extends Observable {
 			setChanged();
 			notifyObservers(Notification);
 			System.out.println("Country "+ DC.getNameOfCountry() +" won by " + DC.getOwner().getPlayerName() + ", new Army "+DC.getArmyCount());
-			int moveArmies = controller.InputSetUp(AA, AC.getArmyCount()-1, "Select Army to move:");
+			int moveArmies = InfoOfPlayer.NumberOfPlayer(AA, "Select Army to move:",AC.getArmyCount()-1);
 			DC.AddArmy(moveArmies);
-			AC.RemoveArmies(moveArmies);
-			if(map.WonContinentPlayer(CurrentP, DC)) {
+			AC.AmriesRemoved(moveArmies);
+			if(map.WonPlayerContinent(CurrentP, DC)) {
 				CurrentP.AddContinent(DC.getContinent());
 			}
 		}
@@ -503,12 +504,12 @@ public class GameDriver extends Observable {
 			int AM = Maximum(AR);
 			int DM = Maximum(DR);
 			if(AR.get(AM)>DR.get(DM)) {
-				DC.removeArmy();
+				DC.deleteArmy();
 				Notification += "<br>" + " Winner Country: "+AC.getNameOfCountry();
 				System.out.println("Army removed from defender country, new Army "+DC.getArmyCount());
 			}
 			else {
-				AC.removeArmy();
+				AC.deleteArmy();
 				Notification += "<br>" + "Winner Country: "+DC.getNameOfCountry();
 				System.out.println("Army removed from attacker country, new Army "+AC.getArmyCount());
 			}

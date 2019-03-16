@@ -153,6 +153,14 @@ public class NodeOfCountry
 		 this.Armies = armies;
 	 }
 	 /**
+	  * This method subtracts the given multiple armies from the country it belongs to.
+	  * @param delarmy number of armies to be deleted
+	  */
+	 public void AmriesRemoved(int delarmy)
+	 {
+		Armies-=delarmy;
+	 }
+	 /**
 	  * Add armies to the  country
 	  * @param NewArmy number of armies
 	  */
@@ -161,9 +169,19 @@ public class NodeOfCountry
 		 this.Armies += NewArmy;
 	 }
 	 /**
+	  * This function reduces the army count by 1.
+	  * 
+	  */
+	 public void deleteArmy()
+	  {
+		  Armies= Armies-1;
+	  }
+	
+	 /**
 	  * Add new neighbour
 	  * @param NewNieghbour 
 	  */
+	
 	 public void AddNeighbour(NodeOfCountry NewNeighbour)
 	 {
 		 if (this.Neighbours==null)

@@ -127,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="Model.Player" project="Soen6441" file="/Soen6441/SOEN6441/src/Model/Player.java" 
+  <class id="15" language="java" name="Model.Player" project="Soen6441" file="/Soen6441/SOEN6441/src/player/Player.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="54" width="140" x="1498" y="649"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -272,98 +272,70 @@
     </display>  
   </class>  
   <association id="31">    
-    <bendpoint x="1507" y="810"/>    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="32" name="PlayerCountry"/>      
-      <multiplicity id="33" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="32" name="ecm">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="33" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="34">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="35" name="plc"/>      
-      <multiplicity id="36" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="35" name="crc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
   </association>  
   <association id="37">    
-    <bendpoint x="1010" y="649"/>    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="38" name="nodeOfMap"/>      
-      <multiplicity id="39" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="38" name="objct">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="39" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
+    <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="40">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="41" name="mapWriter"/>      
-      <multiplicity id="42" minimum="0" maximum="1"/>    
+  <dependency id="40">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <association id="41">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="42" name="messageWindow">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="43" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="43">    
+  <association id="44">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="44" name="CurrentPhase"/>      
-      <multiplicity id="45" minimum="0" maximum="1"/>    
+      <attribute id="45" name="driver">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="46" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="46">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="47" name="drc"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <association id="49">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="50" name="PlayerContinents"/>      
-      <multiplicity id="51" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="52">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="53" name="countrylist"/>      
-      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="55">    
-    <bendpoint x="1256" y="531"/>    
-    <bendpoint x="1338" y="649"/>    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="14"/>  
-  </dependency>  
-  <association id="56">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="57" name="writerMap"/>      
-      <multiplicity id="58" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <association id="59">    
-    <bendpoint x="1930" y="176"/>    
-    <bendpoint x="1930" y="305"/>    
-    <bendpoint x="1930" y="425"/>    
-    <bendpoint x="1930" y="531"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="60" name="Player"/>      
-      <multiplicity id="61" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="62">    
+  <dependency id="47">    
     <bendpoint x="1909" y="176"/>    
     <bendpoint x="1909" y="305"/>    
     <bendpoint x="1697" y="425"/>    
@@ -372,492 +344,604 @@
     <end type="SOURCE" refId="10"/>    
     <end type="TARGET" refId="14"/>  
   </dependency>  
-  <association id="63">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="64" name="opendialog"/>      
-      <multiplicity id="65" minimum="0" maximum="1"/>    
+  <association id="48">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="49" name="countrylist">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <dependency id="66">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="14"/>  
-  </dependency>  
-  <association id="67">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="68" name="foc"/>      
-      <multiplicity id="69" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="70">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="71" name="csc"/>      
-      <multiplicity id="72" minimum="0" maximum="1"/>    
+  <association id="51">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="52" name="PlayerNeighbours">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <bendpoint x="1010" y="649"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="55" name="nodeOfMap">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="73">    
-    <end type="SOURCE" refId="30" navigable="false">      
-      <attribute id="74" name="messageWindow"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="76">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="77" name="driver"/>      
-      <multiplicity id="78" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="79">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="80" name="objct"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
+  <association id="57">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="58" name="ecm">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <dependency id="82">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="15"/>  
-  </dependency>  
-  <association id="83">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="84" name="Cards"/>      
-      <multiplicity id="85" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="86">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="87" name="mapEditor"/>      
-      <multiplicity id="88" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="89">    
-    <bendpoint x="1507" y="305"/>    
-    <bendpoint x="1507" y="425"/>    
-    <bendpoint x="1507" y="531"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="15"/>  
-  </dependency>  
-  <association id="90">    
-    <bendpoint x="989" y="649"/>    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="91" name="continents"/>      
-      <multiplicity id="92" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <association id="93">    
-    <bendpoint x="1359" y="649"/>    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="94" name="nodeOfMap"/>      
-      <multiplicity id="95" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="96">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="97" name="pic"/>      
-      <multiplicity id="98" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="99">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="100" name="MapWriter"/>      
-      <multiplicity id="101" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="102">    
+  <association id="60">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="103" name="mapselection"/>      
-      <multiplicity id="104" minimum="0" maximum="1"/>    
+      <attribute id="61" name="mapselection">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="62" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="26" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="105">    
-    <bendpoint x="806" y="649"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="106" name="continents"/>      
-      <multiplicity id="107" minimum="0" maximum="2147483647"/>    
+  <association id="63">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="64" name="Neighbours">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="65" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="66">    
+    <end type="SOURCE" refId="28" navigable="false">      
+      <attribute id="67" name="messageWindow">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="68" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="69">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="70" name="opendialog">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="71" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="28" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="72">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="73" name="csc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="74" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <dependency id="75">    
+    <bendpoint x="970" y="810"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="76">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="77" name="Cards">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="78" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="80" name="AllContinents">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="81" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="108">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="109" name="ecm"/>      
-      <multiplicity id="110" minimum="0" maximum="1"/>    
+  <association id="82">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="83" name="maincr">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="84" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <bendpoint x="785" y="649"/>    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="86" name="MapNode">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="87" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="89" name="reinforcement">        
+        <position height="18" width="77" x="528" y="485"/>      
+      </attribute>      
+      <multiplicity id="90" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="91">    
+    <bendpoint x="989" y="649"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="92" name="continents">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="93" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="94">    
+    <bendpoint x="1359" y="649"/>    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="95" name="nodeOfMap">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="96" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="111">    
+  <association id="97">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="98" name="GD">        
+        <position height="18" width="23" x="392" y="197"/>      
+      </attribute>      
+      <multiplicity id="99" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="100">    
+    <bendpoint x="743" y="649"/>    
+    <bendpoint x="743" y="810"/>    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <association id="101">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="102" name="csr">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="103" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="112" name="gmc"/>      
-      <multiplicity id="113" minimum="0" maximum="1"/>    
+      <attribute id="105" name="gmc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="106" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="22" navigable="true"/>    
     <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="114">    
+  <association id="107">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="115" name="plc"/>      
-      <multiplicity id="116" minimum="0" maximum="1"/>    
+      <attribute id="108" name="pic">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="109" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="110">    
+    <bendpoint x="1507" y="810"/>    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="111" name="PlayerCountry">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="112" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="113">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="114">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="115" name="mapWriter">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="116" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="117">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="118" name="plc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="119" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="29" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="117">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="118" name="drc"/>      
-      <multiplicity id="119" minimum="0" maximum="1"/>    
+  <association id="120">    
+    <bendpoint x="556" y="305"/>    
+    <bendpoint x="556" y="425"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="121" name="map">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="122" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="120">    
+  <association id="123">    
+    <bendpoint x="1486" y="810"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="124" name="PlayerCountries">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="125" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="126">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="127" name="MapWriter">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="128" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="129">    
     <bendpoint x="1465" y="531"/>    
     <bendpoint x="1465" y="649"/>    
     <bendpoint x="1465" y="810"/>    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="13"/>  
   </dependency>  
-  <dependency id="121">    
-    <bendpoint x="970" y="810"/>    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <association id="122">    
-    <bendpoint x="906" y="531"/>    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="123" name="readMap"/>      
-      <multiplicity id="124" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="125">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="126" name="mapNew"/>      
-      <multiplicity id="127" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="128">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="129" name="GD">        
-        <position height="18" width="23" x="392" y="197"/>      
-      </attribute>      
-      <multiplicity id="130" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="131">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="132" name="fortification">        
-        <position height="18" width="64" x="524" y="452"/>      
-      </attribute>      
-      <multiplicity id="133" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="134">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="135" name="mpc"/>      
-      <multiplicity id="136" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="137">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="138" name="maincr"/>      
-      <multiplicity id="139" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="140">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="141" name="csr"/>      
-      <multiplicity id="142" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <association id="143">    
-    <bendpoint x="1951" y="176"/>    
-    <bendpoint x="1951" y="305"/>    
-    <bendpoint x="1951" y="425"/>    
-    <bendpoint x="1951" y="531"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="144" name="CurrentPlayer"/>      
-      <multiplicity id="145" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="146">    
-    <bendpoint x="743" y="649"/>    
-    <bendpoint x="743" y="810"/>    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <association id="147">    
-    <bendpoint x="1547" y="176"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="148" name="PlayerInfo"/>      
-      <multiplicity id="149" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="150">    
-    <bendpoint x="1972" y="176"/>    
-    <bendpoint x="1972" y="305"/>    
-    <bendpoint x="1972" y="425"/>    
-    <bendpoint x="1972" y="531"/>    
-    <bendpoint x="1972" y="649"/>    
-    <bendpoint x="1972" y="810"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="151" name="PlayerNeighbours"/>      
-      <multiplicity id="152" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="153">    
-    <bendpoint x="764" y="649"/>    
+  <association id="130">    
+    <bendpoint x="806" y="649"/>    
     <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="154" name="MapData"/>      
-      <multiplicity id="155" minimum="0" maximum="2147483647"/>    
+      <attribute id="131" name="continents">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="132" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="156">    
-    <bendpoint x="1342" y="176"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="157" name="controls"/>      
-      <multiplicity id="158" minimum="0" maximum="1"/>    
+  <association id="133">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="134" name="drc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="135" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="159">    
+  <association id="136">    
+    <bendpoint x="906" y="531"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="137" name="readMap">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="138" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="139">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="140" name="writerMap">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="141" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="142">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="143" name="foc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="144" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="145">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <dependency id="146">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
+  <association id="147">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="148" name="mpc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="149" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="150">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="151" name="controller">        
+        <position height="18" width="53" x="367" y="219"/>      
+      </attribute>      
+      <multiplicity id="152" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="153">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="154" name="existingMapModifier">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="155" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="156">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="160" name="attack">        
+      <attribute id="157" name="attack">        
         <position height="18" width="39" x="533" y="468"/>      
       </attribute>      
-      <multiplicity id="161" minimum="0" maximum="1"/>    
+      <multiplicity id="158" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="162">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="163" name="Neighbours"/>      
-      <multiplicity id="164" minimum="0" maximum="2147483647"/>    
+  <association id="159">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="160" name="drc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="161" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <end type="TARGET" refId="20" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="162">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="163" name="MapExists">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="164" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
   </association>  
   <association id="165">    
-    <bendpoint x="785" y="649"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="166" name="MapNode"/>      
-      <multiplicity id="167" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="166" name="PlayerContinents">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="167" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="168">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="169" name="crc"/>      
-      <multiplicity id="170" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <association id="171">    
-    <bendpoint x="493" y="425"/>    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="172" name="map"/>      
-      <multiplicity id="173" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="174">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="175" name="existingMapModifier"/>      
-      <multiplicity id="176" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <association id="177">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="178" name="PlayerNeighbours"/>      
-      <multiplicity id="179" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="180">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="181" name="controlc"/>      
-      <multiplicity id="182" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="false" multiplicity="true"/>  
-  </association>  
-  <association id="183">    
-    <bendpoint x="766" y="176"/>    
-    <bendpoint x="514" y="305"/>    
-    <bendpoint x="535" y="425"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="184" name="map"/>      
-      <multiplicity id="185" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="186">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="7"/>  
-  </dependency>  
-  <dependency id="187">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="10"/>  
-  </dependency>  
-  <association id="188">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="189" name="mpc"/>      
-      <multiplicity id="190" minimum="0" maximum="1"/>    
+      <attribute id="169" name="mpc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="170" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="false" multiplicity="false"/>  
   </association>  
-  <association id="191">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="192" name="messageWindow"/>      
-      <multiplicity id="193" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="194">    
-    <bendpoint x="556" y="305"/>    
-    <bendpoint x="556" y="425"/>    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="195" name="map"/>      
-      <multiplicity id="196" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="197">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="198" name="AllContinents"/>      
-      <multiplicity id="199" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="200">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="201" name="controller">        
-        <position height="18" width="53" x="367" y="219"/>      
-      </attribute>      
-      <multiplicity id="202" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="203">    
+  <association id="171">    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="204" name="reinforcement">        
-        <position height="18" width="77" x="528" y="485"/>      
+      <attribute id="172" name="fortification">        
+        <position height="18" width="64" x="524" y="452"/>      
       </attribute>      
-      <multiplicity id="205" minimum="0" maximum="1"/>    
+      <multiplicity id="173" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="206">    
+  <association id="174">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="207" name="ecm"/>      
-      <multiplicity id="208" minimum="0" maximum="1"/>    
+      <attribute id="175" name="mapEditor">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="176" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="12" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="209">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="4"/>  
-  </dependency>  
-  <dependency id="210">    
-    <bendpoint x="535" y="305"/>    
-    <bendpoint x="514" y="425"/>    
-    <bendpoint x="514" y="531"/>    
-    <bendpoint x="514" y="649"/>    
-    <bendpoint x="514" y="810"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="13"/>  
-  </dependency>  
-  <association id="211">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="212" name="MapExists"/>      
-      <multiplicity id="213" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="false" multiplicity="false"/>  
-  </association>  
-  <association id="214">    
-    <bendpoint x="1620" y="176"/>    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="215" name="pic"/>      
-      <multiplicity id="216" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="217">    
-    <bendpoint x="1486" y="810"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="218" name="PlayerCountries"/>      
-      <multiplicity id="219" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <dependency id="220">    
+  <dependency id="177">    
     <end type="SOURCE" refId="12"/>    
     <end type="TARGET" refId="16"/>  
   </dependency>  
+  <association id="178">    
+    <bendpoint x="766" y="176"/>    
+    <bendpoint x="514" y="305"/>    
+    <bendpoint x="535" y="425"/>    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="179" name="map">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="180" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="181">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="182">    
+    <bendpoint x="1256" y="531"/>    
+    <bendpoint x="1338" y="649"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <association id="183">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="184" name="plc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="185" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="186">    
+    <bendpoint x="493" y="425"/>    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="187" name="map">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="188" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="189">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="190" name="controlc">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="191" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="false" package="true" initial-value="true" signature="false" 
     sort-features="false" accessors="true" visibility="false">    
     <attributes public="false" package="false" protected="false" private="false" static="true"/>    

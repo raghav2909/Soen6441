@@ -32,7 +32,7 @@ public class Card
 	 * getting the name of card
 	 * @return the name of card
 	 */
-	String getName()
+	public String getName()
 	{
 		return this.Name;
 	}

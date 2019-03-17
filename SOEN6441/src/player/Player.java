@@ -9,6 +9,7 @@ import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.StrategyOfPlayer;
 import Model.Card;
+import Model.GameDriver;
 import Model.HActionStrategy;
 
 /**
@@ -84,7 +85,7 @@ public class Player
 	/**
 	 * Strategy of Player
 	 */
-	private StrategyOfPlayer strategy;
+	private StrategyOfPlayer SOP;
     
     /**
      * Set up Player with name
@@ -96,7 +97,7 @@ public class Player
        this.PlayerCountries = new ArrayList<NodeOfCountry>();
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
-        this.strategy = new HActionStrategy();
+        this.SOP = new HActionStrategy();
     }
  
     /**
@@ -193,13 +194,13 @@ public class Player
      */
     public String[] getEmptyCountriesName()
     {
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> n = new ArrayList<String>();
         for(NodeOfCountry c: this.PlayerCountries)
         {
             if(c.getArmyCount()==0)
-                names.add(c.getNameOfCountry());
+                n.add(c.getNameOfCountry());
         }
-        return names.toArray(new String[names.size()]);
+        return n.toArray(new String[n.size()]);
     }
     
     /**
@@ -252,13 +253,13 @@ public class Player
      */
     public void ContinentCheck ()
     {
-        for (NodeOfMap continent : this.AllContinents)
+        for (NodeOfMap c: this.AllContinents)
         {
-            System.out.println(continent.getContinent());
-            if(this.PlayerCountries.containsAll(continent.getClst()))
+            System.out.println(c.getContinent());
+            if(this.PlayerCountries.containsAll(c.getClst()))
             {
-                AddContinent(continent);
-                System.out.println("Added :" + continent.getContinent());
+                AddContinent(c);
+                System.out.println("Added :" + c.getContinent());
             }
         }
     }
@@ -273,7 +274,15 @@ public class Player
         int CountCountries = this.PlayerCountries.size();
         int CountContinents = this.PlayerContinents.size();
        int CountCards = this.Cards.size();
-        
+       int CountArmies = (int) Math.ceil(CountCountries/3)+CountContinents;
+       if (CountCards >5) {
+       	CountArmies = +5*this.UsedCards;
+       	this.UsedCards++;
+       }
+       if(CountArmies<3)
+       {
+       	CountArmies=3;
+       }
 
         if (CountContinents > 0)
         {
@@ -283,15 +292,8 @@ public class Player
                 CountContinents += Continent.getControlValue();
             }
         }
-        int CountArmies = (int) Math.ceil(CountCountries/3)+CountContinents;
-        if (CountCards >5) {
-        	CountArmies = +5*this.UsedCards;
-        	this.UsedCards++;
-        }
-        if(CountArmies<3)
-        {
-        	CountArmies=3;
-        }
+       
+        CountArmies +=CountContinents;
         System.out.println(CountArmies);
         return CountArmies;
     }
@@ -372,7 +374,8 @@ public class Player
  * This method runs the reinforcement phase
  */
 public void RPhase(){
-	strategy.RPhase(PlayerArmies,getNameOfCountries());
+	
+	SOP.RPhase(PlayerArmies,getNameOfCountries());
 }
 
 /**
@@ -394,7 +397,7 @@ public void APhase(){
 		GameDriver.GetInit().ChangePhase();
 	}
 	else {
-		strategy.APhase(cl);
+		SOP.APhase(cl);
 	}
 }
 
@@ -417,7 +420,7 @@ public void FPhase(){
 		GameDriver.GetInit().ChangePhase();
 	}
 	else {
-		strategy.FPhase(list);
+		SOP.FPhase(list);
 	}
 }
 
@@ -436,11 +439,11 @@ public int shiftArmiesOnReinforcement(String country, int armies) {
 }
 
 /**
- * Shifts the armies of the player from one country to another.
+ * Shifts the armies from one country to another.
  * @param sCountry the country name from which armies are moved.
  * @param sNeighbour the country name to which armies are added.
  * @param selectedArmies the number of armies to be moved.
- * @return the army count left in sNeighbour country.
+ * @return the army count left in SNeighbour country.
  */
 public int getArmiesShiftedAfterFortification(String Country, String Neighbour, int armies){
 	this.SelectedCountry = getCountry(Country);
@@ -451,8 +454,8 @@ public int getArmiesShiftedAfterFortification(String Country, String Neighbour, 
 }
 
 /**
- * Get the country selected to move armies from.
- * @return country selected to move armies from.
+ * Get the country to move armies.
+ * @return country to move armies from.
  */
 public NodeOfCountry getSelectCountry(){
 	return this.SelectedCountry;
@@ -460,7 +463,7 @@ public NodeOfCountry getSelectCountry(){
 
 /**
  * Get the neighbour selected to move armies to.
- * @return neighbour selected to move armies to.
+ * @return SNeighbour selected to move armies to.
  */
 public NodeOfCountry getSelectNeighbour(){
 	return this.SNeighbour;
@@ -483,12 +486,12 @@ public int AttackDice(String co) {
 	else if(armies>2) {
 		armies = 2;
 	}
-	return GameDriver.GetInit().InputSetUp(1, armies,this.PlayerName+"! Please select number of dice to roll.");
+	return GameDriver.GetInit().InputSetUp(1, this.PlayerName+"! Please select number of dice to roll.",armies);
 }
 
 /**
- * Get the number of countries owned by player.
- * @return number of countries owned by player
+ * It gets number of owned countries by player.
+ * @return owned countries number by player.
  */
 public int getPlayerCountryCount(){
 	return getCountries().size();
@@ -559,7 +562,7 @@ public boolean HaveACard(){
 
 /**
  * Checks if player have Infantry, Artillery and Cavalry Cards
- * @return true if player have Infantry, Artillery and Cavalry Cards otherwise false
+ * @return false if player does not have Infantry, Artillery and Cavalry Cards otherwise true
  */
 public boolean HaveDCard(){
 	if (this.HaveICard() && this.HaveACard() && this.HaveCCard()){
@@ -645,8 +648,8 @@ public boolean SameTypeCards(){
 
 
 /**
- * 
- * @return list of cards player has.
+ *  this is arraylist of cards 
+ * @return card list the player has.
  */
 public ArrayList<Card> GetCards(){
 	return this.Cards;
@@ -700,7 +703,7 @@ public void SameThreeCardsRemoved(){
 }
 
 /**
- * Checks if two objects are equal.
+ * Checks that if  the two objects are equal or not.
  */
 public boolean equals(Object o) {
 	if(o instanceof Player) {
@@ -715,7 +718,7 @@ public boolean equals(Object o) {
  * Set a new strategy for player
  */
 public void setStrategy(StrategyOfPlayer ns) {
-	this.strategy = ns;
+	this.SOP = ns;
 }
 }
 

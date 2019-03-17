@@ -8,6 +8,7 @@ import java.util.Random;
 
 import controllers.Player_Information_Controller;
 import controllers.the_main_controller;
+import player.Player;
 //import sun.security.provider.DSAKeyPairGenerator.Current;
 import view.ControlsConsole;
 import view.MapConsole;

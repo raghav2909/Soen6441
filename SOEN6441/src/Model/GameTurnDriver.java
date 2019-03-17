@@ -1,19 +1,46 @@
 package Model;
 
+import player.Player;
+
+/**
+ * This class will phases and manages the turn.
+ * @author raghavsharda
+ * @version 2.0
+ */
 public class GameTurnDriver {
+	/**
+	 * It will store the info, if a player won the territory in attack phase.
+	 * value is false if player doesn't won any territory and true if won.
+	 */
 	
 	private boolean gamestatus = false;
+	/**
+	 * This will store the current phase of game.
+	 */
 	
 	private String phasename;
+	/**
+	 * this will save the information if game is over
+	 */
 
 	private boolean cardwin=false;
-	
+	/**
+	 * This is empty constructor to create the object 
+	 */
 	public GameTurnDriver() {
 		
 	}
+	/**
+	 * This constructor will set the name of phase
+	 * @param phase phase name.
+	 */
 	public GameTurnDriver(String phase){
 		this.setPhase(phase);
 	}
+	/**
+	 * This will set the turn from reinforcement phase
+	 * @param turnplayer the player which is having the first turn
+	 */
 	public void StartPlayerTurn(Player turnplayer) {
 		turnplayer.ArmySet(this.ongoingPlayer().getCountArmies());
 		turnplayer.RPhase();
@@ -62,7 +89,7 @@ public class GameTurnDriver {
 			ongoingPlayer().FPhase();
 			break;
 		case "f":
-			GameDriver.GetInit().setNextPlayerTurn();
+			GameDriver.GetInit().setNextPlayer();
 			this.setPhase("Reinforecement");
 			ongoingPlayer().RPhase();
 			break;
@@ -93,7 +120,7 @@ public class GameTurnDriver {
 		
 	}
 
-	private void setPhase(String phase) {
+	private void setPhase(String phasename) {
 		this.phasename=phasename;
 	}
 	

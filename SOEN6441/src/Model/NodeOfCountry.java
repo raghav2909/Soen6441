@@ -3,6 +3,8 @@ package Model;
 
 import java.util.ArrayList;
 
+import player.Player;
+
 /**
  * This is class is used for storing the data of country
  * @author samansoltani

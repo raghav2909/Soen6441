@@ -6,6 +6,8 @@ package view;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -20,7 +22,7 @@ import javax.swing.border.EmptyBorder;
  *@author Harman
  *@version 1.0
  */
-public class PlayerConsole extends JPanel {
+public class PlayerConsole extends JPanel implements Observer{
 
 	/**
 	 * Serial Version id for JFrame.
@@ -55,6 +57,12 @@ public class PlayerConsole extends JPanel {
 			this.add(lbl);
 		}
 		this.validate();
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

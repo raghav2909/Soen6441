@@ -251,7 +251,7 @@ public class ControlsConsole extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String countrySelected = (String) SelectedCountry();
-				NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
+				NodeOfCountry countrySelect = GameDriver.getInstance().GetCurrent().getCountry(countrySelected);
 				if (countrySelect.getArmyCount() > 1) {
 					ArrayList<String> neighborList = getNeighbors(countrySelect);
 					updateFortification(countrySelect.getArmyCount(),
@@ -270,7 +270,7 @@ public class ControlsConsole extends JPanel {
 					String countrySelected = (String) SelectedCountry();
 					int selectedArmies = ValueOfArmies();
 					
-					NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
+					NodeOfCountry countrySelect = GameDriver.getInstance().GetCurrent().getCountry(countrySelected);
 					String neighbourSelected = getNeighborSelected();
 					shiftArmiesOnReinforcement(countrySelect, selectedArmies);
 				}
@@ -320,7 +320,7 @@ public class ControlsConsole extends JPanel {
 		addarmies = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				NodeOfCountry country = GameDriver.getInstance().getCountryNode(SelectedCountry());
+				NodeOfCountry country = GameDriver.getInstance().getCountry(SelectedCountry());
 				int armies = ValueOfArmies();
 				shiftArmiesOnReinforcement(country, armies);
 				GD.ContinuePhase();
@@ -345,13 +345,33 @@ public class ControlsConsole extends JPanel {
 	 */
 	public int shiftArmiesOnReinforcement(NodeOfCountry country, int armies) {
 		country.AddArmy(armies);
-		GD.getCurrent().RemovedArmies(armies);
-		return GD.getArmyCount();
+		GD.GetCurrent().RemovedArmies(armies);
+		return GD.getPlayerArmies();
 	}
 
-	public void attackControls(String[] array) {
+	/**
+	 * This method reset the controls for attack phase
+	 * @param countriesNames list of countries
+	 */
+	public void resetControls(String[] array) {
 		// TODO Auto-generated method stub
+		this.removeAll();
+		ListOfNeighbors = new JComboBox<String>(array);
+		ListOfCountries.setSelectedIndex(0);
+		ListOfNeighbors = new JComboBox<String>();
+		ListOfNeighbors.setEnabled(false);
+		Player_Move = new JButton("Announce attack");
+		Player_Move.setEnabled(false);
+		Player_Move = new JButton("Skip attack");
 		
+		this.add(new Label("Country "));
+		this.add(ListOfCountries);
+		this.add(new Label("Neighbours"));
+		this.add(ListOfNeighbors);
+		this.add(Player_Move);
+		this.add(End_Phase);
+		this.revalidate();
+		this.repaint();
 	}
 
 }

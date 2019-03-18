@@ -8,8 +8,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Model.NodeOfCountry;
-import Model.Player;
 import Model.NodeOfMap;
+import player.Player;
 /**
  * this class is a testing the correct number of armies
  * @author samansoltani

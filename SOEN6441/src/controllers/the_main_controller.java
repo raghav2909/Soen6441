@@ -235,10 +235,10 @@ public void Single_Mode_Start() throws IOException {
 	
 	
 
-    GD.setPlayerConsole(plc);
-	GD.SetConsolMap(mpc);
-	GD.SetConsolControl(crc);
-	GD.GameOn();
+    //GD.setPlayerConsole(plc);
+	GD.setMapView(mpc);
+	GD.setControlsView(crc);
+	GD.Start();
 
 
 

@@ -1,6 +1,8 @@
-package Model;
+package player;
 
 import java.util.ArrayList;
+
+import Model.GameDriver;
 
 public class HActionStrategy implements StrategyOfPlayer{
 

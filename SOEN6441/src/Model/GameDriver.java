@@ -388,7 +388,7 @@ public class GameDriver extends Observable {
 	 * @param Army number of Army to be placed
 	 */
 	public void shiftArmiesOnReinforcement(String SelectedCountry, int Army) {
-		if(this.CurrentP.shiftArmiesOnReinforcement(SelectedCountry, Army)!=0) {
+		if(this.CurrentP.shiftArmiesOnR(SelectedCountry, Army)!=0) {
 			ContinuePhase();
 		}
 		else {
@@ -416,7 +416,7 @@ public class GameDriver extends Observable {
 	 * @param newArmies number of Army to be moved
 	 */
 	public void getArmiesShiftedAfterFortification(String nc, String nn, int na) {
-		this.CurrentP.getArmiesShiftedAfterFortification(nc, nn, na);
+		this.CurrentP.getArmiesShiftedAfterF(nc, nn, na);
 	}
 	
 	/**
@@ -587,7 +587,7 @@ public class GameDriver extends Observable {
 	 * @return countries owned by current player
 	 */
 	public int getNumberOfCountryOwnedByCurrentPlayer(){
-		return GetCurrent().getPlayerCountryCount();
+		return GetCurrent().getPlayerCountryNumber();
 	}
 	
 	/**

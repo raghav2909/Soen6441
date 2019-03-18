@@ -1,4 +1,4 @@
-package Model;
+package player;
 
 import java.util.ArrayList;
 //Strstegy of player trying to commit.

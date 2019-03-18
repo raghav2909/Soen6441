@@ -7,10 +7,8 @@ import java.util.ArrayList;
 
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
-import Model.StrategyOfPlayer;
 import Model.Card;
 import Model.GameDriver;
-import Model.HActionStrategy;
 
 /**
  * This class is responsible to represent the player
@@ -25,7 +23,7 @@ public class Player
     private String PlayerName;
     
     /**
-     * cards that used once
+     * number of time card exchanged happened
      */
     private int UsedCards =1;
     
@@ -35,12 +33,12 @@ public class Player
     private boolean PlayerTurn = false;
     
     /**
-     * List of Countries owned by player
+     * List of a player countries
      */
     private ArrayList<NodeOfCountry> PlayerCountries = new ArrayList<NodeOfCountry>();
     
     /**
-     * List of Continents owned by player
+     * List of a player continents
      */
     private ArrayList<NodeOfMap> PlayerContinents;
     
@@ -61,19 +59,15 @@ public class Player
     /**
      * selected country by player
      */
-	private String countrySelected;
+	public String ChosenCountry;
 	/**
 	 * number of armies moved by player
 	 */
-	private int armiesMoved;
-	/**
-	 * number of armies owned by player
-	 */
-	private int armiesCount;
+	public int AMoved;
 	/**
 	 * state of player
 	 */
-	private boolean lost = false;
+	private boolean state = false;
 	/**
 	 * neighbours of selected country
 	 */
@@ -91,9 +85,9 @@ public class Player
      * Set up Player with name
      * @param name Player Name
      */
-    public Player(String name)
+    public Player(String n)
     { 
-        this.PlayerName = name;
+        this.PlayerName = n;
        this.PlayerCountries = new ArrayList<NodeOfCountry>();
         this.PlayerContinents = new ArrayList<NodeOfMap>();
         this.Cards = new ArrayList<Card>();
@@ -106,22 +100,14 @@ public class Player
      * @param Narmies Player New Armies
      * @param AllContitents List of all continents 
      */
-    public Player (String name, int Narmies,ArrayList<NodeOfMap> AllContinents)
+    public Player (String name, int Narmies,ArrayList<NodeOfCountry> AllContinents)
     {
-        this.PlayerName = name;
-        System.out.println("Player name "+name);
-       this.PlayerCountries = new ArrayList<NodeOfCountry>();
-       for(NodeOfMap node: AllContinents) {
-    	      this.PlayerCountries.addAll(node.getCountryList());
-    	         	   
+       this(name);
+       this.PlayerArmies = Narmies;
+       this.AllContinents = new ArrayList<NodeOfMap>();
+       for(NodeOfCountry country : AllContinents) {
+    	   this.AddCountry(country);
        }
-        System.out.println("Player countries"+PlayerCountries.toString());
-        this.PlayerContinents = new ArrayList<NodeOfMap>();
-        this.Cards = new ArrayList<Card>();
-        this.PlayerArmies = Narmies;
-        System.out.println(Narmies);
-        this.AllContinents = AllContinents;
-        System.out.println(AllContinents.toString());
     }
     
     /**
@@ -130,10 +116,7 @@ public class Player
 	 * @param newArmies armies of the player.
 	 */
 	public Player(String name, int armies) {
-		this.PlayerName = name;
-		this.PlayerCountries = new ArrayList<NodeOfCountry>();
-		this.PlayerContinents = new ArrayList<NodeOfMap>();
-		this.Cards = new ArrayList<Card>();
+		this(name);
 		this.PlayerArmies = armies;
 		this.AllContinents = new ArrayList<NodeOfMap>();
 	}
@@ -159,10 +142,13 @@ public class Player
     public  void AddCountry (NodeOfCountry Country)
     {
         this.PlayerCountries.add(Country);
+        if(Country.getOwner()!=this) {
+        	Country.SetOwner(this);
+        }
     }
     
     /**
-     * Return List of Countries owned by PLayer
+     * Return List of player countries
      * @return ArrayList of Countries
      */
     public ArrayList<NodeOfCountry> getCountries()
@@ -274,11 +260,11 @@ public class Player
         int CountCountries = this.PlayerCountries.size();
         int CountContinents = this.PlayerContinents.size();
        int CountCards = this.Cards.size();
-       int CountArmies = (int) Math.ceil(CountCountries/3)+CountContinents;
-       if (CountCards >5) {
-       	CountArmies = +5*this.UsedCards;
-       	this.UsedCards++;
-       }
+       int CountArmies = CountContinents/3;
+//       if (CountCards >5) {
+//       	CountArmies = +5*this.UsedCards;
+//       	this.UsedCards++;
+//       }
        if(CountArmies<3)
        {
        	CountArmies=3;
@@ -289,11 +275,11 @@ public class Player
             CountContinents =0;
             for(NodeOfMap Continent : this.PlayerContinents)
             {
-                CountContinents += Continent.getControlValue();
+                CountContinents =+ Continent.getControlValue();
             }
         }
        
-        CountArmies +=CountContinents;
+        CountArmies += CountContinents;
         System.out.println(CountArmies);
         return CountArmies;
     }
@@ -371,7 +357,7 @@ public class Player
 
 
 /**
- * This method runs the reinforcement phase
+ *  reinforcement phase start method
  */
 public void RPhase(){
 	
@@ -379,7 +365,7 @@ public void RPhase(){
 }
 
 /**
- * This method runs attack phase.
+ *  attack phase start method.
  */
 public void APhase(){
 	ArrayList<String> cl = new ArrayList<String>();
@@ -402,7 +388,7 @@ public void APhase(){
 }
 
 /**
- * This method runs the fortification phase
+ *  the fortification phase start method.
  */
 public void FPhase(){
 	ArrayList<String> list = new ArrayList<String>();
@@ -425,27 +411,27 @@ public void FPhase(){
 }
 
 /**
- * Shifts the armies of the player on each reinforcement.
+ * each reinforcement shifting army
  * @param country the country name to which armies are added.
  * @param armies the number of armies to be reinforced.
  * @return the army count left for the player.
  */
-public int shiftArmiesOnReinforcement(String country, int armies) {
-	this.countrySelected = country;
-	this.armiesMoved = armies;
-	getCountry(this.countrySelected).AddArmy(this.armiesMoved);
-	RemovedArmies(this.armiesMoved);
-	return this.armiesCount;
+public int shiftArmiesOnR(String country, int armies) {
+	this.ChosenCountry = country;
+	this.AMoved = armies;
+	getCountry(this.ChosenCountry).AddArmy(this.AMoved);
+	RemovedArmies(this.AMoved);
+	return this.PlayerArmies;
 }
 
 /**
- * Shifts the armies from one country to another.
+ * Shifts the armies between two countries
  * @param sCountry the country name from which armies are moved.
  * @param sNeighbour the country name to which armies are added.
  * @param selectedArmies the number of armies to be moved.
  * @return the army count left in SNeighbour country.
  */
-public int getArmiesShiftedAfterFortification(String Country, String Neighbour, int armies){
+public int getArmiesShiftedAfterF(String Country, String Neighbour, int armies){
 	this.SelectedCountry = getCountry(Country);
 	this.SNeighbour = getCountry(Neighbour);
 	SelectedCountry.SetArmies(SelectedCountry.getArmyCount()-armies);
@@ -462,7 +448,7 @@ public NodeOfCountry getSelectCountry(){
 }
 
 /**
- * Get the neighbour selected to move armies to.
+ * Get the neighbour to move armies.
  * @return SNeighbour selected to move armies to.
  */
 public NodeOfCountry getSelectNeighbour(){
@@ -470,47 +456,47 @@ public NodeOfCountry getSelectNeighbour(){
 }
 
 /**
- * This method calculate the number of dice a player can roo during attack phase
- * @param country country selected as attacking or attacked
- * @return number of dice to roll
+ * calculation of number of dice.
+ * @param country country selected 
+ * @return number of dice 
  */
 public int AttackDice(String co) {
 	NodeOfCountry c = getCountry(co);
 	int armies = c.getArmyCount();
-	if(getTurn() && armies>4) {
+	if(state && armies>4) {
 		armies = 3;
 	}
-	else if(getTurn()) {
+	else if(state) {
 		armies -= 1;
 	}
 	else if(armies>2) {
 		armies = 2;
 	}
-	return GameDriver.GetInit().InputSetUp(1, this.PlayerName+"! Please select number of dice to roll.",armies);
+	return GameDriver.GetInit().InputSetUp(1, this.PlayerName+"! Please select number of dice.",armies);
 }
 
 /**
  * It gets number of owned countries by player.
  * @return owned countries number by player.
  */
-public int getPlayerCountryCount(){
+public int getPlayerCountryNumber(){
 	return getCountries().size();
 }
 
 /**
- * This methods returns value of lost attribute. 
- * @return value of lost
+ * This methods returns value of state attribute. 
+ * @return value of state
  */
 public boolean GetStateOfPlayer() {
-	return lost ;
+	return state ;
 }
 
 /**
- * This method set value of lost attribute.
- * @param value Boolean value for lost attribute.
+ * This method set value of state attribute.
+ * @param value Boolean value for state attribute.
  */
 public void SetStateOfPlayer(boolean value) {
-	this.lost = value;
+	this.state = value;
 
 }
 
@@ -522,7 +508,7 @@ public String toString() {
 }
 
 /**
- * Checks if player have Infantry Card
+ *  player have Infantry Card or not
  * @return true if player have Infantry Card otherwise false
  */
 public boolean HaveICard(){
@@ -535,7 +521,7 @@ public boolean HaveICard(){
 }
 
 /**
- * Checks if player have Cavalry Card
+ *  player have Cavalry Card or not
  * @return true if player have Cavalry Card otherwise false
  */
 public boolean HaveCCard(){
@@ -548,7 +534,7 @@ public boolean HaveCCard(){
 }
 
 /**
- * Checks if player have Artillery Card
+ *  player have Artillery Card or not
  * @return true if player have Artillery Card otherwise false
  */
 public boolean HaveACard(){
@@ -561,8 +547,8 @@ public boolean HaveACard(){
 }
 
 /**
- * Checks if player have Infantry, Artillery and Cavalry Cards
- * @return false if player does not have Infantry, Artillery and Cavalry Cards otherwise true
+ * Checks if player have all three cards
+ * @return false if player does not have 
  */
 public boolean HaveDCard(){
 	if (this.HaveICard() && this.HaveACard() && this.HaveCCard()){
@@ -574,8 +560,8 @@ public boolean HaveDCard(){
 }
 
 /**
- * Checks if player have three Artillery cards
- * @return true if player have three Artillery cards otherwise false
+ * checks player that have three Artillery cards 
+ * @return true if there are three Artillery
  */
 public boolean HaveThreeACards(){
 	int artillery = 0;
@@ -594,8 +580,8 @@ public boolean HaveThreeACards(){
 }
 
 /**
- * Checks if player have three Cavalry cards
- * @return true if player have three Cavalry cards otherwise false
+ * checks player that have three Cavalry cards 
+ * @return true if there are three Cavalry
  */
 public boolean HaveThreeCCards(){
 	int cavalry = 0;
@@ -614,8 +600,8 @@ public boolean HaveThreeCCards(){
 }
 
 /**
- * Checks if player have three Infantry cards
- * @return true if player have three Infantry Cards otherwise false
+ * checks player that have three Infantry cards
+ * @return true if there are three Infantry cards
  */
 public boolean HaveThreeICards(){
 	int infantry = 0;
@@ -634,8 +620,8 @@ public boolean HaveThreeICards(){
 }
 
 /**
- * Checks if player have either three Cavalry, Artillery or Infantry cards
- * @return true if player have either three Cavalry, Artillery or Infantry cards otherwise false
+ * Checks if player have three cards no matter what type of cards
+ * @return true 
  */
 public boolean SameTypeCards(){
 	if(this.HaveThreeCCards() || this.HaveThreeACards() || this.HaveThreeICards()){
@@ -649,16 +635,16 @@ public boolean SameTypeCards(){
 
 /**
  *  this is arraylist of cards 
- * @return card list the player has.
+ * @return list of player cards.
  */
 public ArrayList<Card> GetCards(){
 	return this.Cards;
 }
 
 /**
- * Removes one Infantry, Artillery and Cavalry cards
+ * Removes one form each type of cards
  */
-public void RemoveDistinctCards(){
+public void RemoveDCards(){
 	this.RemoveCard(this.GetCard("Cavalry"));
 	this.RemoveCard(this.GetCard("Infantry"));
 	this.RemoveCard(this.GetCard("Artillery"));
@@ -666,13 +652,13 @@ public void RemoveDistinctCards(){
 }
 
 /**
- * Returns the card from player cardlist
- * @param cardname name of the card
- * @return card with cardname equals to parameter
+ * Returns the card form list of player cards
+ * @param cn card name
+ * @return c 
  */
-public Card GetCard(String cardname){
+public Card GetCard(String cn){
 	for (Card c : this.Cards){
-		if ( c.getName().equals(cardname)){
+		if ( c.getName().equals(cn)){
 			return c;
 		}
 	}
@@ -680,7 +666,7 @@ public Card GetCard(String cardname){
 }
 
 /**
- * Removes either of three Infantry or Artillery or Cavalry cards
+ * Removes three cards no matter what kind of cards
  */
 public void SameThreeCardsRemoved(){
 	if (this.HaveThreeACards()){

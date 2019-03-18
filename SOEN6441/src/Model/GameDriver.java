@@ -620,5 +620,18 @@ public class GameDriver extends Observable {
 	public void setCurrentPlayer(Player p) {
 		this.CurrentP = p;
 	}
+	/**
+	 * <p>
+	 * This method create <b>one and only one</b> instance of GameDriver class.
+	 * This method is used to access only object of this class.
+	 * </p>
+	 * @return instance of GameDriver class.
+	 */
+	public static GameDriver getInstance() {
+		if(driver==null){
+			driver = new GameDriver();
+		}
+		return driver;
+	}
 
 }

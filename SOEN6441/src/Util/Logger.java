@@ -12,6 +12,11 @@ import javax.swing.JScrollPane;
 import Model.GameDriver;
 import player.Player;
 
+/**
+ * this class handle the game logger 
+ * @author samansoltani
+ * @version 2.0
+ */
 public class Logger extends JFrame implements Observer {
 	/**
 	 * Serial Version for JFrame

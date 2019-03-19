@@ -201,7 +201,9 @@ public void AllControlsOver()
 {
 crc.removeAll();
 }
-
+public String[] getInfoPlayer() {
+	return pic.Information_OF_Playres();
+}
 
 /**
  * select the map file and image file to start game for single mode
@@ -235,9 +237,9 @@ public void Single_Mode_Start() throws IOException {
 	
 	
 
-    //GD.setPlayerConsole(plc);
-	GD.setMapView(mpc);
-	GD.setControlsView(crc);
+    GD.setPlayerConsole(plc);
+	GD.setMapConsole(mpc);
+	GD.setControlsConsole(crc);
 	GD.Start();
 
 

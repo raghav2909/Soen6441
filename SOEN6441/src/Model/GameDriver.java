@@ -112,7 +112,7 @@ public class GameDriver extends Observable {
 	public void Start() {
 		setChanged();
 		notifyObservers("Startup");
-		String[] NewPlayer = InfoOfPlayer.Information_OF_Playres();
+		String[] NewPlayer = controller.getInfoPlayer();
 		StartUp(NewPlayer);
 		TurnManagment.StartPlayerTurn(this.CurrentP);
 		setChanged();
@@ -176,8 +176,8 @@ public class GameDriver extends Observable {
 	 * Sets Player information Console.
 	 * @param nc Player_Information_Controller object initialized.
 	 */
-	public void setPlayerView(Player_Information_Controller nc) {
-		this.InfoOfPlayer = nc;
+	public void setPlayerConsole(PlayerConsole nc) {
+		this.plc = nc;
 	}
 
 	/**
@@ -185,7 +185,7 @@ public class GameDriver extends Observable {
 	 * Setting Map console.
 	 * @param ng MapConsole object initialized.
 	 */
-	public void setMapView(MapConsole ng) {
+	public void setMapConsole(MapConsole ng) {
 		map.addObserver(ng);
 	}
 
@@ -193,7 +193,7 @@ public class GameDriver extends Observable {
 	 * Sets Controls view.
 	 * @param controlView ControlsConsole object initialized.
 	 */
-	public void setControlsView(ControlsConsole controlView) {
+	public void setControlsConsole(ControlsConsole controlView) {
 		this.Controls = controlView;
 	}
 	

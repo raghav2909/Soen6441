@@ -22,7 +22,7 @@ import javax.swing.border.EmptyBorder;
  *@author Harman
  *@version 1.0
  */
-public class PlayerConsole extends JPanel implements Observer{
+public class PlayerConsole extends JPanel{
 
 	/**
 	 * Serial Version id for JFrame.
@@ -59,10 +59,6 @@ public class PlayerConsole extends JPanel implements Observer{
 		this.validate();
 	}
 
-	@Override
-	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

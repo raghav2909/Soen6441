@@ -24,7 +24,7 @@ import Model.NodeOfCountry;
 /**
  * class containing methods for various controls in reinforcement and fortification phase
  * @author raghavsharda
- *@version 1.0
+ * @version 2.0
  */
 public class ControlsConsole extends JPanel {
 	/**
@@ -247,7 +247,7 @@ public class ControlsConsole extends JPanel {
 	 * Sets Action Listeners for fortification controls.
 	 */
 	public void setListenersFortification() {
-		countrieslistAction(new ActionListener() {
+		ListOfCountriesAction(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String countrySelected = (String) SelectedCountry();

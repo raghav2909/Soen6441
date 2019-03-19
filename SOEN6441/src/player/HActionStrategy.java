@@ -12,7 +12,7 @@ public class HActionStrategy implements StrategyOfPlayer{
 	}
 
 	public void APhase(ArrayList<String> Countries) {
-		GameDriver.GetInit().GetControle().attackControls(Countries.toArray(new String[Countries.size()]));
+		GameDriver.GetInit().GetControle().resetControls(Countries.toArray(new String[Countries.size()]));
 		GameDriver.GetInit().setAttackListeners();
 	}
 

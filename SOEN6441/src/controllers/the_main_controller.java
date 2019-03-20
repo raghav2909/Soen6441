@@ -100,15 +100,21 @@ public class the_main_controller {
 	/**
 	 * Creating an object of openingdialog class of view package
 	 */
-	openingdialog opendialog;
+	openingdialog opendialog=new openingdialog();
 
 	Map map;
 	
 	/**
 	 *  constructor
 	 */
-	
-	public the_main_controller()
+	public the_main_controller() {
+		this(GameDriver.getInstance());
+	}
+	public the_main_controller(GameDriver instance) {
+		this.GD = instance;
+		GD.setController(this);
+	}
+	public void init()
 	{ 
 		
 		opendialog= new openingdialog();
@@ -213,7 +219,7 @@ public void AllControlsOver()
 crc.removeAll();
 }
 public String[] getInfoPlayer() {
-	return pic.Information_OF_Playres();
+	return opendialog.Information_OF_Playres();
 }
 
 /**
@@ -254,15 +260,13 @@ public void Single_Mode_Start() throws IOException {
 	GD.setMapConsole(mpc);
 	GD.setControlsConsole(crc);
 	GD.Start();
-
-
-
-
-
 }
 /**This method starts the saved mode of the game
  * 
  */
+public String ArmyPlacing(String[] countriesNamesNoArmy, String message) {
+	return opendialog.ArmyPlacing(countriesNamesNoArmy, message);
+}
 public void single_Mode_Saved_Start() {
 
 	System.out.println("Saved Mode");

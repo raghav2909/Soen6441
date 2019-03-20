@@ -39,6 +39,10 @@ public class GameDriver extends Observable {
 	 * Object of Map class.
 	 */
 	private Map map;
+	/**
+	 * opendialog class object
+	 */
+	private openingdialog opc;
 	
 	/**
 	 * ArrayList to store the player type.
@@ -135,9 +139,9 @@ public class GameDriver extends Observable {
 			for(Player p: players){
 				String s;
 				if(p.getEmptyCountriesName().length!=0){
-					s = InfoOfPlayer.ArmyPlacing(p.getEmptyCountriesName(), p.getPlayerName()+" Place your army");
+					s = controller.ArmyPlacing(p.getEmptyCountriesName(), p.getPlayerName()+" Place your army");
 				}else{
-					s= InfoOfPlayer.ArmyPlacing(p.getEmptyCountriesName(),p.getPlayerName()+" Place your army");
+					s= controller.ArmyPlacing(p.getEmptyCountriesName(),p.getPlayerName()+" Place your army");
 				}
 				p.getCountry(s).AddArmy(1);
 				p.RemovedArmies(1);

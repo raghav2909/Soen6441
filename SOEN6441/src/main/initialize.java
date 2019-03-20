@@ -21,8 +21,9 @@ public static void main(String[] args)
 
 	@Override
 	public void run() {
+		the_main_controller tmc= new the_main_controller();
 
-		the_main_controller.getInstance();
+		tmc.init();
 	
 	}
 	});

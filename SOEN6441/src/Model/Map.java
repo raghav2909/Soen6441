@@ -489,8 +489,15 @@ public class Map extends Observable
 		}
 		return ce;
 	}
-	
-	
+	public int CountryCount()
+	{
+		this.count_Country=0;
+		for(NodeOfMap cont:this.DataMap)
+		{
+			count_Country+=cont.getCountOfCountries();
+		}
+		return this.count_Country;
+	}
 	
 	/**
 	 * This method gets the object of country from its name

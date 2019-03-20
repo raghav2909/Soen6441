@@ -1,5 +1,3 @@
-
- 
 package view;
 
 import java.awt.BorderLayout;
@@ -43,7 +41,10 @@ public class GameConsole extends JFrame  {
 	 * DiceRollConsole class object.
 	 */
 	private DiceRollConsole drc;
-	
+	/**
+	 * Domination in the world by players
+	 */
+	private DominationConsole dc;
 	/**
 	 * CardsConsole class object.
 	 */

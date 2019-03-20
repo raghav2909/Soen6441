@@ -114,5 +114,134 @@ public class PlayerTest {
 		c4.AddArmy(8);
 		assertEquals("Country3",TP.getEmptyCountriesName()[0]);
 	}
+	
+	
+	
+	/**
+	 * test HaveICard method
+	 */
+	@Test
+	public void testHaveICard() {
+		TP.AddCard(C5);
+		assertTrue(TP.HaveICard());
+	}
 
+	
+	
+	/**
+	 * test HaveACard method
+	 */
+	@Test
+	public void testHaveACard() {
+		TP.AddCard(C3);
+		assertTrue(TP.HaveACard());
+	}
+	
+	
+	
+	/**
+	 * test HaveCCard method
+	 */
+	@Test
+	public void testHaveCCard() {
+		TP.AddCard(C1);
+		assertTrue(TP.HaveCCard());
+	}
+	
+	
+	/**
+	 * test getArmiesShiftedAfterF method
+	 */
+	@Test
+	public void testgetArmiesShiftedAfterF() {
+		c1.SetArmies(5);
+		c3.SetArmies(3);
+		assertEquals(5,TP.getArmiesShiftedAfterF(c1.getNameOfCountry(), c3.getNameOfCountry(), 2));
+	}
+	
+	
+	/**
+	 * test HaveDCard method
+	 */
+	@Test
+	public void testHaveDCard() {
+		TP.AddCard(C7);
+		TP.AddCard(C8);
+		TP.AddCard(C9);
+		assertTrue(TP.HaveDCard());
+	}
+	
+	
+	
+	/**
+	 * test HaveThreeICards method
+	 */
+	@Test
+	public void testHaveThreeICards() {
+		TP.AddCard(C2);
+		TP.AddCard(C5);
+		TP.AddCard(C8);
+		assertTrue(TP.HaveThreeICards());
+	}
+	
+	/**
+	 * test HaveThreeACards method
+	 */
+	@Test
+	public void testHaveThreeACards() {
+		TP.AddCard(C3);
+		TP.AddCard(C4);
+		TP.AddCard(C7);
+		assertTrue(TP.HaveThreeACards());
+	}
+	
+	/**
+	 * test HaveThreeCCards method
+	 */
+	@Test
+	public void testHaveThreeCCards() {
+		TP.AddCard(C1);
+		TP.AddCard(C6);
+		TP.AddCard(C9);
+		assertTrue(TP.HaveThreeCCards());
+	}
+	
+	
+	/**
+	 * test RemoveDCards method
+	 */
+	@Test
+	public void testRemoveDCards() {
+		TP.AddCard(C7);
+		TP.AddCard(C8);
+		TP.AddCard(C9);
+		TP.RemoveDCards();
+		assertEquals(0,TP.GetCards().size());
+	}
+	
+	/**
+	 * test SameTypeCards method
+	 */
+	@Test
+	public void testSameTypeCards() {
+		TP.AddCard(C3);
+		TP.AddCard(C4);
+		TP.AddCard(C7);
+		assertTrue(TP.SameTypeCards());
+	}
+	
+	
+	/**
+	 * test SameThreeCardsRemoved method
+	 */
+	@Test
+	public void testSameThreeCardsRemoved() {
+		TP.AddCard(C3);
+		TP.AddCard(C4);
+		TP.AddCard(C7);
+		TP.AddCard(C1);
+		TP.SameThreeCardsRemoved();
+		assertEquals(1,TP.GetCards().size());
+	}
+	
 }

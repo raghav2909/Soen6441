@@ -54,6 +54,10 @@ public class GameConsole extends JFrame  {
 	 * ControlsConsole class object.
 	 */
 	private ControlsConsole controlc;
+	/**
+	 * PhaseConsole object
+	 */
+	private phaseConsole phc;
 	
 	/**class constructor setting main game window by calling starts method
 	 * @param palyerinfo PlayerConsole object 
@@ -62,13 +66,15 @@ public class GameConsole extends JFrame  {
 	 * @param cardsinfo CardsConsole object
 	 * @param controlsinfo ControlsConsole object
 	 */
-	public GameConsole(PlayerConsole playerinfo, MapConsole mapsinfo, DiceRollConsole diceinfo, CardsConsole cardsinfo, ControlsConsole controlsinfo )
+	public GameConsole(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo,phaseConsole phaseinfo,DominationConsole dominationinfo )
 	{
 		plc = playerinfo;
 		mpc = mapsinfo;
-		drc =  diceinfo;
-		csc = cardsinfo;
+		//drc =  diceinfo;
+		//csc = cardsinfo;
+		phc= new phaseConsole();
 	    controlc = controlsinfo;
+	   dc = new DominationConsole();
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    starts();
 	    this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -85,43 +91,51 @@ public class GameConsole extends JFrame  {
   SpringLayout layout = new SpringLayout();
         contentPane.setLayout(layout);
         this.setBackground(Color.GRAY);
-        mpc.setPreferredSize(new Dimension(400,drc.getHeight()));
+        dc.setPreferredSize(new Dimension(mpc.getWidth(),300));
+        plc.setPreferredSize(new Dimension(400,200));
         
         contentPane.add(plc);
         contentPane.add(mpc);
-        contentPane.add(drc);
-        contentPane.add(csc);
+        contentPane.add(dc);
+       // contentPane.add(csc);
         contentPane.add(controlc);
-    	
-        layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.WEST, contentPane);
-        layout.putConstraint(SpringLayout.EAST, mpc, 0,  SpringLayout.EAST, csc);
-        layout.putConstraint(SpringLayout.NORTH, mpc, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, mpc, -5,  SpringLayout.NORTH, csc);
-        
-       
-        layout.putConstraint(SpringLayout.WEST,drc, 5,  SpringLayout.EAST, mpc);
-        layout.putConstraint(SpringLayout.NORTH, drc, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, drc, 0, SpringLayout.SOUTH, mpc);
-        layout.putConstraint(SpringLayout.EAST, drc, -5, SpringLayout.WEST, plc);
-        
-       
-        layout.putConstraint(SpringLayout.EAST, plc, -5,  SpringLayout.EAST, contentPane);
-        layout.putConstraint(SpringLayout.NORTH,plc, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, plc, 0, SpringLayout.SOUTH, drc);
-        
-        
-        layout.putConstraint(SpringLayout.WEST, csc, 5,  SpringLayout.WEST, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, csc, -5, SpringLayout.SOUTH, contentPane);
-        
-       
-        layout.putConstraint(SpringLayout.WEST, controlc, 5,  SpringLayout.EAST, csc);
+        contentPane.add(phc);
+        /*constraints for controls console*/
+        layout.putConstraint(SpringLayout.WEST, controlc, 5,  SpringLayout.EAST, plc);
         layout.putConstraint(SpringLayout.EAST, controlc, -5,  SpringLayout.EAST, contentPane);
-        layout.putConstraint(SpringLayout.NORTH, controlc, 0, SpringLayout.NORTH, csc);
-        layout.putConstraint(SpringLayout.SOUTH, controlc, 0, SpringLayout.SOUTH, csc);
-        this.pack();
+        layout.putConstraint(SpringLayout.NORTH, controlc, 0, SpringLayout.NORTH, plc);
+        layout.putConstraint(SpringLayout.SOUTH, controlc, -5, SpringLayout.SOUTH, contentPane);
+        /* constraints for map console*/
+        layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.EAST, plc);
+       layout.putConstraint(SpringLayout.NORTH, mpc, 5, SpringLayout.NORTH, contentPane);
+       layout.putConstraint(SpringLayout.SOUTH, mpc, -50, SpringLayout.NORTH, controlc);
+       layout.putConstraint(SpringLayout.EAST, mpc, -5, SpringLayout.EAST, contentPane);
+       
+    	/*
+    	 *  constraints for phase console
+    	 */
+        layout.putConstraint(SpringLayout.WEST, phc, 5,  SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.EAST, phc, 0,  SpringLayout.EAST, mpc);
+        layout.putConstraint(SpringLayout.NORTH, phc, 5, SpringLayout.NORTH, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, phc, -5,  SpringLayout.NORTH, plc);
         
+      /* constraints for Player console*/
+        layout.putConstraint(SpringLayout.WEST, plc, 5,  SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, plc, -5,  SpringLayout.SOUTH, contentPane);
         
+        /* constraints for map console*/
+         layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.EAST, plc);
+        layout.putConstraint(SpringLayout.NORTH, mpc, 5, SpringLayout.NORTH, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, mpc, -50, SpringLayout.NORTH, controlc);
+        layout.putConstraint(SpringLayout.EAST, mpc, -5, SpringLayout.EAST, contentPane);
         
+        /*constraints for domination console.*/
+        layout.putConstraint(SpringLayout.NORTH, dc, 5, SpringLayout.SOUTH, mpc);
+        layout.putConstraint(SpringLayout.SOUTH, dc, -5, SpringLayout.NORTH, controlc);
+        layout.putConstraint(SpringLayout.WEST, dc, 0, SpringLayout.WEST, mpc);
+        layout.putConstraint(SpringLayout.EAST, dc, -5, SpringLayout.EAST, contentPane);
+       
+          this.pack();   
 	
 	}
 	/**
@@ -140,9 +154,9 @@ public class GameConsole extends JFrame  {
 	 * @param cardsinfo CardsConsole object
 	 * @param controlsinfo ControlsConsole object
 	 */
-	public static void createInstance(PlayerConsole playerinfo, MapConsole mapsinfo, DiceRollConsole diceinfo, CardsConsole cardsinfo, ControlsConsole controlsinfo ){
+	public static void createInstance(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo, phaseConsole phaseinfo, DominationConsole dominationinfo ){
 		if(gmc == null){
-			gmc = new GameConsole(playerinfo,mapsinfo,diceinfo, cardsinfo, controlsinfo);
+			gmc = new GameConsole(playerinfo,mapsinfo, controlsinfo, phaseinfo,dominationinfo);
 		}
 	}
 	

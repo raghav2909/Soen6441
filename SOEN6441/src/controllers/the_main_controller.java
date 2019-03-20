@@ -16,11 +16,13 @@ import Model.ReadMap;
 import view.CardsConsole;
 import view.ControlsConsole;
 import view.DiceRollConsole;
+import view.DominationConsole;
 import view.GameConsole;
 import view.MapConsole;
 
 import view.PlayerConsole;
 import view.openingdialog;
+import view.phaseConsole;
 /**
  * This class is the main controller class which controls the main functioning of the game in the initial phase
  *@author raghavsharda
@@ -75,7 +77,16 @@ public class the_main_controller {
 	/**
 	 * GameDriver Object
 	 */
+	
 	private GameDriver GD;
+	/**
+	 * Phase console object
+	 */
+	private phaseConsole phc;
+	/**
+	 * domination console object
+	 */
+	private DominationConsole dc;
 	/**
 	 * Player_Information_Controller object
 	 */
@@ -232,8 +243,10 @@ public void Single_Mode_Start() throws IOException {
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
+	phc= new phaseConsole();
+	dc= new DominationConsole();
 
-	GameConsole.createInstance(plc, mpc, drc, csr, crc); 
+	GameConsole.createInstance(plc, mpc,crc,phc,dc); 
 	
 	
 

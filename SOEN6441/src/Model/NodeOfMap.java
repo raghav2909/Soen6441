@@ -28,6 +28,8 @@ public class NodeOfMap {
 	
 	private int ControlValue;
 	
+	private int CountCountries;
+	
 	/** Constructor of NodeOfMap
 	 * Initializing the values of continent attributes
 	 * @param name continent name
@@ -88,6 +90,7 @@ public class NodeOfMap {
 			this.countrylist=new ArrayList<NodeOfCountry>();
 		}
 		this.countrylist.add(newcountry);
+		newcountry.setContinent(this);
 	}
 	
 	/**
@@ -115,6 +118,33 @@ public class NodeOfMap {
 				+ "]";
 	}
 	
+	
+	/**
+	 * checking if two objects are equal or not
+	 * @return true if they are equal
+	 */
+	public boolean equals(Object c) {
+		if(c instanceof NodeOfMap) {
+			NodeOfMap t = (NodeOfMap) c;
+			if(t.getContinent()==this.Continent && t.ControlValue == this.ControlValue) {
+				if(t.countrylist.size()==this.countrylist.size()) {
+					for(int i=0;i<this.getCountries().length;i++) {
+						if(!this.getCountries()[i].equals(t.getCountries()[i])) {
+							return false;
+						}
+					}
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	 
+	
+	public int getCountOfCountries() {
+		this.CountCountries = getCountryList().size();
+		return this.CountCountries;
+	}
 		
 }
 	

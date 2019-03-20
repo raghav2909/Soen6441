@@ -14,8 +14,8 @@ import org.junit.Test;
 
 
 import Model.NodeOfCountry;
-import Model.NodeOfMap;
-import Model.Player;
+import Model.NodeOfCountry;
+import player.Player;
 
 public class FortificationTest {
 	ArrayList<String> RealNeighboursOfOwner;
@@ -28,7 +28,7 @@ public class FortificationTest {
 
 	@Before
 	public void setUp() throws Exception {
-		ArrayList<NodeOfMap> MD = new ArrayList<NodeOfMap>();
+		ArrayList<NodeOfCountry> MD = new ArrayList<NodeOfCountry>();
 		c1.AddNeighbour(c2);
 		c2.AddNeighbour(c1);
 		c1.AddNeighbour(c3);
@@ -47,7 +47,7 @@ public class FortificationTest {
 		c.add(c4);
 		c.add(c5);
 		
-		NodeOfMap C = new NodeOfMap("Continent1", c, 6);
+		NodeOfCountry C = new NodeOfCountry("Continent1", c, 6);
 		MD.add(C);
 		Player p1 = new Player("Player", 10, MD);
 		Player p2 = new Player("Player2", 10, MD);

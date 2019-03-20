@@ -8,7 +8,7 @@ import player.Player;
 /**
  * This is class is used for storing the data of country
  * @author samansoltani
- * @version 1.0
+ * @version 2.0
  */
 
 public class NodeOfCountry 
@@ -58,11 +58,12 @@ public class NodeOfCountry
 	 * @param coordinate coordinate of the country
 	 */
 	
-	public NodeOfCountry (String name , ArrayList<NodeOfCountry> neighbour , int[] coordinate)
+	public NodeOfCountry (String name , ArrayList<NodeOfCountry> neighbour , int[] coordinate,NodeOfMap c )
 	{
 		this.CountryName = name;
 		this.Neighbours = neighbour;
 		this.Coordinate = coordinate;
+		this.continent = c;
 		this.PlayerCountry = null;
 		this.Armies = 0;
 	}
@@ -143,8 +144,17 @@ public class NodeOfCountry
 	  */
 	 public void SetOwner(Player player)
 	 {
-		 this.PlayerCountry = player;
-		 player.AddCountry(this);
+		 if(this.PlayerCountry != null) {
+				if(!this.PlayerCountry.equals(player))
+				{
+					this.PlayerCountry.RemoveCountry(this);
+					System.out.println("Country removed");
+				}
+			}
+			this.PlayerCountry = player;
+			if(!player.getCountries().contains(this)) {
+				player.AddCountry(this);
+			}
 	 }
 	 /**
 	  * places armies in the country
@@ -290,11 +300,28 @@ public class NodeOfCountry
 		 }
 		 return PlayerNeighboursName;
 	 }
+	 
+	 /**
+	  * getting the continent that this country belongs to it
+	  */
 	 public NodeOfMap getContinent() {
 			return this.continent;
 		}
+	 
+	 /**
+	  * getting the owner of this country
+	  * @return owner of country
+	  */
 	public Player getOwner() {
 		
 		return this.PlayerCountry;
+	}
+	
+	
+	/**
+	 * setting the continent that this country belong
+	 */
+	public void setContinent(NodeOfMap c) {
+		this.continent = c;
 	}
 }

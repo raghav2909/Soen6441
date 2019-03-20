@@ -23,7 +23,7 @@ public class phaseConsole extends JPanel implements Observer {
 	 * Constructor to initialize view of phase
 	 */
 	public phaseConsole() {
-		JLabel label = new JLabel("PHASE VIEW");
+		JLabel label = new JLabel("PHASE CONSOLE");
 		this.setLayout(new FlowLayout());
 		this.add(label);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));

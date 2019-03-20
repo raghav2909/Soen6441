@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * This class handles all actions about card.
  * @author samansoltani
- * @version 1.0
+ * @version 2.0
  */
 
 public class Card
@@ -13,17 +13,17 @@ public class Card
 	/**
 	 * Save the name of the card
 	 */
-	String Name;
+	private String Name;
 	/**
 	 * Save the type of the card
 	 */
-	String Type;
+	private String Type;
 	/**
 	 * Set up a card with name and type
 	 * @param Name the name of card
 	 * @param Type the type of the card
 	 */
-	Card (String Name ,String Type)
+	public Card (String Name ,String Type)
 	{
 		this.Name = Name;
 		this.Type = Type;

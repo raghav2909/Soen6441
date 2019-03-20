@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import Model.Card;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import player.Player;
@@ -17,13 +18,39 @@ import player.Player;
  */
 public class PlayerTest {
 	private Player TP;
-
+	
+	private NodeOfCountry c1;
+	private NodeOfCountry c2;
+	private NodeOfCountry c3;
+	private NodeOfCountry c4;
+	
+	private Card C1;
+	private Card C2;
+	private Card C3;
+	private Card C4;
+	private Card C5;
+	private Card C6;
+	private Card C7;
+	private Card C8;
+	private Card C9;
 	@Before
 	public void setUp() throws Exception {
-		NodeOfCountry c1 = new NodeOfCountry("Country1",null,null);
-		NodeOfCountry c2 = new NodeOfCountry("Country2",null,null);
-		NodeOfCountry c3 = new NodeOfCountry("Country3",null,null);
-		NodeOfCountry c4 = new NodeOfCountry("Country4",null,null);
+		 c1 = new NodeOfCountry("Country1",null,null,null);
+		 c2 = new NodeOfCountry("Country2",null,null,null);
+		 c3 = new NodeOfCountry("Country3",null,null,null);
+		 c4 = new NodeOfCountry("Country4",null,null,null);
+		 
+		 
+		 C1 = new Card("Cavalry","General");
+		 C2 = new Card("Infantry","General");
+		 C3 = new Card("Artillery","General");
+		 C4 = new Card("Artillery","General");
+		 C5 = new Card("Infantry","General");
+		 C6 = new Card("Cavalry","General");
+		 C7 = new Card("Artillery","General");
+		 C8 = new Card("Infantry","General");
+		 C9 = new Card("Cavalry","General");
+		 
 		
 		ArrayList<NodeOfMap> MD = new ArrayList<NodeOfMap>();
 		c1.AddNeighbour(c2);
@@ -43,15 +70,49 @@ public class PlayerTest {
 		
 		NodeOfMap C = new NodeOfMap("Continent1",c,6);
 		MD.add(C);
-		TP = new Player("TestPlayer",3,MD);
-		TP.AddCountry(c1);
-		TP.AddCountry(c2);
-		TP.AddCountry(c3);
+		TP = new Player("TP",0,c);
+
 	}
+	
+	/**
+	 * test for count armies
+	 */
 
 	@Test
 	public void testArmies() {
 		assertEquals(3,TP.getCountArmies());
+		TP.AddCountry(new NodeOfCountry("T", null, null, null));
+		TP.AddCountry(new NodeOfCountry("T1", null, null, null));
+		TP.AddCountry(new NodeOfCountry("T2", null, null, null));
+		TP.AddCountry(new NodeOfCountry(null, null, null, null));
+		TP.AddCountry(new NodeOfCountry(null, null, null, null));
+		TP.AddCountry(new NodeOfCountry(null, null, null, null));
+		TP.AddCountry(new NodeOfCountry(null, null, null, null));
+		TP.AddCountry(new NodeOfCountry(null, null, null, null));
+		assertEquals(4,TP.getCountArmies());
+	}
+	
+	
+	/**
+	 * test for shiftArmiesOnR method 
+	 */
+	@Test
+	public void testShiftArmiesOnR() {
+		TP.ArmySet(10);
+		int l = TP.shiftArmiesOnR("Country1", 4);
+		assertEquals(6,l);
+		assertEquals(4,c1.getArmyCount());
+	}
+	
+	/**
+	 * test for getting empty countries name method
+	 */
+	@Test
+	public void testgetEmptyCountriesName() {
+		c1.AddArmy(2);
+		c2.AddArmy(5);
+		c4.AddArmy(8);
+		assertEquals("Country3",TP.getEmptyCountriesName()[0]);
 	}
 
 }

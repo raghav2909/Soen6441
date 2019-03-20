@@ -66,7 +66,7 @@ public class ReadMap{
 						for(NodeOfMap n : maplist){
 							if(n.getContinent().equals(temp[3])){
 								if(!NodeOfCountry.Contains(countrylist, temp[0])){
-									countrylist.add(new NodeOfCountry(temp[0], null, null));
+									countrylist.add(new NodeOfCountry(temp[0], null, null,null));
 								}
 								
 								NodeOfCountry AddCountry= NodeOfCountry.getCountry(countrylist, temp[0]);
@@ -75,7 +75,7 @@ public class ReadMap{
 								if(temp.length>4) {
 									for(int i=4;i<temp.length;i++){
 										if(!NodeOfCountry.Contains(countrylist, temp[i])){
-											countrylist.add(new NodeOfCountry(temp[i], null, null));
+											countrylist.add(new NodeOfCountry(temp[i], null, null,null));
 										}
 										AddCountry.AddNeighbour(NodeOfCountry.getCountry(countrylist, temp[i]));
 									}

@@ -17,6 +17,7 @@ import org.junit.runners.Suite.SuiteClasses;
 	MapConnected.class,
 	MapContainUnique.class,
 	MapDoesNotContainUnique.class,
+	GameDriverTest.class,
 })
 public class Test{
 	

@@ -279,6 +279,9 @@ public void single_Mode_Saved_Start() {
 	System.out.println("Saved Mode");
 	
 }
+public String[] InformationOFPlayres() {
+	return opendialog.Information_OF_Playres();
+}
 
 }
 

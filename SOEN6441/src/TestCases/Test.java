@@ -18,6 +18,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	MapContainUnique.class,
 	MapDoesNotContainUnique.class,
 	GameDriverTest.class,
+	MapTest.class,
+	TestMapWrite.class,
 })
 public class Test{
 	

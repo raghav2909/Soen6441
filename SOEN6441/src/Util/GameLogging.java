@@ -17,7 +17,7 @@ import player.Player;
  * @author samansoltani
  * @version 2.0
  */
-public class Logger extends JFrame implements Observer {
+public class GameLogging extends JFrame implements Observer {
 	/**
 	 * Serial Version for JFrame
 	 */
@@ -30,7 +30,7 @@ public class Logger extends JFrame implements Observer {
 	/**
 	 * Constructor to start Logger
 	 */
-	public Logger(){
+	public  GameLogging(){
 		frame = new JPanel();
 		frame.setLayout(new BoxLayout(frame, BoxLayout.Y_AXIS));
 	}

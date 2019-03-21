@@ -115,12 +115,12 @@ public class ControlsConsole extends JPanel {
 		AvailableArmies = "Armies Available:" + String.valueOf(ac);
 		System.out.println(ac);
 		SpinnerModel s_m = new SpinnerNumberModel(1, 1, ac, 1);
-		spinnerArmies = new JSpinner(s_m);
+		spinnerArmies = new JSpinner(s_m); 
 		ListOfCountries = new JComboBox<String>(cl);
 		ListOfCountries.setSelectedIndex(0);
 		Add_Armies = new JButton("Add Armies");
 		End_Phase = new JButton(" To End Reinforcement Phase");
-		this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(cl));
+	//	this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(cl));
 
 		this.add(new Label(AvailableArmies));
 		this.add(new Label("Country Name"));

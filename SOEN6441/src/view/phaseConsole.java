@@ -19,6 +19,7 @@ import player.Player;
  */
 public class phaseConsole extends JPanel implements Observer {
 
+	private static  final long serialVersionUID = 5240015440245324453L;
 	/**
 	 * Constructor to initialize view of phase
 	 */
@@ -26,20 +27,20 @@ public class phaseConsole extends JPanel implements Observer {
 		JLabel label = new JLabel("PHASE CONSOLE");
 		this.setLayout(new FlowLayout());
 		this.add(label);
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.setBorder(BorderFactory.createDashedBorder(Color.BLUE));
 	}
 	
 	@Override
-	public void update(Observable o, Object arg) {
+	public void update(Observable o, Object obj) {
 		// TODO Auto-generated method stub
 		Player current = GameDriver.getInstance().GetCurrent();
 		/*Startup Phase View Display.*/
-		if(arg.equals("Startup")){
+		if(obj.equals("Startup")){
 			this.removeAll();
 			this.add(new JLabel("<html><div><b>Startup Phase</b></div><br/><br/></html>"));
 		}
 		/*Cards Exchange View Display.*/
-		else if(arg.equals("Cards")){
+		else if(obj.equals("Cards")){
 			this.removeAll();
 			this.add(new JLabel("<html><div><b>Cards Exchange</b></div><br/><br/></html>"));
 			this.add(new JLabel("Player: "));
@@ -47,7 +48,7 @@ public class phaseConsole extends JPanel implements Observer {
 			this.add(new JLabel(" can exchange cards to get more armies  "));
 		}
 		/*Reinforcement Phase View Display.*/
-		else if(arg.equals("Reinforcement")){
+		else if(obj.equals("Reinforcement")){
 			this.removeAll();
 			this.add(new JLabel("<html><div><b>Reinforcement Phase</b></div><br/><br/></html>"));
 			this.add(new JLabel("Player:"));
@@ -61,20 +62,20 @@ public class phaseConsole extends JPanel implements Observer {
 			}
 		}
 		/*Attack Phase View Display.*/
-		else if(arg.toString().contains("Attack")){
+		else if(obj.toString().contains("Attack")){
 			this.removeAll();
 			this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 			this.add(new JLabel("<html><div><b>Attack Phase</b></div><br/><br/></html>"));
 			this.add(new JLabel("Player: "+ current.getPlayerName()));
-			if(arg.toString().length() > 7){
-				String words[] = arg.toString().substring(6).split("<br>");
+			if(obj.toString().length() > 7){
+				String words[] = obj.toString().substring(6).split("<br>");
 				for( String word : words){
 					this.add(new JLabel(word));
 				}
 			}
 		}
 		/*Fortification Phase View Display.*/
-		else if(arg.equals("Fortification")){
+		else if(obj.equals("Fortification")){
 			this.removeAll();
 			this.setLayout(new FlowLayout());
 			this.add(new JLabel("<html><div><b>Fortification Phase</b></div><br/><br/></html>"));
@@ -85,7 +86,7 @@ public class phaseConsole extends JPanel implements Observer {
 		/*Players Display for Startup Phase.*/
 		else{
 			this.add(new JLabel("<html><div>Player:</div></html>"));
-			this.add(new JLabel((String) arg));
+			this.add(new JLabel((String) obj));
 		}
 		System.out.println("Observer");
 		this.validate();

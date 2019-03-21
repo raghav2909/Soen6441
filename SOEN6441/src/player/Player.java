@@ -374,7 +374,7 @@ public void APhase(){
 			for(NodeOfCountry n: c.getNeighboursCountries()) {
 				if(!n.getOwner().equals(this)) {
 					cl.add(c.getNameOfCountry());
-					break;
+					break; 
 				}
 			}
 		}

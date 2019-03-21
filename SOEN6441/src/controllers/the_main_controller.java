@@ -13,6 +13,7 @@ import Model.Map;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.ReadMap;
+import Util.GameLogging;
 import view.CardsConsole;
 import view.ControlsConsole;
 import view.DiceRollConsole;
@@ -91,7 +92,11 @@ public class the_main_controller {
 	 * Player_Information_Controller object
 	 */
 	private Player_Information_Controller pic;
+	/**
+	 * Logger class object
+	 */
 	
+	private  GameLogging lg;
 	/**
 	 * Stores the object of File_open_Controller class
 	 */
@@ -116,7 +121,7 @@ public class the_main_controller {
 	}
 	public void init()
 	{ 
-		
+		pic = new Player_Information_Controller();
 		opendialog= new openingdialog();
 		GD = new GameDriver();
 		opendialog.chooseplayoredit();
@@ -251,11 +256,12 @@ public void Single_Mode_Start() throws IOException {
 	plc = new PlayerConsole();
 	phc= new phaseConsole();
 	dc= new DominationConsole();
-
+	lg= new GameLogging();
+	this.GD.addObserver(phc);
+	this.GD.addObserver(dc);
+	this.GD.addObserver(csr);
+	this.GD.addObserver(lg);
 	GameConsole.createInstance(plc, mpc,crc,phc,dc); 
-	
-	
-
     GD.setPlayerConsole(plc);
 	GD.setMapConsole(mpc);
 	GD.setControlsConsole(crc);

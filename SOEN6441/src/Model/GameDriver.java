@@ -329,7 +329,7 @@ public class GameDriver extends Observable {
 	 */
 	public ControlsConsole GetControle() {
 		return this.Controls;
-	}
+	} 
 
 	/**
 	 * Delegate method to call method from GameTurnDriver class to continue phases.
@@ -553,7 +553,7 @@ public class GameDriver extends Observable {
 	 * @return a number selected by user
 	 */
 	public int InputSetUp(int minimum, String message, int Maximum) {
-		return InfoOfPlayer.NumberOfPlayer(minimum,message, Maximum);
+		return opc.NumberOfPlayer(minimum,message, Maximum);
 	}
 	
 	/**

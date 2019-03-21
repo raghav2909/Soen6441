@@ -25,4 +25,4 @@ public class HActionStrategy implements StrategyOfPlayer{
 
 	
 
-}
+} 

@@ -223,9 +223,10 @@ public void AllControlsOver()
 {
 crc.removeAll();
 }
-public String[] getInfoPlayer() {
-	return opendialog.Information_OF_Playres();
-}
+
+//public String[] getInfoPlayer() {
+//	return opendialog.Information_OF_Playres();
+//}
 
 /**
  * select the map file and image file to start game for single mode

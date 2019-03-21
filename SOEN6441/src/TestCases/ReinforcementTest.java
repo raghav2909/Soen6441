@@ -16,18 +16,18 @@ import org.junit.Test;
 import Model.GameDriver;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
-import Model.Player;
+import player.Player;
 import view.ControlsConsole;
 
 public class ReinforcementTest {
 
 	ArrayList<String> AON;
 	ControlsConsole controle;
-	NodeOfCountry c1 = new NodeOfCountry("Country1", null, null);
-	NodeOfCountry c2 = new NodeOfCountry("Country2", null, null);
-	NodeOfCountry c3 = new NodeOfCountry("Country3", null, null);
-	NodeOfCountry c4 = new NodeOfCountry("Country4", null, null);
-	NodeOfCountry c5 = new NodeOfCountry("Country5", null, null);
+	NodeOfCountry c1 = new NodeOfCountry("Country1", null, null, null);
+	NodeOfCountry c2 = new NodeOfCountry("Country2", null, null, null);
+	NodeOfCountry c3 = new NodeOfCountry("Country3", null, null, null);
+	NodeOfCountry c4 = new NodeOfCountry("Country4", null, null, null);
+	NodeOfCountry c5 = new NodeOfCountry("Country5", null, null, null);
 	Player p1;
 	
 	@Before
@@ -54,8 +54,8 @@ public class ReinforcementTest {
 		
 		NodeOfMap C = new NodeOfMap("Continent1", c, 6);
 		MD.add(C);
-		p1 = new Player("Player1", 10, MD);
-		Player p2 = new Player("Player2", 10, MD);
+		p1 = new Player("Player1", 10, c);
+		Player p2 = new Player("Player2", 10, c);
 		
 		p1.AddCountry(c1);
 		p1.AddCountry(c2);
@@ -77,8 +77,8 @@ public class ReinforcementTest {
 		
 		p1.SetTurnTrue();
 		p2.SetTurnFalse();
-		GameDriver.getInstance().setPlayerList(p1);
-		GameDriver.getInstance().setPlayerList(p2);
+		GameDriver.GetInit().ListOfPlayers(p1);
+		GameDriver.GetInit().ListOfPlayers(p2);
 	}
 	
 	@Test

@@ -116,7 +116,7 @@ public class GameDriver extends Observable {
 	public void Start() {
 		setChanged();
 		notifyObservers("Startup");
-		String[] NewPlayer = controller.getInfoPlayer();
+		String[] NewPlayer = opc.Information_OF_Playres();
 		StartUp(NewPlayer);
 		TurnManagment.StartPlayerTurn(this.CurrentP);
 		setChanged();

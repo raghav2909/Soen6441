@@ -207,7 +207,7 @@ public class openingdialog {
 		new TournamentModeMenu(messageWindow);
 		
 	}
-public static String[] Name_Of_Player; 
+public static String[] name_Of_Player; 
 	
 	/**
 	 * This function will give the information regarding the player.
@@ -241,7 +241,7 @@ public static String[] Name_Of_Player;
 		int n = NumberOfPlayer(2,"Player Numbers",6);
 		System.out.println("Number of players" + n);
 		
-		 Name_Of_Player= new String[n];
+		 name_Of_Player= new String[n];
 		 JFrame jf = new JFrame("Player Names");
 		 
 		jf.setBackground(Color.BLUE);
@@ -255,12 +255,12 @@ public static String[] Name_Of_Player;
 	                    JOptionPane.PLAIN_MESSAGE);
 			 if((name!= null )&& (name.length()>0))
 			 {
-				 Name_Of_Player[i-1]=name; 
+				 name_Of_Player[i-1]=name; 
 			 }
 			
 			 System.out.println(name);
 		 }
-		return Name_Of_Player;
+		return name_Of_Player;
 	}
 
 	/**

@@ -268,8 +268,8 @@ public void Single_Mode_Start() throws IOException {
 	GD.setControlsConsole(crc);
 	GD.Start();
 }
-/**This method starts the saved mode of the game
- * 
+/**
+ * This method starts the saved mode of the game
  */
 public String ArmyPlacing(String[] countriesNamesNoArmy, String message) {
 	return opendialog.ArmyPlacing(countriesNamesNoArmy, message);

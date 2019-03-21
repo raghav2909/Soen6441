@@ -68,24 +68,13 @@ public class Map extends Observable
 	  */
 	public Map(String FileName) throws IOException 
 	{
-		
 		    ReadMap Reader = new ReadMap();
-			DataMap = Reader.mapreader(FileName);
-			
-		 
+			DataMap = Reader.mapreader(FileName);		 
 	}
 	
-
-
-	
-
 	public Map() {
 		
 	}
-
-
-
-
 
 	/**
 	 * returning the map data as an arraylist
@@ -186,9 +175,6 @@ public class Map extends Observable
 		notifyObservers(this); 
 		setChanged();
 	}
-
-	
-	
 	
 	/**
 	 * checking if the loaded map is valid

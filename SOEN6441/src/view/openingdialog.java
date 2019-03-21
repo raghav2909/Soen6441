@@ -217,6 +217,7 @@ public static String[] name_Of_Player;
 	 */
 	public int NumberOfPlayer(int minimum,String Mesg,int maximum)
 	{
+		
 		JPanel jp = new JPanel();
        SpinnerModel S_M = new SpinnerNumberModel(minimum, minimum, maximum, 1);
        JSpinner jsm= new JSpinner(S_M);
@@ -226,6 +227,7 @@ public static String[] name_Of_Player;
        int result = JOptionPane.showConfirmDialog(null, jp, "Enter Number Of Players", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
        if (result == JOptionPane.OK_OPTION) {
     	   return (int) jsm.getValue();
+    	  
     	   
        }
        return minimum;
@@ -238,6 +240,7 @@ public static String[] name_Of_Player;
 	 */
 	public String[] Information_OF_Playres()
 	{
+		System.out.println("infoofplayer");
 		int n = NumberOfPlayer(2,"Player Numbers",6);
 		System.out.println("Number of players" + n);
 		

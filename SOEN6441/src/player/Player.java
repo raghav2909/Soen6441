@@ -260,7 +260,7 @@ public class Player
         int CountCountries = this.PlayerCountries.size();
         int CountContinents = this.PlayerContinents.size();
        int CountCards = this.Cards.size();
-       int CountArmies = CountContinents/3;
+       int CountArmies = (int) Math.ceil(CountCountries/3)+CountContinents;
 //       if (CountCards >5) {
 //       	CountArmies = +5*this.UsedCards;
 //       	this.UsedCards++;
@@ -279,7 +279,7 @@ public class Player
             }
         }
        
-        CountArmies += CountContinents;
+        CountArmies = CountContinents + CountArmies;
         System.out.println(CountArmies);
         return CountArmies;
     }

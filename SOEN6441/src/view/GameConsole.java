@@ -72,9 +72,9 @@ public class GameConsole extends JFrame  {
 		mpc = mapsinfo;
 		//drc =  diceinfo;
 		//csc = cardsinfo;
-		phc= new phaseConsole();
+		phc= phaseinfo;
 	    controlc = controlsinfo;
-	   dc = new DominationConsole();
+	   dc = dominationinfo;
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    starts();
 	    this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -92,7 +92,7 @@ public class GameConsole extends JFrame  {
         contentPane.setLayout(layout);
         this.setBackground(Color.GRAY);
         dc.setPreferredSize(new Dimension(mpc.getWidth(),300));
-        plc.setPreferredSize(new Dimension(400,200));
+        plc.setPreferredSize(new Dimension(400,150));
         
         contentPane.add(plc);
         contentPane.add(mpc);

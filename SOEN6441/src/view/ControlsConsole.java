@@ -37,6 +37,8 @@ public class ControlsConsole extends JPanel {
 	 */
 	private JSpinner spinnerArmies;
 	
+	private JSpinner spinnerArmies2;
+	
 	/**
 	 * creating combo-box for list of countries
 	 */
@@ -84,7 +86,7 @@ public class ControlsConsole extends JPanel {
 		JLabel lab = new JLabel("Controls");
 		this.setLayout(new FlowLayout());
 		this.add(lab);
-		GD = GameDriver.getInstance();
+		GD = GameDriver.GetInit();
 		ListOfNeighbors = new JComboBox<String>();
 		this.setBackground(Color.LIGHT_GRAY);
 		this.setBorder(BorderFactory.createDashedBorder(Color.black));
@@ -354,7 +356,6 @@ public class ControlsConsole extends JPanel {
 	 * @param countriesNames list of countries
 	 */
 	public void resetControls(String[] array) {
-		// TODO Auto-generated method stub
 		this.removeAll();
 		ListOfNeighbors = new JComboBox<String>(array);
 		ListOfCountries.setSelectedIndex(0);

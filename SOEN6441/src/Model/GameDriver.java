@@ -96,12 +96,12 @@ public class GameDriver extends Observable {
 	 * This method is used to access  object of this class.
 	 * @return instance of GameDriver class.
 	 */
-//	public static GameDriver GetInit() {
-//		if(driver==null){
-//			driver = new GameDriver();
-//		}
-//		return driver;
-//	}
+	public static GameDriver GetInit() {
+		if(driver==null){
+			driver = new GameDriver();
+		}
+		return driver;
+	}
 	/**
 	 * Set controller in this class.
 	 * @param NewC for setting the the_main_controller object.

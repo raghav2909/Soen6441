@@ -218,7 +218,7 @@ public class Edit_create_Map_Controller {
 				}else {
 					ArrayList<NodeOfCountry> neighbours= new ArrayList<NodeOfCountry>();
 					for (Object ncountry : mapNew.getListOfNeighbours()){
-						NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null);
+						NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null,null);
 						neighbours.add(cn);
 					}
 					for (NodeOfMap node : mapEditor.getContinents()){
@@ -312,7 +312,7 @@ public class Edit_create_Map_Controller {
 						if(!countryExist) {
 							ArrayList<NodeOfCountry> neighbours= new ArrayList<NodeOfCountry>();
 							for (Object ncountry : mapNew.getListOfNeighbours()) {
-								NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null);
+								NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null,null);
 								neighbours.add(cn);
 							}
 							mapNew.clearNeighboursJList();
@@ -320,7 +320,7 @@ public class Edit_create_Map_Controller {
 							for (NodeOfMap node: mapEditor.getContinents()) {
 								if(selectedContinent.compareTo(node.getContinent())==0) { 
 									int a[]= {250,250};
-									NodeOfCountry newCountry = new NodeOfCountry(cn1,  neighbours , a);
+									NodeOfCountry newCountry = new NodeOfCountry(cn1,  neighbours , a,null);
 									node.addcountry(newCountry);
 								}
 								for (NodeOfCountry temp : node.getCountries()) {
@@ -405,7 +405,7 @@ public class Edit_create_Map_Controller {
 				}else {
 					ArrayList<NodeOfCountry> neighbours= new ArrayList<NodeOfCountry>();
 					for (Object ncountry : existingMapModifier.getListOfNeighbours()){
-						NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null);
+						NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null,null);
 						neighbours.add(cn);
 					}
 					for (NodeOfMap node : mapEditor.getContinents()){
@@ -498,7 +498,7 @@ public class Edit_create_Map_Controller {
 						if(!countryExist) {
 							ArrayList<NodeOfCountry> neighbours= new ArrayList<NodeOfCountry>();
 							for (Object ncountry : existingMapModifier.getListOfNeighbours()) {
-								NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null);
+								NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null,null);
 								neighbours.add(cn);
 							}
 							existingMapModifier.clearNeighboursJList();
@@ -506,7 +506,7 @@ public class Edit_create_Map_Controller {
 							for (NodeOfMap node: mapEditor.getContinents()) {
 								if(selectedContinent.compareTo(node.getContinent())==0) {
 									int a[]= {250,250};
-									NodeOfCountry newCountry = new NodeOfCountry(cn1,  neighbours , a);
+									NodeOfCountry newCountry = new NodeOfCountry(cn1,  neighbours , a,null);
 									node.addcountry(newCountry);
 								}
 								for (NodeOfCountry temp : node.getCountries()) {

@@ -353,13 +353,13 @@ public class NewMapCreation extends JFrame {
 			gbc_btnDeleteNeighbours.gridy = 20;
 			MaincontentPane.add(DeleteNeighboursButton, gbc_btnDeleteNeighbours);
 			
-			comboBox_4 = new JComboBox();
+			/*comboBox_4 = new JComboBox();
 			GridBagConstraints gbc_comboBox_4 = new GridBagConstraints();
 			gbc_comboBox_4.insets = new Insets(0, 0, 5, 5);
 			gbc_comboBox_4.fill = GridBagConstraints.HORIZONTAL;
 			gbc_comboBox_4.gridx = 2;
 			gbc_comboBox_4.gridy = 20;
-			MaincontentPane.add(comboBox_4, gbc_comboBox_4);
+			MaincontentPane.add(comboBox_4, gbc_comboBox_4);*/
 			
 			NeighboursOfSelectedLabel = new JLabel("Neighbours of selected country");
 			NeighboursOfSelectedLabel.setForeground(Color.WHITE);
@@ -421,6 +421,12 @@ public class NewMapCreation extends JFrame {
 		 */
 		public void JListEnabled() {
 			list.setEnabled(true);
+		}
+		/**
+		 * enables JList of neighbors.
+		 */
+		public void enableJList_1() {
+			list1.setEnabled(true);
 		}
 
 		/**
@@ -540,7 +546,10 @@ public class NewMapCreation extends JFrame {
 		public void addActionsToSaveMapButton(ActionListener newAction) {
 			saveMapButton.addActionListener(newAction);
 		}
-
+/**
+ * Enable selection of country to delete neighbours
+ * @param newAction action associated with DeleteNeighboursButton 
+ */
 		public void addActionstoDeleteNeighboursButton(ActionListener newAction) {
 			DeleteNeighboursButton.addActionListener(newAction);
 		}

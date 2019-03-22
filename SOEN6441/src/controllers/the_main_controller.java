@@ -274,14 +274,47 @@ public void Single_Mode_Start() throws IOException {
 public String ArmyPlacing(String[] countriesNamesNoArmy, String message) {
 	return opendialog.ArmyPlacing(countriesNamesNoArmy, message);
 }
+/**
+ * This method will start the saved mode
+ */
+
 public void single_Mode_Saved_Start() {
 
 	System.out.println("Saved Mode");
 	
 }
+/**
+ * This function will return the number of player
+ * with their names
+ * @return information of players
+ */
 public String[] InformationOFPlayres() {
 	return opendialog.Information_OF_Playres();
 }
+/**
+ * this function will set the fortification controls in controls console
+ * @param NA number of armies
+ * @param NNL  list of neighbor 
+ */
+public void ControlsForFortification(int NA, String[] NNL) {
+	crc.updateFortification(NA, NNL);
+}
 
+public void NeighborListUpdate(String[]NL)
+{
+	crc.SetNList(NL);
+}
+/**
+ * this method will check the input from the user
+ * @param min minimum number of players
+ * @param msg  it will explain the purpose of input
+ * @param max maximum number of  players a user can select
+ * @return it will return the number of players selected by user
+ */
+public int input(int min,String msg,int max)
+
+{
+	return opendialog.NumberOfPlayer(min,msg, max);
+	}
 }
 

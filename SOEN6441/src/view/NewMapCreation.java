@@ -402,14 +402,14 @@ public class NewMapCreation extends JFrame {
 			MaincontentPane.add(saveMapButton, grid_saveMapButton);
 		}
 /**
- * action events  for button to add New country
+ * action events  for button to enable add New country
  * @see Edit_create_Map_Controller
  * @param newAction return action taken
  */
 		public void addActionsToAddCountryButton(ActionListener newAction) {
 			addCountryButton.addActionListener(newAction);
 		}
-		/**
+		/**save new country added
 		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for addButton
 		 */

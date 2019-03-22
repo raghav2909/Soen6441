@@ -113,7 +113,7 @@ public class the_main_controller {
 	 *  constructor
 	 */
 	public the_main_controller() {
-		this(GameDriver.getInstance());
+		this(GameDriver.GetInit());
 	}
 	public the_main_controller(GameDriver instance) {
 		this.GD = instance;

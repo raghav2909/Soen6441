@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Observable;
 
+import controllers.the_main_controller;
 import player.Player;
 import view.Map_Frame;
 
@@ -59,8 +60,10 @@ public class Map extends Observable
 	 * creating a arraylist for saving map data
 	 */
 	public   ArrayList<NodeOfMap> DataMap;
-	
-	
+	/**
+	 * The_Main_Controller object
+	 */
+	the_main_controller tmc= new the_main_controller();
 	 /**
 	  * this constructor handles getting map data from map reader
 	  * @param FileName the address of map
@@ -172,8 +175,9 @@ public class Map extends Observable
 	 */
 	public void UpdateMap() 
 	{
-		notifyObservers(this); 
 		setChanged();
+		notifyObservers(this); 
+		
 	}
 	
 	/**

@@ -632,11 +632,11 @@ public class GameDriver extends Observable {
 	 * </p>
 	 * @return instance of GameDriver class.
 	 */
-	public static GameDriver getInstance() {
-		if(driver==null){
-			driver = new GameDriver();
-		}
-		return driver;
-	}
+//	public static GameDriver getInstance() {
+//		if(driver==null){
+//			driver = new GameDriver();
+//		}
+//		return driver;
+//	}
 
 }

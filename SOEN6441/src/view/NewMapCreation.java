@@ -353,13 +353,13 @@ public class NewMapCreation extends JFrame {
 			gbc_btnDeleteNeighbours.gridy = 20;
 			MaincontentPane.add(DeleteNeighboursButton, gbc_btnDeleteNeighbours);
 			
-			/*comboBox_4 = new JComboBox();
+			comboBox_4 = new JComboBox();
 			GridBagConstraints gbc_comboBox_4 = new GridBagConstraints();
 			gbc_comboBox_4.insets = new Insets(0, 0, 5, 5);
 			gbc_comboBox_4.fill = GridBagConstraints.HORIZONTAL;
 			gbc_comboBox_4.gridx = 2;
 			gbc_comboBox_4.gridy = 20;
-			MaincontentPane.add(comboBox_4, gbc_comboBox_4);*/
+			MaincontentPane.add(comboBox_4, gbc_comboBox_4);
 			
 			NeighboursOfSelectedLabel = new JLabel("Neighbours of selected country");
 			NeighboursOfSelectedLabel.setForeground(Color.WHITE);
@@ -600,7 +600,12 @@ public class NewMapCreation extends JFrame {
 		public void clearNeighboursJList() {
 			model2.removeAllElements();
 		}
-
+		/**
+		 * Clears the JList of neighbors.
+		 */
+		public void clearNeighboursJList1() {
+			model1.removeAllElements();
+		}
 		/**
 		 * adding neighbour countries to the list
 		 * @param neighbour include countries
@@ -609,6 +614,13 @@ public class NewMapCreation extends JFrame {
 			model2.addElement(neighbour);
 		}
 
+		/**
+		 * This function adds neighbors to JList.
+		 * @param neighbour receives the neighbor to be added to the list.
+		 */
+		public void addPossibleNeighboursToJList_1(String neighbour) {
+			model1.addElement(neighbour);
+		}
 		/**
 		 * getting the continent name
 		 * @return continent name
@@ -659,6 +671,27 @@ public class NewMapCreation extends JFrame {
 		public void errorNullCountry() {
 			JOptionPane.showMessageDialog(MaincontentPane, "Add country firstr", "Error", JOptionPane.ERROR_MESSAGE);
 		}
+		/**
+		 * displays dialog box with success message.
+		 */
+		public void successMessage() {
+			JOptionPane.showMessageDialog(MaincontentPane, "Successfully saved", "Message", JOptionPane.INFORMATION_MESSAGE);
+		}
+
+		/**
+		 * displays dialog box with success message.
+		 */
+		public void successAddedNeighbours() {
+			JOptionPane.showMessageDialog(MaincontentPane, "Successfully added neighbours", "Message", JOptionPane.INFORMATION_MESSAGE);
+		}
+
+		/**
+		 * displays dialog box with success message.
+		 */
+		public void successDeletedNeighbours() {
+			JOptionPane.showMessageDialog(MaincontentPane, "Successfully deleted neighbours", "Message", JOptionPane.INFORMATION_MESSAGE);
+		}
+
 
 		/**
 		 * getting the control value of continent

@@ -73,7 +73,7 @@ public class Edit_create_Map_Controller {
 	/** 
  	*object of Map class from Model
  	*/
-	Map mapEditor =new Map();// 
+	ModelOfMap mapEditor =new ModelOfMap();// 
 	
 	/**
 	 * Calls the readMap function of ReadMap class from Model to read the map files

@@ -22,12 +22,11 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 
-import Model.NodeOfCountry;
+import Model.*;
 import Model.NodeOfMap;
 import Model.WriteMap;
 import controllers.Edit_create_Map_Controller;
-import risk.model.map.CountryNode;
-import risk.model.map.MapNode;
+
 
 
 	/** class opens the JFrame view for  

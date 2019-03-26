@@ -19,7 +19,7 @@ import javax.swing.border.MatteBorder;
 /**This class is implementing map file selection
  * @author raghavsharda
  * @author gursharandeep
- *@version 1.0
+ *@version 2.0
  */
 public class MapSelection {
 	/**

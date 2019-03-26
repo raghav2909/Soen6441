@@ -32,7 +32,7 @@ import game.messages.MessageWindow;
  * 1. asks player to play game or edit map
  * 2. displays frame for those options
  * @author Harman
- *@version 1.0
+ *@version 2.0
  */
 public class openingdialog {
 	 private  MessageWindow messageWindow = new MessageWindow();

@@ -16,6 +16,7 @@ import player.Player;
 /**
  * Implements the Phase View panel of the main window using Observer Pattern.
  * @author Harman
+ * @version 2.0
  */
 public class phaseConsole extends JPanel implements Observer {
 

@@ -18,7 +18,7 @@ import game.messages.MessageWindow;
  * This class provides a menu to go for tournament mode by providing the info asked
  * for Tournament mode maximum 4 players can play
  * @author Gursharan
- * @version 1.0
+ * @version 2.0
 */
 
 public class TournamentModeMenu extends JFrame {

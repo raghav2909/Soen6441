@@ -32,7 +32,7 @@ import controllers.Edit_create_Map_Controller;
 	/** class opens the JFrame view for  
 	 *  delete/add country and continent while modifying Map
 	 * @author Gursharan
-	 *@version 1.0
+	 *@version 2.0
 	 */
 	public class ExistingMapModifier extends JFrame {
 

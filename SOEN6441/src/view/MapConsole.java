@@ -25,7 +25,7 @@ import Model.Map;
 /**This class provides the view of the map on the main window class
  * @author raghavsharda
  *@author Harman
- *@version 1.0
+ *@version 2.0
  */
 public class MapConsole extends JPanel implements Observer {
 	

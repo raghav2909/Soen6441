@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
  * This class displays the player view on main window
  * @author raghavsharda
  *@author Harman
- *@version 1.0
+ *@version 2.0
  */
 public class PlayerConsole extends JPanel{
 

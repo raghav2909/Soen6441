@@ -24,7 +24,7 @@ import Model.NodeOfMap;
 /**This class opens jframe to open map file 
  * @author raghavsharda
  * @author gursharandeep
- * @version 1.0
+ * @version 2.0
  *
  */
 public class MapExist extends JFrame{

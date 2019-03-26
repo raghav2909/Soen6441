@@ -21,7 +21,7 @@ import player.Player;
 /**
  * this class creates the cards view on main game window
  * @author raghavsharda
- *@version 1.0
+ *@version 2.0
  */
 public class CardsConsole extends JPanel implements Observer{
 	/**

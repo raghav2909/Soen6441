@@ -21,7 +21,7 @@ import controllers.Edit_create_Map_Controller;
  * either a New map or an Existing map.
  * @author raghavsharda
  * @author gursharandeep
- * @version 1.0
+ * @version 2.0
  */
 public class Map_Frame extends JFrame {
 

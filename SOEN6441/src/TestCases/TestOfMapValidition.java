@@ -27,7 +27,7 @@ public class TestOfMapValidition {
 	
 	/**
 	 * this test case is checking the map is valid or not
-	 * @throws
+	 * @throws IOException it will throw input output exception
 	 */
 	@Test
 	public void testMapValid() throws IOException{

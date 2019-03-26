@@ -16,8 +16,9 @@ public class ReadMap{
 	/**
 	 * Method to read map.
 	 * Takes Filename as input
-	 * @param filename 
+	 * @param filename  name of the file
 	 * @return maplist
+	 * @throws IOException it will throw input output exception
 	 */
 	public ArrayList<NodeOfMap> mapreader(String filename) throws IOException{
 		

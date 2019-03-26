@@ -106,7 +106,7 @@ public class the_main_controller {
 	/**
 	 * Creating an object of openingdialog class of view package
 	 */
-	openingdialog opendialog=new openingdialog();
+	private openingdialog opendialog;
 
 	Map map;
 	
@@ -231,7 +231,7 @@ crc.removeAll();
 
 /**
  * select the map file and image file to start game for single mode
- * @throws IOException 
+ * @throws IOException  it will throw input output exception
  */
 public void Single_Mode_Start() throws IOException {
 	System.out.println("New Game");
@@ -276,7 +276,10 @@ public void Single_Mode_Start() throws IOException {
 	GD.Start();
 }
 /**
- * This method starts the saved mode of the game
+ * This method starts the saved mode of the game 
+ * @param countriesNamesNoArmy number of countries with no armies
+ * @param message meesage to be displayed
+ * @return it will return the army placing
  */
 public String ArmyPlacing(String[] countriesNamesNoArmy, String message) {
 	return opendialog.ArmyPlacing(countriesNamesNoArmy, message);

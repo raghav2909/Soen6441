@@ -623,7 +623,6 @@ import controllers.Edit_create_Map_Controller;
 	 		DeleteNeighboursButton.addActionListener(newAction);
 }
 		/**Action event for button to delete selected neighbours
-		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for deleteNeighbourButton
 		 */
 		public void addActionsToDeleteSelectedNeighboursButton(ActionListener newAction) {
@@ -687,6 +686,7 @@ import controllers.Edit_create_Map_Controller;
 
 		/**
 		 * provides control value from textfield
+		 * @return it will controo value
 		 */
 		public String getControlValue() {
 			cv = (continentControlValueText.getText());
@@ -722,6 +722,7 @@ import controllers.Edit_create_Map_Controller;
 
 		/**
 		 * adds data in continent lists displayed in continentComboBox
+		 * @param continent continent name 
 		 */
 		public void setDataInContinentsComboBox(String continent) {
 			continentComboBox.addItem(continent);

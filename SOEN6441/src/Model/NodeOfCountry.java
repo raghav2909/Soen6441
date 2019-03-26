@@ -54,8 +54,9 @@ public class NodeOfCountry
 	/**
 	 * Set up country 
 	 * @param name name of country
-	 * @param neighbor neighbour countries
+	 * @param neighbour neighbour countries
 	 * @param coordinate coordinate of the country
+	 * @param c node of map 
 	 */
 	
 	public NodeOfCountry (String name , ArrayList<NodeOfCountry> neighbour , int[] coordinate,NodeOfMap c )
@@ -140,7 +141,7 @@ public class NodeOfCountry
 	 }
 	 /**
 	  * Sets owner
-	  * @param player 
+	  * @param player player name 
 	  */
 	 public void SetOwner(Player player)
 	 {
@@ -191,7 +192,7 @@ public class NodeOfCountry
 	
 	 /**
 	  * Add new neighbour
-	  * @param NewNieghbour 
+	  * @param NewNieghbour  neighbour name
 	  */
 	
 	 public void AddNeighbour(NodeOfCountry NewNeighbour)
@@ -303,6 +304,7 @@ public class NodeOfCountry
 	 
 	 /**
 	  * getting the continent that this country belongs to it
+	  * @return continent name
 	  */
 	 public NodeOfMap getContinent() {
 			return this.continent;
@@ -320,6 +322,7 @@ public class NodeOfCountry
 	
 	/**
 	 * setting the continent that this country belong
+	 * @param c continent to set
 	 */
 	public void setContinent(NodeOfMap c) {
 		this.continent = c;
@@ -329,6 +332,7 @@ public class NodeOfCountry
 	
 	/**
 	 * removing a neighbour
+	 * @param n country to be  removed
 	 */
 	public void neighbourRemoved(NodeOfCountry n) {
 		NodeOfCountry n1 = new NodeOfCountry(null,null,null,null);

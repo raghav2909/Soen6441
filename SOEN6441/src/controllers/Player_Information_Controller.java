@@ -31,6 +31,9 @@ public class Player_Information_Controller {
 	 * This function will give the information regarding the player.
 	 * In this function Spinner  model is used to define the minimum and maximum number of players
 	 * when the user starts the game play. 
+	 * @param minimum number of minimum players
+	 * @param Mesg message to be passed 
+	 * @param	maximum maximum number of players
 	 * @return This method will return the Number of players.
 	 */
 	public int NumberOfPlayer(int minimum,String Mesg,int maximum)
@@ -84,6 +87,7 @@ public class Player_Information_Controller {
 	/**
 	 *The countries that are selected to place army
 	 * @param CL List of countries where the player can place armies.
+	 * @param Msg message to be passed
 	 * @return country name selected.
 	 */
 	public String ArmyPlacing(String[] CL, String Msg) {

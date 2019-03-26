@@ -194,7 +194,7 @@ public class openingdialog {
 	}
 	
 	/**
-	 * returns the initial frame 
+	 * @return the initial frame 
 	 */
 	public JFrame returnframe()
 	{
@@ -213,6 +213,9 @@ public static String[] name_Of_Player;
 	 * This function will give the information regarding the player.
 	 * In this function Spinner  model is used to define the minimum and maximum number of players
 	 * when the user starts the game play. 
+	 * @param minimum minimum number of players
+	 * @param Mesg to be displayed
+	 * @param maximum maximum number of players
 	 * @return This method will return the Number of players.
 	 */
 	public int NumberOfPlayer(int minimum,String Mesg,int maximum)
@@ -294,6 +297,7 @@ public static String[] name_Of_Player;
 	/**
 	 *The countries that are selected to place army
 	 * @param CL List of countries where the player can place armies.
+	 * @param Msg message to be displayed
 	 * @return country name selected.
 	 */
 	public String ArmyPlacing(String[] CL, String Msg) {

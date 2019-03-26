@@ -29,7 +29,10 @@ public class MapSelection {
 	
 	/**
 	 * Constructor for the frame setting
-	 * @throws IllegalAccessException 
+	 * @throws IllegalAccessException  it will throw ilegal exception
+	 * @throws ClassNotFoundException it will
+	 * @throws InstantiationException  it will 
+	 * @throws IllegalAccessException it will
 	 * 
 	 */
 	public MapSelection()throws UnsupportedLookAndFeelException,ClassNotFoundException,InstantiationException, IllegalAccessException

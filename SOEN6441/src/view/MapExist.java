@@ -50,7 +50,7 @@ public class MapExist extends JFrame{
 	
 	/**
 	 * Start method of the class is called by MapExist constructor
-	 * @param map arraylist of map nodes.
+	 * @param maps arraylist of map nodes.
 	 */
  public MapExist(ArrayList<NodeOfMap> maps){
 		MapExists = maps;
@@ -186,7 +186,6 @@ public class MapExist extends JFrame{
 	}
 	
 	/**
-	 * @see mapEditorController
 	 * @param newAction actionListener for btnEdit
 	 */
 	public void addActionsToBtnEdit(ActionListener newAction) {

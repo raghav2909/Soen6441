@@ -15,7 +15,7 @@ import javax.swing.plaf.BorderUIResource;
  *This class is the main view of the front end of the game console where the players will play the game
  *and all other information while playing the game will be displayed.
  *@author raghavsharda
- *@verison 1.0
+ *@version 2.0
  */
 public class GameConsole extends JFrame  {
 	/**
@@ -62,9 +62,9 @@ public class GameConsole extends JFrame  {
 	/**class constructor setting main game window by calling starts method
 	 * @param palyerinfo PlayerConsole object 
 	 * @param mapsinfo MapConsole object
-	 * @param diceinfo DiceRollConsole object
-	 * @param cardsinfo CardsConsole object
 	 * @param controlsinfo ControlsConsole object
+	 *@param phaseinfo phase console object
+	 *@param dominationinfo domination console object
 	 */
 	public GameConsole(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo,phaseConsole phaseinfo,DominationConsole dominationinfo )
 	{
@@ -150,8 +150,8 @@ public class GameConsole extends JFrame  {
 	 * creates instance of this class
 	 * @param palyerinfo PlayerConsole object 
 	 * @param mapsinfo MapConsole object
-	 * @param diceinfo DiceRollConsole object
-	 * @param cardsinfo CardsConsole object
+	 * @param phaseinfo phase Console object
+	 * @param dominationinfo domination Console object
 	 * @param controlsinfo ControlsConsole object
 	 */
 	public static void createInstance(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo, phaseConsole phaseinfo, DominationConsole dominationinfo ){

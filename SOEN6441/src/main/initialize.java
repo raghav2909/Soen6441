@@ -6,7 +6,7 @@ import Model.GameDriver;
 import controllers.the_main_controller;
 /**
  * 
- * @verison 1.0
+ *@version 2.0
  *
  */ 
 public class initialize {

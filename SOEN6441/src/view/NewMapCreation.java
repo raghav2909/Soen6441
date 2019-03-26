@@ -410,7 +410,6 @@ public class NewMapCreation extends JFrame {
 			addCountryButton.addActionListener(newAction);
 		}
 		/**save new country added
-		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for addButton
 		 */
 		public void addActionsToAddButton(ActionListener newAction) {
@@ -447,14 +446,12 @@ public class NewMapCreation extends JFrame {
 			continentControlValueText.setEnabled(false);
 		}
 		/**Action events for button to delete country
-		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for deleteCountryButton
 		 */
 		public void addActionsToDeleteCountryButton(ActionListener newAction) {
 			deleteCountryButton.addActionListener(newAction);
 		}
 		/**Action events for button to delete selected neighbours
-		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for deleteNeighbourButton
 		 */
 		public void addActionsToDeleteSelectedNeighboursButton(ActionListener newAction) {
@@ -474,7 +471,6 @@ public class NewMapCreation extends JFrame {
 		}
 
 		/**action events  for button to finish adding neighbours
-		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for addNeighboursButton
 		 */
 		public void addActionsToAddNeighboursButton(ActionListener newAction) {
@@ -516,7 +512,6 @@ public class NewMapCreation extends JFrame {
 		/**
 		 * action events  for button to add New continent
 		 * @param newAction return action taken
-		 * @see Edit_Create_Map_Controller
 		 */
 		public void addActionsToAddContinentButton(ActionListener newAction) {
 			addContinentButton.addActionListener(newAction);
@@ -532,7 +527,6 @@ public class NewMapCreation extends JFrame {
 
 		
 		/** Action events for button to delete continent
-		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for deleteContinentButton
 		 */
 		public void addActionsToDeleteContinentButton(ActionListener newAction) {

@@ -101,7 +101,7 @@ public class MapConsole extends JPanel implements Observer {
 	}
 
 	 /** Sets the coordinates on the map file image.
-	 * @param newMapData Map data to be displayed.
+	 * @param newMap Map data to be displayed.
 	 */
 	public void setGraphical(String[][] newMap) {
 		this.removeAll();
@@ -140,7 +140,7 @@ public class MapConsole extends JPanel implements Observer {
 	
 	/**
 	 * set map data on map frame
-	 * @param newMapData contains map data
+	 * @param mapinfo contains map data
 	 */
 	public void Mapset(String[][] mapinfo) {
 		this.removeAll();

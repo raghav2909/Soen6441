@@ -34,7 +34,7 @@ public class Map extends Observable
 	 /**
 	  * this constructor handles getting map data from map reader
 	  * @param FileName the address of map
-	 * @throws IOException 
+	 * @throws IOException  it will throw input output exception
 	  */
 	public Map(String FileName) throws IOException 
 	{
@@ -264,6 +264,7 @@ public class Map extends Observable
 	
 	/**
 	 * This method gets the object of country from its name
+	 * @param CN country name 
 	 * @return Total map countries
 	 */
 	

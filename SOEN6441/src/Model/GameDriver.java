@@ -363,7 +363,7 @@ public class GameDriver extends Observable {
 	/**
 	 * Adds listener for fortification phase.
 	 * getting the map class object
-	 * @return map Map object is returned
+	 * 
 	 */
 	public void SetFLiteners() {
 		this.controller.setListenersFortification();;
@@ -417,9 +417,9 @@ public class GameDriver extends Observable {
 	   
 	/**
 	 * A delegate method to call getArmiesShiftedAfterFortification in Player class.
-	 * @param newCountry country from where Army are to be moved
-	 * @param newNeighbour country where Army are to be moved
-	 * @param newArmies number of Army to be moved
+	 * @param nc country from where Army are to be moved
+	 * @param nn country where Army are to be moved
+	 * @param na number of Army to be moved
 	 */
 	public void getArmiesShiftedAfterFortification(String nc, String nn, int na) {
 		this.CurrentP.getArmiesShiftedAfterF(nc, nn, na);
@@ -447,8 +447,8 @@ public class GameDriver extends Observable {
 	
 	/**
 	 * This method call the attack, get number of dice from both attacker and def.
-	 * @param AttackerC country of attacker
-	 * @param DefenderC country of def
+	 * @param AttackerCountry country of attacker
+	 * @param DefenderCountry country of def
 	 */
 	public void AttackCall(String AttackerCountry, String DefenderCountry) {
 		this.Notification = "Attacker Country: "+AttackerCountry+"  Defender Country: "+DefenderCountry+"  ";
@@ -549,7 +549,7 @@ public class GameDriver extends Observable {
 	
 	/**
 	 *  method to call InputSetUp from controller class.
-	 * @param min  value user can select 
+	 * @param minimum  value user can select 
 	 * @param Maximum  value user can select
 	 * @param message  explaining the purpose 
 	 * @return a number selected by user

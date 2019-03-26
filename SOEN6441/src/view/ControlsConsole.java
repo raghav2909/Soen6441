@@ -347,7 +347,7 @@ public class ControlsConsole extends JPanel {
 
 	/**
 	 * This method reset the controls for attack phase
-	 * @param countriesNames list of countries
+	 * @param array list of countries
 	 */
 	public void resetControls(String[] array) {
 		this.removeAll();

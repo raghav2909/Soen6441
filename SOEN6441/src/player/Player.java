@@ -83,7 +83,7 @@ public class Player
     
     /**
      * Set up Player with name
-     * @param name Player Name
+     * @param n Player Name
      */
     public Player(String n)
     { 
@@ -113,7 +113,7 @@ public class Player
     /**
 	 * Initialize player object with name and armies.
 	 * @param name name of the player.
-	 * @param newArmies armies of the player.
+	 * @param armies armies of the player.
 	 */
 	public Player(String name, int armies) {
 		this(name);
@@ -191,7 +191,7 @@ public class Player
     
     /**
      * Removes country from a Player Countries
-     * @prarm Country removed country
+     * @param Country removed country
      */
     public void RemoveCountry(NodeOfCountry Country)
     {
@@ -350,7 +350,7 @@ public class Player
     
     /**
      * set the new value of PLayer armies
-     * @param NewArmies number of armies
+     * @param NewArmy number of armies
      */
     public void ArmySet(int NewArmy)
     {
@@ -428,9 +428,9 @@ public int shiftArmiesOnR(String country, int armies) {
 
 /**
  * Shifts the armies between two countries
- * @param sCountry the country name from which armies are moved.
- * @param sNeighbour the country name to which armies are added.
- * @param selectedArmies the number of armies to be moved.
+ * @param Country the country name from which armies are moved.
+ * @param Neighbour the country name to which armies are added.
+ * @param armies the number of armies to be moved.
  * @return the army count left in SNeighbour country.
  */
 public int getArmiesShiftedAfterF(String Country, String Neighbour, int armies){
@@ -459,7 +459,7 @@ public NodeOfCountry getSelectNeighbour(){
 
 /**
  * calculation of number of dice.
- * @param country country selected 
+ * @param co country selected 
  * @return number of dice 
  */
 public int AttackDice(String co) {
@@ -704,6 +704,7 @@ public boolean equals(Object o) {
 
 /**
  * Set a new strategy for player
+ * @param ns name of strategy
  */
 public void setStrategy(StrategyOfPlayer ns) {
 	this.SOP = ns;

@@ -30,7 +30,7 @@ public class CardsConsole extends JPanel implements Observer{
 	private static final long serialVersionUID = 91213123892139L;
 
 	/**
-	 * class constructor creating view of card option on main window of game
+	 * class constructor creating view of card option in main window of game
 	 */
 	public CardsConsole()
 	{

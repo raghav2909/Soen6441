@@ -120,7 +120,6 @@ public class ControlsConsole extends JPanel {
 		ListOfCountries.setSelectedIndex(0);
 		Add_Armies = new JButton("Add Armies");
 		End_Phase = new JButton(" To End Reinforcement Phase");
-	//	this.ListOfNeighbors.setModel(new DefaultComboBoxModel<String>(cl));
 
 		this.add(new Label(AvailableArmies));
 		this.add(new Label("Country Name"));
@@ -134,7 +133,6 @@ public class ControlsConsole extends JPanel {
 
 	/**
 	 * implements fortification phase
-	 * 
 	 * @param countryList array containing country names owned by current player
 	 */
 	public void fortificationControls(String[] countryList) {
@@ -161,7 +159,6 @@ public class ControlsConsole extends JPanel {
 
 	/**
 	 * adds ActionListener on countries list combo-box.
-	 * 
 	 * @param ae ActionListener to be attached to the combo-box.
 	 */
 	public void ListOfCountriesAction(ActionListener ae) {
@@ -170,7 +167,6 @@ public class ControlsConsole extends JPanel {
 
 	/**
 	 * adds action listener to Add_Amry
-	 * 
 	 * @param ae ActionListener attached to add army button
 	 */
 	public void Armies_Add_Button_Action(ActionListener ae) {
@@ -179,7 +175,6 @@ public class ControlsConsole extends JPanel {
 
 	/**
 	 * Sets ActionListener on end phase button.
-	 * 
 	 * @param ae ActionListener attached to the end phase button.
 	 */
 	public void End_Phase_Button_Action(ActionListener ae) {
@@ -188,7 +183,6 @@ public class ControlsConsole extends JPanel {
 
 	/**
 	 * adds action listener to Player_Move
-	 * 
 	 * @param ae ActionListener attached to player move button
 	 */
 	public void Play_Move_Button_Action(ActionListener ae) {
@@ -338,7 +332,6 @@ public class ControlsConsole extends JPanel {
 
 	/**
 	 * Shifts(or places) the armies of the player on each reinforcement.
-	 * 
 	 * @param country the country node to which armies are added.
 	 * @param armies  the number of armies to be reinforced.
 	 * @return the army count left for the player.

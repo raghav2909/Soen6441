@@ -14,6 +14,7 @@ import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.ReadMap;
 import Util.GameLogging;
+
 import view.CardsConsole;
 import view.ControlsConsole;
 import view.DiceRollConsole;
@@ -234,23 +235,29 @@ crc.removeAll();
  */
 public void Single_Mode_Start() throws IOException {
 	System.out.println("New Game");
-	foc= new File_open_Controller();
-	try {
-		GD.MapCreation(foc.map_location("map"));
-	} catch (IOException e) {
-		e.printStackTrace();
-	}
-	ReadMap rm= new ReadMap();
-	
-	String image_loc = foc.map_location("bmp");
-   if(image_loc!=null) {
-		mpc = new MapConsole(image_loc);
-}else {
-		 mpc = new MapConsole();
-}
-
-	mpc = new MapConsole(image_loc);
-	
+//	foc= new File_open_Controller();
+//	try {
+//		GD.MapCreation(foc.map_location("map"));
+//	} catch (IOException e) {
+//		e.printStackTrace();
+//	}
+//	ReadMap rm= new ReadMap();
+//	
+//	String image_loc = foc.map_location("bmp");
+//   if(image_loc!=null) {
+//		mpc = new MapConsole(image_loc);
+//}else {
+//		 mpc = new MapConsole();
+//}
+//
+//	mpc = new MapConsole(image_loc);
+	GD.MapCreation(opendialog.InfoOfMap("map"));
+	String t= opendialog.InfoOfMap("bmp");
+	 if(t!=null) {
+ 		mpc = new MapConsole(t);
+ }else {
+ 		mpc = new MapConsole();
+ }
 	crc= new ControlsConsole();
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();

@@ -116,7 +116,7 @@ public class ControlsConsole extends JPanel {
 		System.out.println("Reinforcement method start");
 		AvailableArmies = "Armies Available:" + String.valueOf(ac);
 		System.out.println(ac);
-		SpinnerModel s_m = new SpinnerNumberModel(1, 1, ac, 1);
+		SpinnerModel s_m = new SpinnerNumberModel(1, 1, ac+20, 1);
 		spinnerArmies = new JSpinner(s_m); 
 		ListOfCountries = new JComboBox<String>(cl);
 		ListOfCountries.setSelectedIndex(0);
@@ -172,7 +172,7 @@ public class ControlsConsole extends JPanel {
 	 * @param ae ActionListener attached to add army button
 	 */
 	public void Armies_Add_Button_Action(ActionListener ae) {
-		this.Player_Move.addActionListener(ae);
+		this.Add_Armies.addActionListener(ae);
 	}
 
 	/**
@@ -188,7 +188,7 @@ public class ControlsConsole extends JPanel {
 	 * @param ae ActionListener attached to player move button
 	 */
 	public void Play_Move_Button_Action(ActionListener ae) {
-		this.Add_Armies.addActionListener(ae);
+		this.Player_Move.addActionListener(ae);
 	}
 
 	/**

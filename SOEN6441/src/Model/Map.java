@@ -29,7 +29,7 @@ public class Map extends Observable
 	/**
 	 * creating a arraylist for saving map data
 	 */
-	public   ArrayList<NodeOfMap> DataMap;
+	public static  ArrayList<NodeOfMap> DataMap;
 	
 	 /**
 	  * this constructor handles getting map data from map reader

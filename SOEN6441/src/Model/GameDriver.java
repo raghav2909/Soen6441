@@ -235,7 +235,8 @@ public class GameDriver extends Observable {
 			this.CurrentP = players.get(currentPlayerIndex+1);
 		}
 		this.CurrentP.SetTurnTrue();
-		this.GetCurrent().AddedArmies(this.GetCurrent().getCountArmies());
+		
+		this.GetCurrent().ArmySet(this.GetCurrent().CalArmy());
 		setChanged();
 		notifyObservers("Cards");
 	}
@@ -393,12 +394,12 @@ public class GameDriver extends Observable {
 	 * @param Army number of Army to be placed
 	 */
 	public void shiftArmiesOnReinforcement(String SelectedCountry, int Army) {
-		if(this.CurrentP.shiftArmiesOnR(SelectedCountry, Army)!=0) {
-			ContinuePhase();
+		if(this.CurrentP.shiftArmiesOnR(SelectedCountry, Army)==0) {
+			ChangePhase();
 		}
 		else {
 			
-			ChangePhase();
+			ContinuePhase();
 		}
 	}
 	
@@ -477,7 +478,7 @@ public class GameDriver extends Observable {
 		notifyObservers(Notification);
 		if(DC.getArmyCount()==0) {
 			DC.SetOwner(CurrentP);
-			TurnManagment.cardwinset(true);
+			TurnManagment.setWonCard(true);
 			Notification += "<br>" + " Country "+ DC.getNameOfCountry() +" won by " + DC.getOwner().getPlayerName() + ", new Army "+DC.getArmyCount();
 			setChanged();
 			notifyObservers(Notification);
@@ -530,7 +531,7 @@ public class GameDriver extends Observable {
 	 */
 	public boolean GameStateCheck() {
 		if(players.size()<2) {
-			TurnManagment.setGameStatus(true);
+			TurnManagment.setGameOver(true);
 			return true;
 		}
 		return false;

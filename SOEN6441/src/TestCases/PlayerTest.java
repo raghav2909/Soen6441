@@ -80,16 +80,16 @@ public class PlayerTest {
 
 	@Test
 	public void testArmies() {
-		assertEquals(3,TP.getCountArmies());
+		assertEquals(3,TP.CalArmy());
 		TP.AddCountry(new NodeOfCountry("T", null, null, null));
 		TP.AddCountry(new NodeOfCountry("T1", null, null, null));
 		TP.AddCountry(new NodeOfCountry("T2", null, null, null));
+		TP.AddCountry(new NodeOfCountry("T4", null, null, null));
 		TP.AddCountry(new NodeOfCountry(null, null, null, null));
 		TP.AddCountry(new NodeOfCountry(null, null, null, null));
 		TP.AddCountry(new NodeOfCountry(null, null, null, null));
 		TP.AddCountry(new NodeOfCountry(null, null, null, null));
-		TP.AddCountry(new NodeOfCountry(null, null, null, null));
-		assertEquals(4,TP.getCountArmies());
+		assertEquals(4,TP.CalArmy());
 	}
 	
 	

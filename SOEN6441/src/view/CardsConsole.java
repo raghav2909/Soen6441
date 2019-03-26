@@ -10,6 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -28,6 +29,8 @@ public class CardsConsole extends JPanel implements Observer{
 	 * {@inheritDoc}
 	 */
 	private static final long serialVersionUID = 91213123892139L;
+	
+	private JButton exchangeCards;
 
 	/**
 	 * class constructor creating view of card option in main window of game
@@ -83,7 +86,7 @@ public class CardsConsole extends JPanel implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		Player player;
-		player = Model.GameDriver.getInstance().GetCurrent();
+		player = Model.GameDriver.GetInit().GetCurrent();
 		if (((String) arg).equals("Cards")){
 			if( player.GetCards().size()>2 && player.GetCards().size() <5){
 				if(player.HaveDCard() || player.SameTypeCards()){					

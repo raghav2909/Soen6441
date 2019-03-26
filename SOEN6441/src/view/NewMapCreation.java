@@ -402,14 +402,14 @@ public class NewMapCreation extends JFrame {
 			MaincontentPane.add(saveMapButton, grid_saveMapButton);
 		}
 /**
- * action events  for button to add New country
+ * action events  for button to enable add New country
  * @see Edit_create_Map_Controller
  * @param newAction return action taken
  */
 		public void addActionsToAddCountryButton(ActionListener newAction) {
 			addCountryButton.addActionListener(newAction);
 		}
-		/**
+		/**save new country added
 		 * @see Edit_Create_Map_Controller
 		 * @param newAction actionListener for addButton
 		 */
@@ -421,6 +421,12 @@ public class NewMapCreation extends JFrame {
 		 */
 		public void JListEnabled() {
 			list.setEnabled(true);
+		}
+		/**
+		 * enables JList of neighbors.
+		 */
+		public void enableJList_1() {
+			list1.setEnabled(true);
 		}
 
 		/**
@@ -540,7 +546,10 @@ public class NewMapCreation extends JFrame {
 		public void addActionsToSaveMapButton(ActionListener newAction) {
 			saveMapButton.addActionListener(newAction);
 		}
-
+/**
+ * Enable selection of country to delete neighbours
+ * @param newAction action associated with DeleteNeighboursButton 
+ */
 		public void addActionstoDeleteNeighboursButton(ActionListener newAction) {
 			DeleteNeighboursButton.addActionListener(newAction);
 		}
@@ -591,7 +600,12 @@ public class NewMapCreation extends JFrame {
 		public void clearNeighboursJList() {
 			model2.removeAllElements();
 		}
-
+		/**
+		 * Clears the JList of neighbors.
+		 */
+		public void clearNeighboursJList1() {
+			model1.removeAllElements();
+		}
 		/**
 		 * adding neighbour countries to the list
 		 * @param neighbour include countries
@@ -600,6 +614,13 @@ public class NewMapCreation extends JFrame {
 			model2.addElement(neighbour);
 		}
 
+		/**
+		 * This function adds neighbors to JList.
+		 * @param neighbour receives the neighbor to be added to the list.
+		 */
+		public void addPossibleNeighboursToJList_1(String neighbour) {
+			model1.addElement(neighbour);
+		}
 		/**
 		 * getting the continent name
 		 * @return continent name
@@ -650,6 +671,27 @@ public class NewMapCreation extends JFrame {
 		public void errorNullCountry() {
 			JOptionPane.showMessageDialog(MaincontentPane, "Add country firstr", "Error", JOptionPane.ERROR_MESSAGE);
 		}
+		/**
+		 * displays dialog box with success message.
+		 */
+		public void successMessage() {
+			JOptionPane.showMessageDialog(MaincontentPane, "Successfully saved", "Message", JOptionPane.INFORMATION_MESSAGE);
+		}
+
+		/**
+		 * displays dialog box with success message.
+		 */
+		public void successAddedNeighbours() {
+			JOptionPane.showMessageDialog(MaincontentPane, "Successfully added neighbours", "Message", JOptionPane.INFORMATION_MESSAGE);
+		}
+
+		/**
+		 * displays dialog box with success message.
+		 */
+		public void successDeletedNeighbours() {
+			JOptionPane.showMessageDialog(MaincontentPane, "Successfully deleted neighbours", "Message", JOptionPane.INFORMATION_MESSAGE);
+		}
+
 
 		/**
 		 * getting the control value of continent

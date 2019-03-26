@@ -19,12 +19,13 @@ import player.Player;
 
 public class FortificationTest {
 	ArrayList<String> RealNeighboursOfOwner;
+	int[] coor = {250,250};
 	ControlsConsole controller = new ControlsConsole();
-	NodeOfCountry c1 = new NodeOfCountry("Country1", null, null);
-	NodeOfCountry c2 = new NodeOfCountry("Country2", null, null);
-	NodeOfCountry c3 = new NodeOfCountry("Country3", null, null);
-	NodeOfCountry c4 = new NodeOfCountry("Country4", null, null);
-	NodeOfCountry c5 = new NodeOfCountry("Country5", null, null);
+	NodeOfCountry c1 = new NodeOfCountry("Country1", null, null, null);
+	NodeOfCountry c2 = new NodeOfCountry("Country2", null, null, null);
+	NodeOfCountry c3 = new NodeOfCountry("Country3", null, null, null);
+	NodeOfCountry c4 = new NodeOfCountry("Country4", null, null, null);
+	NodeOfCountry c5 = new NodeOfCountry("Country5", null, null, null);
 
 	@Before
 	public void setUp() throws Exception {
@@ -47,7 +48,8 @@ public class FortificationTest {
 		c.add(c4);
 		c.add(c5);
 		
-		NodeOfCountry C = new NodeOfCountry("Continent1", c, 6);
+		
+		NodeOfCountry C = new NodeOfCountry("Continent1", c, coor,null);
 		MD.add(C);
 		Player p1 = new Player("Player", 10, MD);
 		Player p2 = new Player("Player2", 10, MD);

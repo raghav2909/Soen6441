@@ -324,4 +324,19 @@ public class NodeOfCountry
 	public void setContinent(NodeOfMap c) {
 		this.continent = c;
 	}
+	
+	
+	
+	/**
+	 * removing a neighbour
+	 */
+	public void neighbourRemoved(NodeOfCountry n) {
+		NodeOfCountry n1 = new NodeOfCountry(null,null,null,null);
+		for(NodeOfCountry c : Neighbours) {
+			if(c.getNameOfCountry().compareTo(n.getNameOfCountry())==0) {
+				n1 =c;
+			}
+		}
+		Neighbours.remove(n1);
+	}
 }

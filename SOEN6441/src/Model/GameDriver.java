@@ -138,10 +138,11 @@ public class GameDriver extends Observable {
 			System.out.print("Armies allocated"+players.get(0).getCountArmies());
 			for(Player p: players){
 				String s;
-				if(p.getEmptyCountriesName().length!=0){
-					s = controller.ArmyPlacing(p.getEmptyCountriesName(), p.getPlayerName()+" Place your army");
-				}else{
+				if(p.getEmptyCountriesName().length==0){
+
 					s= controller.ArmyPlacing(p.getEmptyCountriesName(),p.getPlayerName()+" Place your army");
+				}else{
+					s = controller.ArmyPlacing(p.getEmptyCountriesName(), p.getPlayerName()+" Place your army");
 				}
 				p.getCountry(s).AddArmy(1);
 				p.RemovedArmies(1);
@@ -409,7 +410,7 @@ public class GameDriver extends Observable {
 		NodeOfCountry countrySelect = this.CurrentP.getCountry(SelectedCountry);
 		if(countrySelect.getArmyCount()>1) {
 			ArrayList<String> neighborList = map.getPlayerNeighbours(countrySelect,this.CurrentP,true);
-			Controls.updateFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()])); 
+			controller.ControlsForFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()])); 
 		}
 	}  
 	   
@@ -439,7 +440,7 @@ public class GameDriver extends Observable {
 		NodeOfCountry countrySelect = this.CurrentP.getCountry(SelectedCountry);
 		if(countrySelect.getArmyCount()>1) {
 			ArrayList<String> neighborList = map.getPlayerNeighbours(countrySelect,this.CurrentP,false);
-			Controls.SetNList(neighborList.toArray(new String[neighborList.size()]));
+			controller.NeighborListUpdate(neighborList.toArray(new String[neighborList.size()]));
 		}
 	}
 	
@@ -553,7 +554,7 @@ public class GameDriver extends Observable {
 	 * @return a number selected by user
 	 */
 	public int InputSetUp(int minimum, String message, int Maximum) {
-		return opc.NumberOfPlayer(minimum,message, Maximum);
+		return controller.input(minimum,message, Maximum);
 	}
 	
 	/**
@@ -631,11 +632,11 @@ public class GameDriver extends Observable {
 	 * </p>
 	 * @return instance of GameDriver class.
 	 */
-	public static GameDriver getInstance() {
-		if(driver==null){
-			driver = new GameDriver();
-		}
-		return driver;
-	}
+//	public static GameDriver getInstance() {
+//		if(driver==null){
+//			driver = new GameDriver();
+//		}
+//		return driver;
+//	}
 
 }

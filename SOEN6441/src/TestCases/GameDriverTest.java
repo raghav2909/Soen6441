@@ -84,5 +84,60 @@ public class GameDriverTest {
 		gd.Fight(c4, p2, c1, 3, 2, AttackResults, DefendResults);
 		assertEquals(0,c4.getArmyCount());
 	}
+	
+	
+	
+	/**
+	 * test for AllocatingCountries method
+	 */
+	@Test
+	public void testAllocatingCountries() {
+		ArrayList<NodeOfCountry> C = new ArrayList<NodeOfCountry>();
+		C.add(c1);
+		C.add(c2);
+		C.add(c3);
+		C.add(c4);
+		NodeOfMap map = new NodeOfMap("America",C,2);
+		mp = new ArrayList<NodeOfMap>();
+		mp.add(map);
+		String[] pd = {"Player5","Player3"};
+		gd.AllocatingCountries(pd, mp);
+		assertEquals(2,gd.GetCurrent().getPlayerCountryNumber());
+	}
+	
+	
+	
+	
+	/**
+	 * test for Maximum method
+	 */
+	@Test
+	public void testMaximum() {
+		ArrayList<NodeOfCountry> C = new ArrayList<NodeOfCountry>();
+		C.add(c1);
+		C.add(c2);
+		C.add(c3);
+		ArrayList<NodeOfCountry> C1 = new ArrayList<NodeOfCountry>();
+		C1.add(c4);
+		C1.add(c5);
+		p1 = new Player("Player1",15,C);
+		p2 = new Player("Player2",10,C1);
+		c1.AddArmy(1);
+		c2.AddArmy(1);
+		c3.AddArmy(1);
+		c4.AddArmy(1);
+		c5.AddArmy(1);
+		p1.SetTurnTrue();
+		p2.SetTurnFalse();
+		gd.ListOfPlayers(p1);
+		gd.ListOfPlayers(p2);
+		gd.setCurrentPlayer(p1);
+		ArrayList<Integer> result = new ArrayList<Integer>();
+		result.add(4);
+		result.add(2);
+		result.add(3);
+		result.add(6);
+		assertEquals(3,gd.Maximum(result));
+	}
 
 }

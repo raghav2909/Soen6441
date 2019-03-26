@@ -299,9 +299,11 @@ public static String[] name_Of_Player;
 	public String ArmyPlacing(String[] CL, String Msg) {
 		JComboBox<String> List_Of_countries = new JComboBox<String>(CL);
 		String[] opt= {"Ok"};
-		JOptionPane.showOptionDialog(null, CL, Msg, JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, null,		
+		JOptionPane.showOptionDialog(null,List_Of_countries , Msg, JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, null,		
 				opt, opt[0]);
+		
 		String country = CL[List_Of_countries.getSelectedIndex()];
+		
 		return country;
 	}
 	

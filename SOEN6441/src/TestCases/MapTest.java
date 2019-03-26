@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Model.Map;
+import Model.ModelOfMap;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import junit.framework.Assert;
@@ -18,11 +19,11 @@ import junit.framework.Assert;
  */
 public class MapTest {
 	
-	private Map map;
+	private ModelOfMap map;
 
 	@Before
 	public void setUp() throws Exception {
-		map = new Map();
+		map = new ModelOfMap();
 	}
 	
 	/**

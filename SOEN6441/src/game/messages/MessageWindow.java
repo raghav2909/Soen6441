@@ -9,7 +9,7 @@ package game.messages;
 	/** 
 	 * Message notification window 
 	 * @author Gursharan
-	 *@version 1.0
+	 *@version 2.0
 	 */
 	public class MessageWindow extends JFrame {
 

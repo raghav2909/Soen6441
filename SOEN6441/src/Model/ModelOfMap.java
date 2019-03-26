@@ -14,7 +14,7 @@ import controllers.the_main_controller;
 /**
  * contains main logic functionality behind map editor
  * @author Gursharan
- *
+ *@version 2.0
  */
 public class ModelOfMap {
 	/**

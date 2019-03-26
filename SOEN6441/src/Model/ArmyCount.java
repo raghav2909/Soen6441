@@ -1,7 +1,7 @@
 package Model;
 /**This class is used for enumeration of number of armies based on number of players.
  * @author YashNarra
- * version 1.0
+ * version 2.0
  */
 public class ArmyCount {
 	/**

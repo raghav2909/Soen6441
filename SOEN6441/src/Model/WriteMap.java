@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * This class is used to write the map file
  * @author YashNarra
- * @version 1.0
+ * @version 2.0
  */
 public class WriteMap {
 	DateFormat D= new SimpleDateFormat("yyyy-MM-dd-HH-mm");

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Map data is updated/stored using this class
  * @author YashNarra
- * @version 1.0
+ * @version 2.0
  */
 public class NodeOfMap {
 	

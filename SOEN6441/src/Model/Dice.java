@@ -6,7 +6,7 @@ import java.util.Random;
 /**
  * This class handles the dice actions.
  * @author samansoltani
- *@version 1.0
+ *@version 2.0
  */
 public class Dice {
 	/**

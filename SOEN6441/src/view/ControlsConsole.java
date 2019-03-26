@@ -247,7 +247,7 @@ public class ControlsConsole extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String countrySelected = (String) SelectedCountry();
-				NodeOfCountry countrySelect = GameDriver.getInstance().GetCurrent().getCountry(countrySelected);
+				NodeOfCountry countrySelect = GameDriver.GetInit().GetCurrent().getCountry(countrySelected);
 				if (countrySelect.getArmyCount() > 1) {
 					ArrayList<String> neighborList = getNeighbors(countrySelect);
 					updateFortification(countrySelect.getArmyCount(),
@@ -266,7 +266,7 @@ public class ControlsConsole extends JPanel {
 					String countrySelected = (String) SelectedCountry();
 					int selectedArmies = ValueOfArmies();
 					
-					NodeOfCountry countrySelect = GameDriver.getInstance().GetCurrent().getCountry(countrySelected);
+					NodeOfCountry countrySelect = GameDriver.GetInit().GetCurrent().getCountry(countrySelected);
 					String neighbourSelected = getNeighborSelected();
 					shiftArmiesOnReinforcement(countrySelect, selectedArmies);
 				}
@@ -316,7 +316,7 @@ public class ControlsConsole extends JPanel {
 		addarmies = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				NodeOfCountry country = GameDriver.getInstance().getCountry(SelectedCountry());
+				NodeOfCountry country = GameDriver.GetInit().getCountry(SelectedCountry());
 				int armies = ValueOfArmies();
 				shiftArmiesOnReinforcement(country, armies);
 				GD.ContinuePhase();

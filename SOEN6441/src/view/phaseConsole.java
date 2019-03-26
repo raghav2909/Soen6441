@@ -33,7 +33,7 @@ public class phaseConsole extends JPanel implements Observer {
 	@Override
 	public void update(Observable o, Object obj) {
 		// TODO Auto-generated method stub
-		Player current = GameDriver.getInstance().GetCurrent();
+		Player current = GameDriver.GetInit().GetCurrent();
 		/*Startup Phase View Display.*/
 		if(obj.equals("Startup")){
 			this.removeAll();

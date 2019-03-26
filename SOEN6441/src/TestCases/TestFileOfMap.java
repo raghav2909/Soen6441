@@ -25,7 +25,7 @@ public class TestFileOfMap {
 	@Test
 	public void testReadingMap() throws IOException {
 		ArrayList <NodeOfMap> result = RM.mapreader(".//SOEN6441//Map_Data//test//MapTest3.map");
-		String Eresult = "AsiaE,5,Vietnan,ChinaE,Birmania,India,ChinaE,Pakistan,Iran,ChinaE,Vietnan,Birmania,ChinaW,Mongolia,";
+		String Eresult = "AmericaN,5,Alaska,Canada,Canada,Alaska,Montana,Groenlandia,Montana,Montana,Canada,Groenlandia,";
 		String Aresult ="";
 		for (NodeOfMap m: result) {
 			Aresult += (m.getContinent()+","+m.getControlValue()+",");

@@ -9,9 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	FortificationTest.class,
 	PlayerTest.class,
-	ReinforcementTest.class,
 	TestFileOfMap.class,
 	TestOfMapValidition.class,
 	MapConnected.class,

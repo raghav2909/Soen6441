@@ -106,7 +106,7 @@ public class the_main_controller {
 	/**
 	 * Creating an object of openingdialog class of view package
 	 */
-	private openingdialog opendialog;
+	openingdialog opendialog=new openingdialog();
 
 	Map map;
 	

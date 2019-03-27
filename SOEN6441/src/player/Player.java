@@ -282,8 +282,8 @@ public class Player
        
         CountArmies = CountContinents + CountArmies;
         System.out.println(CountArmies);
-      //  PlayerArmies = CountArmies;
-        return CountArmies;
+        PlayerArmies = CountArmies;
+        return PlayerArmies;
     }
     
     /**
@@ -363,7 +363,7 @@ public class Player
  */
 public void RPhase(){
 	
-	SOP.RPhase(PlayerArmies,getNameOfCountries());
+	SOP.RPhase(CalArmy(),getNameOfCountries());
 }
 
 /**

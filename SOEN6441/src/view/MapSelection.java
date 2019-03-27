@@ -53,10 +53,7 @@ public class MapSelection {
 		OpenMapFile.setForeground(Color.BLACK);
 		OpenMapFile.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 15));
 		jp.add(OpenMapFile);
-		
-		
 		jf.setVisible(true);
-		
 		
 	}
 	/**

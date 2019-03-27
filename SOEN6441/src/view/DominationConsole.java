@@ -58,10 +58,5 @@ public class DominationConsole extends JPanel implements Observer {
 			}
 		
 	}
-		
-		
 		}
 	}
-	
-
-

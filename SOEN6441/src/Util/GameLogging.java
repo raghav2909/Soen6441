@@ -104,5 +104,4 @@ public class GameLogging extends JFrame implements Observer {
 		this.validate();
 		this.setVisible(true);
 	}
-
 }

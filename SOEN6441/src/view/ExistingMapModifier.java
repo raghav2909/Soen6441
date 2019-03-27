@@ -902,6 +902,3 @@ import controllers.Edit_create_Map_Controller;
 			return nameContinent;
 		}
 	}
-
-
-

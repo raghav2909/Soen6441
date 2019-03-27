@@ -58,7 +58,4 @@ public class PlayerConsole extends JPanel{
 		}
 		this.validate();
 	}
-
-	
-
 }

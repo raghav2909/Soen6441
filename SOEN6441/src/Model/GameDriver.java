@@ -244,15 +244,7 @@ public class GameDriver extends Observable {
 
 	
 	
-//	public void NextPlayer() {
-//		int CurrentPlayer = Player.indexOf(GetCurrent());
-//		GetCurrent().SetTurnFalse();
-//		if (CurrentPlayer == Player.size() - 1) {
-//			Player.get(0).SetTurnTrue();
-//		} else {
-//			Player.get(CurrentPlayer + 1).SetTurnTrue();
-//		}
-//	}
+
 
 	/**
 	 * getting object of map class
@@ -633,11 +625,5 @@ public class GameDriver extends Observable {
 	 * </p>
 	 * @return instance of GameDriver class.
 	 */
-//	public static GameDriver getInstance() {
-//		if(driver==null){
-//			driver = new GameDriver();
-//		}
-//		return driver;
-//	}
 
 }

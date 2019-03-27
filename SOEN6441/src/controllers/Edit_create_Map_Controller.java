@@ -124,7 +124,7 @@ public class Edit_create_Map_Controller {
 					try {
 						x = readMap.mapreader(jfc.getSelectedFile().getAbsolutePath());
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
+						
 						e1.printStackTrace();
 					}
 					
@@ -251,7 +251,7 @@ public class Edit_create_Map_Controller {
 								}
 						}
 					}
-					//forming two directional link between countries
+					
 					for (NodeOfCountry neighbour : neighbours) {
 						for (NodeOfMap node : mapEditor.getContinents()) {
 							for (NodeOfCountry countryNode : node.getCountries()) {
@@ -272,9 +272,7 @@ public class Edit_create_Map_Controller {
 				}
 				else {
 					ArrayList<NodeOfCountry> neighbours_1= new ArrayList<NodeOfCountry>();
-					/*get the list of neighbors selected to be deleted 
-					 * and store them in an arraList.
-					 * */
+					
 					for (Object ncountry : mapNew.getNeighboursList_1()){
 						NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null,null);
 						neighbours_1.add(cn);
@@ -282,16 +280,14 @@ public class Edit_create_Map_Controller {
 					String sCountrytToDeleteNeighbour = mapNew.getSelectedCountryForNeighbourDeletion();
 					for (NodeOfMap node : mapEditor.getContinents()){
 						for (NodeOfCountry cNode : node.getCountries()){
-							/*When the selected country is found, delete its neighbors.
-							 */
+							
 							if(sCountrytToDeleteNeighbour.compareTo(cNode.getNameOfCountry())==0)
 								for (NodeOfCountry neighbourNode : neighbours_1){
 									cNode.neighbourRemoved(neighbourNode);	
 								}
 						}
 					}
-					/*Delete the neighbor link from both sides.
-					 */
+					
 					for (NodeOfCountry neighbour : neighbours_1) {
 						for (NodeOfMap node : mapEditor.getContinents()) {
 							for (NodeOfCountry countryNode : node.getCountries()) {
@@ -336,23 +332,17 @@ public class Edit_create_Map_Controller {
 			public void actionPerformed(ActionEvent e) {
 				if(mapEditor.CheckSaveMap()) {
 					if(mapEditor.ContinentConnectedCheck()) {
-						/*if map satisfies all the validations, save it.*/
+				
 						try {
 							mapEditor.SaveMapFile();
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
+						
 							e1.printStackTrace();
 						}
 						mapNew.successMessage();
 					}else {
 						mapNew.errorNullCountry();
 					}
-					/*try {
-						mapEditor.SaveMapFile();
-					} catch (IOException e1) {
-						
-						e1.printStackTrace();
-					}*/
 				}else {
 					mapNew.errorNullCountry();
 				}
@@ -449,9 +439,7 @@ public class Edit_create_Map_Controller {
 				String sCountrytToDeleteNeighbour = existingMapModifier.getSelectedCountryForNeighbourDeletion();
 				existingMapModifier.clearNeighboursJList_1();
 
-				/*find the selected country whose neighbors are to be deleted
-				 * and display its all possible neighbors
-				 */
+				
 				for (NodeOfMap node : mapEditor.getContinents()){
 					for (NodeOfCountry countryNode : node.getCountries()){
 						if(sCountrytToDeleteNeighbour.compareTo(countryNode.getNameOfCountry())==0) {
@@ -475,7 +463,7 @@ public class Edit_create_Map_Controller {
 						NodeOfCountry cn =  new NodeOfCountry(ncountry.toString(), null, null, null);
 						neighbours_1.add(cn);
 					}
-					/*remove the selected neighbors*/
+					
 					for (NodeOfMap node : mapEditor.getContinents()){
 						for (NodeOfCountry cNode : node.getCountries()){
 							if(sCountrytToDeleteNeighbour.compareTo(cNode.getNameOfCountry())==0)
@@ -484,7 +472,7 @@ public class Edit_create_Map_Controller {
 								}
 						}
 					}
-					/*delete the neighbor link from both sides*/
+				
 					for (NodeOfCountry neighbour : neighbours_1) {
 						for (NodeOfMap node : mapEditor.getContinents()) {
 							for (NodeOfCountry countryNode : node.getCountries()) {
@@ -550,14 +538,12 @@ public class Edit_create_Map_Controller {
 					}
 					for (NodeOfMap node : mapEditor.getContinents()){
 						for (NodeOfCountry cNode : node.getCountries()){
-							//String sCountrytToAddNeighbour = existingMapModifier.getSelectedCountriesForNeighbours();
 							if(sCountrytToAddNeighbour.compareTo(cNode.getNameOfCountry())==0)
 								for (NodeOfCountry neighbourNode : neighbours){
 									cNode.AddNeighbour(neighbourNode);	
 								}
 						}
 					}
-					//two directional link in countries
 					for (NodeOfCountry neighbour : neighbours) {
 						for (NodeOfMap node : mapEditor.getContinents()) {
 							for (NodeOfCountry countryNode : node.getCountries()) {
@@ -606,17 +592,11 @@ public class Edit_create_Map_Controller {
 						try {
 							mapEditor.SaveToOldFile(getFilePath());
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 						existingMapModifier.successMessage();
 					}
-					/*try {
-						mapEditor.SaveToOldFile(getFilePath());
-					} catch (IOException e1) {
-						
-						e1.printStackTrace();
-					}*/
+
 				}else {
 					existingMapModifier.errorNullCountry();
 				}

@@ -178,7 +178,7 @@ public class the_main_controller {
 		addArmiesListner = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {				
-				//NodeOfCountry country = GD.getCountryNode(crc.SelectedCountry());
+			
 				int armyCount = crc.ValueOfArmies();
 				GD.shiftArmiesOnReinforcement(crc.SelectedCountry(), armyCount);
 			}
@@ -195,11 +195,7 @@ public class the_main_controller {
 			@Override
             public void actionPerformed(ActionEvent Ae) {
 				String selectedCountry = (String) crc.SelectedCountry();
-				//NodeOfCountry countrySelect = GameDriver.getInstance().getCurrent().getCountry(countrySelected);
-//				if(countrySelect.getArmyCount()>1) {
-//					ArrayList<String> neighborList = getNeighbors(countrySelect);
-//				crc.updateFortification(countrySelect.getArmyCount(), neighborList.toArray(new String[neighborList.size()]));
-//				}
+
 				GD.UpdateFNeighbour(selectedCountry);
 			}
 		});
@@ -225,9 +221,6 @@ public void AllControlsOver()
 crc.removeAll();
 }
 
-//public String[] getInfoPlayer() {
-//	return opendialog.Information_OF_Playres();
-//}
 
 /**
  * select the map file and image file to start game for single mode
@@ -235,22 +228,7 @@ crc.removeAll();
  */
 public void Single_Mode_Start() throws IOException {
 	System.out.println("New Game");
-//	foc= new File_open_Controller();
-//	try {
-//		GD.MapCreation(foc.map_location("map"));
-//	} catch (IOException e) {
-//		e.printStackTrace();
-//	}
-//	ReadMap rm= new ReadMap();
-//	
-//	String image_loc = foc.map_location("bmp");
-//   if(image_loc!=null) {
-//		mpc = new MapConsole(image_loc);
-//}else {
-//		 mpc = new MapConsole();
-//}
-//
-//	mpc = new MapConsole(image_loc);
+
 	GD.MapCreation(opendialog.InfoOfMap("map"));
 	String t= opendialog.InfoOfMap("bmp");
 	 if(t!=null) {

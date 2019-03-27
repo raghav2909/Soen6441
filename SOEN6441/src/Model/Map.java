@@ -293,7 +293,7 @@ public class Map extends Observable
 		}
 		return this.count_Country;
 	}
-
+//try
 	/**
 	 * Check if a continent is owned by a player to which the specific country belongs
 	 * @param player is player for which the continent is to be checked

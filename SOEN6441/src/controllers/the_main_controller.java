@@ -50,7 +50,7 @@ public class the_main_controller {
 	/**
 	 * This actionlistner for editthemaps
 	 */
-	//private ActionListener editthemaps;
+	//private ActionListener editthemaps; 
 	
 	/**
 	 * ActionListener to add listener to "Add Armies" button.

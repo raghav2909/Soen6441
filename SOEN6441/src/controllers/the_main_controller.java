@@ -46,11 +46,11 @@ public class the_main_controller {
 	/**
 	 * This action listner for playthegame
 	 */
-	private ActionListener playthegame;
+	//private ActionListener playthegame;
 	/**
 	 * This actionlistner for editthemaps
 	 */
-	private ActionListener editthemaps;
+	//private ActionListener editthemaps;
 	
 	/**
 	 * ActionListener to add listener to "Add Armies" button.

@@ -136,7 +136,7 @@ public class the_main_controller {
 			
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				// TODO Auto-generated method stub
+				
 				GD.attackNeighbourListUpdate((String)crc.SelectedCountry()); 
 				
 			}
@@ -145,7 +145,7 @@ public class the_main_controller {
 			
 			@Override
 			public void actionPerformed(ActionEvent ae) {
-				// TODO Auto-generated method stub
+				
 				GD.ChangePhase();
 				
 			}
@@ -280,6 +280,7 @@ public void Single_Mode_Start() throws IOException {
  * @param countriesNamesNoArmy number of countries with no armies
  * @param message meesage to be displayed
  * @return it will return the army placing
+ * @version 2.0
  */
 public String ArmyPlacing(String[] countriesNamesNoArmy, String message) {
 	return opendialog.ArmyPlacing(countriesNamesNoArmy, message);

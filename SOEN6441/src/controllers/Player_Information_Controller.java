@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package controllers;
 
 import java.awt.Color;
@@ -18,7 +16,7 @@ import javax.swing.SpinnerNumberModel;
  * This class will return all the information required for a player 
  * This information will include the number of players and name of players 
  * @author raghavsharda
- *@version 1.0
+ *@version 2.0
  */
 public class Player_Information_Controller {
 	

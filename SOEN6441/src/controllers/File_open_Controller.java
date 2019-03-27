@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * 
- * @version 1.0
+ * @version 2.0
  *
  */
 public class File_open_Controller extends JFrame {

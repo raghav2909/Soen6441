@@ -154,4 +154,3 @@ public class Map_Frame extends JFrame {
 		return ActionChoosen;
 	}
 }
-

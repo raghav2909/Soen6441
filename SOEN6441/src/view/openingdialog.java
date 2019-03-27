@@ -310,8 +310,5 @@ public static String[] name_Of_Player;
 		
 		return country;
 	}
-	
 
 }
-
-

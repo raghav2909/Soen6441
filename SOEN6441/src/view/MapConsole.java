@@ -199,4 +199,3 @@ public class MapConsole extends JPanel implements Observer {
 	
 	}
 	}
-

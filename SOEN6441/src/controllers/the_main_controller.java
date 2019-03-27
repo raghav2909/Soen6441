@@ -42,7 +42,7 @@ public class the_main_controller {
 	 * This action listner for editmap
 	 */
 	
-	private ActionListener editmap;
+	//private ActionListener editmap;
 	/**
 	 * This action listner for playthegame
 	 */

@@ -1,13 +1,7 @@
 package controllers;
 import java.awt.EventQueue;
-/**
- * File_Open_Controller  performs action  for 
- * for loading the map file on the system and 
- * loading the similar "bmp" file on the front end 
- * @see the_main_Controller
- * @author Raghav_Sharda
- */
-import java.awt.GridLayout;
+
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +15,11 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * 
+ * File_Open_Controller  performs action  for 
+ * for loading the map file on the system and 
+ * loading the similar "bmp" file on the front end 
+ * @see the_main_Controller
+ * @author Raghav_Sharda
  * @version 2.0
  *
  */

@@ -18,7 +18,7 @@ import player.Player;
  * @version 2.0
  */
 public class GameLogging extends JFrame implements Observer {
-	/**
+	/**   
 	 * Serial Version for JFrame
 	 */
 	private static final long serialVersionUID = -8766321280012020596L;

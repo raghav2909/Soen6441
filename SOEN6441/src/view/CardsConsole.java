@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import player.Player;
-import risk.model.gamemode.GameDriver;
+
 
 
 
@@ -25,7 +25,7 @@ import risk.model.gamemode.GameDriver;
  * @author raghavsharda
  *@version 2.0
  */
-public class CardsView extends JPanel implements Observer {
+public class CardsConsole extends JPanel implements Observer {
 	
 	/**
 	 * Serial Version id for JFrame.
@@ -41,7 +41,7 @@ public class CardsView extends JPanel implements Observer {
 	/**
 	 * Creates cards view.
 	 */
-	public CardsView(){
+	public CardsConsole(){
 		JLabel label = new JLabel("Cards Here.");
 		this.setLayout(new FlowLayout());
 		this.add(label);

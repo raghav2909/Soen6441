@@ -3,8 +3,19 @@ package player;
 import java.util.ArrayList;
 
 public interface StrategyOfPlayer {
-	public void FPhase(ArrayList<String> Country);
-	public void APhase(ArrayList<String> Countries);
-	public void RPhase(int armies,String[] clist);
+	
+	public void reinforcementPhase(int armies, String[] countryList);
+	
+	public void attackPhase(ArrayList<String> countryList);
+	
+	public void fortificationPhase(ArrayList<String> countryList);
+
+	public String placeArmy(String[] strings, String string);
+
+	public int selectDiceNumber(int diceToRoll, String pName);
+
+	public int moveArmies(int aArmies, int maxArmies, String message);
+	
+	public String getStrategyName();
 
 }

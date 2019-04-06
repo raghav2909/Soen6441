@@ -36,7 +36,7 @@ public class Edit_create_Map_Controller {
 	/**
 	 * constructor of the class
 	 */		
-	public Edit_create_Map_Controller() {
+	public Edit_create_Map_Controller() {    
 		
 	}
 	

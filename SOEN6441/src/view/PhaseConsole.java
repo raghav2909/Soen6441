@@ -18,13 +18,13 @@ import player.Player;
  * @author Harman
  * @version 2.0
  */
-public class phaseConsole extends JPanel implements Observer {
+public class PhaseConsole extends JPanel implements Observer {
 
 	private static  final long serialVersionUID = 5240015440245324453L;
 	/**
 	 * Constructor to initialize view of phase
 	 */
-	public phaseConsole() {
+	public PhaseConsole() {
 		JLabel label = new JLabel("PHASE CONSOLE");
 		this.setLayout(new FlowLayout());
 		this.add(label);

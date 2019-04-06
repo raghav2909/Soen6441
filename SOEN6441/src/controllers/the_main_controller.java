@@ -24,7 +24,7 @@ import view.MapConsole;
 
 import view.PlayerConsole;
 import view.openingdialog;
-import view.phaseConsole;
+import view.PhaseConsole;
 /**
  * This class is the main controller class which controls the main functioning of the game in the initial phase
  *@author raghavsharda
@@ -84,7 +84,7 @@ public class the_main_controller {
 	/**
 	 * Phase console object
 	 */
-	private phaseConsole phc;
+	private PhaseConsole phc;
 	/**
 	 * domination console object
 	 */
@@ -240,7 +240,7 @@ public void Single_Mode_Start() throws IOException {
 	csr = new CardsConsole();
 	drc = new DiceRollConsole();
 	plc = new PlayerConsole();
-	phc= new phaseConsole();
+	phc= new PhaseConsole();
 	dc= new DominationConsole();
 	lg= new GameLogging();
 	this.GD.addObserver(phc);

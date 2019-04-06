@@ -57,7 +57,7 @@ public class GameConsole extends JFrame  {
 	/**
 	 * PhaseConsole object
 	 */
-	private phaseConsole phc;
+	private PhaseConsole phc;
 	
 	/**class constructor setting main game window by calling starts method
 	 * @param palyerinfo PlayerConsole object 
@@ -66,7 +66,7 @@ public class GameConsole extends JFrame  {
 	 *@param phaseinfo phase console object
 	 *@param dominationinfo domination console object
 	 */
-	public GameConsole(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo,phaseConsole phaseinfo,DominationConsole dominationinfo )
+	public GameConsole(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo,PhaseConsole phaseinfo,DominationConsole dominationinfo )
 	{
 		plc = playerinfo;
 		mpc = mapsinfo;
@@ -154,7 +154,7 @@ public class GameConsole extends JFrame  {
 	 * @param dominationinfo domination Console object
 	 * @param controlsinfo ControlsConsole object
 	 */
-	public static void createInstance(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo, phaseConsole phaseinfo, DominationConsole dominationinfo ){
+	public static void createInstance(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo, PhaseConsole phaseinfo, DominationConsole dominationinfo ){
 		if(gmc == null){
 			gmc = new GameConsole(playerinfo,mapsinfo, controlsinfo, phaseinfo,dominationinfo);
 		}

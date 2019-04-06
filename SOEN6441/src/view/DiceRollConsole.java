@@ -17,24 +17,21 @@ import javax.swing.JPanel;
  * @author Harman
  *@version 2.0
  */
-public class DiceRollConsole extends JPanel {
+public class DiceRollConsole extends JPanel{
 	
 	/**
 	 * Serial Version id for JFrame.
 	 * {@inheritDoc}
 	 */
-	private static final long serialVersionUID = 2080098977850432494L;
+	private static final long serialVersionUID = 2080193456450432494L;
 
 	/**
-	 * class constructor displays dice roll view 
+	 * Creates Dice roll view.
 	 */
-	public DiceRollConsole() {
-		JLabel lab=  new JLabel("Dice Roll");
+	public DiceRollView(){
+		JLabel label = new JLabel("Dice Here.");
 		this.setLayout(new FlowLayout());
-		this.add(lab);
-
-		this.setBackground(Color.LIGHT_GRAY);
-		this.setBorder(BorderFactory.createDashedBorder(Color.black));
-		this.setPreferredSize(new Dimension(450,170));
+		this.add(label);
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 }

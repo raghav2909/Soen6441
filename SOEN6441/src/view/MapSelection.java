@@ -60,7 +60,7 @@ public class MapSelection {
      * ActionListener for the Open Map file button
      * @param ae reference for ActionListener object
      */
-	public void openfilebuttonaction(ActionListener ae)
+	public void openFileChooseBtnAction(ActionListener ae)
 	{
 		OpenMapFile.addActionListener(ae);
 	}

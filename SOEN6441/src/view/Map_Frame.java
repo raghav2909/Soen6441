@@ -16,6 +16,7 @@ import java.awt.Font;
 import javax.swing.border.MatteBorder;
 import controllers.Edit_create_Map_Controller;
 
+
 /**
  * The class Map_Frame  opens  JFrame view for selecting 
  * either a New map or an Existing map.
@@ -26,120 +27,130 @@ import controllers.Edit_create_Map_Controller;
 public class Map_Frame extends JFrame {
 
 	/**
-	 * Stores all JPanel for the mapFrame.
+	 * Serial Version id for JFrame.
+	 * {@inheritDoc}
 	 */
-	private JPanel contentPanel;
+	private static final long serialVersionUID = -2141527704750049674L;
 	
 	/**
-	 * Stores the object of Edit_create_Map_Controller.
+	 * Stores the JPanel of map frame.
 	 */
-	Edit_create_Map_Controller objct = new Edit_create_Map_Controller();
+	private JPanel contentPane;
 	
 	/**
-	 * Map_Frame constructor invoking start method of the class.
+	 * Stores the object of mapEditorController.
+	 */
+	Edit_create_Map_Controller obj = new Edit_create_Map_Controller();
+	
+	/**
+	 * Stores the existing map button information.
+	 */
+	JButton btnExistingMap;
+	
+	/**
+	 * Stores the new map button information.
+	 */
+	JButton btnNewMap;
+	
+	/**
+	 * Stores the selected Action of creating new map or editing existing.
+	 */
+	static String selectedAction ="";
+
+	/**
+	 * Map_Frame constructor calls initialize method of the class.
 	 */
 	public Map_Frame() {
-		start();
+		initialize();
 	}
-	/**
-	 * Stores the information for new-map button.
-	 */
-	
-	JButton NewMap;
-	/**
-	 * Stores the  information for existing-map button.
-	 */
-	JButton ExistingMap;
-		
-	/**
-	 * Stores the action that is selected either for creation of new map or editing an existing.
-	 */
-	static String ActionChoosen ="";
 
 	/**
 	 * Initialize the contents of the frame.
-	 * includes button: NewMap and ExistingMap
-	 * along with 3 other labels for text.
+	 * includes New Map button and Existing Map button
+	 * together with three text labels
 	 */
-	public void start() {
+	public void initialize() {
 		Map_Frame frame = this;
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+		setBounds(140, 140, 500, 340);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.GRAY);
+		contentPane.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
+		setContentPane(contentPane);
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		contentPane.setLayout(gbl_contentPane);
 
-		setBounds(80, 80, 460, 240);
-		contentPanel = new JPanel();
-		contentPanel.setBackground(new Color(0, 0, 255));
-		
-		contentPanel.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 0)));
-		setContentPane(contentPanel);
-		GridBagLayout Global_Pane = new GridBagLayout();
-		Global_Pane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		Global_Pane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
-		Global_Pane.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
-		Global_Pane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-		contentPanel.setLayout(Global_Pane);
+		JLabel lblThisIsYour = new JLabel("This is your Map Editor");
+		lblThisIsYour.setFont(new Font("Script MT Bold", Font.PLAIN, 48));
+		GridBagConstraints gbc_lblThisIsYour = new GridBagConstraints();
+		gbc_lblThisIsYour.insets = new Insets(0, 0, 5, 0);
+		gbc_lblThisIsYour.gridwidth = 10;
+		gbc_lblThisIsYour.gridheight = 2;
+		gbc_lblThisIsYour.gridx = 0;
+		gbc_lblThisIsYour.gridy = 0;
+		contentPane.add(lblThisIsYour, gbc_lblThisIsYour);
 
-		GridBagConstraints Global_Pane_contents = new GridBagConstraints();
-		Global_Pane_contents.insets = new Insets(0, 0, 5, 0);
-		Global_Pane_contents.gridwidth = 7;
-		Global_Pane_contents.gridheight = 3;
-		Global_Pane_contents.gridx = 0;
-		Global_Pane_contents.gridy = 1;
-		
-		
-		JLabel Map_Editor = new JLabel("Map Editor");
-		Map_Editor.setFont(new Font("Script Bold", Font.PLAIN,49));
-		Map_Editor.setForeground(Color.WHITE);	
-		Map_Editor.setBackground(Color.BLACK);
-		contentPanel.add(Map_Editor, Global_Pane_contents);
+		JLabel lblYouCanChoose = new JLabel("You can choose to play with an existing map or create your own map.");
+		lblYouCanChoose.setFont(new Font("Monotype Corsiva", Font.PLAIN, 29));
+		GridBagConstraints gbc_lblYouCanChoose = new GridBagConstraints();
+		gbc_lblYouCanChoose.gridheight = 3;
+		gbc_lblYouCanChoose.gridwidth = 7;
+		gbc_lblYouCanChoose.insets = new Insets(0, 0, 5, 5);
+		gbc_lblYouCanChoose.gridx = 2;
+		gbc_lblYouCanChoose.gridy = 2;
+		contentPane.add(lblYouCanChoose, gbc_lblYouCanChoose);
 
-
-
-		NewMap = new JButton("Create New Map");
-		NewMap.setToolTipText("Click here for creating new map");
-		NewMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 16));
-		NewMap.setForeground(Color.BLACK);
-		NewMap.addActionListener(new ActionListener() {
-			
+		btnNewMap = new JButton("New Map");
+		btnNewMap.setToolTipText("Click here...");
+		btnNewMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+		btnNewMap.setForeground(Color.BLACK);
+		btnNewMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ActionChoosen = "new";
-				frame.setVisible(true);
-				
-				objct.mapNewActions();
-				
+				selectedAction = "new";
+				//frame.setVisible(true);
+				obj.newMapActions();
 			}
 		});
 
-		NewMap.setBackground(new Color(240, 255, 255));
-		GridBagConstraints gbc_NewMap = new GridBagConstraints();
-		gbc_NewMap.gridwidth = 2;
-		gbc_NewMap.gridheight=2;
-		gbc_NewMap.fill = GridBagConstraints.HORIZONTAL;
-		gbc_NewMap.insets = new Insets(0, 0, 0, 2);
-		gbc_NewMap.gridx = 4;
-		gbc_NewMap.gridy = 5;
-		contentPanel.add(NewMap, gbc_NewMap);
-		
-		GridBagConstraints gbc_ExistingMap = new GridBagConstraints();
-		gbc_ExistingMap.fill = GridBagConstraints.HORIZONTAL;
-		gbc_ExistingMap.gridwidth = 2	;
-		gbc_ExistingMap.insets = new Insets(0, 0, 2, 2);
-		gbc_ExistingMap.gridx = 4;
-		gbc_ExistingMap.gridy = 4;
-		ExistingMap = new JButton("Edit Existing Map");
-		ExistingMap.setForeground(Color.BLACK);
-		ExistingMap.setToolTipText("Click here for using existing map");
-		ExistingMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 16));
-		ExistingMap.setBackground(new Color(240, 255, 255));
-		
-		contentPanel.add(ExistingMap, gbc_ExistingMap);
-		ExistingMap.addActionListener(new ActionListener() {
-			
+		JLabel lblSelectOne = new JLabel("Select one...");
+		lblSelectOne.setFont(new Font("Tahoma", Font.ITALIC, 18));
+		GridBagConstraints gbc_lblSelectOne = new GridBagConstraints();
+		gbc_lblSelectOne.fill = GridBagConstraints.VERTICAL;
+		gbc_lblSelectOne.gridwidth = 3;
+		gbc_lblSelectOne.insets = new Insets(0, 0, 5, 0);
+		gbc_lblSelectOne.gridx = 5;
+		gbc_lblSelectOne.gridy = 5;
+		contentPane.add(lblSelectOne, gbc_lblSelectOne);
+		btnNewMap.setBackground(new Color(240, 255, 255));
+		GridBagConstraints gbc_btnNewMap = new GridBagConstraints();
+		gbc_btnNewMap.gridwidth = 3;
+		gbc_btnNewMap.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewMap.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewMap.gridx = 5;
+		gbc_btnNewMap.gridy = 6;
+		contentPane.add(btnNewMap, gbc_btnNewMap);
+
+		btnExistingMap = new JButton("Existing Map");
+		btnExistingMap.setForeground(Color.BLACK);
+		btnExistingMap.setToolTipText("Click here...");
+		btnExistingMap.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+		btnExistingMap.setBackground(new Color(240, 255, 255));
+		GridBagConstraints gbc_btnExistingMap = new GridBagConstraints();
+		gbc_btnExistingMap.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnExistingMap.gridwidth = 3;
+		gbc_btnExistingMap.insets = new Insets(0, 0, 0, 5);
+		gbc_btnExistingMap.gridx = 5;
+		gbc_btnExistingMap.gridy = 7;
+		contentPane.add(btnExistingMap, gbc_btnExistingMap);
+		btnExistingMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ActionChoosen = "existing";
-				System.out.println("Edit Existing Map ..here");
-			objct.MapSelectionActions();
+				selectedAction = "existing";
+				obj.mapFileChooserActions();
 			}
 		});
 		this.setVisible(true);
@@ -147,10 +158,10 @@ public class Map_Frame extends JFrame {
 	}
 
 	/**
-	 * return the action chosen to create new map or edit existing
-	 * @return ActionChooser
+	 * Function to see user selection of NewMap or Existing Map.
+	 * @return new or existing based on what is clicked.
 	 */
-	public static String ActionChoosen() {
-		return ActionChoosen;
+	public static String selectedAction() {
+		return selectedAction;
 	}
 }

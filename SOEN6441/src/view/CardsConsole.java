@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import player.Player;
+import risk.model.gamemode.GameDriver;
+
 
 
 /**
@@ -23,27 +25,29 @@ import player.Player;
  * @author raghavsharda
  *@version 2.0
  */
-public class CardsConsole extends JPanel implements Observer{
+public class CardsView extends JPanel implements Observer {
+	
 	/**
 	 * Serial Version id for JFrame.
 	 * {@inheritDoc}
 	 */
-	private static final long serialVersionUID = 91213123892139L;
-	
-	private JButton exchangeCards;
+	private static final long serialVersionUID = 9127819244400811786L;
 
 	/**
-	 * class constructor creating view of card option in main window of game
+	 * JButton to initiate card exchange.
 	 */
-	public CardsConsole()
-	{
-		JLabel lab=  new JLabel("Cards");
+	private JButton exchangeCards;
+	
+	/**
+	 * Creates cards view.
+	 */
+	public CardsView(){
+		JLabel label = new JLabel("Cards Here.");
 		this.setLayout(new FlowLayout());
-		this.add(lab);
-		this.setBackground(Color.LIGHT_GRAY);
-		this.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
-		this.setPreferredSize(new Dimension(450,170));
+		this.add(label);
 		
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.setPreferredSize(new Dimension(400,150));
 	}
 	
 	/**
@@ -54,7 +58,7 @@ public class CardsConsole extends JPanel implements Observer{
 		this.removeAll();
 		/*Cards exchange Dialog Box.*/
 		String cards = "";
-		for (Model.Card card : player.GetCards()){ 
+		for (risk.model.Card card : player.getCards()){ 
 			cards += (card.getName()+",");
 		}
 		int cardExchange = JOptionPane.showConfirmDialog (null, cards,"Warning",JOptionPane.YES_OPTION);
@@ -69,31 +73,30 @@ public class CardsConsole extends JPanel implements Observer{
 	 * @param player current player whose turn is going on
 	 */
 	public void exchangeCards(Player player){
-		if (player.HaveDCard()){
-			player.RemoveDCards();
+		if (player.haveDistinctCards()){
+			player.removeDistinctCards();
 		}
-		else if (player.SameTypeCards()){
-			player.SameThreeCardsRemoved();
+		else if (player.haveThreeSameTypeCards()){
+			player.removeSimilarThreeCards();
 		}
 	}
 	
 	/**
-	 * Observer pattern to update if there is a notification from the observable.
-	 * It checks if the player has at least 3 same cards or 3 different cards or 5 cards.
-	 * it asks player if he wants to exchange cards for armies, if player has 3 or more cards 
-	 * if player has 5 armies it forces player to exchange card for armies.
+	 * Observer pattern function for Observers to update when there is a notification from the observable.
+	 * It checks if the player has atleast 3 similar cards or 3 distinct cards or 5 cards.
+	 * If user has 3 or more cards it asks player if he wants to exchange cards for armies.
+	 * if user has 5 armies it forces player to exchange card for armies.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		Player player;
-		player = Model.GameDriver.GetInit().GetCurrent();
+		Player player = ((GameDriver) o).getCurrentPlayer();
 		if (((String) arg).equals("Cards")){
-			if( player.GetCards().size()>2 && player.GetCards().size() <5){
-				if(player.HaveDCard() || player.SameTypeCards()){					
+			if( player.getCards().size()>2 && player.getCards().size() <5){
+				if(player.haveDistinctCards() || player.haveThreeSameTypeCards()){					
 					this.showCards(player);
 				}
 			}
-			if (player.GetCards().size()==5){
+			if (player.getCards().size()==5){
 				this.exchangeCards(player);
 			}
 		}

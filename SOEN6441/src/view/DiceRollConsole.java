@@ -28,7 +28,7 @@ public class DiceRollConsole extends JPanel{
 	/**
 	 * Creates Dice roll view.
 	 */
-	public DiceRollView(){
+	public DiceRollConsole(){
 		JLabel label = new JLabel("Dice Here.");
 		this.setLayout(new FlowLayout());
 		this.add(label);

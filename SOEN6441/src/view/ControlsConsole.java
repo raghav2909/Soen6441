@@ -82,7 +82,7 @@ import Model.NodeOfCountry;
 	/**
 	 * Constructor to display the Control section of the game for Reinforcement, Attack and Fortification phases.
 	 */
-	public ControlsView() {
+	public ControlsConsole() {
 		JLabel label = new JLabel("Controls Here.");
 		this.setLayout(new FlowLayout());
 		saveGame = new JButton("Save Game");

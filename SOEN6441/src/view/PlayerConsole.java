@@ -10,6 +10,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -31,31 +32,34 @@ public class PlayerConsole extends JPanel{
 	private static final long serialVersionUID = -7512274442706727095L;
 
 	/**
-	 * creates view of player on main frame
+	 * Creates the Player Info view on the main window.
 	 */
 	public PlayerConsole() {
-		this.setBackground(Color.LIGHT_GRAY);
-
-		JLabel lab=  new JLabel("Players");
-		this.setLayout(new FlowLayout());
-		this.add(lab);
-		this.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
-		this.setPreferredSize(new Dimension(450,170));
+		JLabel label = new JLabel("Players data Here.");
+		this.add(label);
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 	
 	/**
-	 * Set the player content.
-	 * @param Names Names of players.
+	 * Sets the player Info view content.
+	 * @param playerNames Names of the players.
 	 */
-	public void setPlayerData(String[] Names) {
-		System.out.println(Names);
-		for(String name : Names){
-			JLabel lbl = new JLabel(name);
-			Border border = lbl.getBorder();
+	public void setPlayerInfo(String[][] playerNames) {
+		for(String[] name : playerNames){
+			JLabel comp = new JLabel(name[0]);
+			Border border = comp.getBorder();
 			Border margin = new EmptyBorder(10,10,10,10);
-			lbl.setBorder(new CompoundBorder(border, margin));
-			this.add(lbl);
+			comp.setBorder(new CompoundBorder(border, margin));
+			this.add(comp);
 		}
 		this.validate();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public void update(Observable o, Object arg) {
+		
 	}
 }

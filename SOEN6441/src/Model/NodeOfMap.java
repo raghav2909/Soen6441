@@ -3,6 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 
+
 /**
  * Map data is updated/stored using this class
  * @author YashNarra
@@ -11,125 +12,108 @@ import java.util.ArrayList;
 public class NodeOfMap {
 	
 	/**
-	 * String of the name of continent
+	 * name of continent.
 	 */
-	
-	private String Continent; 
+	private String continentName;
 	
 	/**
-	 * ArrayList of countries of a continent
+	 * ArrayList containing countries of this continent.
 	 */
-	
-	private ArrayList<NodeOfCountry> countrylist;
+	private ArrayList<NodeOfCountry> countries;
 	
 	/**
-	 * Integer Control Value for a continent
+	 * Store control value of the continent
 	 */
+	private int controlValue;
 	
-	private int ControlValue;
-	
-	private int CountCountries;
-	
-	/** Constructor of NodeOfMap
-	 * Initializing the values of continent attributes
-	 * @param name continent name
-	 * @param newcountrylist list of countries in the continent
-	 * @param newcv control value of the continent
+	/**
+	 * number of countries in the continent
 	 */
+	private int countriesCount;
 	
-	public NodeOfMap(String name, ArrayList<NodeOfCountry> newcountrylist, int newcv) {
-		this.Continent=name;
-		this.countrylist=newcountrylist;
-		this.ControlValue=newcv;	
+	/**
+	 * Initialize attributes of a continent.
+	 * @param newName name of continent
+	 * @param newCountries arraylist containing countries belong to this continent
+	 * @param newValue control value for the continent
+	 */
+	public NodeOfMap(String newName,ArrayList<NodeOfCountry> newCountries,int newValue) {
+		this.continentName = newName;
+		this.countries = newCountries;
+		this.controlValue = newValue;
 	}
 	
-	/**method to return array of countries in a continent
-	 * @return clsit array of countries
+	 /** 
+	 * return ArrayList of countries in the continent
+	 * @return countries ArrayList containing countries of this continent.
 	 */
-	
-	public ArrayList<NodeOfCountry>getClst() {
-		return countrylist;
-	}
-	
-	
-	/** method to return the name of continent
-	 * @return Continent name of Continent
-	 */
-	public String getContinent() {
-		return this.Continent;
-	}
-	
-	/**method to return arraylist of countries in a continent 
-	 * @return countrylist list of countries
-	 */
-	
-	public NodeOfCountry[] getCountries(){
-
-		return this.countrylist.toArray(new NodeOfCountry[this.countrylist.size()]);
-		
-	}
-	
 	public ArrayList<NodeOfCountry> getCountryList(){
-		return this.countrylist;
+		return this.countries;
 	}
-
-	/** method to get the control value of a continent
-	 * @return ContolValue control value of a continent
-	 */
 	
+	/**
+	 * return name of continent.
+	 * @return String continent name
+	 */
+	public String getContinentName() {
+		return this.continentName;
+	}
+	
+	/**
+	 * return array of countries belong to this continent.
+	 * @return Array of countries
+	 */
+	public NodeOfCountry[] getCountries() {
+		return this.countries.toArray(new NodeOfCountry[this.countries.size()]);
+	}
+	
+	/**
+	 * return control value for this continent
+	 * @return integer control value of continent
+	 */
 	public int getControlValue() {
-		return this.ControlValue;
-	}
-
-	/**
-	 * Method to add country to the countrylist of a continent
-	 * @param newCountries arraylist of new countries
-	 */
-	public void addcountry(NodeOfCountry newcountry) {
-		if(this.countrylist==null) {
-			this.countrylist=new ArrayList<NodeOfCountry>();
-		}
-		this.countrylist.add(newcountry);
-		newcountry.setContinent(this);
+		return this.controlValue;
 	}
 	
 	/**
-	 * Method to delete a country from list of countries in a continent
-	 * @param delcountry is the country to delete
+	 * Assign list of countries to current continent.
+	 * @param newCountries ArrayList containing countries.
 	 */
-	public void deletecountry(NodeOfCountry delcountry) {
-		countrylist.remove(delcountry);
-	}
-	
-	/**
-	 * Method to assign list of countries to a continent
-	 * @param newCountries arraylist containing countries
-	 */
-	
 	public void setCountries(ArrayList<NodeOfCountry> newCountries) {
-		ArrayList<NodeOfCountry> ncountries= newCountries; 
-		
-		this.countrylist=ncountries;	
+		this.countries = newCountries;
 	}
-
-	@Override
-	public String toString() {
-		return "NodeOfMap [Continent=" + Continent + ", countrylist=" + countrylist + ", ControlValue=" + ControlValue
-				+ "]";
-	}
-	
 	
 	/**
-	 * checking if two objects are equal or not
-	 * @return true if they are equal
+	 * Remove country node from the list of countries.
+	 * @param NodeOfCountry the node to be removed.
 	 */
-	public boolean equals(Object c) {
-		if(c instanceof NodeOfMap) {
-			NodeOfMap t = (NodeOfMap) c;
-			if(t.getContinent()==this.Continent && t.ControlValue == this.ControlValue) {
-				if(t.countrylist.size()==this.countrylist.size()) {
+	public void removeCountry(NodeOfCountry NodeOfCountry) {
+		countries.remove(NodeOfCountry);
+	}
+	
+	/**
+	 * Add country to the continent.
+	 * @param newCountry country object
+	 */
+	public void addCountry(NodeOfCountry newCountry) {
+		if(this.countries==null){
+			this.countries = new ArrayList<NodeOfCountry>();
+		}
+		this.countries.add(newCountry);
+		newCountry.setContinent(this);
+	}
+	
+	/**
+	 * Check if two NodeOfMap objects are equal
+	 * @return true if both objects are equal; false if both objects are not equal
+	 */
+	public boolean equals(Object o) {
+		if(o instanceof NodeOfMap) {
+			NodeOfMap temp = (NodeOfMap) o;
+			if(temp.getContinentName()==this.continentName && temp.controlValue == this.controlValue) {
+				if(temp.countries.size()==this.countries.size()) {
 					for(int i=0;i<this.getCountries().length;i++) {
-						if(!this.getCountries()[i].equals(t.getCountries()[i])) {
+						if(!this.getCountries()[i].equals(temp.getCountries()[i])) {
 							return false;
 						}
 					}
@@ -139,13 +123,16 @@ public class NodeOfMap {
 		}
 		return false;
 	}
-	 
 	
-	public int getCountOfCountries() {
-		this.CountCountries = getCountryList().size();
-		return this.CountCountries;
-	}
+	/**
+	 * Gives the number of countries in the Continent.
+	 * @return the country count of the continent.
+	 */
+	public int getCountriesCount(){
+		this.countriesCount = getCountryList().size();
+		return this.countriesCount;
 		
+	}
 }
 	
 

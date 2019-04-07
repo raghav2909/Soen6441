@@ -95,7 +95,7 @@ import Model.NodeOfCountry;
 	 * @param armiesCount Number of armies available to the player for Reinforcement phase.
 	 * @param countryList String array containing the countries owned by the current player.
 	 */
-	public void reinforcementControls(int armiesCount, String[] countryList) {
+	public void controlsReinforcement(int armiesCount, String[] countryList) {
 		this.removeAll();
 
 		System.out.print("Checkpoint 3");

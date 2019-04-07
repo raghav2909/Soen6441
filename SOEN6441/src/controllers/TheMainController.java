@@ -80,7 +80,7 @@ public class TheMainController {
 	 * Get instance of MainController class
 	 * @return initialize the instance of class MainController
 	 */
-	public static TheMainController getInstance() {
+	public static TheMainController getInit() {
 		if(mController==null) {
 			mController = new TheMainController();
 		}
@@ -140,7 +140,7 @@ public class TheMainController {
 		String mode = this.setupBox.gameMode();
 		if(mode.equals("single")) {
 			System.out.println("1");
-			this.setupBox.loadSaveGameOption();
+			this.setupBox.saveOrLoadGame();
 		}
 		else if(mode.equals("tournament")){
 			getTournamentInfo();

@@ -583,7 +583,7 @@ public class GameDriver extends Observable {
 		nottifyObservers("GameOver");
 		controller.removeAllControls();
 		System.out.print("Winner "+winner);
-		TheMainController.getInstance().notifyGameResult(winner);
+		TheMainController.getInit().notifyGameResult(winner);
 	}
 	
 	/**

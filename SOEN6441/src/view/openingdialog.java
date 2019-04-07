@@ -57,7 +57,7 @@ public class openingdialog {
 	 */
 	private String mapRead = null;
 	
-	public void loadSaveGameOption(){
+	public void saveOrLoadGame(){
 		JFrame frame1 = new JFrame();
 		frame1.setLayout(new BoxLayout(frame1.getContentPane(),BoxLayout.Y_AXIS));
 		JButton newGame = new JButton("New Game");
@@ -72,7 +72,7 @@ public class openingdialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame1.dispose();
-				TheMainController.getInstance().singleGameInit();
+				TheMainController.getInit().singleGameInit();
 				
 			}
 		});
@@ -100,7 +100,7 @@ public class openingdialog {
 					saveFileRead = selectedFile.getAbsolutePath();
 					saveFileLoad.dispose();
 				}
-		TheMainController .getInstance().singleGameLoadInit(saveFileRead);	
+		TheMainController .getInit().singleGameLoadInit(saveFileRead);	
 			}
 			
 		});

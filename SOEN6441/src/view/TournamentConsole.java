@@ -127,7 +127,7 @@ public class TournamentConsole extends JFrame{
 		mapPanel.removeAll();
 		mapPanel.setLayout(new GridBagLayout());
 		maps = new ArrayList<JTextField>();
-		SetUpDialog sBox = new SetUpDialog();
+		openingdialog sBox = new openingdialog();
 		for(int i=0; i< (int) mapCount.getValue(); i++) {
 			GridBagConstraints c = new GridBagConstraints();
 			c.insets = new Insets(2,2,2,2);

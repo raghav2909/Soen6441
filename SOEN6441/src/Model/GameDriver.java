@@ -14,8 +14,11 @@ import java.util.Random;
 import controllers.ControllerForGame;
 import controllers.the_main_controller;
 import player.AActionStrategy;
+import player.BActionStrategy;
+import player.CActionStrategy;
 import player.HActionStrategy;
 import player.Player;
+import player.RActionStrategy;
 import player.StrategyOfPlayer;
 
 

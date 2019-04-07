@@ -54,7 +54,7 @@ private static final long serialVersionUID = 5240018585440964453L;
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		String current = ((GameDriver) o).getTurnManager().getPhase();
+		String current = ((GameDriver) o).getGameTurnDriver().getPhase();
 		if(!this.phase.equals(current)) {
 			this.phase = current;
 			panel.removeAll();

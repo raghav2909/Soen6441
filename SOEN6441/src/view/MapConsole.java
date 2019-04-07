@@ -29,10 +29,6 @@ import Model.Map;
  */
 public class MapConsole extends JPanel implements Observer {
 	
-	/**
-	 * object of Map class
-	 */
-	Map map = new Map();
 
 	
 

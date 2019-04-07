@@ -76,9 +76,9 @@ public class NewMapCreation extends JFrame {
 	private JComboBox comboBox_3;
 	
 	/**
-	 * Stores the object of MapNode.
+	 * Stores the object of NodeOfMap.
 	 */
-	private MapNode mapNode;
+	private NodeOfMap mapNode;
 	
 	/**
 	 * Button to add continent.
@@ -93,7 +93,7 @@ public class NewMapCreation extends JFrame {
 	/**
 	 * Creates the object of mapWrited class.
 	 */
-	private MapWriter mapWriter = new MapWriter();
+	private WriteMap mapWriter = new WriteMap();
 	
 	/**
 	 * String to hold the continent name.

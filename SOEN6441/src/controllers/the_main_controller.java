@@ -10,9 +10,12 @@ import java.util.ArrayList;
 
 import Model.GameDriver;
 import Model.Map;
+import Model.Mode;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.ReadMap;
+import Model.Single;
+import Model.Tournament;
 import Util.GameLogging;
 
 import view.CardsConsole;
@@ -21,8 +24,10 @@ import view.DiceRollConsole;
 import view.DominationConsole;
 import view.GameConsole;
 import view.MapConsole;
-
+import view.Map_Frame;
 import view.PlayerConsole;
+import view.ResultConsole;
+import view.TournamentConsole;
 import view.openingdialog;
 import view.PhaseConsole;
 /**
@@ -33,277 +38,186 @@ import view.PhaseConsole;
  */
 
 
-public class the_main_controller {
-	/** this variable stores reference of class MainController
-	 * 
-	 */
-	private static the_main_controller maincr ;
-	/**
-	 * This action listner for editmap
-	 */
-	
-	//private ActionListener editmap;
-	/**
-	 * This action listner for playthegame
-	 */
-	//private ActionListener playthegame;
-	/**
-	 * This actionlistner for editthemaps
-	 */
-	//private ActionListener editthemaps; 
-	   
-	/**
-	 * ActionListener to add listener to "Add Armies" button.
-	 */
-	private ActionListener addArmiesListner;
-	/**
-	 * CardsConsole Object
-	 */
-	private CardsConsole csr;
-	/**
-	 * ControlsConsole Object
-	 */
-	private ControlsConsole crc;
-	/**
-	 * DiceRollConsole Object
-	 */
-	private DiceRollConsole drc;
-	/**
-	 * MapConsole Object
-	 */
-	private MapConsole mpc;
-	/**
-	 * PlayerConsole Object
-	 */
-	private PlayerConsole plc;
-	/**
-	 * GameDriver Object
-	 */
-	
-	private GameDriver GD;
-	/**
-	 * Phase console object
-	 */
-	private PhaseConsole phc;
-	/**
-	 * domination console object
-	 */
-	private DominationConsole dc;
-	/**
-	 * Player_Information_Controller object
-	 */
-	private Player_Information_Controller pic;
-	/**
-	 * Logger class object
-	 */
-	
-	private  GameLogging lg;
-	/**
-	 * Stores the object of File_open_Controller class
-	 */
-	private File_open_Controller foc;
-	
-	/**
-	 * Creating an object of openingdialog class of view package
-	 */
-	openingdialog opendialog=new openingdialog();
 
-	Map map;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+public class the_main_controller {
 	
 	/**
-	 *  constructor
+	 * setupBox variable used to store reference of class SetUpDialog
 	 */
-	public the_main_controller() {
-		this(GameDriver.GetInit());
-	}
-	public the_main_controller(GameDriver instance) {
-		this.GD = instance;
-		GD.setController(this);
-	}
-	public void init()
-	{ 
-		pic = new Player_Information_Controller();
-		opendialog= new openingdialog();
-		GD = new GameDriver();
-		opendialog.chooseplayoredit();
-	}
-	/**
-	 * Listeners for attack phase to set components in control console
-	 */
-	public void ListenerForAttackPhase()
-	{
-		crc.ListOfCountriesAction(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				
-				GD.attackNeighbourListUpdate((String)crc.SelectedCountry()); 
-				
-			}
-		});
-		crc.Play_Move_Button_Action(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent ae) {
-				
-				GD.ChangePhase();
-				
-			}
-		});
-	}
-	/**
-	 * This is parameterized method that instantiated main controller class.
-	 * @return the_main_Controller object
-	 */
+	private openingdialog setupBox;
 	
+	/**
+	 * ActionListener to add listener to "Edit Map" button.
+	 */
+	private ActionListener mapEditListener;
+	
+	/**
+	 * ActionListener to add listener to "Play Game" button.
+	 */
+	private ActionListener playGameListener;
+	
+	/**
+	 * gameMode variable stores reference of class Mode
+	 */
+	private Mode gameMode;
+	
+	/**
+	 * mController variable stores reference of class MainController
+	 */
+	private static the_main_controller mController;
+	
+	/**
+	 * private constructor for Singleton pattern imlementation
+	 */
+	private the_main_controller() {}
+	
+	/**
+	 * Get instance of MainController class
+	 * @return initialize the instance of class MainController
+	 */
 	public static the_main_controller getInstance() {
-		if(maincr==null) {
-			maincr = new the_main_controller();
+		if(mController==null) {
+			mController = new the_main_controller();
 		}
-		return maincr; 
-	}
-	/**
-	 * This method helps to fetch the  GameDriver class instance
-	 * @return instance of GameDriver class
-	 */
-	public GameDriver getGD()
-	{
-	return this.GD;
+		return mController;
 	}
 	
 	/**
-	 * Sets Action Listeners for reinforcement controls.
+	 * Method to initialize setupBox and listeners.
 	 */
-	public void setActionListner() {
-		addArmiesListner = new ActionListener() {
+	public void initialize() {
+		setupBox = new openingdialog();
+		chooseMapEditorOrPlayGame();
+		mapEditorListener();
+		playGameListener();
+	}
+
+	/**
+	 * Sets listener for Edit Map button.
+	 */
+	public void mapEditorListener() {
+		mapEditListener =  new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {				
-			
-				int armyCount = crc.ValueOfArmies();
-				GD.shiftArmiesOnReinforcement(crc.SelectedCountry(), armyCount);
+			public void actionPerformed(ActionEvent e) {
+				Map_Frame newMapFrame = new Map_Frame();
+				setupBox.chooseOptionFrame().dispose();
 			}
 		};
-		crc.Armies_Add_Button_Action(this.addArmiesListner);
-	
-		
-	}
-	/**
-	 * Sets Action Listeners for fortification controls.
-	 */
-	public void setListenersFortification() {
-		crc.ListOfCountriesAction(new ActionListener() {
-			@Override
-            public void actionPerformed(ActionEvent Ae) {
-				String selectedCountry = (String) crc.SelectedCountry();
-
-				GD.UpdateFNeighbour(selectedCountry);
-			}
-		});
-		
-		crc.Play_Move_Button_Action(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent Ae) {
-				if(crc.isNeighbourSelected()) {
-					GD.getArmiesShiftedAfterFortification(crc.SelectedCountry(), crc.getNeighborSelected(),crc.ValueOfArmies());
-					
-				}
-				GD.ChangePhase();
-			}
-		});
+		this.setupBox.mapEditAction(mapEditListener);
 	}
 	
 	/**
-	 * This method will remove the controllers after the game
-	 * is over.
+	 * Sets listener for Play Game button.
 	 */
-public void AllControlsOver()
-{
-crc.removeAll();
-}
+	public void playGameListener() {
+		playGameListener =  new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				init();
+				setupBox.chooseOptionFrame().dispose();
+			}
+		};
+		this.setupBox.playGameAction(playGameListener);
+	}
+	
+	/**
+	 * Calls chooseMapEditorOrPlayGame() function of the SetUpDialog class to display Edit Map and Play Game options.
+	 */
+	public void chooseMapEditorOrPlayGame() {
+		this.setupBox.chooseMapEditorOrPlayGame();
+	}
+	
+	/**
+	 * This method is responsible for taking input from user to whether user wants 
+	 * to play tournament or single game, and accordingly create the tournament or single game object.
+	 */
+	private void init() {
+		String mode = this.setupBox.gameMode();
+		if(mode.equals("single")) {
+			System.out.println("1");
+			this.setupBox.loadSaveGameOption();
+		}
+		else if(mode.equals("tournament")){
+			getTournamentInfo();
+		}
+		else {
+			init();
+		}
+	}
+	
+	/**
+	* starting the game mode
+	*/
+	private void getTournamentInfo() {
+		TournamentConsole infoView = new TournamentConsole();
+		the_main_controller mC = this;
+		infoView.setListeners(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent a) {
+				System.out.print("Hello");
+				gameMode = new Tournament(infoView.getGamesCount(), infoView.getMapDetails(),
+						infoView.getPlayerBehaviorDetails(), infoView.getMovesCount(), mC);
+				gameMode.start();
+				infoView.dispose();
+			}
+		});
+	}
 
+	/**
+	* string array of winners passed to initialize the winners
+	*/
+	public void setResults(String[][] winners) {
+		ResultConsole result = new ResultConsole(winners);
+	}
+	
+	/**
+	 * notify mode (TournamentMode/SingleMode) class about winner of game
+	 * @param winnerPlayer the name of the winner or draw.
+	 */
+	public void notifyGameResult(String winnerPlayer) {
+		if(gameMode!=null) {
+			gameMode.updateResults(winnerPlayer);
+		}
+		else {
+			System.out.print("Error here");
+		}
+	}
+	
+	/**
+	* initialize mode of the game.
+	* @param mode game mode to be set
+	*/
+	public void setMode(Mode mode) {
+		this.gameMode = mode;
+	}
+	
+	/**
+	* @return game mode
+	*/
+	public Mode getMode(){
+		return this.gameMode;
+	}
 
-/**
- * select the map file and image file to start game for single mode
- * @throws IOException  it will throw input output exception
- */
-public void Single_Mode_Start() throws IOException {
-	System.out.println("New Game");
+	public void singleGameInit() {
+		String map = setupBox.getMapInfo("map");
+		String bmp = setupBox.getMapInfo("bmp");
+		String[][] players = setupBox.getPlayerInfo();
+		if(bmp!=null) {
+			gameMode = new Single(map, bmp, players, 0, this);
+		}else {
+			gameMode = new Single(map, players, 0, this);	
+		}
+		gameMode.start();
+	}
 
-	GD.MapCreation(opendialog.InfoOfMap("map"));
-	String t= opendialog.InfoOfMap("bmp");
-	 if(t!=null) {
- 		mpc = new MapConsole(t);
- }else {
- 		mpc = new MapConsole();
- }
-	crc= new ControlsConsole();
-	csr = new CardsConsole();
-	drc = new DiceRollConsole();
-	plc = new PlayerConsole();
-	phc= new PhaseConsole();
-	dc= new DominationConsole();
-	lg= new GameLogging();
-	this.GD.addObserver(phc);
-	this.GD.addObserver(dc);
-	this.GD.addObserver(csr);
-	this.GD.addObserver(lg);
-	GameConsole.createInstance(plc, mpc,crc,phc,dc); 
-    GD.setPlayerConsole(plc);
-	GD.setMapConsole(mpc);
-	GD.setControlsConsole(crc);
-	GD.Start();
-}
-/**
- * This method starts the saved mode of the game 
- * @param countriesNamesNoArmy number of countries with no armies
- * @param message meesage to be displayed
- * @return it will return the army placing
- * @version 2.0
- */
-public String ArmyPlacing(String[] countriesNamesNoArmy, String message) {
-	return opendialog.ArmyPlacing(countriesNamesNoArmy, message);
-}
-/**
- * This method will start the saved mode
- */
-
-public void single_Mode_Saved_Start() {
-
-	System.out.println("Saved Mode");
+	public void singleGameLoadInit(String saveFileRead) {
+		gameMode = new Single();
+		((Single) gameMode).loadGameDataFromFile(new File(saveFileRead));
+	}
 	
 }
-/**
- * This function will return the number of player
- * with their names
- * @return information of players
- */
-public String[] InformationOFPlayres() {
-	return opendialog.Information_OF_Playres();
-}
-/**
- * this function will set the fortification controls in controls console
- * @param NA number of armies
- * @param NNL  list of neighbor 
- */
-public void ControlsForFortification(int NA, String[] NNL) {
-	crc.updateFortification(NA, NNL);
-}
-
-public void NeighborListUpdate(String[]NL)
-{
-	crc.SetNList(NL);
-}
-/**
- * this method will check the input from the user
- * @param min minimum number of players
- * @param msg  it will explain the purpose of input
- * @param max maximum number of  players a user can select
- * @return it will return the number of players selected by user
- */
-public int input(int min,String msg,int max)
-
-{
-	return opendialog.NumberOfPlayer(min,msg, max);
-	}
-}
-

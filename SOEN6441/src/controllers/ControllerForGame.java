@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import Model.GameDriver;
-import Util.GameLogging;
+import Model.*;
+import view.*;
+import Util.*;
+import player.*;
+
 import view.CardsConsole;
 import view.ControlsConsole;
 import view.MapConsole;
@@ -35,7 +38,7 @@ public class ControllerForGame {
 	/**
 	 * dominationView variable storing the reference of the class WorldDominationView.
 	 */
-	private WorldDominationConsole dominationView;
+	private DominationConsole dominationView;
 	
 	/**
 	 * cardsGUI variable storing the reference of the class CardsView.
@@ -58,7 +61,7 @@ public class ControllerForGame {
 	private PlayerConsole playerInfoGUI;
 	
 	/**
-	 * setupBox variable storing the reference of the class SetUpDialog.
+	 * setupBox variable storing the reference of the class openingdialog.
 	 */
 	private openingdialog setupBox;
 	
@@ -79,18 +82,18 @@ public class ControllerForGame {
 	
 	/**
 	 * Constructor for object creation
-	 * @param newSetupBox SetUpDialog object
+	 * @param newSetupBox openingdialog object
 	 */
-	public GameController(openingdialog newSetupBox){
+	public ControllerForGame(openingdialog newSetupBox){
 		this(new GameDriver(), newSetupBox);
 	}
 	
 	/**
-	 * Controller class constructor to initialize GameDriver and SetUpDialog class objects.
+	 * Controller class constructor to initialize GameDriver and openingdialog class objects.
 	 * @param newDriver GameDriver instance.
-	 * @param newSetupBox SetUpDialog object
+	 * @param newSetupBox openingdialog object
 	 */
-	public GameController(GameDriver newDriver, SetUpDialog newSetupBox) {
+	public ControllerForGame(GameDriver newDriver, openingdialog newSetupBox) {
 		this.setupBox = newSetupBox;
 		this.driver = newDriver;
 		driver.setController(this);
@@ -98,36 +101,36 @@ public class ControllerForGame {
 	}
 	
 	/**
-	 * Controller class constructor to initialize GameDriver and SetUpDialog class objects.
+	 * Controller class constructor to initialize GameDriver and openingdialog class objects.
 	 * @param newMap Map file path.
 	 * @param newMapImage Map file image path.
 	 * @param moveLimit number of turns
 	 * @param playerNames names of the players.
 	 */
-	public GameController(String newMap, String newMapImage, String[][] playerNames, int moveLimit) {
+	public ControllerForGame(String newMap, String newMapImage, String[][] playerNames, int moveLimit) {
 		mapGUI = new MapConsole(newMapImage);
 		setupBox = new openingdialog();
 		driver = new GameDriver(newMap, moveLimit);
-		driver.setControlsConsole(this);
+		driver.setController(this);
 		playerInfoGUI = new PlayerConsole();
-		playerInfoGUI.setPlayerData(playerNames);
+		playerInfoGUI.setPlayerInfo(playerNames);
 		init();
 		driver.runGame(playerNames);
 	}
 	
 	/**
-	 * Controller class constructor to initialize GameDriver and SetUpDialog class objects.
+	 * Controller class constructor to initialize GameDriver and openingdialog class objects.
 	 * @param newMap Map file path.
 	 * @param moveLimit number of turns
 	 * @param playerNames names of the players.
 	 */
-	public GameController(String newMap, String[][] playerNames, int moveLimit) {
+	public ControllerForGame(String newMap, String[][] playerNames, int moveLimit) {
 		mapGUI = new MapConsole();
 		setupBox = new openingdialog();
 		driver = new GameDriver(newMap, moveLimit);
 		driver.setController(this);
 		playerInfoGUI = new PlayerConsole();
-		playerInfoGUI.setPlayerData(playerNames);
+		playerInfoGUI.setPlayerInfo(playerNames);
 		init();
 		driver.runGame(playerNames);
 	}
@@ -141,19 +144,19 @@ public class ControllerForGame {
 	 * @param players game players
 	 * @param phaseName name of the phase ongoing.
 	 */
-	public GameController(String newMap, String[][] players, ArrayList<ArrayList<String>> countryList, ArrayList<ArrayList<Integer>> armyCountList, String currentPlayer, String phaseName){
-		mapGUI = new MapView();
-		setupBox = new SetUpDialog();
+	public ControllerForGame(String newMap, String[][] players, ArrayList<ArrayList<String>> countryList, ArrayList<ArrayList<Integer>> armyCountList, String currentPlayer, String phaseName){
+		mapGUI = new MapConsole();
+		setupBox = new openingdialog();
 		driver = new GameDriver(newMap, 0);
 		driver.setController(this);
-		playerInfoGUI = new PlayerInfoView();
+		playerInfoGUI = new PlayerConsole();
 		int i = 0;
 		
 		for (ArrayList<String> countrylist: countryList){
 			int j=0;
-			ArrayList<CountryNode> list = new ArrayList<CountryNode>();
+			ArrayList<NodeOfCountry> list = new ArrayList<NodeOfCountry>();
 			for(String country: countrylist){
-				CountryNode cn = driver.getMap().getCountry(country);
+				NodeOfCountry cn = driver.getMap().getCountry(country);
 				cn.setArmies(armyCountList.get(i).get(j));
 				list.add(cn);
 				j++;
@@ -169,7 +172,7 @@ public class ControllerForGame {
 
 		playerInfoGUI.setPlayerInfo(players);
 		init();
-		driver.getTurnManager().setPhase(phaseName);
+		driver.getGameTurnDriver().setPhase(phaseName);
 		if(phaseName.trim().equals("Reinforcement")){
 			driver.getCurrentPlayer().assignArmies(driver.getCurrentPlayer().getArmies());
 		}
@@ -181,12 +184,12 @@ public class ControllerForGame {
 	 */
 	public void init() {
 		/*Initialize all the views for the main window and run game.*/
-        cardsGUI = new CardsView();
-        controlsGUI = new ControlsView();
-        phaseView = new PhaseView();
-        dominationView = new WorldDominationView();
-        gameLogger = new GameLogger();
-        MainView.createInstance(playerInfoGUI, mapGUI, controlsGUI, phaseView, dominationView);
+        cardsGUI = new CardsConsole();
+        controlsGUI = new ControlsConsole();
+        phaseView = new PhaseConsole();
+        dominationView = new DominationConsole();
+        gameLogger = new GameLogging();
+        GameConsole.createInstance(playerInfoGUI, mapGUI, controlsGUI, phaseView, dominationView);
 		driver.addObserver(phaseView);
 		driver.addObserver(dominationView);
 		driver.addObserver(cardsGUI);
@@ -196,7 +199,7 @@ public class ControllerForGame {
 	}
 	
 	/**
-	 * Calls the placeArmyDialog function of SetUpDialog class.
+	 * Calls the placeArmyDialog function of openingdialog class.
 	 * @param countriesNamesNoArmy list of countries with no armies. 
 	 * @param message message explaining the purpose of input.
 	 * @return the country selected by the user to place army.
@@ -286,19 +289,19 @@ public class ControllerForGame {
 	 * @param neighbourList list of neighbor countries
 	 */
 	public void updateNeighborList(String[] neighbourList) {
-		controlsGUI.SetNList(neighbourList);
+		controlsGUI.setNeighborList(neighbourList);
 	}
 	
 	/**
-	 * delegate method to call getInput from SetUpDialog class. 
-	 * @see SetUpDialog
+	 * delegate method to call getInput from openingdialog class. 
+	 * @see openingdialog
 	 * @param min minimum value user can select 
 	 * @param max maximum value user can select
 	 * @param message message explaining the purpose of input
 	 * @return a number selected by user
 	 */
 	public int setUpBoxInput(int min, int max, String message) {
-		return setupBox.NumberOfPlayer(min, message,max);
+		return setupBox.getInput(min, max,message);
 	}
 
 	/**
@@ -314,7 +317,7 @@ public class ControllerForGame {
 	* @param armies Armies assigned on reinforcement
 	*/
 	public void setReinforcementControls(int armies, String[] countryList) {
-		controlsGUI.reinforcementConrols(armies, countryList);
+		controlsGUI.reinforcementControls(armies, countryList);
 	}
 
 	/**

@@ -100,7 +100,7 @@ public class openingdialog {
 					saveFileRead = selectedFile.getAbsolutePath();
 					saveFileLoad.dispose();
 				}
-				MainController.getInstance().singleGameLoadInit(saveFileRead);	
+		TheMainController .getInstance().singleGameLoadInit(saveFileRead);	
 			}
 			
 		});

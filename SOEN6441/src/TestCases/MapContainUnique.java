@@ -25,7 +25,7 @@ public class MapContainUnique {
 	public void testisMapNodesContainUniqueCountries() throws IOException {
 		FileName = ".//SOEN6441//Map_Data//test//MapTest1.map";
 		map = new Map(FileName);
-		boolean t = map.isMapNodesContainUniqueCountries();
+		boolean t = map.isNodeOfMapsContainUniqueCountries();
 		assertTrue(t);
 	}
 

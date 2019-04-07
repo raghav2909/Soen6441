@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Model.GameDriver;
+import Model.GameDriverParameter;
 import Model.NodeOfCountry;
 import player.Player;
 import Model.NodeOfMap;
@@ -67,7 +68,7 @@ public class GameDriverTest {
 	 */
 	@Before
 	public void setPlayerAndMapData(){
-		driver = new GameDriver(".//SOEN6441//Map_Data//test//MapTest3.map",0);
+		driver = new GameDriver(".//SOEN6441//Map_Data//test//MapTest3.map", 0);
 		country1 = new NodeOfCountry("Country1", null, null, null);
 		country2 = new NodeOfCountry("Country2", null, null, null);
 		country3 = new NodeOfCountry("Country3", null, null, null);

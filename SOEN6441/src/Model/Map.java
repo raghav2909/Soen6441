@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Observable;
 
-import controllers.the_main_controller;
+import controllers.TheMainController;
 import player.Player;
 import Model.*;
 

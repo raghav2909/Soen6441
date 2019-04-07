@@ -72,7 +72,7 @@ public class openingdialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame1.dispose();
-				the_main_controller.getInstance().singleGameInit();
+				TheMainController.getInstance().singleGameInit();
 				
 			}
 		});

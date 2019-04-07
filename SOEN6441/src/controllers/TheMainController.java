@@ -44,7 +44,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 
-public class the_main_controller {
+public class TheMainController {
 	
 	/**
 	 * setupBox variable used to store reference of class SetUpDialog
@@ -69,20 +69,20 @@ public class the_main_controller {
 	/**
 	 * mController variable stores reference of class MainController
 	 */
-	private static the_main_controller mController;
+	private static TheMainController mController;
 	
 	/**
 	 * private constructor for Singleton pattern imlementation
 	 */
-	private the_main_controller() {}
+	private TheMainController() {}
 	
 	/**
 	 * Get instance of MainController class
 	 * @return initialize the instance of class MainController
 	 */
-	public static the_main_controller getInstance() {
+	public static TheMainController getInstance() {
 		if(mController==null) {
-			mController = new the_main_controller();
+			mController = new TheMainController();
 		}
 		return mController;
 	}
@@ -155,7 +155,7 @@ public class the_main_controller {
 	*/
 	private void getTournamentInfo() {
 		TournamentConsole infoView = new TournamentConsole();
-		the_main_controller mC = this;
+		TheMainController mC = this;
 		infoView.setListeners(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {

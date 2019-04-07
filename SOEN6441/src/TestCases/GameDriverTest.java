@@ -17,127 +17,160 @@ import Model.NodeOfMap;
  */
 public class GameDriverTest {
 	
-	private GameDriver gd;
-	private NodeOfCountry c1;
-	private NodeOfCountry c2;
-	private NodeOfCountry c3;
-	private NodeOfCountry c4;
-	private NodeOfCountry c5;
-	private Player p1;
-	private Player p2;
-	private ArrayList<NodeOfMap> mp;
+	/**
+	 * GameDriver class object to access GameDriver class
+	 */
+	private GameDriver driver;
+	
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country1;
+	
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country2;
+	
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country3;
+	
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country4;
+	
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country5;
+	
+	/**
+	 * Reference for player object.
+	 */
+	private Player player1;
+	
+	/**
+	 * Reference for Player object.
+	 */
+	private Player player2;
+	
+	/**
+	 * Reference for NodeOfMap object
+	 */
+	private ArrayList<NodeOfMap> mapData;
+	
+	/**
+	 * This function is called before each test case is run.
+	 */
 	@Before
-	public void setUp() throws Exception {
-		gd = GameDriver.GetInit();
-		c1 = new NodeOfCountry("c1", null, null, null);
-		c2 = new NodeOfCountry("c2", null, null, null);
-		c3 = new NodeOfCountry("c3", null, null, null);
-		c4 = new NodeOfCountry("c4", null, null, null);
-		c5 = new NodeOfCountry("c5", null, null, null);
-		c1.AddNeighbour(c2);
-		c2.AddNeighbour(c1);
-		c1.AddNeighbour(c3);
-		c3.AddNeighbour(c1);
-		c2.AddNeighbour(c3);
-		c3.AddNeighbour(c2);
-		c4.AddNeighbour(c2);
-		c4.AddNeighbour(c3);
-		c5.AddNeighbour(c1);
-		c1.AddNeighbour(c5);
+	public void setPlayerAndMapData(){
+		driver = new GameDriver(".//SOEN6441//Map_Data//test//MapTest3.map",0);
+		country1 = new NodeOfCountry("Country1", null, null, null);
+		country2 = new NodeOfCountry("Country2", null, null, null);
+		country3 = new NodeOfCountry("Country3", null, null, null);
+		country4 = new NodeOfCountry("Country4", null, null, null);
+		country5 = new NodeOfCountry("Country5", null, null, null);
+		country1.addNeighbour(country2);
+		country2.addNeighbour(country1);
+		country1.addNeighbour(country3);
+		country3.addNeighbour(country1);
+		country2.addNeighbour(country3);
+		country3.addNeighbour(country2);
+		country4.addNeighbour(country2);
+		country4.addNeighbour(country3);
+		country5.addNeighbour(country1);
+		country1.addNeighbour(country5);
 	}
-	
-	
-	
-/**
- * test fight method
- */
-	@Test
-	public void testFight() {
-		ArrayList<NodeOfCountry> C =new ArrayList<NodeOfCountry>();
-		C.add(c1);
-		C.add(c2);
-		C.add(c3);
-		ArrayList<NodeOfCountry> C1 =new ArrayList<NodeOfCountry>();
-		C1.add(c4);
-		C1.add(c5);
-		p1 = new Player("player1",15,C);
-		p2 = new Player("player2",10,C1);
-		c1.AddArmy(1);
-		c2.AddArmy(1);
-		c3.AddArmy(1);
-		c4.AddArmy(1);
-		c5.AddArmy(1);
-		p1.SetTurnTrue();
-		p2.SetTurnFalse();
-		gd.ListOfPlayers(p1);
-		gd.ListOfPlayers(p2);
-		gd.setCurrentPlayer(p1);
-		ArrayList<Integer> AttackResults = new ArrayList<Integer>();
-		AttackResults.add(4);
-		AttackResults.add(2);
-		AttackResults.add(6);
-		ArrayList<Integer> DefendResults = new ArrayList<Integer>();
-		DefendResults.add(4);
-		DefendResults.add(2);
-		c1.AddArmy(3);
-		c4.AddArmy(1);
-		gd.Fight(c4, p2, c1, 3, 2, AttackResults, DefendResults);
-		assertEquals(0,c4.getArmyCount());
-	}
-	
-	
 	
 	/**
-	 * test for AllocatingCountries method
+	 * This method tests the battle method from GameDriver class.
 	 */
 	@Test
-	public void testAllocatingCountries() {
-		ArrayList<NodeOfCountry> C = new ArrayList<NodeOfCountry>();
-		C.add(c1);
-		C.add(c2);
-		C.add(c3);
-		C.add(c4);
-		NodeOfMap map = new NodeOfMap("America",C,2);
-		mp = new ArrayList<NodeOfMap>();
-		mp.add(map);
-		String[] pd = {"Player5","Player3"};
-		gd.AllocatingCountries(pd, mp);
-		assertEquals(2,gd.GetCurrent().getPlayerCountryNumber());
+	public void testBattle() {
+		ArrayList<NodeOfCountry> countries = new ArrayList<NodeOfCountry>();
+		countries.add(country1);
+		countries.add(country2);
+		countries.add(country3);
+		ArrayList<NodeOfCountry> countries1 = new ArrayList<NodeOfCountry>();
+		countries1.add(country4);
+		countries1.add(country5);
+		player1 = new Player("Player1", 15, countries, driver);
+		player2 = new Player("Player2", 10, countries1, driver);
+		country1.addArmy(1);
+		country2.addArmy(1);
+		country3.addArmy(1);
+		country4.addArmy(1);
+		country5.addArmy(1);
+		player1.setTurnTrue();
+		player2.setTurnFalse();
+		driver.setPlayerList(player1);
+		driver.setPlayerList(player2);
+		driver.setCurrentPlayer(player1);
+		ArrayList<Integer> aResults = new ArrayList<Integer>();
+		aResults.add(4);
+		aResults.add(2);
+		aResults.add(6);
+		ArrayList<Integer> dResults = new ArrayList<Integer>();
+		dResults.add(4);
+		dResults.add(2);
+		country1.addArmy(3);
+		country4.addArmy(1);
+		driver.battle(country4, player2, country1, 3, 2, aResults, dResults);
+		assertEquals(0, country4.getArmiesCount());
 	}
-	
-	
-	
 	
 	/**
-	 * test for Maximum method
+	 * This method tests the max method from GameDriver class.
 	 */
 	@Test
-	public void testMaximum() {
-		ArrayList<NodeOfCountry> C = new ArrayList<NodeOfCountry>();
-		C.add(c1);
-		C.add(c2);
-		C.add(c3);
-		ArrayList<NodeOfCountry> C1 = new ArrayList<NodeOfCountry>();
-		C1.add(c4);
-		C1.add(c5);
-		p1 = new Player("Player1",15,C);
-		p2 = new Player("Player2",10,C1);
-		c1.AddArmy(1);
-		c2.AddArmy(1);
-		c3.AddArmy(1);
-		c4.AddArmy(1);
-		c5.AddArmy(1);
-		p1.SetTurnTrue();
-		p2.SetTurnFalse();
-		gd.ListOfPlayers(p1);
-		gd.ListOfPlayers(p2);
-		gd.setCurrentPlayer(p1);
-		ArrayList<Integer> result = new ArrayList<Integer>();
-		result.add(4);
-		result.add(2);
-		result.add(3);
-		result.add(6);
-		assertEquals(3,gd.Maximum(result));
+	public void testMax() {
+		ArrayList<NodeOfCountry> countries = new ArrayList<NodeOfCountry>();
+		countries.add(country1);
+		countries.add(country2);
+		countries.add(country3);
+		ArrayList<NodeOfCountry> countries1 = new ArrayList<NodeOfCountry>();
+		countries1.add(country4);
+		countries1.add(country5);
+		player1 = new Player("Player1", 15, countries, driver);
+		player2 = new Player("Player2", 10, countries1, driver);
+		country1.addArmy(1);
+		country2.addArmy(1);
+		country3.addArmy(1);
+		country4.addArmy(1);
+		country5.addArmy(1);
+		player1.setTurnTrue();
+		player2.setTurnFalse();
+		driver.setPlayerList(player1);
+		driver.setPlayerList(player2);
+		driver.setCurrentPlayer(player1);
+		ArrayList<Integer> aResults = new ArrayList<Integer>();
+		aResults.add(4);
+		aResults.add(2);
+		aResults.add(3);
+		aResults.add(6);
+		assertEquals(3,driver.max(aResults));
 	}
-
+	
+	/**
+	 * This method tests the dividingCountries()
+	 */
+	@Test
+	public void testDividingCountries() {
+		ArrayList<NodeOfCountry> countries = new ArrayList<NodeOfCountry>();
+		countries.add(country1);
+		countries.add(country2);
+		countries.add(country3);
+		countries.add(country4);
+		NodeOfMap m = new NodeOfMap("Asia", countries, 2);
+		mapData = new ArrayList<NodeOfMap>();
+		mapData.add(m);
+		String[][] playerData = {{"Player3","human"},{"Player4","human"}};
+//		driver.getMap().setMapData(mapData);
+		driver.createPlayers(playerData);
+		driver.dividingCountries(mapData);
+		assertEquals(2,driver.getCurrentPlayer().getPlayerCountryCount());
+	}
 }

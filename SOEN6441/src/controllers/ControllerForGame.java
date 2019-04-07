@@ -1,4 +1,3 @@
-
 package controllers;
 
 import java.awt.event.ActionEvent;
@@ -174,7 +173,7 @@ public class ControllerForGame {
 		init();
 		driver.getGameTurnDriver().setPhase(phaseName);
 		if(phaseName.trim().equals("Reinforcement")){
-			driver.getCurrent().assignArmies(driver.getCurrent().getNumberOfArmies());
+			driver.getCurrent().assignArmies(driver.getCurrent().getCountOfArmies());
 		}
 		driver.continuePhase();
 	}
@@ -183,7 +182,6 @@ public class ControllerForGame {
 	 * Initializes the game after Play Game button selection.
 	 */
 	public void init() {
-		/*Initialize all the views for the main window and run game.*/
         cardsGUI = new CardsConsole();
         controlsGUI = new ControlsConsole();
         phaseView = new PhaseConsole();
@@ -215,31 +213,31 @@ public class ControllerForGame {
 		addArmiesListner = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int armies = controlsGUI.getArmiesValue();
-				driver.shiftArmiesOnReinforcement(controlsGUI.getCountrySelected(), armies);
+				int armies = controlsGUI.getValueForArmies();
+				driver.shiftArmiesOnReinforcement(controlsGUI.getSelectedCountry(), armies);
 			}
 		};
-		controlsGUI.addArmiesButtonAction(this.addArmiesListner);
+		controlsGUI.actionForAddArmiesButton(this.addArmiesListner);
 	}
 	
 	/**
 	 * Sets Action Listeners for fortification controls.
 	 */
 	public void setFortificationListeners() {
-		controlsGUI.countrieslistAction(new ActionListener() {
+		controlsGUI.actionForCountriesList(new ActionListener() {
 			@Override
             public void actionPerformed(ActionEvent e) {
-				String countrySelected = (String) controlsGUI.getCountrySelected();
+				String countrySelected = (String) controlsGUI.getSelectedCountry();
 				driver.fortificationNeighbourListUpdate(countrySelected);
 			}
 		});
 		
-		controlsGUI.playButtonAction(new ActionListener() {
+		controlsGUI.actionForPlayButton(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(controlsGUI.isNeighbourSelected()) {
-					driver.getArmiesShiftedAfterFortification(controlsGUI.getCountrySelected(), 
-							controlsGUI.getNeighborSelected(), controlsGUI.getArmiesValue());
+				if(controlsGUI.ifNeighbourSelected()) {
+					driver.getArmiesShiftedAfterFortification(controlsGUI.getSelectedCountry(), 
+							controlsGUI.getSelectedNeighbor(), controlsGUI.getValueForArmies());
 				}
 				driver.switchPhase();
 			}
@@ -252,31 +250,31 @@ public class ControllerForGame {
 	 * @param newNeighbourList list of neighbor counties
 	 */
 	public void updateControlsFortification(int newArmies, String[] newNeighbourList) {
-		controlsGUI.updateFortification(newArmies, newNeighbourList);
+		controlsGUI.fortificationUpdate(newArmies, newNeighbourList);
 	}
 	
 	/**
 	 * Method set the listeners to components for attack phase in controls view
 	 */
 	public void setAttackListeners() {
-		controlsGUI.countrieslistAction(new ActionListener() {
+		controlsGUI.actionForCountriesList(new ActionListener() {
 			@Override
             public void actionPerformed(ActionEvent e) {
-				String countrySelected = (String) controlsGUI.getCountrySelected();
+				String countrySelected = (String) controlsGUI.getSelectedCountry();
 				driver.attackNeighbourListUpdate(countrySelected);
 			}
 		});
 		
-		controlsGUI.playButtonAction(new ActionListener() {
+		controlsGUI.actionForPlayButton(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				if(controlsGUI.isNeighbourSelected()) {
-					driver.declareAttack(controlsGUI.getCountrySelected(),controlsGUI.getNeighborSelected());
+				if(controlsGUI.ifNeighbourSelected()) {
+					driver.declareAttack(controlsGUI.getSelectedCountry(),controlsGUI.getSelectedNeighbor());
 				}
 			}
 		});
 		
-		controlsGUI.endPhaseAction(new ActionListener() {
+		controlsGUI.actionForEndPhase(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				driver.switchPhase();
@@ -289,7 +287,7 @@ public class ControllerForGame {
 	 * @param neighbourList list of neighbor countries
 	 */
 	public void updateNeighborList(String[] neighbourList) {
-		controlsGUI.setNeighborList(neighbourList);
+		controlsGUI.putListOfNeighbours(neighbourList);
 	}
 	
 	/**
@@ -325,7 +323,7 @@ public class ControllerForGame {
 	* @param array country list
 	*/
 	public void setAttackControls(String[] array) {
-		controlsGUI.attackControls(array);
+		controlsGUI.controlsForAttack(array);
 	}
 
 	/**
@@ -333,7 +331,7 @@ public class ControllerForGame {
 	* @param array country list
 	*/
 	public void setFortificationControls(String[] array) {
-		controlsGUI.fortificationControls(array);		
+		controlsGUI.controlsFortification(array);		
 	}
 	
 	/**
@@ -346,7 +344,7 @@ public class ControllerForGame {
 				driver.saveGameToFile();
 			}
 		};
-		controlsGUI.saveGameButtonAction(this.saveGameListener);
+		controlsGUI.actionForSaveGameButton(this.saveGameListener);
 	}
 	
 }

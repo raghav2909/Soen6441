@@ -167,11 +167,10 @@ public class openingdialog {
 	 * @return country name selected.
 	 */
 	public String placeArmyDialog(String[] countryList, String message) {
-		JComboBox<String> countriesList = new JComboBox<String>(countryList);
 		String[] options = {"OK"};		
-		JOptionPane.showOptionDialog(null, countriesList, message, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null,		
+		JOptionPane.showOptionDialog(null, new JComboBox<String>(countryList), message, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null,		
 		options, options[0]);
-		String country = countryList[countriesList.getSelectedIndex()];
+		String country = countryList[new JComboBox<String>(countryList).getSelectedIndex()];
 		return country;
 	}
 	

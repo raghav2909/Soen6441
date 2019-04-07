@@ -186,7 +186,7 @@ public class openingdialog {
 		frame.setVisible(true);
 		/*JFileChooser to ask user to choose a map file.*/
 		JFileChooser jfc = new JFileChooser();
-		jfc.setCurrentDirectory(new File("./data/map"));
+		jfc.setCurrentDirectory(new File("./Soen6441/Map_Data/Map"));
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 		jfc.setFileFilter(filter);
 

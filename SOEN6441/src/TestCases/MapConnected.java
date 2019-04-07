@@ -25,7 +25,7 @@ public class MapConnected {
 	public void testisMapConnectedGragh() throws IOException{
 		FileName = ".//SOEN6441//Map_Data//test//MapTest1.map";
 		map = new Map(FileName);
-		assertTrue(map.isMapConnectedGragh());
+		assertTrue(map.isMapConnectedGraph());
 	}
 
 }

@@ -8,9 +8,6 @@ import java.util.Observable;
 
 import controllers.the_main_controller;
 import player.Player;
-import risk.model.map.NodeOfCountry;
-import risk.model.map.NodeOfMap;
-import risk.model.map.MapReader;
 import Model.*;
 
 import view.Map_Frame;
@@ -35,11 +32,11 @@ public class Map extends Observable
 	private int countryCount;
 		
 	/**
-	 * This constructor create object of MapReader class and read data from map.
+	 * This constructor create object of ReadMap class and read data from map.
 	 * @param filename address of the mapfile to be loaded.
 	 */
 	public Map(String filename) {
-		MapReader reader = new MapReader();
+		ReadMap reader = new ReadMap();
 		mapData = reader.readMap(filename);
 	}
 	

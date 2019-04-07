@@ -27,9 +27,6 @@ import Model.NodeOfMap;
 import Model.WriteMap;
 import controllers.Edit_create_Map_Controller;
 
-
-
-
 	/** class opens the JFrame view for  
 	 *  delete/add country and continent while modifying Map
 	 * @author Gursharan

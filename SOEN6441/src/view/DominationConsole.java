@@ -25,7 +25,7 @@ public class DominationConsole extends JPanel implements Observer {
 	private static final long serialVersionUID = -1084389704252002294L;
 
 	/**
-	 * Creates World Domination View on the Main frame
+	 * Creates World Domination-VIEW on the Main-frame
 	 */
 	public DominationConsole() {
 		JLabel label = new JLabel("<html><b>World Domination View</b></html>");
@@ -35,7 +35,7 @@ public class DominationConsole extends JPanel implements Observer {
 	}
 	
 	/**
-	 * Observer pattern function for Observers to update when there is a notification from the observable.
+	 * Observer-Pattern function for Observers to update it when there is a notification from the observable classes.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {

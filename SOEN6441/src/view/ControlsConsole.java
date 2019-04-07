@@ -22,7 +22,7 @@ import Model.GameDriver;
 import Model.NodeOfCountry;
 
 /**
- * class containing methods for various controls in reinforcement and fortification phase
+ * class containing methods for all controls in reinforcement and fortification phase
  * @author raghavsharda
  * @version 2.0
  */
@@ -35,14 +35,14 @@ import Model.NodeOfCountry;
 	private static final long serialVersionUID = -2537156060382941763L;
 	
 	/**
-	 * Spinner to display armies count available to the player for Reinforcement phase, Fortification phase and attack phase.
+	 * display armies count available to the player for Phases of Reinforcement Phase, Fortification and attack
 	 */
-	private JSpinner armiesSpinner;
+	private JSpinner spinnerForArmies;
 	
 	/**
-	 * Spinner to display armies count available to the player for attack phase.
+	 * Spinner to display armies count available to the player for his attack-phase.
 	 */
-	private JSpinner armiesSpinner2;
+	private JSpinner spinnerForArmies2;
 	
 	/**
 	 * ComboBox to display the countries owned by the current player.
@@ -52,7 +52,7 @@ import Model.NodeOfCountry;
 	/**
 	 * Button for the fortification phase move.
 	 */
-	private JButton playMove;
+	private JButton 	movePlayButton;
 	
 	/**
 	 * Dropdown for list of neighbors.
@@ -62,32 +62,34 @@ import Model.NodeOfCountry;
 	/**
 	 * Armies available to the player for reinforcement phase.
 	 */
-	private String armiesAvailable;
+	private String availableArmies;
 	
 	/**
 	 * Number of armies selected to move to the neighboring country for Fortification phase.
 	 */
-	private JButton addArmies;
+	private JButton ArmiesToAddButton;
 	
 	/**
 	 * Button to end a phase.
 	 */
-	private JButton endPhase;
+	private JButton endPhaseButton;
 	
 	/**
 	 * Button to save game.
 	 */
-	private JButton saveGame;
+	private JButton saveGameButton;
 	
 	/**
 	 * Constructor to display the Control section of the game for Reinforcement, Attack and Fortification phases.
 	 */
 	public ControlsConsole() {
-		JLabel label = new JLabel("Controls Here.");
+		JLabel label = new JLabel("Controls are Here.");
 		this.setLayout(new FlowLayout());
-		saveGame = new JButton("Save Game");
-		this.add(label);
+		saveGameButton = new JButton("Save Game!");
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.add(label);
+		
+		
 	}
 	
 	/**
@@ -99,29 +101,29 @@ import Model.NodeOfCountry;
 		this.removeAll();
 
 		System.out.print("Checkpoint 3");
-		armiesAvailable = "Armies Available:" + String.valueOf(armiesCount);
+		availableArmies = "Armies Available:" + String.valueOf(armiesCount);
 		System.out.println(armiesCount);
 		SpinnerModel sm = new SpinnerNumberModel(1, 1, armiesCount, 1); 
-		armiesSpinner = new JSpinner(sm);
+		spinnerForArmies = new JSpinner(sm);
 		countriesList = new JComboBox<String>(countryList);
 		countriesList.setSelectedIndex(0);
-		addArmies = new JButton("Add Armies");
+		ArmiesToAddButton = new JButton("Add Armies");
 		
-		this.add(new Label(armiesAvailable));
+		this.add(new Label(availableArmies));
 		this.add(new Label("Country"));
 		this.add(countriesList);
-		this.add(armiesSpinner);
-		this.add(addArmies);
-		this.add(saveGame);
+		this.add(spinnerForArmies);
+		this.add(ArmiesToAddButton);
+		this.add(saveGameButton);
 		this.revalidate();
 		this.repaint();
 	}
 	
 	/**
 	 * This function implements the Fortification Phase.
-	 * @param countryList String array that contains the names of the country owned by the current player.
+	 * @param countryList String array containing the names of the countries owned by the current player.
 	 */
-	public void fortificationControls(String[] countryList) {
+	public void controlsFortification(String[] countryList) {
 		this.removeAll();
 
 		countriesList = new JComboBox<String>(countryList);
@@ -129,17 +131,17 @@ import Model.NodeOfCountry;
 		
 		neighborList = new JComboBox<String>();
 		neighborList.setEnabled(false);
-		armiesSpinner = new JSpinner();
-		armiesSpinner.setEnabled(false);
-		playMove = new JButton("Move Armies");
+		spinnerForArmies = new JSpinner();
+		spinnerForArmies.setEnabled(false);
+		movePlayButton = new JButton("Move Armies");
 		
 		this.add(new Label("Country "));
 		this.add(countriesList);
 		this.add(new Label("Neighbours"));
 		this.add(neighborList);
-		this.add(armiesSpinner);
-		this.add(playMove);
-		this.add(saveGame);
+		this.add(spinnerForArmies);
+		this.add(movePlayButton);
+		this.add(saveGameButton);
 		
 		this.revalidate();
 		this.repaint();
@@ -147,79 +149,103 @@ import Model.NodeOfCountry;
 
 	/**
 	 * Play a move for fortification phase.
-	 * @param a ActionListener for the playMove button.
+	 * @param a ActionListener for the movePlayButton button.
 	 */
-	public void playButtonAction(ActionListener a) {
-		this.playMove.addActionListener(a);
+	public void actionForPlayButton(ActionListener a) {
+		this.movePlayButton.addActionListener(a);
+	}
+	/**
+	 * Sets ActionListener on countries list combobox.
+	 * @param actionNew ActionListener to be attached to the combobox.
+	 */
+	public void actionForCountriesList(ActionListener actionNew) {
+		this.countriesList.addActionListener(actionNew);
 	}
 	
 	/**
 	 * Sets ActionListener on save game button.
-	 * @param newAction ActionListener to be attached to the button.
+	 * @param actionNew ActionListener to be attached to the button.
 	 */
-	public void saveGameButtonAction(ActionListener newAction){
-		this.saveGame.addActionListener(newAction);
+	public void actionForSaveGameButton(ActionListener actionNew){
+		this.saveGameButton.addActionListener(actionNew);
 	}
 	
 	/**
 	 * Sets ActionListener on add armies button.
-	 * @param newAction ActionListener to be attached to the button.
+	 * @param actionNew ActionListener to be attached to the button.
 	 */
-	public void addArmiesButtonAction(ActionListener newAction) {
-		this.addArmies.addActionListener(newAction);
+	public void actionForAddArmiesButton(ActionListener actionNew) {
+		this.ArmiesToAddButton.addActionListener(actionNew);
 	}
 	
 	/**
 	 * Sets ActionListener on end phase button.
-	 * @param newAction ActionListener to be attached to the button.
+	 * @param actionNew ActionListener to be attached to the button.
 	 */
-	public void endPhaseAction(ActionListener newAction) {
-		this.endPhase.addActionListener(newAction);
+	public void actionForEndPhase(ActionListener actionNew) {
+		this.endPhaseButton.addActionListener(actionNew);
 	}
 	
-	/**
-	 * Sets ActionListener on countries list combobox.
-	 * @param newAction ActionListener to be attached to the combobox.
-	 */
-	public void countrieslistAction(ActionListener newAction) {
-		this.countriesList.addActionListener(newAction);
-	}
+	
 	
 	/**
 	 * Update fortification control view whenever required.
 	 * @param armies Count of the armies the player has.
 	 * @param neighbourNames List of neighbors of the country selected.
 	 */
-	public void updateFortification(int armies, String[] neighbourNames) {
-		this.armiesSpinner.setModel(new SpinnerNumberModel(1, 0, armies-1, 1));
-		this.armiesSpinner.setEnabled(true);
-		setNeighborList(neighbourNames);
+	public void fortificationUpdate(int armies, String[] neighbourNames) {
+		this.spinnerForArmies.setModel(new SpinnerNumberModel(1, 0, armies-1, 1));
+		this.spinnerForArmies.setEnabled(true);
+		putListOfNeighbours(neighbourNames);
 	}
-	
+	/**
+	 * This method reset the controls for attack phase
+	 * @param countriesNames list of countries
+	 */
+	public void controlsForAttack(String[] countriesNames) {
+		this.removeAll();
+		countriesList = new JComboBox<String>(countriesNames);
+		countriesList.setSelectedIndex(0);
+		neighborList = new JComboBox<String>();
+		neighborList.setEnabled(false);
+		movePlayButton = new JButton("Announce attack");
+		movePlayButton.setEnabled(false);
+		endPhaseButton = new JButton("Skip attack");
+		
+		this.add(new Label("Country "));
+		this.add(countriesList);
+		this.add(new Label("Neighbours"));
+		this.add(neighborList);
+		this.add(movePlayButton);
+		this.add(endPhaseButton);
+		this.add(saveGameButton);
+		this.revalidate();
+		this.repaint();
+	}
 	/**
 	 * This method set list of neighbors to neighborList combobox.
 	 * @param newNeighbourNames list of neighbors
 	 */
-	public void setNeighborList(String[] newNeighbourNames) {
+	public void putListOfNeighbours(String[] newNeighbourNames) {
 		this.neighborList.setModel(new DefaultComboBoxModel<String>(newNeighbourNames));
 		this.neighborList.setSelectedIndex(0);
 		this.neighborList.setEnabled(true);
-		this.playMove.setEnabled(true);
+		this.movePlayButton.setEnabled(true);
 	}
 	
 	/**
 	 * Gets the value of armies from the spinner.
 	 * @return integer value from the spinner.
 	 */
-	public int getArmiesValue() {
-		return (int) this.armiesSpinner.getValue();
+	public int getValueForArmies() {
+		return (int) this.spinnerForArmies.getValue();
 	}
 	
 	/**
 	 * Gets the country selected in the combobox.
 	 * @return country selected in the combobox.
 	 */
-	public String getCountrySelected() {
+	public String getSelectedCountry() {
 		return (String) this.countriesList.getSelectedItem();
 	}
 
@@ -227,7 +253,7 @@ import Model.NodeOfCountry;
 	 * Gets the neighbor selected in the combobox.
 	 * @return neighbor selected in the combobox.
 	 */
-	public String getNeighborSelected() {
+	public String getSelectedNeighbor() {
 		return (String) this.neighborList.getSelectedItem();
 	}
 	
@@ -235,33 +261,10 @@ import Model.NodeOfCountry;
 	 * Checks if neighbor list combobox is enabled or not.
 	 * @return boolean value depending on the combobox enabled or not.
 	 */
-	public boolean isNeighbourSelected() {
+	public boolean ifNeighbourSelected() {
 		return this.neighborList.isEnabled();
 	}
 	
-	/**
-	 * This method reset the controls for attack phase
-	 * @param countriesNames list of countries
-	 */
-	public void attackControls(String[] countriesNames) {
-		this.removeAll();
-		countriesList = new JComboBox<String>(countriesNames);
-		countriesList.setSelectedIndex(0);
-		neighborList = new JComboBox<String>();
-		neighborList.setEnabled(false);
-		playMove = new JButton("Announce attack");
-		playMove.setEnabled(false);
-		endPhase = new JButton("Skip attack");
-		
-		this.add(new Label("Country "));
-		this.add(countriesList);
-		this.add(new Label("Neighbours"));
-		this.add(neighborList);
-		this.add(playMove);
-		this.add(endPhase);
-		this.add(saveGame);
-		this.revalidate();
-		this.repaint();
-	}
+	
 		
 }

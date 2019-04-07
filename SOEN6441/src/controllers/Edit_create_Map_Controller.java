@@ -24,7 +24,7 @@ import view.*;
  * and choosing map file action.
  * @see MapSelection
  * @author raghavsharda
- * @author gursharan
+ * @author gursharandeep
  */
 public class Edit_create_Map_Controller {
 

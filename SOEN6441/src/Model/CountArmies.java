@@ -5,34 +5,35 @@ package Model;
  * according to the number of players.
  * @author YashNarra
  */
-public enum ArmyCount {
+public enum CountArmies {
 	
 	InitialArmiesCount{
 		public int getArmiesCount(int n){
-			int armies = 0;
+			int armiescount = 0;
 			switch(n){
 				case 2:
-					armies = 40;
+					armiescount = 40;
 					break;
 				case 3:
-					armies = 35;
+					armiescount = 35;
 					break;
 				case 4:
-					armies = 30;
+					armiescount = 30;
 					break;
 				case 5:
-					armies = 25;
+					armiescount = 25;
 					break;
 				case 6:
-					armies = 20;
+					armiescount = 20;
 					break;
 			}
-			return armies;
+			return armiescount;
 		}
 	};
 	
 	/**
-	 * Abstract method for Risk Data enum to get number of armies given based on number of players
+	 * Abstract method for Risk Data enum to get number of armies given 
+	 * based on number of players
 	 * @param n number of players
 	 * @return number of armies each player gets
 	 */

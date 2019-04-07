@@ -21,6 +21,7 @@ import view.openingdialog;
 /**
  * MVC - Controller that controls the interaction between models and view.
  * @author raghavsharda
+ * @author gursharandeep
  */
 public class ControllerForGame {
 	

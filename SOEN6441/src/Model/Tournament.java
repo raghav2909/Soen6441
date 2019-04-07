@@ -1,15 +1,15 @@
 package Model;
 
 import controllers.ControllerForGame;
-import controllers.the_main_controller;
+import controllers.TheMainController;
 
-public class Tournoment implements Mode {
+public class Tournament implements Mode {
 
 	
 	/**
 	 * mController varaiable for storing the reference of class the_main_controller
 	 */
-	private the_main_controller mController;
+	private TheMainController mController;
 	
 	/**
 	 * Number of games to be played on each map;
@@ -50,11 +50,11 @@ public class Tournoment implements Mode {
 	 *  Constructor for Tournoment class.
 	 *  @param newController object of the_main_controller class.
 	 */
-	public Tournoment(the_main_controller newController) {
+	public Tournament(TheMainController newController) {
 		this.mController = newController;
 	}
 
-	public Tournoment(int gamesCount, String[] mapDetails, String[][] playerBehaviorDetails, int movesCount, the_main_controller newController) {
+	public Tournament(int gamesCount, String[] mapDetails, String[][] playerBehaviorDetails, int movesCount, TheMainController newController) {
 		mController = newController;
 		games = gamesCount;
 		maps = mapDetails;
@@ -99,8 +99,8 @@ public class Tournoment implements Mode {
 	public static void main(String[] arg) {
 		String[][] myPs = {{"Gur","aggressive"},{"Raj","aggressive"}};
 		String[] maps = {"D:\\Gurpreet\\Study\\Meng\\SEM6\\SOEN6441\\project\\World2005.map","D:\\Gurpreet\\Study\\Meng\\SEM6\\SOEN6441\\project\\World2005.bmp"};
-		Tournoment s = new Tournoment(2,maps, myPs, 10, the_main_controller.getInstance());
-		the_main_controller.getInstance().setMode(s);
+		Tournament s = new Tournament(2,maps, myPs, 10, TheMainController.getInstance());
+		TheMainController.getInstance().setMode(s);
 		s.start();
 	}
 	

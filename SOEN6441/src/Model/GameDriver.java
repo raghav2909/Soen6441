@@ -14,7 +14,7 @@ import java.util.Observable;
 import java.util.Random;
 
 import controllers.ControllerForGame;
-import controllers.the_main_controller;
+import controllers.TheMainController;
 import player.AActionStrategy;
 import player.BActionStrategy;
 import player.CActionStrategy;
@@ -583,7 +583,7 @@ public class GameDriver extends Observable {
 		nottifyObservers("GameOver");
 		controller.removeAllControls();
 		System.out.print("Winner "+winner);
-		the_main_controller.getInstance().notifyGameResult(winner);
+		TheMainController.getInstance().notifyGameResult(winner);
 	}
 	
 	/**

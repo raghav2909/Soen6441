@@ -7,13 +7,13 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-import controllers.the_main_controller;
+import controllers.TheMainController;
 
 
 
 public class Single implements Mode{
 
-	private the_main_controller mController;
+	private TheMainController mController;
 	private static String myMap;
 	private String myBmp;
 	private String[][] myPlayers;
@@ -28,7 +28,7 @@ public class Single implements Mode{
 	 * @param moveLimit number of moves allowed.
 	 * @param nController the_mainController object.
 	 */
-	public Single(String map, String bmp, String[][] players, int moveLimit, the_main_controller nController) {
+	public Single(String map, String bmp, String[][] players, int moveLimit, TheMainController nController) {
 		mController = nController;
 		myMap = map;
 		myBmp = bmp;
@@ -39,7 +39,7 @@ public class Single implements Mode{
 	/**
 	* constructor for initialzing the instance variables.
 	*/
-	public Single(String map, String[][] players, int moveLimit, the_main_controller nController) {
+	public Single(String map, String[][] players, int moveLimit, TheMainController nController) {
 		mController = nController;
 		myMap = map;
 		myPlayers = players;

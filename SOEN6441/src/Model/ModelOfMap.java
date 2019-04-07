@@ -1,5 +1,5 @@
 package Model;
-import controllers.the_main_controller;
+import controllers.TheMainController;
 import player.Player;
 
 import Model.*;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Hashtable;
-import controllers.the_main_controller;
+import controllers.TheMainController;
 
 /**
  * contains main logic functionality behind map editor

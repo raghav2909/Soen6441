@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import Model.Card;
+import Model.GameDriver;
 import player.Player;
 
 
@@ -58,7 +60,7 @@ public class CardsConsole extends JPanel implements Observer {
 		this.removeAll();
 		/*Cards exchange Dialog Box.*/
 		String cards = "";
-		for (risk.model.Card card : player.getCards()){ 
+		for (Card card : player.getCards()){ 
 			cards += (card.getName()+",");
 		}
 		int cardExchange = JOptionPane.showConfirmDialog (null, cards,"Warning",JOptionPane.YES_OPTION);

@@ -59,7 +59,7 @@ public class ModelOfMap {
 	 * Initializes the continent list with existing continents in the map file. 
 	 * @param continents ArrayList of NodeOfMap containing continents.
 	 */
-	public void writeExistingMap(ArrayList<NodeOfMap> continents) {
+	public void existingMapWriter(ArrayList<NodeOfMap> continents) {
 		this.continents = continents;
 	}
 	
@@ -68,11 +68,11 @@ public class ModelOfMap {
 	 * @param cn receives the continent to be checked for uniqueness.
 	 * @return true if the continent already exist.
 	 */
-	public boolean checkContinentExist(String cn) {
+	public boolean checkContinentExistence(String cn) {
 		Boolean continentExist = false;
 		for (NodeOfMap con: continents){
 			/*if the continent with same name is found, return true*/
-			if(con.getContinentName().compareTo(cn)==0){
+			if(con.getNameOfContinent().compareTo(cn)==0){
 				continentExist = true;
 			}
 		}
@@ -101,7 +101,7 @@ public class ModelOfMap {
 	 * function to implement validations before saving the map file.
 	 * @return true if map is valid.
 	 */
-	public boolean checkOnSaveMap() {
+	public boolean checkSavedMap() {
 		Boolean saveMap = true;
 		for (NodeOfMap i :continents) {
 			//a map file with zero countries cannot be saved.
@@ -123,7 +123,7 @@ public class ModelOfMap {
 	public boolean connectedMap() {
 		for (NodeOfMap mapNode : continents) {
 			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				countryTable.put(cNode.getCountryName(), false);
+				countryTable.put(cNode.getNameOfCountry(), false);
 			}
 		}
 		/* Get the first country from the hashtable*/
@@ -145,7 +145,7 @@ public class ModelOfMap {
 		for (NodeOfMap mapNode : continents) {
 			continentTable.clear();
 			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				continentTable.put(cNode.getCountryName(), false);
+				continentTable.put(cNode.getNameOfCountry(), false);
 			}
 			/*Get the first country from the hashtable for the current continent*/
 			String firstCountry = continentTable.keySet().iterator().next();
@@ -167,7 +167,7 @@ public class ModelOfMap {
 		
 		for (NodeOfMap mapNode : continents) {
 			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				if(cNode.getCountryName().compareTo(f)==0) {
+				if(cNode.getNameOfCountry().compareTo(f)==0) {
 					/* get the list of all possible neighbors.*/
 			        Iterator<NodeOfCountry> i = cNode.getNeighbours().listIterator();
 			        while (i.hasNext())
@@ -175,9 +175,9 @@ public class ModelOfMap {
 			        	/*pick a neighbor for this country*/
 			        	NodeOfCountry n = i.next();
 			        	/*if this neighbor belongs to the same continent, then recur*/
-			        	if(continentTable.containsKey(n.getCountryName())) {
-				            if (continentTable.get(n.getCountryName())==false)
-				            	searchForUnconnectedContinent(n.getCountryName());
+			        	if(continentTable.containsKey(n.getNameOfCountry())) {
+				            if (continentTable.get(n.getNameOfCountry())==false)
+				            	searchForUnconnectedContinent(n.getNameOfCountry());
 			        	}
 			            
 			        }
@@ -196,15 +196,15 @@ public class ModelOfMap {
         countryTable.put(s, true);
         for (NodeOfMap mapNode : continents) {
 			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				if(cNode.getCountryName().compareTo(s)==0) {
+				if(cNode.getNameOfCountry().compareTo(s)==0) {
 					/* Recur for all the connected neighbor countries*/
 			        Iterator<NodeOfCountry> i = cNode.getNeighbours().listIterator();
 			        while (i.hasNext())
 			        {
 			            NodeOfCountry n = i.next();
 			            try {
-			            	if (countryTable.get(n.getCountryName())==false)
-			            		search(n.getCountryName());
+			            	if (countryTable.get(n.getNameOfCountry())==false)
+			            		search(n.getNameOfCountry());
 			            }catch(NullPointerException e) {
 			            }
 			        }
@@ -219,7 +219,7 @@ public class ModelOfMap {
 	 */
 	public void saveMapFile() {
 		mapWriter.writeMap(continents);
-		newFilePath = mapWriter.getMapFilePath();
+		newFilePath = mapWriter.getMapPath();
 	}
 	
 	/**
@@ -227,8 +227,8 @@ public class ModelOfMap {
 	 * @param path receives the path of the existing map file.
 	 */
 	public void saveToExistingMapFile(String path) {
-		mapWriter.writeMapExisting(continents, path);
-		existingFilePath = mapWriter.getMapFilePath();
+		mapWriter.existingMapWriter(continents, path);
+		existingFilePath = mapWriter.getMapPath();
 	}
 	
 	/**
@@ -275,7 +275,7 @@ public class ModelOfMap {
 		for (NodeOfMap node: continents) {
 			for (NodeOfCountry country : node.getCountries()) {
 				/*if country with same name is found, return true*/
-				if(country.getCountryName().compareTo(cn1)==0) {
+				if(country.getNameOfCountry().compareTo(cn1)==0) {
 					countryExist=true;
 				}
 			}

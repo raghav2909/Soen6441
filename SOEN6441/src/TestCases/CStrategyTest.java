@@ -115,20 +115,20 @@ public class CStrategyTest {
 		mapData.add(continent1);
 		player1 = new Player("Player1", 15, countries, driver);
 		player2 = new Player("Player2", 10, countries1, driver);
-		player1.setTurnTrue();
-		player2.setTurnFalse();
-		driver.setPlayerList(player1);
-		driver.setPlayerList(player2);
-		driver.setCurrentPlayer(player1);
+		player1.setTrue();
+		player2.setFalse();
+		driver.setListOfPlayer(player1);
+		driver.setListOfPlayer(player2);
+		driver.setCurrent(player1);
 		StrategyOfPlayer cheater = new CActionStrategy(driver);
 		player1.setStrategy(cheater);
 		player2.setStrategy(new RActionStrategy(driver));
 		country1.addArmy(4);
 		country2.addArmy(6);
 		country3.addArmy(3);
-		driver.getCurrentPlayer().setArmies(driver.getCurrentPlayer().getArmies());
-		((CActionStrategy) cheater).reinforcement(driver.getCurrentPlayer().getCountriesNames());
-		assertEquals(6, country3.getArmiesCount());
+		driver.getCurrent().setArmies(driver.getCurrent().getNumberOfArmies());
+		((CActionStrategy) cheater).reinforcement(driver.getCurrent().getNameOfCountries());
+		assertEquals(6, country3.getConutOfArmies());
 		
 		
 	}
@@ -149,11 +149,11 @@ public class CStrategyTest {
 		mapData.add(continent1);
 		player1 = new Player("Player1", 15, countries, driver);
 		player2 = new Player("Player2", 10, countries1, driver);
-		player1.setTurnTrue();
-		player2.setTurnFalse();
-		driver.setPlayerList(player1);
-		driver.setPlayerList(player2);
-		driver.setCurrentPlayer(player1);
+		player1.setTrue();
+		player2.setFalse();
+		driver.setListOfPlayer(player1);
+		driver.setListOfPlayer(player2);
+		driver.setCurrent(player1);
 		StrategyOfPlayer cheater = new CActionStrategy(driver);
 		player1.setStrategy(cheater);
 		player2.setStrategy(new RActionStrategy(driver));
@@ -161,11 +161,11 @@ public class CStrategyTest {
 		country2.addArmy(6);
 		country3.addArmy(4);
 		ArrayList<String> countriesList = new ArrayList<String>();
-		for(NodeOfCountry c : driver.getCurrentPlayer().getCountries()) {
-			if(c.getArmiesCount()>1) {
+		for(NodeOfCountry c : driver.getCurrent().getCountries()) {
+			if(c.getConutOfArmies()>1) {
 				for(NodeOfCountry n: c.getNeighbourCountries()) {
-					if(!n.getOwner().equals(driver.getCurrentPlayer())) {
-						countriesList.add(c.getCountryName());
+					if(!n.getOwner().equals(driver.getCurrent())) {
+						countriesList.add(c.getNameOfCountry());
 						break;
 					}
 				}
@@ -173,7 +173,7 @@ public class CStrategyTest {
 		}
 		
 		((CActionStrategy) cheater).fortify(countriesList);
-		assertEquals(8,country3.getArmiesCount());
+		assertEquals(8,country3.getConutOfArmies());
 	}
 	
 	@Test
@@ -184,7 +184,7 @@ public class CStrategyTest {
 			countries[i] = "country" + i;
 		}
 		StrategyOfPlayer aggressive = new AActionStrategy(driver);
-		String value = ((AActionStrategy) aggressive).placeArmy(countries, "player1");
+		String value = ((AActionStrategy) aggressive).armyPlacing(countries, "player1");
 		for (String country: countries) {
 			if (country.equals(value)) {
 				count++;

@@ -43,7 +43,7 @@ public class NodeOfCountryTest {
 	@Test
 	public void testGetCountries() {
 		NodeOfCountry actual = NodeOfCountry.getCountry(list, "India");
-		assertEquals(in.getCountryName(),actual.getCountryName());
+		assertEquals(in.getNameOfCountry(),actual.getNameOfCountry());
 	}
 
 }

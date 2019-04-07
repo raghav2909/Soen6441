@@ -97,7 +97,7 @@ public class GameDriver extends Observable {
 	 */
 	public GameDriver() {
 		turnManager = new GameTurnDriver("Reinforcement", this);
-		cards = Card.generateCardPile();
+		cards = Card.cardPileGenerator();
 	}
 
 	/**
@@ -112,25 +112,25 @@ public class GameDriver extends Observable {
 	 * Starts the game.
 	 * @param playerData String array to store elements of player name and type.
 	 */
-	public void runGame(String[][] playerData) {
+	public void startGame(String[][] playerData) {
 		nottifyObservers("Startup phase: ");
-		createPlayers(playerData);
+		playerCreation(playerData);
 		startUpPhase();
-		turnManager.startTurn(this.currentPlayer);
+		turnManager.startFromReinforcement(this.currentPlayer);
 	}
 	
 	/**
 	 * Create player objects
 	 * @param playerData name of players
 	 */
-	public void createPlayers(String[][] playerData) {
+	public void playerCreation(String[][] playerData) {
 		players = new ArrayList<Player>();
 		for(int i=0; i < playerData.length; i++){
 			Player temp = new Player(playerData[i][0],ArmyCount.InitialArmiesCount.getArmiesCount(playerData.length), this);
 			temp.setMapData(map.getMapData());
-			temp.setStrategy(createBehavior(playerData[i][1]));
+			temp.setStrategy(behaviorCreation(playerData[i][1]));
 			players.add(temp);
-			nottifyObservers("Player created and  added "+temp.getName());
+			nottifyObservers("Player created and  added "+temp.getPlayerName());
 		}
 	}
 	
@@ -139,7 +139,7 @@ public class GameDriver extends Observable {
 	 * @param strategy strategy for which object is required
 	 * @return object of StrategyOfPlayer
 	 */
-	public StrategyOfPlayer createBehavior(String strategy) {
+	public StrategyOfPlayer behaviorCreation(String strategy) {
 			StrategyOfPlayer pStrategy = null;
 			if(strategy.equals("human")){
 				pStrategy = new HActionStrategy(this);
@@ -164,15 +164,15 @@ public class GameDriver extends Observable {
 	 * @see #updateMap()
 	 */
 	public void startUpPhase() {
-		dividingCountries(map.getMapData());
-		updatePlayerView();
+		allocatingCountries(map.getMapData());
+		updatePlayerConsole();
 		/*Distribute armies to countries as per player's choice.*/
-		int totalArmiesDiv = players.get(0).getArmiesCount();
+		int totalArmiesDiv = players.get(0).getCountOfArmies();
 		for(int i1=0;i1<totalArmiesDiv ;i1++){
 			for(Player p: players){
-				String s = p.placeArmyOnStartUp();
+				String s = p.placeArmy();
 				p.getCountry(s).addArmy(1);
-				nottifyObservers(p.getName()+" placed 1 army on "+s);
+				nottifyObservers(p.getPlayerName()+" placed 1 army on "+s);
 				p.removeArmies(1);
 			}
 		}
@@ -184,8 +184,8 @@ public class GameDriver extends Observable {
 	 * @see notifyObservers
 	 * @param mapData arraylist containing NodeOfMap Objects representing continents
 	 */
-	public void dividingCountries(ArrayList<NodeOfMap> mapData) {
-		players.get(0).setTurnTrue();
+	public void allocatingCountries(ArrayList<NodeOfMap> mapData) {
+		players.get(0).setTrue();
 		this.currentPlayer = players.get(0);
 		nottifyObservers("Player "+players.get(0)+" has first turn");
 		int i = 0;
@@ -204,11 +204,11 @@ public class GameDriver extends Observable {
 	/**
 	 * This method show players information on GUI.
 	 */
-	public void updatePlayerView() {
+	public void updatePlayerConsole() {
 		String[] playerNames = new String[players.size()];
 		int i=0;
 		for(Player p: players){
-			playerNames[i] = p.getName();
+			playerNames[i] = p.getPlayerName();
 			i++;
 		}
 	}
@@ -217,25 +217,25 @@ public class GameDriver extends Observable {
 	 * Gets the player with the current turn.
 	 * @return current player 
 	 */
-	public Player getCurrentPlayer() {
+	public Player getCurrent() {
 		return this.currentPlayer;
 	}
 
 	/**
 	 * Sets the next player's turn.
 	 */
-	public void setNextPlayerTurn() {
-		int currentPlayerIndex = players.indexOf(getCurrentPlayer());
-		this.currentPlayer.setTurnFalse();
+	public void setNextPlayer() {
+		int currentPlayerIndex = players.indexOf(getCurrent());
+		this.currentPlayer.setFalse();
 		if (currentPlayerIndex == players.size()-1){
 			moveCounter();
 			this.currentPlayer = players.get(0);
 		}else{
 			this.currentPlayer = players.get(currentPlayerIndex+1);
 		}
-		this.currentPlayer.setTurnTrue();
-		nottifyObservers("Turn changed to "+ this.currentPlayer.getName());
-		this.getCurrentPlayer().setArmies(this.getCurrentPlayer().getArmies());
+		this.currentPlayer.setTrue();
+		nottifyObservers("Turn changed to "+ this.currentPlayer.getPlayerName());
+		this.getCurrent().setArmies(this.getCurrent().getNumberOfArmies());
 	}
 	
 	/**
@@ -243,9 +243,9 @@ public class GameDriver extends Observable {
 	 * @param countryname Name of the country.
 	 * @return Neighbors of the country.
 	 */
-	public String [] getNeighbourCountryNames(String countryname) {
-		for(NodeOfCountry country: getCurrentPlayer().getCountries()){
-			if(country.getCountryName().equals(countryname)){
+	public String [] getNameOfNeighbors(String countryname) {
+		for(NodeOfCountry country: getCurrent().getCountries()){
+			if(country.getNameOfCountry().equals(countryname)){
 				return country.getNeighbourCountriesString();
 			}
 		}
@@ -256,16 +256,16 @@ public class GameDriver extends Observable {
 	 * Gets the army count of the current player.
 	 * @return army count of the current player.
 	 */
-	public int getPlayerArmies() {
-		return getCurrentPlayer().getArmiesCount();
+	public int getArmiesOfPlayer() {
+		return getCurrent().getCountOfArmies();
 	}
 
 	/**
 	 * Gives the countries owned by a player.
 	 * @return The list of country nodes.
 	 */
-	public ArrayList<NodeOfCountry> getPlayerCountries() {
-		return getCurrentPlayer().getCountries();
+	public ArrayList<NodeOfCountry> getCountriesOfPlayer() {
+		return getCurrent().getCountries();
 	}
 
 	/**
@@ -274,8 +274,8 @@ public class GameDriver extends Observable {
 	 * @return list of neighbor countries.
 	 */
 	public NodeOfCountry [] getNeighbourCountries(NodeOfCountry countrynode) {
-		for(NodeOfCountry country: getCurrentPlayer().getCountries()){
-			if(country.getCountryName().equals(countrynode.getCountryName())){
+		for(NodeOfCountry country: getCurrent().getCountries()){
+			if(country.getNameOfCountry().equals(countrynode.getNameOfCountry())){
 				return country.getNeighbourCountries();
 			}
 		}
@@ -311,8 +311,8 @@ public class GameDriver extends Observable {
 	 * Delegate method to call method from GameTurnDriver class to change between phases.
 	 * @see #updateMap()
 	 */
-	public void changePhase() {
-		turnManager.changePhase();
+	public void switchPhase() {
+		turnManager.switchPhase();
 		updateMap();
 	}
 	
@@ -343,7 +343,7 @@ public class GameDriver extends Observable {
 	 * Adds the new player to the arraylist of players.
 	 * @param newPlayer Player object.
 	 */
-	public void setPlayerList(Player newPlayer){
+	public void setListOfPlayer(Player newPlayer){
 		if(this.players==null) {
 			this.players = new ArrayList<Player>();
 		}
@@ -359,7 +359,7 @@ public class GameDriver extends Observable {
 	public void shiftArmiesOnReinforcement(String countrySelected, int armies) {
 		if(this.currentPlayer.shiftArmiesOnReinforcement(countrySelected, armies)==0) {
 			nottifyObservers(getGameTurnDriver().getPhase());
-			changePhase();
+			switchPhase();
 		}
 		else {
 			nottifyObservers(getGameTurnDriver().getPhase());
@@ -374,9 +374,9 @@ public class GameDriver extends Observable {
 	 */
 	public void fortificationNeighbourListUpdate(String countrySelected) {
 		NodeOfCountry countrySelect = this.currentPlayer.getCountry(countrySelected);
-		if(countrySelect.getArmiesCount()>1) {
+		if(countrySelect.getConutOfArmies()>1) {
 			ArrayList<String> neighborList = map.getPlayerNeighbourCountries(countrySelect,this.currentPlayer,true);
-			controller.updateControlsFortification(countrySelect.getArmiesCount(), neighborList.toArray(new String[neighborList.size()])); 
+			controller.updateControlsFortification(countrySelect.getConutOfArmies(), neighborList.toArray(new String[neighborList.size()])); 
 		}
 	}
 	
@@ -404,7 +404,7 @@ public class GameDriver extends Observable {
 	 */
 	public void attackNeighbourListUpdate(String countrySelected) {
 		NodeOfCountry countrySelect = this.currentPlayer.getCountry(countrySelected);
-		if(countrySelect.getArmiesCount()>1) {
+		if(countrySelect.getConutOfArmies()>1) {
 			ArrayList<String> neighborList = map.getPlayerNeighbourCountries(countrySelect,this.currentPlayer,false);
 			controller.updateNeighborList(neighborList.toArray(new String[neighborList.size()]));
 		}
@@ -415,15 +415,15 @@ public class GameDriver extends Observable {
 	 * @param attackerCountry country attacking
 	 * @param defenderCountry country defending against attack
 	 */
-	public void announceAttack(String attackerCountry, String defenderCountry) {
+	public void declareAttack(String attackerCountry, String defenderCountry) {
 		nottifyObservers("Attack announced Attacker Country: "+attackerCountry+"  Defender Country: "+defenderCountry);
 		/*Announce attack on phase view.*/
 		NodeOfCountry dCountry = map.getCountry(defenderCountry);
 		Player defender = dCountry.getOwner();
 		NodeOfCountry aCountry = currentPlayer.getCountry(attackerCountry);
 		/*Show dialog boxes and get input from attacker and defender on how many dice to roll.*/
-		int aArmies = this.currentPlayer.selectDiceForAttack(attackerCountry);
-		int dArmies = defender.selectDiceForAttack(defenderCountry);
+		int aArmies = this.currentPlayer.selectDice(attackerCountry);
+		int dArmies = defender.selectDice(defenderCountry);
 		/*Rolling dice for attacker and defender.*/
 		ArrayList<Integer> aResults = diceRoll(aArmies);
 		ArrayList<Integer> dResults = diceRoll(dArmies);
@@ -437,30 +437,30 @@ public class GameDriver extends Observable {
 		}
 		nottifyObservers(s);
 		battle(dCountry, defender, aCountry, aArmies, dArmies, aResults, dResults);
-		nottifyObservers("Armies left in attacker Country "+ aCountry.getCountryName()+" "+aCountry.getArmiesCount());
-		nottifyObservers("Armies left in defender Country "+ dCountry.getCountryName()+" "+dCountry.getArmiesCount());
+		nottifyObservers("Armies left in attacker Country "+ aCountry.getNameOfCountry()+" "+aCountry.getConutOfArmies());
+		nottifyObservers("Armies left in defender Country "+ dCountry.getNameOfCountry()+" "+dCountry.getConutOfArmies());
 		/*check if defender country has armies left.*/
-		if(dCountry.getArmiesCount()==0) {
+		if(dCountry.getConutOfArmies()==0) {
 			dCountry.setOwner(currentPlayer);
 			turnManager.setWonCard(true);
 			/*Notify change in ownership of a country.*/
-			nottifyObservers("Country "+ dCountry.getCountryName() +" won by " + dCountry.getOwner().getName() + ", new armies "+dCountry.getArmiesCount());
+			nottifyObservers("Country "+ dCountry.getNameOfCountry() +" won by " + dCountry.getOwner().getPlayerName() + ", new armies "+dCountry.getConutOfArmies());
 			/*move countries from attacker country to new acquired country.*/
-			int moveArmies = currentPlayer.moveArmies(aArmies, aCountry.getArmiesCount()-1, "Select armies to move:");
+			int moveArmies = currentPlayer.moveArmies(aArmies, aCountry.getConutOfArmies()-1, "Select armies to move:");
 			dCountry.addArmy(moveArmies);
-			aCountry.removeArmies(moveArmies);
-			if(map.continentWonByPlayer(currentPlayer, dCountry)) {
-				nottifyObservers("Player "+ currentPlayer.getName() +" conquered " + dCountry.getContinent());
+			aCountry.removedArmies(moveArmies);
+			if(map.continentPlayerWon(currentPlayer, dCountry)) {
+				nottifyObservers("Player "+ currentPlayer.getPlayerName() +" conquered " + dCountry.getContinent());
 				currentPlayer.addContinent(dCountry.getContinent());
 			}
 		}
 		map.updateMap();
 		setPlayerOut(defender);
-		if(!checkGameState()) {
+		if(!checkStateOfGame()) {
 			continuePhase();
 		}
 		else {
-			announceGameOver(players.get(0).getName());
+			callGameOver(players.get(0).getPlayerName());
 		}
 	}
 	
@@ -481,13 +481,13 @@ public class GameDriver extends Observable {
 			int aMax = max(aResults);
 			int dMax = max(dResults);
 			if(aResults.get(aMax)>dResults.get(dMax)) {
-				dCountry.removeArmy();
+				dCountry.removedArmy();
 				/*Show army removed from defender country.*/
-				nottifyObservers("Battle "+i+" result : Winner Country: "+aCountry.getCountryName()+" Army removed from "+ dCountry.getCountryName());
+				nottifyObservers("Battle "+i+" result : Winner Country: "+aCountry.getNameOfCountry()+" Army removed from "+ dCountry.getNameOfCountry());
 			}
 			else {
-				aCountry.removeArmy();
-				nottifyObservers("Battle result : Winner Country: "+dCountry.getCountryName()+" Army removed from "+ aCountry.getCountryName());
+				aCountry.removedArmy();
+				nottifyObservers("Battle result : Winner Country: "+dCountry.getNameOfCountry()+" Army removed from "+ aCountry.getNameOfCountry());
 				
 			}
 			aResults.remove(aMax);
@@ -500,7 +500,7 @@ public class GameDriver extends Observable {
 	 * This method declares the game end if all the countries are owned by one player only.
 	 * @return true if game if over, false if there is at least two players own at least one country on map
 	 */
-	public boolean checkGameState() {
+	public boolean checkStateOfGame() {
 		if(players.size()<2) {
 			turnManager.setGameOver(true);
 			return true;
@@ -563,8 +563,8 @@ public class GameDriver extends Observable {
 	 * This method returns the number of countries owned by current player.
 	 * @return countries owned by current player
 	 */
-	public int getCurrentplayerCountryCount(){
-		return getCurrentPlayer().getPlayerCountryCount();
+	public int getCountOfCurrentCountries(){
+		return getCurrent().getCountPlayerCountries();
 	}
 	
 	/**
@@ -579,7 +579,7 @@ public class GameDriver extends Observable {
 	 * Call Phase View to show game over.
 	 * @param winner Name of the winner or Draw if no winner.
 	 */
-	public void announceGameOver(String winner) {
+	public void callGameOver(String winner) {
 		nottifyObservers("GameOver");
 		controller.removeAllControls();
 		System.out.print("Winner "+winner);
@@ -590,7 +590,7 @@ public class GameDriver extends Observable {
 	 * If a player wins a territory during a attack, at the end of the attack phase one card 
 	 * is removed from pile and given to player.
 	 */
-	public void issueCard() {
+	public void cardIssued() {
 		this.currentPlayer.addCard(cards.remove(0));
 	}
 
@@ -598,7 +598,7 @@ public class GameDriver extends Observable {
 	 * Set current player
 	 * @param player1 player to be set as current player
 	 */
-	public void setCurrentPlayer(Player player1) {
+	public void setCurrent(Player player1) {
 		this.currentPlayer = player1;
 	}
 
@@ -640,7 +640,7 @@ public class GameDriver extends Observable {
 		if(moveLimit!=0) {
 			if(moveCounter==moveLimit) {
 				turnManager.setGameOver(true);
-				announceGameOver("draw");
+				callGameOver("draw");
 				return false;
 			}
 			else {
@@ -667,7 +667,7 @@ public class GameDriver extends Observable {
 	}
 	
 	
-	public void saveGameDataToFile() {   
+	public void saveGameToFile() {   
 		
 	    try {
 	    	String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
@@ -676,24 +676,24 @@ public class GameDriver extends Observable {
 	        ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);   
 	        
 	        /*Map file path.*/
-	        objectStream.writeObject(Single.getMapName());
+	        objectStream.writeObject(Single.getNameOfMap());
 	        
 	        /*Number of players.*/
 	        objectStream.writeObject(players.size());
 	        
 	        /*Player data.*/
 	        for(Player player: this.players){
-		        objectStream.writeObject(player.getName());
+		        objectStream.writeObject(player.getPlayerName());
 		        objectStream.writeObject(player.getStrategyOfPlayer());
 		        objectStream.writeObject(player.getCountries().size());
 		        for(NodeOfCountry country: player.getCountries()){
-		        	objectStream.writeObject(country.getCountryName());
-		        	objectStream.writeObject(country.getArmiesCount());
+		        	objectStream.writeObject(country.getNameOfCountry());
+		        	objectStream.writeObject(country.getConutOfArmies());
 		        }
 	        }
 	        
 	        /*Current player.*/
-	        objectStream.writeObject(getCurrentPlayer().getName());
+	        objectStream.writeObject(getCurrent().getPlayerName());
 	        
 	        /*Current phase.*/
 	        objectStream.writeObject(turnManager.getPhase()+"\n");

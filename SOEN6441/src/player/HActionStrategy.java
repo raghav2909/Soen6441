@@ -28,12 +28,12 @@ public class HActionStrategy implements StrategyOfPlayer{
 		driver.setFortificationLiteners();
 	}
 
-	public String placeArmy(String[] countries, String name) {
+	public String armyPlacing(String[] countries, String name) {
 		return (String) driver.placeArmyDialog(countries, name+" Place your army");
 	}
 
 	@Override
-	public int selectDiceNumber(int diceToRoll, String pName) {
+	public int selectNumberOfDice(int diceToRoll, String pName) {
 		return driver.setUpBoxInput(1, diceToRoll, pName+"! Please select number of dice to roll.");
 	}
 
@@ -43,7 +43,7 @@ public class HActionStrategy implements StrategyOfPlayer{
 	}
 
 	@Override
-	public String getStrategyName() {
+	public String getNameOfStrategy() {
 		return "human";
 	}
 

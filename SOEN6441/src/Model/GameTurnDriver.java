@@ -52,8 +52,8 @@ public class GameTurnDriver {
 	 * This method starts the turn from reinforcement phase
 	 * @param currentPlayer player having first turn
 	 */
-	public void startTurn(Player currentPlayer) {
-		currentPlayer.setArmies(this.getCurrentPlayer().getArmies());
+	public void startFromReinforcement(Player currentPlayer) {
+		currentPlayer.setArmies(this.getCurrent().getNumberOfArmies());
 		currentPlayer.reinforcementPhase();
 	}
 	
@@ -61,29 +61,29 @@ public class GameTurnDriver {
 	 * Function to switch between different phases and notify observers. Also if a player win a territory during attack phase
 	 * calls <code>issueCard()</code> method from <code>GameDriver</code>.
 	 */
-	public void changePhase() {
+	public void switchPhase() {
 		if(!isGameOver()) {
 			if(this.getPhase().equals("Reinforcement")) {
 				this.setPhase("Attack");
-				getCurrentPlayer().attackPhase();
+				getCurrent().attackPhase();
 			}
 			else if(this.getPhase().equals("Attack")) {
 				if(wonCard) {
-					driver.issueCard();
+					driver.cardIssued();
 					wonCard = false;
 				}
 				this.setPhase("Fortification");
-				getCurrentPlayer().fortificationPhase();
+				getCurrent().fortificationPhase();
 			}
 			else if(this.getPhase().equals("Fortification")) {
-				driver.setNextPlayerTurn();
+				driver.setNextPlayer();
 				if(!isGameOver()) {
 					this.setPhase("Reinforcement");
-					getCurrentPlayer().reinforcementPhase();
+					getCurrent().reinforcementPhase();
 				}
 			}
 			else {
-				driver.announceGameOver(getCurrentPlayer().getName());
+				driver.callGameOver(getCurrent().getPlayerName());
 			}
 		}
 	}
@@ -92,8 +92,8 @@ public class GameTurnDriver {
 	 * Returns the current player object.
 	 * @return current player.
 	 */
-	private Player getCurrentPlayer() {
-		return driver.getCurrentPlayer();
+	private Player getCurrent() {
+		return driver.getCurrent();
 	}
 
 	/**
@@ -102,13 +102,13 @@ public class GameTurnDriver {
 	public void continuePhase() {
 		if(!isGameOver()) {
 			if(this.getPhase().equals("Reinforcement")) {
-				getCurrentPlayer().reinforcementPhase();
+				getCurrent().reinforcementPhase();
 			}
 			else if(this.getPhase().equals("Attack")) {
-				getCurrentPlayer().attackPhase();
+				getCurrent().attackPhase();
 			}
 			else if(this.getPhase().equals("Fortification")) {
-				getCurrentPlayer().fortificationPhase();
+				getCurrent().fortificationPhase();
 			}
 		}
 	}

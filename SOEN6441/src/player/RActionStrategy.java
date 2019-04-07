@@ -44,7 +44,7 @@ public class RActionStrategy implements StrategyOfPlayer {
 		countAttacks = 0;
 		reinforcement(armies, countryList);
 		driver.nottifyObservers("Random Player has reinforced a random country");
-		driver.changePhase();
+		driver.switchPhase();
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class RActionStrategy implements StrategyOfPlayer {
 	@Override
 	public void attackPhase(ArrayList<String> countryList) {
 		NodeOfCountry randomCountry = driver.getCountry(countryList.get(new Random().nextInt(countryList.size())));
-		if(randomCountry.getArmiesCount() > 1 && randomAttacknumber > countAttacks){
+		if(randomCountry.getConutOfArmies() > 1 && randomAttacknumber > countAttacks){
 			countAttacks++;
 			NodeOfCountry aCountry = randomCountry;
 			
@@ -63,16 +63,16 @@ public class RActionStrategy implements StrategyOfPlayer {
 			NodeOfCountry dCountry = null;
 			Collections.shuffle(aCountry.getNeighbours());
 			for (NodeOfCountry neighbour : aCountry.getNeighbours()) {
-				if (!neighbour.getOwner().getName().equals(driver.getCurrentPlayer().getName())) {
+				if (!neighbour.getOwner().getPlayerName().equals(driver.getCurrent().getPlayerName())) {
 					dCountry = neighbour;
 					break;
 				}
 			}
-			driver.announceAttack(aCountry.getCountryName(), dCountry.getCountryName());
+			driver.declareAttack(aCountry.getNameOfCountry(), dCountry.getNameOfCountry());
 		}		
 		else{
 			driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
-			driver.changePhase();
+			driver.switchPhase();
 		}
 
 	}
@@ -85,19 +85,19 @@ public class RActionStrategy implements StrategyOfPlayer {
 	public void fortificationPhase(ArrayList<String> countryList) {
 		fortify(countryList);
 		driver.nottifyObservers("Random player has fortified a random country");
-		driver.changePhase();
+		driver.switchPhase();
 	}
 
 	/**
 	 * Distribute armies in startup phase.
 	 */
 	@Override
-	public String placeArmy(String[] strings, String string) {
+	public String armyPlacing(String[] strings, String string) {
 		return strings[new Random().nextInt(strings.length)];
 	}
 
 	@Override
-	public int selectDiceNumber(int diceToRoll, String pName) {
+	public int selectNumberOfDice(int diceToRoll, String pName) {
 		return diceToRoll;
 	}
 
@@ -107,30 +107,30 @@ public class RActionStrategy implements StrategyOfPlayer {
 	}
 
 	@Override
-	public String getStrategyName() {
+	public String getNameOfStrategy() {
 		return "random";
 	}
 	
 	public void reinforcement(int armies, String[] countryList) {
 		randomAttacknumber = new Random().nextInt(6);
 		String country = countryList[new Random().nextInt(countryList.length)];
-		driver.getCurrentPlayer().shiftArmiesOnReinforcement(country, armies);
+		driver.getCurrent().shiftArmiesOnReinforcement(country, armies);
 	}
 	
 	public void fortify(ArrayList<String> countryList) {
 		ArrayList<NodeOfCountry> countries = new ArrayList<NodeOfCountry>() ;
 		for (String countryName : countryList) {
-			if (driver.getCountry(countryName).getArmiesCount() > 1) {
+			if (driver.getCountry(countryName).getConutOfArmies() > 1) {
 				countries.add(driver.getCountry(countryName));
 			}
 		}
 		NodeOfCountry country = countries.get(new Random ().nextInt(countries.size()));
-		int armies = new Random().nextInt(country.getArmiesCount()+1)-1;
+		int armies = new Random().nextInt(country.getConutOfArmies()+1)-1;
 		if (armies == 0) {
 			armies = 1;
 		}
 		NodeOfCountry neighbour = country.getNeighbours().get(new Random().nextInt(country.getNeighbours().size()));
-		driver.getCurrentPlayer().getArmiesShiftedAfterFortification(country.getCountryName(), neighbour.getCountryName(), armies);
+		driver.getCurrent().getArmiesShiftedAfterFortification(country.getNameOfCountry(), neighbour.getNameOfCountry(), armies);
 	}
 
 

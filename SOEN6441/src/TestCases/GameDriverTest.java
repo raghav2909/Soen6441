@@ -104,11 +104,11 @@ public class GameDriverTest {
 		country3.addArmy(1);
 		country4.addArmy(1);
 		country5.addArmy(1);
-		player1.setTurnTrue();
-		player2.setTurnFalse();
-		driver.setPlayerList(player1);
-		driver.setPlayerList(player2);
-		driver.setCurrentPlayer(player1);
+		player1.setTrue();
+		player2.setFalse();
+		driver.setListOfPlayer(player1);
+		driver.setListOfPlayer(player2);
+		driver.setCurrent(player1);
 		ArrayList<Integer> aResults = new ArrayList<Integer>();
 		aResults.add(4);
 		aResults.add(2);
@@ -119,7 +119,7 @@ public class GameDriverTest {
 		country1.addArmy(3);
 		country4.addArmy(1);
 		driver.battle(country4, player2, country1, 3, 2, aResults, dResults);
-		assertEquals(0, country4.getArmiesCount());
+		assertEquals(0, country4.getConutOfArmies());
 	}
 	
 	/**
@@ -141,11 +141,11 @@ public class GameDriverTest {
 		country3.addArmy(1);
 		country4.addArmy(1);
 		country5.addArmy(1);
-		player1.setTurnTrue();
-		player2.setTurnFalse();
-		driver.setPlayerList(player1);
-		driver.setPlayerList(player2);
-		driver.setCurrentPlayer(player1);
+		player1.setTrue();
+		player2.setFalse();
+		driver.setListOfPlayer(player1);
+		driver.setListOfPlayer(player2);
+		driver.setCurrent(player1);
 		ArrayList<Integer> aResults = new ArrayList<Integer>();
 		aResults.add(4);
 		aResults.add(2);
@@ -169,8 +169,8 @@ public class GameDriverTest {
 		mapData.add(m);
 		String[][] playerData = {{"Player3","human"},{"Player4","human"}};
 //		driver.getMap().setMapData(mapData);
-		driver.createPlayers(playerData);
-		driver.dividingCountries(mapData);
-		assertEquals(2,driver.getCurrentPlayer().getPlayerCountryCount());
+		driver.playerCreation(playerData);
+		driver.allocatingCountries(mapData);
+		assertEquals(2,driver.getCurrent().getCountPlayerCountries());
 	}
 }

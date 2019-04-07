@@ -37,7 +37,7 @@ public class Map extends Observable
 	 */
 	public Map(String filename) {
 		ReadMap reader = new ReadMap();
-		mapData = reader.mapRead(filename);
+		mapData = reader.readingMap(filename);
 	}
 	
 	/** 
@@ -52,18 +52,18 @@ public class Map extends Observable
 	 * Return map data.
 	 * @return multidimensional array containing map data.
 	 */
-	public String[][] getMapDataObject() {
+	public String[][] getObjectOfMapData() {
 		ArrayList<Object[]> newData = new ArrayList<Object[]>();
 		for(NodeOfMap m : mapData){
 			for(NodeOfCountry n : m.getCountries()){
 				String[] tempObject = new String[5];
-				tempObject[1] = n.getCountryName();
+				tempObject[1] = n.getNameOfCountry();
 				if(n.getOwner()!=null){
-					tempObject[3] = n.getOwner().getName();
+					tempObject[3] = n.getOwner().getPlayerName();
 				}else{
 					tempObject[3] = "";
 				}
-				tempObject[2] = String.valueOf(n.getArmiesCount());
+				tempObject[2] = String.valueOf(n.getConutOfArmies());
 				newData.add(tempObject);
 				tempObject[0] = Integer.toString(n.getCoordinates()[0]);
 				tempObject[4] = Integer.toString(n.getCoordinates()[1]);
@@ -76,14 +76,14 @@ public class Map extends Observable
 	 * Return map data
 	 * @return multidimensional array containing map data.
 	 */
-	public String[][] getMapObject() {
+	public String[][] getObjectOfMap() {
 		ArrayList<Object[]> newData = new ArrayList<Object[]>();
 		for(NodeOfMap m : mapData){
 			for(NodeOfCountry n : m.getCountries()){
 				
 				String[] tempObject = new String[5];
-				tempObject[0] = m.getContinentName() +", "+ m.getControlValue();
-				tempObject[1] = n.getCountryName();
+				tempObject[0] = m.getNameOfContinent() +", "+ m.getValue();
+				tempObject[1] = n.getNameOfCountry();
 				String neighbours = "";
 				for(String s: n.getNeighbourCountriesString()){
 					neighbours = neighbours + s + ", ";
@@ -91,11 +91,11 @@ public class Map extends Observable
 				
 				tempObject[4] = neighbours;
 				if(n.getOwner()!=null){
-					tempObject[3] = n.getOwner().getName();
+					tempObject[3] = n.getOwner().getPlayerName();
 				}else{
 					tempObject[3] = "";
 				}
-				tempObject[2] = String.valueOf(n.getArmiesCount());
+				tempObject[2] = String.valueOf(n.getConutOfArmies());
 				newData.add(tempObject);
 			}
 		}
@@ -105,8 +105,8 @@ public class Map extends Observable
 	/**
 	 * Print map data on console.
 	 */
-	public void mapConsolePrint() {
-		Object[][] map = this.getMapDataObject();
+	public void printMapConsole() {
+		Object[][] map = this.getObjectOfMapData();
 		for(Object[] m : map){
 			System.out.println("Continent Name: "+m[0]);
 			System.out.println("\tCountry Name: "+m[1]+", Neighbours: "+m[4]+", Owner: "+m[3]+", Armies: "+m[2]);
@@ -184,12 +184,12 @@ public class Map extends Observable
 		for (NodeOfCountry country : newCountry.getNeighbourCountries()){
 			if(flag) {
 				if (country.getOwner().equals(newPlayer)){
-					playerNeighbourCountries.add(country.getCountryName());
+					playerNeighbourCountries.add(country.getNameOfCountry());
 				}
 			}
 			else {
 				if(!country.getOwner().equals(newPlayer)) {
-					playerNeighbourCountries.add(country.getCountryName());
+					playerNeighbourCountries.add(country.getNameOfCountry());
 				}
 			}
 		}
@@ -204,7 +204,7 @@ public class Map extends Observable
 	public NodeOfCountry getCountry(String countryName) {
 		NodeOfCountry c = null;
 		for(NodeOfMap m: this.mapData) {
-			c = NodeOfCountry.getCountry(m.getCountryList(), countryName);
+			c = NodeOfCountry.getCountry(m.getListOfCountries(), countryName);
 			if(c!=null) {
 				break;
 			}
@@ -216,10 +216,10 @@ public class Map extends Observable
 	 * Returns the number of countries in map
 	 * @return number of countries in map
 	 */
-	public int getCountryCount(){
+	public int getCountOfCountries(){
 		this.countryCount = 0;
 		for (NodeOfMap continent : this.mapData){
-			countryCount += continent.getCountriesCount();
+			countryCount += continent.getCountOfCountries();
 		}
 		return this.countryCount;
 	}
@@ -230,7 +230,7 @@ public class Map extends Observable
 	 * @param country a country from continent to be checked
 	 * @return true if continent belongs to player, false if continent not belongs to player
 	 */
-	public boolean continentWonByPlayer(Player player,NodeOfCountry country) {
+	public boolean continentPlayerWon(Player player,NodeOfCountry country) {
 		NodeOfMap m = country.getContinent();	
 		for(NodeOfCountry c : m.getCountries()) {
 			if(c.getOwner()!=player) {
@@ -246,7 +246,7 @@ public class Map extends Observable
 	 * Set map Data to mapData
 	 * @param mapData2 ArrayList of NodeOfMap objects
 	 */
-	public void setMapData(ArrayList<NodeOfMap> mapData2) {
+	public void setDataOfMap(ArrayList<NodeOfMap> mapData2) {
 		this.mapData = mapData2;
 		
 	}

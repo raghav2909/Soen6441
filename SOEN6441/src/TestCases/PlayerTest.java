@@ -144,7 +144,7 @@ public class PlayerTest {
 	 */
 	@Test
 	public void testGetArmies() {
-		assertEquals(3,testPlayer.getArmies());
+		assertEquals(3,testPlayer.getNumberOfArmies());
 		testPlayer.addCountry(new NodeOfCountry("test", null, null, null));
 		testPlayer.addCountry(new NodeOfCountry("test2", null, null, null));
 		testPlayer.addCountry(new NodeOfCountry("test3", null, null, null));
@@ -153,7 +153,7 @@ public class PlayerTest {
 		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
 		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
 		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
-		assertEquals(4,testPlayer.getArmies());
+		assertEquals(4,testPlayer.getNumberOfArmies());
 	}
 	
 	/**
@@ -165,7 +165,7 @@ public class PlayerTest {
 		testPlayer.setArmies(10);
 		int left = testPlayer.shiftArmiesOnReinforcement("Country1", 4);
 		assertEquals(6, left);
-		assertEquals(4, country1.getArmiesCount());
+		assertEquals(4, country1.getConutOfArmies());
 	}
 	
 	/**
@@ -176,7 +176,7 @@ public class PlayerTest {
 		country1.addArmy(1);
 		country2.addArmy(7);
 		country4.addArmy(3);
-		assertEquals("Country3",testPlayer.getCountriesNamesNoArmy()[0]);
+		assertEquals("Country3",testPlayer.getEmptyCountries()[0]);
 	}
 	
 	/**
@@ -186,7 +186,7 @@ public class PlayerTest {
 	public void testGetArmiesShiftedAfterFortification() {
 		country1.setArmies(3);
 		country2.setArmies(1);
-		assertEquals(3,testPlayer.getArmiesShiftedAfterFortification(country1.getCountryName(), country2.getCountryName(), 2));
+		assertEquals(3,testPlayer.getArmiesShiftedAfterFortification(country1.getNameOfCountry(), country2.getNameOfCountry(), 2));
 	}
 	
 	/**
@@ -195,7 +195,7 @@ public class PlayerTest {
 	@Test
 	public void testHaveInfantryCard() {
 		testPlayer.addCard(card2);
-		assertTrue(testPlayer.haveInfantryCard());
+		assertTrue(testPlayer.isInfantryCards());
 	}
 	
 	/**
@@ -204,7 +204,7 @@ public class PlayerTest {
 	@Test
 	public void testHaveCavalryCard() {
 		testPlayer.addCard(card3);
-		assertTrue(testPlayer.haveCavalryCard());
+		assertTrue(testPlayer.isCavalryCards());
 	}
 	
 	/**
@@ -213,7 +213,7 @@ public class PlayerTest {
 	@Test
 	public void testHaveArtilleryCard() {
 		testPlayer.addCard(card1);
-		assertTrue(testPlayer.haveArtilleryCard());
+		assertTrue(testPlayer.isArtilleryCards());
 	}
 	
 	/**
@@ -224,7 +224,7 @@ public class PlayerTest {
 		testPlayer.addCard(card1);
 		testPlayer.addCard(card2);
 		testPlayer.addCard(card3);
-		assertTrue(testPlayer.haveDistinctCards());
+		assertTrue(testPlayer.isDistincsCards());
 	}
 	
 	/**
@@ -235,7 +235,7 @@ public class PlayerTest {
 		testPlayer.addCard(card1);
 		testPlayer.addCard(card4);
 		testPlayer.addCard(card5);
-		assertTrue(testPlayer.haveThreeArtilleryCards());
+		assertTrue(testPlayer.isThreeArtillery());
 	}
 	
 	/**
@@ -246,7 +246,7 @@ public class PlayerTest {
 		testPlayer.addCard(card3);
 		testPlayer.addCard(card6);
 		testPlayer.addCard(card7);
-		assertTrue(testPlayer.haveThreeCavalryCards());
+		assertTrue(testPlayer.isThreeCavalry());
 	}
 	
 	/**
@@ -257,7 +257,7 @@ public class PlayerTest {
 		testPlayer.addCard(card2);
 		testPlayer.addCard(card8);
 		testPlayer.addCard(card9);
-		assertTrue(testPlayer.haveThreeInfantryCards());
+		assertTrue(testPlayer.isThreeInfantry());
 	}
 	
 	/**
@@ -268,7 +268,7 @@ public class PlayerTest {
 		testPlayer.addCard(card2);
 		testPlayer.addCard(card8);
 		testPlayer.addCard(card9);
-		assertTrue(testPlayer.haveThreeSameTypeCards());
+		assertTrue(testPlayer.isSameThree());
 	}
 	
 	/**
@@ -292,7 +292,7 @@ public class PlayerTest {
 		testPlayer.addCard(card4);
 		testPlayer.addCard(card5);
 		testPlayer.addCard(card2);
-		testPlayer.removeSimilarThreeCards();
+		testPlayer.removingSimilarThreeCards();
 		assertEquals(1, testPlayer.getCards().size());
 	}	
 	

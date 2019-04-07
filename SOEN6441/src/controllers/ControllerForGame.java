@@ -115,7 +115,7 @@ public class ControllerForGame {
 		playerInfoGUI = new PlayerConsole();
 		playerInfoGUI.setPlayerInfo(playerNames);
 		init();
-		driver.runGame(playerNames);
+		driver.startGame(playerNames);
 	}
 	
 	/**
@@ -132,7 +132,7 @@ public class ControllerForGame {
 		playerInfoGUI = new PlayerConsole();
 		playerInfoGUI.setPlayerInfo(playerNames);
 		init();
-		driver.runGame(playerNames);
+		driver.startGame(playerNames);
 	}
 	
 	/**
@@ -162,11 +162,11 @@ public class ControllerForGame {
 				j++;
 			}
 			Player player = new Player(players[i][0], 0, list, driver);
-			player.setStrategy(driver.createBehavior(players[i][1]));
-			if(player.getName().equals(currentPlayer)){
-				driver.setCurrentPlayer(player);
+			player.setStrategy(driver.behaviorCreation(players[i][1]));
+			if(player.getPlayerName().equals(currentPlayer)){
+				driver.setCurrent(player);
 			}
-			driver.setPlayerList(player);
+			driver.setListOfPlayer(player);
 			i++;
 		}
 
@@ -174,7 +174,7 @@ public class ControllerForGame {
 		init();
 		driver.getGameTurnDriver().setPhase(phaseName);
 		if(phaseName.trim().equals("Reinforcement")){
-			driver.getCurrentPlayer().assignArmies(driver.getCurrentPlayer().getArmies());
+			driver.getCurrent().assignArmies(driver.getCurrent().getNumberOfArmies());
 		}
 		driver.continuePhase();
 	}
@@ -241,7 +241,7 @@ public class ControllerForGame {
 					driver.getArmiesShiftedAfterFortification(controlsGUI.getCountrySelected(), 
 							controlsGUI.getNeighborSelected(), controlsGUI.getArmiesValue());
 				}
-				driver.changePhase();
+				driver.switchPhase();
 			}
 		});
 	}
@@ -271,7 +271,7 @@ public class ControllerForGame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if(controlsGUI.isNeighbourSelected()) {
-					driver.announceAttack(controlsGUI.getCountrySelected(),controlsGUI.getNeighborSelected());
+					driver.declareAttack(controlsGUI.getCountrySelected(),controlsGUI.getNeighborSelected());
 				}
 			}
 		});
@@ -279,7 +279,7 @@ public class ControllerForGame {
 		controlsGUI.endPhaseAction(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				driver.changePhase();
+				driver.switchPhase();
 			}
 		});
 	}
@@ -343,7 +343,7 @@ public class ControllerForGame {
 		saveGameListener = new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				driver.saveGameDataToFile();
+				driver.saveGameToFile();
 			}
 		};
 		controlsGUI.saveGameButtonAction(this.saveGameListener);

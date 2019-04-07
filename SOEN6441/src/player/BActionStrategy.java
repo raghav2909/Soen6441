@@ -30,7 +30,7 @@ public class BActionStrategy implements StrategyOfPlayer{
 	public void reinforcementPhase(int armies, String[] countryList) {
 		reinforcement(armies, countryList);
 		driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
-		driver.changePhase();
+		driver.switchPhase();
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class BActionStrategy implements StrategyOfPlayer{
 	public void attackPhase(ArrayList<String> countryList) {
 		/*skip attack phase.*/
 		driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
-		driver.changePhase();
+		driver.switchPhase();
 	}
 	
 	/**
@@ -52,14 +52,14 @@ public class BActionStrategy implements StrategyOfPlayer{
 	public void fortificationPhase(ArrayList<String> countryList) {
 		fortify(countryList);
 		driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
-		driver.changePhase();
+		driver.switchPhase();
 	}
 
 	/**
 	 * Distribute armies in startup phase.
 	 */
 	@Override
-	public String placeArmy(String[] strings, String string) {
+	public String armyPlacing(String[] strings, String string) {
 		return strings[new Random().nextInt(strings.length)];
 	}
 	
@@ -73,14 +73,14 @@ public class BActionStrategy implements StrategyOfPlayer{
 
 			@Override
 			public int compare(NodeOfCountry o1, NodeOfCountry o2) {
-				return o1.getArmiesCount() - o2.getArmiesCount();
+				return o1.getConutOfArmies() - o2.getConutOfArmies();
 			}
 		});
 		return countryList;
 	}
 
 	@Override
-	public int selectDiceNumber(int diceToRoll, String pName) {
+	public int selectNumberOfDice(int diceToRoll, String pName) {
 		
 		return diceToRoll;
 	}
@@ -91,7 +91,7 @@ public class BActionStrategy implements StrategyOfPlayer{
 	}
 	
 	@Override
-	public String getStrategyName() {
+	public String getNameOfStrategy() {
 		return "benevolent";
 	}
 
@@ -110,7 +110,7 @@ public class BActionStrategy implements StrategyOfPlayer{
 		ArrayList<NodeOfCountry> weakCountryList = new ArrayList<NodeOfCountry>();
 		weakCountryList.add(countries.get(0));
 		for(int i= 1; i < countries.size(); i++){
-			if(countries.get(i).getArmiesCount() == countries.get(i-1).getArmiesCount()){
+			if(countries.get(i).getConutOfArmies() == countries.get(i-1).getConutOfArmies()){
 				weakCountryList.add(countries.get(i));
 				countOfWeakCountries++;
 			}
@@ -118,18 +118,18 @@ public class BActionStrategy implements StrategyOfPlayer{
 				break;
 			}
 		}
-		Player player = driver.getCurrentPlayer();
+		Player player = driver.getCurrent();
 		
 		/*get the integer round-off of the armies to be alloted to each weak country.*/
 		int armiesToBeReinforced = (int)(armies/countOfWeakCountries);
 		for( NodeOfCountry country: weakCountryList){
-			driver.getCurrentPlayer().shiftArmiesOnReinforcement(country.getCountryName(), armiesToBeReinforced);
+			driver.getCurrent().shiftArmiesOnReinforcement(country.getNameOfCountry(), armiesToBeReinforced);
 //			country.addArmy(armiesToBeReinforced);
 //			player.removeArmies(armiesToBeReinforced);
 		}
 		
 		/*Move the armies remaining into the first weakest country in the list.*/
-		int playerArmiesLeft = player.getArmiesCount();
+		int playerArmiesLeft = player.getCountOfArmies();
 				
 		if(!(playerArmiesLeft == 0)){
 			weakCountryList.get(0).addArmy(playerArmiesLeft);
@@ -150,8 +150,8 @@ public class BActionStrategy implements StrategyOfPlayer{
 		/*fortify the weakest country.*/
 		NodeOfCountry weakest = countries.get(0);
 		NodeOfCountry strongest = countries.get(countries.size()-1);
-		int average = (int)(weakest.getArmiesCount() + strongest.getArmiesCount()) / 2;
-		driver.getCurrentPlayer().getArmiesShiftedAfterFortification(strongest.getCountryName(), weakest.getCountryName(), average);
+		int average = (int)(weakest.getConutOfArmies() + strongest.getConutOfArmies()) / 2;
+		driver.getCurrent().getArmiesShiftedAfterFortification(strongest.getNameOfCountry(), weakest.getNameOfCountry(), average);
 	}
 
 

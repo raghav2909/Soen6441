@@ -47,7 +47,7 @@ public class NodeOfMap {
 	 * return ArrayList of countries in the continent
 	 * @return countries ArrayList containing countries of this continent.
 	 */
-	public ArrayList<NodeOfCountry> getCountryList(){
+	public ArrayList<NodeOfCountry> getListOfCountries(){
 		return this.countries;
 	}
 	
@@ -55,7 +55,7 @@ public class NodeOfMap {
 	 * return name of continent.
 	 * @return String continent name
 	 */
-	public String getContinentName() {
+	public String getNameOfContinent() {
 		return this.continentName;
 	}
 	
@@ -71,7 +71,7 @@ public class NodeOfMap {
 	 * return control value for this continent
 	 * @return integer control value of continent
 	 */
-	public int getControlValue() {
+	public int getValue() {
 		return this.controlValue;
 	}
 	
@@ -110,7 +110,7 @@ public class NodeOfMap {
 	public boolean equals(Object o) {
 		if(o instanceof NodeOfMap) {
 			NodeOfMap temp = (NodeOfMap) o;
-			if(temp.getContinentName()==this.continentName && temp.controlValue == this.controlValue) {
+			if(temp.getNameOfContinent()==this.continentName && temp.controlValue == this.controlValue) {
 				if(temp.countries.size()==this.countries.size()) {
 					for(int i=0;i<this.getCountries().length;i++) {
 						if(!this.getCountries()[i].equals(temp.getCountries()[i])) {
@@ -128,8 +128,8 @@ public class NodeOfMap {
 	 * Gives the number of countries in the Continent.
 	 * @return the country count of the continent.
 	 */
-	public int getCountriesCount(){
-		this.countriesCount = getCountryList().size();
+	public int getCountOfCountries(){
+		this.countriesCount = getListOfCountries().size();
 		return this.countriesCount;
 		
 	}

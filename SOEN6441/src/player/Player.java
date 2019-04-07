@@ -135,7 +135,7 @@ public class Player
 	 * return name of the player.
 	 * @return name of player in string format.
 	 */
-	public String getName() {
+	public String getPlayerName() {
 		return this.name;
 	}
 	
@@ -162,10 +162,10 @@ public class Player
 	 * Gets the list of countries owned by the player.
 	 * @return list of country names
 	 */
-	public String[] getCountriesNames() {
+	public String[] getNameOfCountries() {
 		String[] names = new String[this.countries.size()];
 		for(int i=0;i<names.length;i++){
-			names[i] = this.countries.get(i).getCountryName();
+			names[i] = this.countries.get(i).getNameOfCountry();
 			System.out.println(names[i]);
 		}
 		return names;
@@ -175,11 +175,11 @@ public class Player
 	 * Gives the countries owned by the player having no armies.
 	 * @return list of country names with no army.
 	 */
-	public String[] getCountriesNamesNoArmy(){
+	public String[] getEmptyCountries(){
 		ArrayList<String> names = new ArrayList<String>();
 		for(NodeOfCountry c : this.countries){
-			if(c.getArmiesCount()==0)
-				names.add(c.getCountryName());
+			if(c.getConutOfArmies()==0)
+				names.add(c.getNameOfCountry());
 		}
 		return names.toArray(new String[names.size()]);
 	}
@@ -230,11 +230,11 @@ public class Player
 	public void checkContinent() {
 		for (NodeOfMap continent : this.mapData) {
 			System.out.println("Inside ForLoop");
-			System.out.println(continent.getContinentName());
-			if (this.countries.containsAll(continent.getCountryList())) {
+			System.out.println(continent.getNameOfContinent());
+			if (this.countries.containsAll(continent.getListOfCountries())) {
 				System.out.println("Inside If Stametment");
 				addContinent(continent);
-				System.out.println("Added" + continent.getContinentName());
+				System.out.println("Added" + continent.getNameOfContinent());
 			}
 		}
 	}
@@ -243,7 +243,7 @@ public class Player
 	 * Calculates the armies to be alloted to the player at each turn.
 	 * @return army count
 	 */
-	public int getArmies() {
+	public int getNumberOfArmies() {
 		checkContinent();
 		int countriesCount = this.countries.size();
 		int continentsCount = this.continents.size();
@@ -255,7 +255,7 @@ public class Player
 		if (continentsCount > 0) {
 			continentsCount = 0;
 			for (NodeOfMap continent : this.continents){
-				continentsCount =+ continent.getControlValue();
+				continentsCount =+ continent.getValue();
 			}
 		}
 		armyCount += continentsCount;
@@ -284,7 +284,7 @@ public class Player
 	 * Gives the number of armies the player has.
 	 * @return number of armies player has.
 	 */
-	public int getArmiesCount() {
+	public int getCountOfArmies() {
 		return this.armiesCount;
 	}
 	
@@ -300,14 +300,14 @@ public class Player
 	/**
 	 * Sets player turn to true
 	 */
-	public void setTurnTrue() {
+	public void setTrue() {
 		this.turn = true;
 	}
 	
 	/**
 	 * Sets player turn to false
 	 */
-	public void setTurnFalse() {
+	public void setFalse() {
 		this.turn = false;
 	}
 	
@@ -332,7 +332,7 @@ public class Player
 	 */
 	public void reinforcementPhase(){
 		System.out.print("Checkpoint 1");
-		strategy.reinforcementPhase(armiesCount, getCountriesNames());
+		strategy.reinforcementPhase(armiesCount, getNameOfCountries());
 	}
 	
 	/**
@@ -341,17 +341,17 @@ public class Player
 	public void attackPhase(){
 		ArrayList<String> countriesList = new ArrayList<String>();
 		for(NodeOfCountry c : this.countries) {
-			if(c.getArmiesCount()>1) {
+			if(c.getConutOfArmies()>1) {
 				for(NodeOfCountry n: c.getNeighbourCountries()) {
 					if(!n.getOwner().equals(this)) {
-						countriesList.add(c.getCountryName());
+						countriesList.add(c.getNameOfCountry());
 						break;
 					}
 				}
 			}
 		}
 		if(countriesList.isEmpty()) {
-			driver.changePhase();
+			driver.switchPhase();
 		}
 		else {
 			strategy.attackPhase(countriesList);
@@ -364,10 +364,10 @@ public class Player
 	public void fortificationPhase(){
 		ArrayList<String> countriesList = new ArrayList<String>();
 		for(NodeOfCountry c : this.countries) {
-			if(c.getArmiesCount()>1) {
+			if(c.getConutOfArmies()>1) {
 				for(NodeOfCountry n: c.getNeighbourCountries()) {
 					if(n.getOwner().equals(this)) {
-						countriesList.add(c.getCountryName());
+						countriesList.add(c.getNameOfCountry());
 						break;
 					}
 				}
@@ -375,7 +375,7 @@ public class Player
 		}
 		if(countriesList.isEmpty()) {
 			driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
-			driver.changePhase();
+			driver.switchPhase();
 		}
 		else {
 			strategy.fortificationPhase(countriesList);
@@ -406,16 +406,16 @@ public class Player
 	public int getArmiesShiftedAfterFortification(String sCountry, String sNeighbour, int selectedArmies){
 		this.countrySelect = getCountry(sCountry);
 		this.neighbourC = getCountry(sNeighbour);
-		countrySelect.setArmies(countrySelect.getArmiesCount()-selectedArmies);
-		neighbourC.setArmies(neighbourC.getArmiesCount() + selectedArmies);
-		return neighbourC.getArmiesCount();
+		countrySelect.setArmies(countrySelect.getConutOfArmies()-selectedArmies);
+		neighbourC.setArmies(neighbourC.getConutOfArmies() + selectedArmies);
+		return neighbourC.getConutOfArmies();
 	}
 	
 	/**
 	 * Get the country selected to move armies from.
 	 * @return country selected to move armies from.
 	 */
-	public NodeOfCountry getCountrySelected(){
+	public NodeOfCountry getSelectedCountry(){
 		return this.countrySelect;
 	}
 	
@@ -423,7 +423,7 @@ public class Player
 	 * Get the neighbour selected to move armies to.
 	 * @return neighbour selected to move armies to.
 	 */
-	public NodeOfCountry getNeighbourSelected(){
+	public NodeOfCountry getSelectedNeighbour(){
 		return this.neighbourC;
 	}
 	
@@ -432,9 +432,9 @@ public class Player
 	 * @param country country selected as attacking or attacked
 	 * @return number of dice to roll
 	 */
-	public int selectDiceForAttack(String country) {
+	public int selectDice(String country) {
 		NodeOfCountry aCountry = getCountry(country);
-		int aArmies = aCountry.getArmiesCount();
+		int aArmies = aCountry.getConutOfArmies();
 		if(turn && aArmies>4) {
 			aArmies = 3;
 		}
@@ -444,14 +444,14 @@ public class Player
 		else if(aArmies>2) {
 			aArmies = 2;
 		}
-		return this.strategy.selectDiceNumber(aArmies,name);
+		return this.strategy.selectNumberOfDice(aArmies,name);
 	}
 	
 	/**
 	 * Get the number of countries owned by player.
 	 * @return number of countries owned by player
 	 */
-	public int getPlayerCountryCount(){
+	public int getCountPlayerCountries(){
 		return getCountries().size();
 	}
 
@@ -459,7 +459,7 @@ public class Player
 	 * This methods returns value of lost attribute. 
 	 * @return value of lost
 	 */
-	public boolean getPlayerState() {
+	public boolean getStateOfPlayer() {
 		return lost;
 	}
 	
@@ -467,7 +467,7 @@ public class Player
 	 * This method set value of lost attribute.
 	 * @param value Boolean value for lost attribute.
 	 */
-	public void setPlayerState(boolean value) {
+	public void setStateOfPlayer(boolean value) {
 		this.lost = value;
 
 	}
@@ -483,9 +483,9 @@ public class Player
 	 * Checks if player have Infantry Card
 	 * @return true if player have Infantry Card otherwise false
 	 */
-	public boolean haveInfantryCard(){
+	public boolean isInfantryCards(){
 		for (Card card: this.cards){
-			if (card.getName().equals("Infantry")){
+			if (card.getCardName().equals("Infantry")){
 				return true;
 			}
 		}
@@ -496,9 +496,9 @@ public class Player
 	 * Checks if player have Cavalry Card
 	 * @return true if player have Cavalry Card otherwise false
 	 */
-	public boolean haveCavalryCard(){
+	public boolean isCavalryCards(){
 		for (Card card: this.cards){
-			if (card.getName().equals("Cavalry")){
+			if (card.getCardName().equals("Cavalry")){
 				return true;
 			}
 		}
@@ -509,9 +509,9 @@ public class Player
 	 * Checks if player have Artillery Card
 	 * @return true if player have Artillery Card otherwise false
 	 */
-	public boolean haveArtilleryCard(){
+	public boolean isArtilleryCards(){
 		for (Card card: this.cards){
-			if (card.getName().equals("Artillery")){
+			if (card.getCardName().equals("Artillery")){
 				return true;
 			}
 		}
@@ -522,8 +522,8 @@ public class Player
 	 * Checks if player have Infantry, Artillery and Cavalry Cards
 	 * @return true if player have Infantry, Artillery and Cavalry Cards otherwise false
 	 */
-	public boolean haveDistinctCards(){
-		if (this.haveInfantryCard() && this.haveArtilleryCard() && this.haveCavalryCard()){
+	public boolean isDistincsCards(){
+		if (this.isInfantryCards() && this.isArtilleryCards() && this.isCavalryCards()){
 			return true;
 		}
 		else{
@@ -535,10 +535,10 @@ public class Player
 	 * Checks if player have three Artillery cards
 	 * @return true if player have three Artillery cards otherwise false
 	 */
-	public boolean haveThreeArtilleryCards(){
+	public boolean isThreeArtillery(){
 		int artillery = 0;
 		for (Card card :this.cards){
-			if (card.getName().equals("Artillery")){
+			if (card.getCardName().equals("Artillery")){
 				artillery++;
 			}
 		}
@@ -555,10 +555,10 @@ public class Player
 	 * Checks if player have three Cavalry cards
 	 * @return true if player have three Cavalry cards otherwise false
 	 */
-	public boolean haveThreeCavalryCards(){
+	public boolean isThreeCavalry(){
 		int cavalry = 0;
 		for (Card card :this.cards){
-			if (card.getName().equals("Cavalry")){
+			if (card.getCardName().equals("Cavalry")){
 				cavalry++;
 			}
 		}
@@ -575,10 +575,10 @@ public class Player
 	 * Checks if player have three Infantry cards
 	 * @return true if player have three Infantry Cards otherwise false
 	 */
-	public boolean haveThreeInfantryCards(){
+	public boolean isThreeInfantry(){
 		int infantry = 0;
 		for (Card card :this.cards){
-			if (card.getName().equals("Infantry")){
+			if (card.getCardName().equals("Infantry")){
 				infantry++;
 			}
 		}
@@ -595,8 +595,8 @@ public class Player
 	 * Checks if player have either three Cavalry, Artillery or Infantry cards
 	 * @return true if player have either three Cavalry, Artillery or Infantry cards otherwise false
 	 */
-	public boolean haveThreeSameTypeCards(){
-		if(this.haveThreeCavalryCards() || this.haveThreeArtilleryCards() || this.haveThreeInfantryCards()){
+	public boolean isSameThree(){
+		if(this.isThreeCavalry() || this.isThreeArtillery() || this.isThreeInfantry()){
 			return true;
 		}
 		else{
@@ -630,7 +630,7 @@ public class Player
 	 */
 	public Card getCard(String cardname){
 		for (Card card : this.cards){
-			if ( card.getName().equals(cardname)){
+			if ( card.getCardName().equals(cardname)){
 				return card;
 			}
 		}
@@ -640,18 +640,18 @@ public class Player
 	/**
 	 * Removes either of three Infantry or Artillery or Cavalry cards
 	 */
-	public void removeSimilarThreeCards(){
-		if (this.haveThreeArtilleryCards()){
+	public void removingSimilarThreeCards(){
+		if (this.isThreeArtillery()){
 			this.removeCard(this.getCard("Artillery"));
 			this.removeCard(this.getCard("Artillery"));
 			this.removeCard(this.getCard("Artillery"));
 		}
-		else if (this.haveThreeCavalryCards()){
+		else if (this.isThreeCavalry()){
 			this.removeCard(this.getCard("Cavalry"));
 			this.removeCard(this.getCard("Cavalry"));
 			this.removeCard(this.getCard("Cavalry"));
 		}
-		else if (this.haveThreeInfantryCards()){
+		else if (this.isThreeInfantry()){
 			this.removeCard(this.getCard("Infantry"));
 			this.removeCard(this.getCard("Infantry"));
 			this.removeCard(this.getCard("Infantry"));
@@ -665,7 +665,7 @@ public class Player
 	 */
 	public boolean equals(Object o) {
 		if(o instanceof Player) {
-			if(((Player) o).getName().equals(this.getName())){
+			if(((Player) o).getPlayerName().equals(this.getPlayerName())){
 				return true;
 			}
 		}
@@ -679,11 +679,11 @@ public class Player
 		this.strategy = newStrategy;
 	}
 
-	public String placeArmyOnStartUp() {
-		if(getCountriesNamesNoArmy().length!=0){
-			return this.strategy.placeArmy(getCountriesNamesNoArmy(), getName());
+	public String placeArmy() {
+		if(getEmptyCountries().length!=0){
+			return this.strategy.armyPlacing(getEmptyCountries(), getPlayerName());
 		}else{
-			return this.strategy.placeArmy(getCountriesNames(), getName());
+			return this.strategy.armyPlacing(getNameOfCountries(), getPlayerName());
 		}
 	}
 	
@@ -699,7 +699,7 @@ public class Player
 	}
 	
 	public String getStrategyOfPlayer(){
-		return this.strategy.getStrategyName();
+		return this.strategy.getNameOfStrategy();
 	}
 
 	public void setMapData(ArrayList<NodeOfMap> newMapData) {

@@ -32,7 +32,7 @@ public class Card {
 	 * Function to get the name of the card.
 	 * @return name of the card.
 	 */
-	public String getName() {
+	public String getCardName() {
 		return this.name;
 	}
 	
@@ -40,7 +40,7 @@ public class Card {
 	 * Function to get the type of the card.
 	 * @return type of the card.
 	 */
-	public String getType() {
+	public String getCardType() {
 		return this.type;
 	}
 	
@@ -48,7 +48,7 @@ public class Card {
 	 * Generate a pile of 44 cards
 	 * @return ArrayList containing 44 cards.
 	 */
-	public static ArrayList<Card> generateCardPile() {
+	public static ArrayList<Card> cardPileGenerator() {
 		ArrayList<Card> cardPile = new ArrayList<Card>();
 		for(int i=0;i<44;i++) {
 			cardPile.add(new Card("Artillery","Normal"));

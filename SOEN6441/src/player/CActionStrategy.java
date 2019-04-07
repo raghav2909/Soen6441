@@ -27,7 +27,7 @@ public class CActionStrategy implements StrategyOfPlayer{
 	public void reinforcementPhase(int armies, String[] countryList) {
 		reinforcement(countryList);
 		driver.nottifyObservers("Cheater player has doubled the armies of all its countries in Reinforcement phase");
-		driver.changePhase();
+		driver.switchPhase();
 
 	}
 
@@ -40,13 +40,13 @@ public class CActionStrategy implements StrategyOfPlayer{
 		for (String country : countryList) {
 			for (NodeOfCountry neighbour : driver.getCountry(country).getNeighbours()) {
 				Player defender = neighbour.getOwner();
-				neighbour.setOwner(driver.getCurrentPlayer());
-				driver.nottifyObservers("Country "+neighbour.getCountryName()+" won by player "+driver.getCurrentPlayer());
+				neighbour.setOwner(driver.getCurrent());
+				driver.nottifyObservers("Country "+neighbour.getNameOfCountry()+" won by player "+driver.getCurrent());
 				driver.setPlayerOut(defender);
 			}
 		}
-		if(driver.checkGameState()) {
-			driver.announceGameOver(driver.getCurrentPlayer().getName());
+		if(driver.checkStateOfGame()) {
+			driver.callGameOver(driver.getCurrent().getPlayerName());
 		}
 	}
 
@@ -59,19 +59,19 @@ public class CActionStrategy implements StrategyOfPlayer{
 	public void fortificationPhase(ArrayList<String> countryList) {
 		fortify(countryList);
 		driver.nottifyObservers("Cheater player has doubled the armies of its countries with diffrent owner of neighbouring countries");
-		driver.changePhase();
+		driver.switchPhase();
 	}
 
 	/**
 	 * Distribute armies in startup phase.
 	 */
 	@Override
-	public String placeArmy(String[] strings, String string) {
+	public String armyPlacing(String[] strings, String string) {
 		return strings[new Random().nextInt(strings.length)];
 	}
 
 	@Override
-	public int selectDiceNumber(int diceToRoll, String pName) {
+	public int selectNumberOfDice(int diceToRoll, String pName) {
 		
 		return diceToRoll;
 	}
@@ -82,23 +82,23 @@ public class CActionStrategy implements StrategyOfPlayer{
 	}
 	
 	@Override
-	public String getStrategyName() {
+	public String getNameOfStrategy() {
 		return "cheater";
 	}
 
 	public void reinforcement(String[] countryList) {
 		for (String country : countryList) {
-			driver.getCountry(country).addArmy(driver.getCountry(country).getArmiesCount());
+			driver.getCountry(country).addArmy(driver.getCountry(country).getConutOfArmies());
 		}
-		driver.getCurrentPlayer().setArmies(0);
+		driver.getCurrent().setArmies(0);
 	}
 	
 	public void fortify(ArrayList<String> countryList) {
 		for (String country : countryList) {
 			for (NodeOfCountry neighbour : driver.getCountry(country).getNeighbours()) {
-				if (!neighbour.getOwner().equals(driver.getCurrentPlayer())) {
+				if (!neighbour.getOwner().equals(driver.getCurrent())) {
 					NodeOfCountry pCountry = driver.getCountry(country);
-					pCountry.addArmy(pCountry.getArmiesCount());
+					pCountry.addArmy(pCountry.getConutOfArmies());
 				}
 			}
 		}

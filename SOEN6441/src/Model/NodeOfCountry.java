@@ -65,7 +65,7 @@ public class NodeOfCountry
 	 * Gives the name of the country node.
 	 * @return Returns the name of country.
 	 */
-	public String getCountryName() {
+	public String getNameOfCountry() {
 		return this.countryName;
 	}
 	
@@ -119,7 +119,7 @@ public class NodeOfCountry
 	 * Gets the armies count of a particular country.
 	 * @return number of armies placed in this country.
 	 */
-	public int getArmiesCount() {
+	public int getConutOfArmies() {
 		return this.armies;
 	}
 	
@@ -230,7 +230,7 @@ public class NodeOfCountry
 	public void removeNeighbour(NodeOfCountry neighbourNode) {
 		NodeOfCountry cn1 = new NodeOfCountry(null,null,null,null);
 		for (NodeOfCountry cn : neighbourCountries ) {
-			if(cn.getCountryName().compareTo(neighbourNode.getCountryName())==0) {
+			if(cn.getNameOfCountry().compareTo(neighbourNode.getNameOfCountry())==0) {
 				cn1 = cn;
 				
 			}
@@ -241,7 +241,7 @@ public class NodeOfCountry
 	/**
 	 * Decreases the count of armies by 1.
 	 */
-	public void removeArmy() {
+	public void removedArmy() {
 		armies = armies-1;	
 	}
 	
@@ -265,7 +265,7 @@ public class NodeOfCountry
 	 * Subtract multiple armies from the country
 	 * @param moveArmies number of armies to subtract
 	 */
-	public void removeArmies(int moveArmies) {
+	public void removedArmies(int moveArmies) {
 		armies -= moveArmies;
 	}
 	

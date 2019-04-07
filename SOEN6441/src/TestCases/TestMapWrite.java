@@ -46,7 +46,7 @@ public class TestMapWrite {
 		ca.add(new NodeOfCountry("USA",cn4,coor,null));
 		c.add(new NodeOfMap(cn,ca,v));
 		map.writeMap(c);
-		String file = map.getMapFilePath();
+		String file = map.getMapPath();
 		Assert.assertTrue(file!=null);
 	}
 

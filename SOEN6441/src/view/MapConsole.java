@@ -136,9 +136,9 @@ private BufferedImage image;
 	@Override
 	public void update(Observable obs, Object map) {
 		if(graphicalMap){
-			setGraphicalMap(((Map) obs).getMapDataObject());
+			setGraphicalMap(((Map) obs).getObjectOfMapData());
 		}else{
-			setMap(((Map) obs).getMapObject());
+			setMap(((Map) obs).getObjectOfMap());
 		}
 	}
 }

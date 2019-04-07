@@ -10,12 +10,12 @@ public interface StrategyOfPlayer {
 	
 	public void fortificationPhase(ArrayList<String> countryList);
 
-	public String placeArmy(String[] strings, String string);
+	public String armyPlacing(String[] strings, String string);
 
-	public int selectDiceNumber(int diceToRoll, String pName);
+	public int selectNumberOfDice(int diceToRoll, String pName);
 
 	public int moveArmies(int aArmies, int maxArmies, String message);
 	
-	public String getStrategyName();
+	public String getNameOfStrategy();
 
 }

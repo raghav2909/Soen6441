@@ -217,7 +217,7 @@ public class TheMainController {
 
 	public void singleGameLoadInit(String saveFileRead) {
 		gameMode = new Single();
-		((Single) gameMode).loadGameDataFromFile(new File(saveFileRead));
+		((Single) gameMode).loadGameFromAFile(new File(saveFileRead));
 	}
 	
 }

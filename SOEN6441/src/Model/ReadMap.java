@@ -21,7 +21,7 @@ public class ReadMap{
 	 * @param filename URL of map file.
 	 * @return map data in form of <code>ArrayList</code>
 	 */
-	public ArrayList<NodeOfMap> mapRead(String filename) {	
+	public ArrayList<NodeOfMap> readingMap(String filename) {	
 		BufferedReader br = null;
 		FileReader fr = null;
 		ArrayList<NodeOfMap> map = new ArrayList<NodeOfMap>();
@@ -53,7 +53,7 @@ public class ReadMap{
 					else if(t){  //check if current line is for territory
 						String[] temp = sCurrentLine.split(",");
 						for(NodeOfMap n : map){
-							if(n.getContinentName().equals(temp[3])){
+							if(n.getNameOfContinent().equals(temp[3])){
 								if(!NodeOfCountry.contains(stack, temp[0])){//check if the neighbor country object not already created
 									stack.add(new NodeOfCountry(temp[0], null, null,null));
 								}

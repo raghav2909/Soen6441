@@ -35,7 +35,7 @@ public class AActionStrategy implements StrategyOfPlayer{
 	public void reinforcementPhase(int armies, String[] countryList) {
 		reinforcement(armies,countryList);
 		driver.notifyObservers("Armies moved according to Aggresive Strategy reinforcement");
-		driver.changePhase();
+		driver.switchPhase();
 		
 	}
 
@@ -59,12 +59,12 @@ public class AActionStrategy implements StrategyOfPlayer{
 		NodeOfCountry dCountry = null;
 		Collections.shuffle(aCountry.getNeighbours());
 		for (NodeOfCountry neighbour : aCountry.getNeighbours()) {
-			if (!neighbour.getOwner().getName().equals(driver.getCurrentPlayer().getName())) {
+			if (!neighbour.getOwner().getPlayerName().equals(driver.getCurrent().getPlayerName())) {
 				dCountry = neighbour;
 				break;
 			}
 		}
-		driver.announceAttack(aCountry.getCountryName(), dCountry.getCountryName());
+		driver.declareAttack(aCountry.getNameOfCountry(), dCountry.getNameOfCountry());
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class AActionStrategy implements StrategyOfPlayer{
 //		strongest.addArmy(average);
 //		weakest.removeArmies(average);
 		driver.notifyObservers("Armies moved according to Aggresive Strategy fortification");
-		driver.changePhase();
+		driver.switchPhase();
 
 	}
 
@@ -89,7 +89,7 @@ public class AActionStrategy implements StrategyOfPlayer{
 	 * Distribute armies in startup phase.
 	 */
 	@Override
-	public String placeArmy(String[] strings, String string) {
+	public String armyPlacing(String[] strings, String string) {
 		return strings[new Random().nextInt(strings.length)];
 	}
 
@@ -102,14 +102,14 @@ public class AActionStrategy implements StrategyOfPlayer{
 		Collections.sort(countryList, new Comparator<NodeOfCountry>(){
 			@Override
 			public int compare(NodeOfCountry o1, NodeOfCountry o2) {
-				return o2.getArmiesCount() - o1.getArmiesCount();
+				return o2.getConutOfArmies() - o1.getConutOfArmies();
 			}
 		});
 		return countryList;
 	}
 
 	
-	public int selectDiceNumber(int diceToRoll, String name) {
+	public int selectNumberOfDice(int diceToRoll, String name) {
 		return diceToRoll; //Assuming player chooses maximum number of dice to roll
 	}
 
@@ -128,7 +128,7 @@ public class AActionStrategy implements StrategyOfPlayer{
 		/*sort countries according to armies count in descending order.*/
 		countries = sortCountries(countries);
 		NodeOfCountry strongest = countries.get(0);
-		driver.getCurrentPlayer().shiftArmiesOnReinforcement(strongest.getCountryName(), armies);
+		driver.getCurrent().shiftArmiesOnReinforcement(strongest.getNameOfCountry(), armies);
 	}
 	
 	public void fortify(ArrayList<String> countryList) {
@@ -145,15 +145,15 @@ public class AActionStrategy implements StrategyOfPlayer{
 			NodeOfCountry strongest = countries.get(0);
 			NodeOfCountry c = countries.get(1);
 			/*fortify the strongest country.*/
-			if(c.getArmiesCount()>1) {
-				int mArmies = c.getArmiesCount()-1;
-				driver.getCurrentPlayer().getArmiesShiftedAfterFortification(c.getCountryName(), strongest.getCountryName(), mArmies);
+			if(c.getConutOfArmies()>1) {
+				int mArmies = c.getConutOfArmies()-1;
+				driver.getCurrent().getArmiesShiftedAfterFortification(c.getNameOfCountry(), strongest.getNameOfCountry(), mArmies);
 			}
 		}
 	}
 
 	@Override
-	public String getStrategyName() {
+	public String getNameOfStrategy() {
 		return "aggressive";
 	}
 

@@ -315,7 +315,7 @@ import controllers.Edit_create_Map_Controller;
 			gbc_comboBox.gridy = 5;
 			contentPane.add(comboBox, gbc_comboBox);
 			for (NodeOfMap mapNode : continents) {
-				comboBox.addItem(mapNode.getContinentName());
+				comboBox.addItem(mapNode.getNameOfContinent());
 			}
 
 			JLabel lblName_1 = new JLabel("Country Name");
@@ -361,7 +361,7 @@ import controllers.Edit_create_Map_Controller;
 			contentPane.add(comboBox_2, gbc_comboBox_2);
 			for (NodeOfMap mapNode : continents) {
 				for (NodeOfCountry countryNode : mapNode.getCountries()) {
-					comboBox_2.addItem(countryNode.getCountryName());
+					comboBox_2.addItem(countryNode.getNameOfCountry());
 				}
 			}
 
@@ -395,7 +395,7 @@ import controllers.Edit_create_Map_Controller;
 			gbc_comboBox_3.gridy = 11;
 			contentPane.add(comboBox_3, gbc_comboBox_3);
 			for (NodeOfMap mapNode : continents) {
-				comboBox_3.addItem(mapNode.getContinentName());
+				comboBox_3.addItem(mapNode.getNameOfContinent());
 			}
 
 			btnAddNeighbours = new JButton("Choose Neighbours");
@@ -418,7 +418,7 @@ import controllers.Edit_create_Map_Controller;
 			contentPane.add(comboBox_1, gbc_comboBox_11);
 			for (NodeOfMap mapNode : continents) {
 				for (NodeOfCountry countryNode : mapNode.getCountries()) {
-					comboBox_1.addItem(countryNode.getCountryName());
+					comboBox_1.addItem(countryNode.getNameOfCountry());
 				}
 			}
 
@@ -470,7 +470,7 @@ import controllers.Edit_create_Map_Controller;
 			contentPane.add(comboBox_4, gbc_comboBox_4);
 			for (NodeOfMap mapNode : continents) {
 				for (NodeOfCountry countryNode : mapNode.getCountries()) {
-					comboBox_4.addItem(countryNode.getCountryName());
+					comboBox_4.addItem(countryNode.getNameOfCountry());
 				}
 			}
 			

@@ -47,7 +47,7 @@ public class MapTest {
 		ca.add(new NodeOfCountry("Canada",cn3,coor,null));
 		ca.add(new NodeOfCountry("USA",cn4,coor,null));
 		map.addContinents(c, ca, v);
-		boolean a = map.checkOnSaveMap();
+		boolean a = map.checkSavedMap();
 		boolean e = true;
 		Assert.assertEquals(e, a);
 	}
@@ -102,7 +102,7 @@ public class MapTest {
 		map.addContinents(c1, ca, v1);
 		ArrayList<NodeOfMap> TC = map.getContinents();
 		for(NodeOfMap mn : TC) {
-			C = mn.getContinentName();
+			C = mn.getNameOfContinent();
 			break;
 		}
 		Assert.assertEquals(C, "Asia");
@@ -141,7 +141,7 @@ public class MapTest {
 		ArrayList<NodeOfCountry> ca = new ArrayList<NodeOfCountry>();
 		map.addContinents(c1, ca, v2);
 		map.addContinents(c, ca, v);
-		boolean a = map.checkContinentExist(c);
+		boolean a = map.checkContinentExistence(c);
 		boolean e = true;
 		Assert.assertEquals(e, a);
 	}

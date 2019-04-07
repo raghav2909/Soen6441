@@ -91,7 +91,7 @@ public class MapExist extends JFrame {
 		DefaultTableModel model1 = new DefaultTableModel(column1, 0);
 
 		for (int i = 0; i < existingMap.size(); i++) {
-			String[] contName = {existingMap.get(i).getContinentName(), Integer.toString(existingMap.get(i).getControlValue())};
+			String[] contName = {existingMap.get(i).getNameOfContinent(), Integer.toString(existingMap.get(i).getValue())};
 			model1.addRow(contName);
 		}
 
@@ -139,9 +139,9 @@ public class MapExist extends JFrame {
 				model3.setRowCount(0);
 				String selectedCell = table1.getValueAt(table1.getSelectedRow(), table1.getSelectedColumn()).toString();
 				for (int i = 0; i < existingMap.size(); i++) {
-					if (selectedCell.compareTo(existingMap.get(i).getContinentName())==0) {
+					if (selectedCell.compareTo(existingMap.get(i).getNameOfContinent())==0) {
 						for (int j = 0; j < existingMap.get(i).getCountries().length; j++) {
-							String[] countryName = {existingMap.get(i).getCountries()[j].getCountryName()};
+							String[] countryName = {existingMap.get(i).getCountries()[j].getNameOfCountry()};
 							model2.addRow(countryName);
 						}
 					}
@@ -156,11 +156,11 @@ public class MapExist extends JFrame {
 				String selectedCell1 = table1.getValueAt(table1.getSelectedRow(), table1.getSelectedColumn()).toString();
 				String selectedCell2 = table2.getValueAt(table2.getSelectedRow(), table2.getSelectedColumn()).toString();
 				for (int i = 0; i < existingMap.size(); i++) {
-					if (selectedCell1.compareTo(existingMap.get(i).getContinentName())==0) {
+					if (selectedCell1.compareTo(existingMap.get(i).getNameOfContinent())==0) {
 						for (int j = 0; j < existingMap.get(i).getCountries().length; j++) {
-							if (selectedCell2.compareTo(existingMap.get(i).getCountries()[j].getCountryName())==0) {
+							if (selectedCell2.compareTo(existingMap.get(i).getCountries()[j].getNameOfCountry())==0) {
 								for (int k = 0; k < existingMap.get(i).getCountries()[j].getNeighbourCountries().length; k++) {
-									String[] countryInfo = {existingMap.get(i).getCountries()[j].getNeighbourCountries()[k].getCountryName()};
+									String[] countryInfo = {existingMap.get(i).getCountries()[j].getNeighbourCountries()[k].getNameOfCountry()};
 									model3.addRow(countryInfo);
 								}
 								break;

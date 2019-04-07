@@ -61,17 +61,17 @@ public class WriteMap {
 			bw.write(mapInfo);
 			bw.write("[Continents]\r\n");
 			for (NodeOfMap node : map){
-				bw.write(node.getContinentName() + "=" + Integer.toString(node.getControlValue()) + "\r\n");
+				bw.write(node.getNameOfContinent() + "=" + Integer.toString(node.getValue()) + "\r\n");
 			}
 			bw.write("\r\n[Territories]\r\n");
 			for (NodeOfMap node : map) {
 				for (NodeOfCountry country : node.getCountries()) {
 					String nCountryNames = "";
 					for (NodeOfCountry nCountry : country.getNeighbourCountries()) {
-						nCountryNames = nCountryNames + "," + nCountry.getCountryName();
+						nCountryNames = nCountryNames + "," + nCountry.getNameOfCountry();
 					}
-					bw.write(country.getCountryName()+","+ Integer.toString(250) + "," + Integer.toString(250) + "," +
-							node.getContinentName() + nCountryNames + "\r\n");
+					bw.write(country.getNameOfCountry()+","+ Integer.toString(250) + "," + Integer.toString(250) + "," +
+							node.getNameOfContinent() + nCountryNames + "\r\n");
 				}
 			}
 		} catch (IOException e) {
@@ -95,7 +95,7 @@ public class WriteMap {
 	 * @param map Continent NodeOfMap containing map information 
 	 * @param path contains path of existing map file
 	 */
-	public void writeMapExisting(ArrayList<NodeOfMap> map, String path) {
+	public void existingMapWriter(ArrayList<NodeOfMap> map, String path) {
 		FILENAME = path;
 		BufferedWriter bw = null;
 		FileWriter fw = null;
@@ -115,7 +115,7 @@ public class WriteMap {
 			bw.write("[Continents]\r\n");
 
 			for (NodeOfMap node : map) {
-				bw.write(node.getContinentName() + "=" + Integer.toString(node.getControlValue()) + "\r\n");
+				bw.write(node.getNameOfContinent() + "=" + Integer.toString(node.getValue()) + "\r\n");
 			}
 			
 			bw.write("\r\n[Territories]\r\n");
@@ -123,10 +123,10 @@ public class WriteMap {
 				for (NodeOfCountry country : node.getCountries()) {
 					String nCountryNames = "";
 					for (NodeOfCountry nCountry : country.getNeighbourCountries()) {
-						nCountryNames = nCountryNames + "," + nCountry.getCountryName();
+						nCountryNames = nCountryNames + "," + nCountry.getNameOfCountry();
 					}
-					bw.write(country.getCountryName()+","+ Integer.toString(250) + "," + Integer.toString(250) + "," +
-							node.getContinentName() + nCountryNames + "\r\n");
+					bw.write(country.getNameOfCountry()+","+ Integer.toString(250) + "," + Integer.toString(250) + "," +
+							node.getNameOfContinent() + nCountryNames + "\r\n");
 				}
 			}
 		} catch (IOException e) {
@@ -149,7 +149,7 @@ public class WriteMap {
 	 * Function to get the path of map file
 	 * @return the path of map file created or edited.
 	 */
-	public String getMapFilePath() {
+	public String getMapPath() {
 		return FILENAME;
 	}
 }

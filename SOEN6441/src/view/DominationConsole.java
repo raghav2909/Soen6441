@@ -44,11 +44,11 @@ public class DominationConsole extends JPanel implements Observer {
 			JLabel label = new JLabel("<html><b>World Domination View</b></html>");
 			this.add(label);
 			
-			int totalCountries = ((GameDriver) o).getMap().getCountryCount();
+			int totalCountries = ((GameDriver) o).getMap().getCountOfCountries();
 			System.out.println(totalCountries);
 			for (Player player : ((GameDriver) o).getPlayers()){
-				System.out.println(player.getPlayerCountryCount());
-				this.add(new JLabel(" "+player.getName() + ": " + ((float)(player.getPlayerCountryCount()/(float)totalCountries))*100 + "% "));
+				System.out.println(player.getCountPlayerCountries());
+				this.add(new JLabel(" "+player.getPlayerName() + ": " + ((float)(player.getCountPlayerCountries()/(float)totalCountries))*100 + "% "));
 			}
 		}
 	}

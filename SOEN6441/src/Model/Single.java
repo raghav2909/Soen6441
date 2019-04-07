@@ -75,17 +75,17 @@ public class Single implements Mode{
 //		the_mainController.getInstance().setMode(s);
 //		s.start();
 		Single s = new Single();
-		s.loadGameDataFromFile(new File("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\SaveGame2017.11.30.23.36.53.sav"));
+		s.loadGameFromAFile(new File("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\SaveGame2017.11.30.23.36.53.sav"));
 	}
 	
 	/**
 	* @return map
 	*/
-	public static String getMapName(){
+	public static String getNameOfMap(){
 		return myMap;
 	}
 	
-	public void loadGameDataFromFile(File file){ 
+	public void loadGameFromAFile(File file){ 
 
 		try{
 			FileInputStream saveFile = new FileInputStream(file);

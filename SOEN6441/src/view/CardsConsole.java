@@ -61,7 +61,7 @@ public class CardsConsole extends JPanel implements Observer {
 		/*Cards exchange Dialog Box.*/
 		String cards = "";
 		for (Card card : player.getCards()){ 
-			cards += (card.getName()+",");
+			cards += (card.getCardName()+",");
 		}
 		int cardExchange = JOptionPane.showConfirmDialog (null, cards,"Warning",JOptionPane.YES_OPTION);
 		if(cardExchange == JOptionPane.YES_OPTION){
@@ -75,11 +75,11 @@ public class CardsConsole extends JPanel implements Observer {
 	 * @param player current player whose turn is going on
 	 */
 	public void exchangeCards(Player player){
-		if (player.haveDistinctCards()){
+		if (player.isDistincsCards()){
 			player.removeDistinctCards();
 		}
-		else if (player.haveThreeSameTypeCards()){
-			player.removeSimilarThreeCards();
+		else if (player.isSameThree()){
+			player.removingSimilarThreeCards();
 		}
 	}
 	
@@ -91,10 +91,10 @@ public class CardsConsole extends JPanel implements Observer {
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		Player player = ((GameDriver) o).getCurrentPlayer();
+		Player player = ((GameDriver) o).getCurrent();
 		if (((String) arg).equals("Cards")){
 			if( player.getCards().size()>2 && player.getCards().size() <5){
-				if(player.haveDistinctCards() || player.haveThreeSameTypeCards()){					
+				if(player.isDistincsCards() || player.isSameThree()){					
 					this.showCards(player);
 				}
 			}

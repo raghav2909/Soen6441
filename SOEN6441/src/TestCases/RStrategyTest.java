@@ -115,11 +115,11 @@ public class RStrategyTest {
 		mapData.add(continent1);
 		player1 = new Player("Player1", 15, countries, driver);
 		player2 = new Player("Player2", 10, countries1, driver);
-		player2.setTurnTrue();
-		player1.setTurnFalse();
-		driver.setPlayerList(player1);
-		driver.setPlayerList(player2);
-		driver.setCurrentPlayer(player2);
+		player2.setTrue();
+		player1.setFalse();
+		driver.setListOfPlayer(player1);
+		driver.setListOfPlayer(player2);
+		driver.setCurrent(player2);
 		StrategyOfPlayer cheater = new CActionStrategy(driver);
 		StrategyOfPlayer random = new RActionStrategy(driver);
 		player1.setStrategy(cheater);
@@ -129,10 +129,10 @@ public class RStrategyTest {
 		country3.addArmy(3);
 		country4.addArmy(5);
 		country5.addArmy(4);
-		driver.getCurrentPlayer().setArmies(driver.getCurrentPlayer().getArmies());
-		((RActionStrategy) random).reinforcement(driver.getPlayerArmies(),driver.getCurrentPlayer().getCountriesNames());
+		driver.getCurrent().setArmies(driver.getCurrent().getNumberOfArmies());
+		((RActionStrategy) random).reinforcement(driver.getArmiesOfPlayer(),driver.getCurrent().getNameOfCountries());
 		int count = 0;
-		if(country4.getArmiesCount() == 8 || country5.getArmiesCount()==7) {
+		if(country4.getConutOfArmies() == 8 || country5.getConutOfArmies()==7) {
 			count++;
 		}
 		assertEquals(1, count);
@@ -149,7 +149,7 @@ public class RStrategyTest {
 			countries[i] = "country" + i;
 		}
 		StrategyOfPlayer aggressive = new AActionStrategy(driver);
-		String value = ((AActionStrategy) aggressive).placeArmy(countries, "player1");
+		String value = ((AActionStrategy) aggressive).armyPlacing(countries, "player1");
 		for (String country: countries) {
 			if (country.equals(value)) {
 				count++;

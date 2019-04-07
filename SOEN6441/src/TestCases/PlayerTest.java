@@ -8,240 +8,292 @@ import org.junit.Before;
 import org.junit.Test;
 
 import Model.Card;
+import Model.GameDriver;
 import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import player.Player;
+
 /**
  * this class is a testing the correct number of armies
  * @author samansoltani
  * @verison 1.0
  */
 public class PlayerTest {
-	private Player TP;
 	
-	private NodeOfCountry c1;
-	private NodeOfCountry c2;
-	private NodeOfCountry c3;
-	private NodeOfCountry c4;
+	/**
+	 * Player reference.
+	 */
+	private Player testPlayer;
+
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country1;
 	
-	private Card C1;
-	private Card C2;
-	private Card C3;
-	private Card C4;
-	private Card C5;
-	private Card C6;
-	private Card C7;
-	private Card C8;
-	private Card C9;
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country2;
+	
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country3;
+	
+	/**
+	 * NodeOfCountry reference.
+	 */
+	private NodeOfCountry country4;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card1;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card2;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card3;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card4;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card5;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card6;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card7;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card8;
+	
+	/**
+	 * Card Reference
+	 */
+	private Card card9;
+	
+	/**
+	 * GameDriver class object to access GameDriver class
+	 */
+	private GameDriver driver;
+	
+	/**
+	 * Called before each test case of this class is executed.
+	 * @throws Exception any throwable exception.
+	 */
 	@Before
 	public void setUp() throws Exception {
-		 c1 = new NodeOfCountry("Country1",null,null,null);
-		 c2 = new NodeOfCountry("Country2",null,null,null);
-		 c3 = new NodeOfCountry("Country3",null,null,null);
-		 c4 = new NodeOfCountry("Country4",null,null,null);
-		 
-		 
-		 C1 = new Card("Cavalry","General");
-		 C2 = new Card("Infantry","General");
-		 C3 = new Card("Artillery","General");
-		 C4 = new Card("Artillery","General");
-		 C5 = new Card("Infantry","General");
-		 C6 = new Card("Cavalry","General");
-		 C7 = new Card("Artillery","General");
-		 C8 = new Card("Infantry","General");
-		 C9 = new Card("Cavalry","General");
-		 
+		driver = new GameDriver();
+		country1 = new NodeOfCountry("Country1", null, null, null);
+		country2 = new NodeOfCountry("Country2", null, null, null);
+		country3 = new NodeOfCountry("Country3", null, null, null);
+		country4 = new NodeOfCountry("Country4", null, null, null);
 		
-		ArrayList<NodeOfMap> MD = new ArrayList<NodeOfMap>();
-		c1.AddNeighbour(c2);
-		c1.AddNeighbour(c3);
-		c2.AddNeighbour(c1);
-		c2.AddNeighbour(c3);
-		c3.AddNeighbour(c1);
-		c3.AddNeighbour(c2);
-		c4.AddNeighbour(c2);
-		c4.AddNeighbour(c3);
+		card1 = new Card("Artillery","General");
+		card2 = new Card("Infantry","General");
+		card3 = new Card("Cavalry","General");
+		card4 = new Card("Artillery","General");
+		card5 = new Card("Artillery","General");
+		card6 = new Card("Cavalry","General");
+		card7 = new Card("Cavalry","General");
+		card8 = new Card("Infantry","General");
+		card9 = new Card("Infantry","General");
 		
-		ArrayList<NodeOfCountry> c = new ArrayList<NodeOfCountry>();
-		c.add(c1);
-		c.add(c2);
-		c.add(c3);
-		c.add(c4);
+		ArrayList<NodeOfMap> mapData = new ArrayList<NodeOfMap>();
+		country1.addNeighbour(country2);
+		country2.addNeighbour(country1);
+		country1.addNeighbour(country3);
+		country3.addNeighbour(country1);
+		country2.addNeighbour(country3);
+		country3.addNeighbour(country2);
+		country4.addNeighbour(country2);
+		country4.addNeighbour(country3);
 		
-		NodeOfMap C = new NodeOfMap("Continent1",c,6);
-		MD.add(C);
-		TP = new Player("TP",0,c);
-
-	}
-	
-	/**
-	 * test for count armies
-	 */
-
-	@Test
-	public void testArmies() {
-		assertEquals(3,TP.CalArmy());
-		TP.AddCountry(new NodeOfCountry("T", null, null, null));
-		TP.AddCountry(new NodeOfCountry("T1", null, null, null));
-		TP.AddCountry(new NodeOfCountry("T2", null, null, null));
-		TP.AddCountry(new NodeOfCountry("T4", null, null, null));
-		TP.AddCountry(new NodeOfCountry(null, null, null, null));
-		TP.AddCountry(new NodeOfCountry(null, null, null, null));
-		TP.AddCountry(new NodeOfCountry(null, null, null, null));
-		TP.AddCountry(new NodeOfCountry(null, null, null, null));
-		assertEquals(4,TP.CalArmy());
-	}
-	
-	
-	/**
-	 * test for shiftArmiesOnR method 
-	 */
-	@Test
-	public void testShiftArmiesOnR() {
-		TP.ArmySet(10);
-		int l = TP.shiftArmiesOnR("Country1", 4);
-		assertEquals(6,l);
-		assertEquals(4,c1.getArmyCount());
-	}
-	
-	/**
-	 * test for getting empty countries name method
-	 */
-	@Test
-	public void testgetEmptyCountriesName() {
-		c1.AddArmy(2);
-		c2.AddArmy(5);
-		c4.AddArmy(8);
-		assertEquals("Country3",TP.getEmptyCountriesName()[0]);
-	}
-	
-	
-	
-	/**
-	 * test HaveICard method
-	 */
-	@Test
-	public void testHaveICard() {
-		TP.AddCard(C5);
-		assertTrue(TP.HaveICard());
+		ArrayList<NodeOfCountry> countries = new ArrayList<NodeOfCountry>();
+		countries.add(country1);
+		countries.add(country2);
+		countries.add(country3);
+		countries.add(country4);
+		
+		NodeOfMap continent = new NodeOfMap("Continent1", countries, 6);
+		mapData.add(continent);
+		testPlayer = new Player("TestPlayer",0,countries, driver);
 	}
 
-	
-	
 	/**
-	 * test HaveACard method
+	 * Tests the getArmies function of Player class.
+	 * @see Player
 	 */
 	@Test
-	public void testHaveACard() {
-		TP.AddCard(C3);
-		assertTrue(TP.HaveACard());
-	}
-	
-	
-	
-	/**
-	 * test HaveCCard method
-	 */
-	@Test
-	public void testHaveCCard() {
-		TP.AddCard(C1);
-		assertTrue(TP.HaveCCard());
-	}
-	
-	
-	/**
-	 * test getArmiesShiftedAfterF method
-	 */
-	@Test
-	public void testgetArmiesShiftedAfterF() {
-		c1.SetArmies(5);
-		c3.SetArmies(3);
-		assertEquals(5,TP.getArmiesShiftedAfterF(c1.getNameOfCountry(), c3.getNameOfCountry(), 2));
-	}
-	
-	
-	/**
-	 * test HaveDCard method
-	 */
-	@Test
-	public void testHaveDCard() {
-		TP.AddCard(C7);
-		TP.AddCard(C8);
-		TP.AddCard(C9);
-		assertTrue(TP.HaveDCard());
-	}
-	
-	
-	
-	/**
-	 * test HaveThreeICards method
-	 */
-	@Test
-	public void testHaveThreeICards() {
-		TP.AddCard(C2);
-		TP.AddCard(C5);
-		TP.AddCard(C8);
-		assertTrue(TP.HaveThreeICards());
+	public void testGetArmies() {
+		assertEquals(3,testPlayer.getArmies());
+		testPlayer.addCountry(new NodeOfCountry("test", null, null, null));
+		testPlayer.addCountry(new NodeOfCountry("test2", null, null, null));
+		testPlayer.addCountry(new NodeOfCountry("test3", null, null, null));
+		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
+		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
+		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
+		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
+		testPlayer.addCountry(new NodeOfCountry("test4", null, null, null));
+		assertEquals(4,testPlayer.getArmies());
 	}
 	
 	/**
-	 * test HaveThreeACards method
+	 * Tests the shiftArmiesOnReinforcement function of Game driver.
+	 * @see GameDriver
 	 */
 	@Test
-	public void testHaveThreeACards() {
-		TP.AddCard(C3);
-		TP.AddCard(C4);
-		TP.AddCard(C7);
-		assertTrue(TP.HaveThreeACards());
+	public void testShiftArmiesOnReinforcement() {
+		testPlayer.setArmies(10);
+		int left = testPlayer.shiftArmiesOnReinforcement("Country1", 4);
+		assertEquals(6, left);
+		assertEquals(4, country1.getArmiesCount());
 	}
 	
 	/**
-	 * test HaveThreeCCards method
+	 *  Test method getCountriesNamesNoArmy()
 	 */
 	@Test
-	public void testHaveThreeCCards() {
-		TP.AddCard(C1);
-		TP.AddCard(C6);
-		TP.AddCard(C9);
-		assertTrue(TP.HaveThreeCCards());
-	}
-	
-	
-	/**
-	 * test RemoveDCards method
-	 */
-	@Test
-	public void testRemoveDCards() {
-		TP.AddCard(C7);
-		TP.AddCard(C8);
-		TP.AddCard(C9);
-		TP.RemoveDCards();
-		assertEquals(0,TP.GetCards().size());
+	public void testGetCountriesNamesNoArmy() {
+		country1.addArmy(1);
+		country2.addArmy(7);
+		country4.addArmy(3);
+		assertEquals("Country3",testPlayer.getCountriesNamesNoArmy()[0]);
 	}
 	
 	/**
-	 * test SameTypeCards method
+	 * Testing method getArmiesShiftedAfterFortification
 	 */
 	@Test
-	public void testSameTypeCards() {
-		TP.AddCard(C3);
-		TP.AddCard(C4);
-		TP.AddCard(C7);
-		assertTrue(TP.SameTypeCards());
+	public void testGetArmiesShiftedAfterFortification() {
+		country1.setArmies(3);
+		country2.setArmies(1);
+		assertEquals(3,testPlayer.getArmiesShiftedAfterFortification(country1.getCountryName(), country2.getCountryName(), 2));
 	}
-	
 	
 	/**
-	 * test SameThreeCardsRemoved method
+	 * Testing method haveInfantryCard
 	 */
 	@Test
-	public void testSameThreeCardsRemoved() {
-		TP.AddCard(C3);
-		TP.AddCard(C4);
-		TP.AddCard(C7);
-		TP.AddCard(C1);
-		TP.SameThreeCardsRemoved();
-		assertEquals(1,TP.GetCards().size());
+	public void testHaveInfantryCard() {
+		testPlayer.addCard(card2);
+		assertTrue(testPlayer.haveInfantryCard());
 	}
+	
+	/**
+	 * Testing method haveCavalryCard
+	 */
+	@Test
+	public void testHaveCavalryCard() {
+		testPlayer.addCard(card3);
+		assertTrue(testPlayer.haveCavalryCard());
+	}
+	
+	/**
+	 * Testing method haveArtilleryCard
+	 */
+	@Test
+	public void testHaveArtilleryCard() {
+		testPlayer.addCard(card1);
+		assertTrue(testPlayer.haveArtilleryCard());
+	}
+	
+	/**
+	 * Testing method haveDistinctCards
+	 */
+	@Test
+	public void testHaveDistinctCard() {
+		testPlayer.addCard(card1);
+		testPlayer.addCard(card2);
+		testPlayer.addCard(card3);
+		assertTrue(testPlayer.haveDistinctCards());
+	}
+	
+	/**
+	 * Testing method haveThreeArtilleryCards
+	 */
+	@Test
+	public void testHaveThreeArtilleryCards() {
+		testPlayer.addCard(card1);
+		testPlayer.addCard(card4);
+		testPlayer.addCard(card5);
+		assertTrue(testPlayer.haveThreeArtilleryCards());
+	}
+	
+	/**
+	 * Testing method haveThreeCavalryCards
+	 */
+	@Test
+	public void testHaveThreeCavalryCards() {
+		testPlayer.addCard(card3);
+		testPlayer.addCard(card6);
+		testPlayer.addCard(card7);
+		assertTrue(testPlayer.haveThreeCavalryCards());
+	}
+	
+	/**
+	 * Testing method haveThreeInfantryCards
+	 */
+	@Test
+	public void testHaveThreeInfantryCards() {
+		testPlayer.addCard(card2);
+		testPlayer.addCard(card8);
+		testPlayer.addCard(card9);
+		assertTrue(testPlayer.haveThreeInfantryCards());
+	}
+	
+	/**
+	 * Testing method haveThreeSameTypeCards
+	 */
+	@Test
+	public void testHaveThreeSameTypeCards() {
+		testPlayer.addCard(card2);
+		testPlayer.addCard(card8);
+		testPlayer.addCard(card9);
+		assertTrue(testPlayer.haveThreeSameTypeCards());
+	}
+	
+	/**
+	 * Testing method removeDistinctCards
+	 */
+	@Test
+	public void testRemoveDistinctCards() {
+		testPlayer.addCard(card1);
+		testPlayer.addCard(card2);
+		testPlayer.addCard(card3);
+		testPlayer.removeDistinctCards();
+		assertEquals(0, testPlayer.getCards().size());
+	}
+	
+	/**
+	 * Testing method removeSimilarThreeCards
+	 */
+	@Test
+	public void testRemoveSimilarThreeCards() {
+		testPlayer.addCard(card1);
+		testPlayer.addCard(card4);
+		testPlayer.addCard(card5);
+		testPlayer.addCard(card2);
+		testPlayer.removeSimilarThreeCards();
+		assertEquals(1, testPlayer.getCards().size());
+	}	
 	
 }

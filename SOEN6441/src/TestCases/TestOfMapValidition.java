@@ -33,7 +33,7 @@ public class TestOfMapValidition {
 	public void testMapValid() throws IOException{
 		FileName = ".//SOEN6441//Map_Data//test//MapTest2.map";
 		map = new Map(FileName);
-		assertFalse(map.MapValid());
+		assertFalse(map.mapValidation());
 	}
 
 }

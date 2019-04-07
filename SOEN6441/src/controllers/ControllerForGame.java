@@ -317,7 +317,7 @@ public class ControllerForGame {
 	* @param armies Armies assigned on reinforcement
 	*/
 	public void setReinforcementControls(int armies, String[] countryList) {
-		controlsGUI.reinforcementControls(armies, countryList);
+		controlsGUI.controlsReinforcement(armies, countryList);
 	}
 
 	/**

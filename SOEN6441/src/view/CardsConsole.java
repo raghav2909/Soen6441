@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package view;
 
 import java.awt.Color;
@@ -38,7 +36,7 @@ public class CardsConsole extends JPanel implements Observer {
 	/**
 	 * JButton to initiate card exchange.
 	 */
-	private JButton exchangeCards;
+	private JButton cardsToExchange;
 	
 	/**
 	 * Creates cards view.
@@ -56,7 +54,7 @@ public class CardsConsole extends JPanel implements Observer {
 	 * Shows a dialog to the player to exchange the cards to get additional armies
 	 * @param player current player whose turn is going on
 	 */
-	public void showCards(Player player){
+	public void cardsToShow(Player player){
 		this.removeAll();
 		/*Cards exchange Dialog Box.*/
 		String cards = "";
@@ -65,11 +63,12 @@ public class CardsConsole extends JPanel implements Observer {
 		}
 		int cardExchange = JOptionPane.showConfirmDialog (null, cards,"Warning",JOptionPane.YES_OPTION);
 		if(cardExchange == JOptionPane.YES_OPTION){
-			exchangeCards(player);
+			cardsToExchange(player);
 		}
 		
 	}
 	
+
 	/**
 	 * Removes cards from the player and assign additional armies
 	 * @param player current player whose turn is going on
@@ -82,6 +81,7 @@ public class CardsConsole extends JPanel implements Observer {
 			player.removingSimilarThreeCards();
 		}
 	}
+
 	
 	/**
 	 * Observer pattern function for Observers to update when there is a notification from the observable.
@@ -94,13 +94,31 @@ public class CardsConsole extends JPanel implements Observer {
 		Player player = ((GameDriver) o).getCurrent();
 		if (((String) arg).equals("Cards")){
 			if( player.getCards().size()>2 && player.getCards().size() <5){
+
 				if(player.isDistincsCards() || player.isSameThree()){					
-					this.showCards(player);
+					this.cardsToShow(player);
+
+				if(player.isDistincsCards() || player.isSameThree()){					
+					this.cardsToShow(player);
+
 				}
 			}
 			if (player.getCards().size()==5){
-				this.exchangeCards(player);
+				this.cardsToExchange(player);
 			}
+		}
+	}
+}
+	/**
+	 * Removes cards from the player and assign additional armies
+	 * @param player current player whose turn is going on
+	 */
+	public void cardsToExchange(Player player){
+		if (player.isDistincsCards()){
+			player.removeDistinctCards();
+		}
+		else if (player.isSameThree()){
+			player.removingSimilarThreeCards();
 		}
 	}
 }

@@ -90,7 +90,7 @@ public class TheMainController {
 	/**
 	 * Method to initialize setupBox and listeners.
 	 */
-	public void initialize() {
+	public void start() {
 		setupBox = new openingdialog();
 		chooseMapEditorOrPlayGame();
 		mapEditorListener();

@@ -21,7 +21,7 @@ public class ReadMap{
 	 * @param filename URL of map file.
 	 * @return map data in form of <code>ArrayList</code>
 	 */
-	public ArrayList<NodeOfMap> readMap(String filename) {	
+	public ArrayList<NodeOfMap> mapRead(String filename) {	
 		BufferedReader br = null;
 		FileReader fr = null;
 		ArrayList<NodeOfMap> map = new ArrayList<NodeOfMap>();

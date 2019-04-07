@@ -23,9 +23,6 @@ import player.*;
 import player.RActionStrategy;
 import player.StrategyOfPlayer;
 
-
-
-
 /**
  * This class controls the turns - Startup phase, Fortification, reinforcement and attack phase.
  * @author samansoltani

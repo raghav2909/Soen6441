@@ -200,7 +200,7 @@ public class ControllerForGame {
 	
 	/**
 	 * Calls the placeArmyDialog function of openingdialog class.
-	 * @param countriesNamesNoArmy list of countries with no armies. 
+	 * @param countriesNamesNoArmy is the list of countries with no armies. 
 	 * @param message message explaining the purpose of input.
 	 * @return the country selected by the user to place army.
 	 */

@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import javax.swing.border.MatteBorder;
-import controllers.Edit_create_Map_Controller;
+import controllers.EditCreateMapController;
 
 
 /**
@@ -40,7 +40,7 @@ public class Map_Frame extends JFrame {
 	/**
 	 * Stores the object of mapEditorController.
 	 */
-	Edit_create_Map_Controller obj = new Edit_create_Map_Controller();
+	EditCreateMapController obj = new EditCreateMapController();
 	
 	/**
 	 * Stores the existing map button information.

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="false" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="false" router="FAN">  
-  <class id="1" language="java" name="controllers.Edit_create_Map_Controller" project="Soen6441" 
-    file="/Soen6441/SOEN6441/src/controllers/Edit_create_Map_Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="controllers.EditCreateMapController" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/controllers/EditCreateMapController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="56" width="183" x="1112" y="425"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

@@ -122,7 +122,7 @@ public class TheMainController {
 				setupBox.chooseOptionFrame().dispose();
 			}
 		};
-		this.setupBox.playGameAction(playGameListener);
+		this.setupBox.actionToPlayGameButton(playGameListener);
 	}
 	
 	/**

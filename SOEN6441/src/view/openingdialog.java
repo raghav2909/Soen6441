@@ -93,10 +93,10 @@ public class openingdialog {
 				FileNameExtensionFilter filter = new FileNameExtensionFilter(null, "sav");
 				jfc.setFileFilter(filter);
 
-				int returnValue = jfc.showOpenDialog(frame);
+				int returnTheValue = jfc.showOpenDialog(frame);
 				String saveFileRead = null;
 				/*Get the path of the map file chosen*/
-				if (returnValue == JFileChooser.APPROVE_OPTION) {
+				if (returnTheValue == JFileChooser.APPROVE_OPTION) {
 					File selectedFile = jfc.getSelectedFile();
 					saveFileRead = selectedFile.getAbsolutePath();
 					saveFileLoad.dispose();
@@ -145,7 +145,7 @@ public class openingdialog {
 	/**
 	 * Places army on the selected countries.
 	 * @param countryList List of countries where the player can place armies.
-	 * @param message Message to be displayed for the dialog box.
+	 * @param message Message to be displayed for the dialog Jbox.
 	 * @return country name selected.
 	 */
 	public String placeTheArmyDialog(String[] countryList, String message) {
@@ -157,23 +157,23 @@ public class openingdialog {
 	}
 	/**
 	 * Ask user to enter an integer value.
-	 * @param min Minimum value for spinner.
-	 * @param max Maximum value for Spinner.
+	 * @param minimum Minimum value for spinner.
+	 * @param maximum Maximum value for Spinner.
 	 * @param message The message to be displayed on the spinner.
 	 * @return number of players entered by user or by default 2.
 	 */
-	public int getInput(int min, int max, String message){
-		 JPanel box = new JPanel();
-		 SpinnerModel sm = new SpinnerNumberModel(min, min, max, 1); 
+	public int getInput(int minimum, int maximum, String message){
+		 JPanel Jbox = new JPanel();
+		 SpinnerModel sm = new SpinnerNumberModel(minimum, minimum, maximum, 1); 
 		 JSpinner inputSpinner = new JSpinner(sm);
-         box.add(new JLabel("Input"));
-         box.add(inputSpinner);
+         Jbox.add(new JLabel("Input"));
+         Jbox.add(inputSpinner);
          
-         int result = JOptionPane.showConfirmDialog(null, box, message, JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+         int result = JOptionPane.showConfirmDialog(null, Jbox, message, JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
          if (result == JOptionPane.OK_OPTION) {
              return (int) inputSpinner.getValue();
          }
-		return min;
+		return minimum;
 	}
 	
 	/**
@@ -182,7 +182,7 @@ public class openingdialog {
 	 * @return readMap Stores the absolute path of the map file read.
 	 */
 	public String getMapData(String newExtension) {
-		JFrame frame = new JFrame("Map File Chooser!");
+		JFrame frame = new JFrame("Map-File-Chooser!");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.validate();
 		frame.setVisible(true);
@@ -192,9 +192,9 @@ public class openingdialog {
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 		jfc.setFileFilter(filter);
 
-		int returnValue = jfc.showOpenDialog(frame);
+		int returnTheValue = jfc.showOpenDialog(frame);
 		/*Get the path of the map file chosen*/
-		if (returnValue == JFileChooser.APPROVE_OPTION) {
+		if (returnTheValue == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = jfc.getSelectedFile();
 			readMap = selectedFile.getAbsolutePath();
 			frame.dispose();
@@ -209,17 +209,19 @@ public class openingdialog {
 	}
 	
 	/**
-	 * Displays frame to choose from Map Edit and Play Game options at the start.
+	 * Displays the JavaFrame to choose from Map-Edit and Play-the-Game options on initiating game.
 	 */
 	public void selectMapEditorOrPlayGame() {
-		frame = new JFrame("Choose any one:");
+		frame = new JFrame("Choose-any-one!");
 		frame.setSize(new Dimension(200,200));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		editMap = new JButton("Edit-Map");
-		playTheGame = new JButton("Play-Game");
-		frame.setLayout(new FlowLayout());
 		frame.add(editMap);
+		playTheGame = new JButton("Play-Game");
 		frame.add(playTheGame);
+		frame.setLayout(new FlowLayout());
+		
+		
 		frame.validate();
 		frame.setVisible(true);
 	}
@@ -244,12 +246,12 @@ public class openingdialog {
 	 * Sets action listener to Play Game button.
 	 * @param newAction ActionListener for Play Game button
 	 */
-	public void playGameAction(ActionListener newAction) {
+	public void actionToPlayGameButton(ActionListener newAction) {
 		this.playTheGame.addActionListener(newAction);
 	}
 	
 	/**
-	 * This method display a dialog box with two buttons for user to select game mode.
+	 * to display a message-dialog box having two buttons to user to select game-mode: single or tournamenbt.
 	 * @return returns the string object containing game mode.
 	 */
 	public String gameMode() {

@@ -4,7 +4,7 @@ import player.Player;
 
 import Model.*;
 //import risk.model.map.NodeOfMap;
-import view.Map_Frame;
+import view.FrameForMap;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -253,12 +253,12 @@ public class ModelOfMap {
 	 */
 	public String getFinalPath() {
 		/*if new map file is created, get its path*/
-		if(Map_Frame.selectedAction().compareTo("new")==0) {
+		if(FrameForMap.selectedAction().compareTo("new")==0) {
 			System.out.println(newFilePath());
 			return newFilePath(); 
 		}
 		/*if existing file is edited, get its path*/
-		else if(Map_Frame.selectedAction().compareTo("existing")==0){
+		else if(FrameForMap.selectedAction().compareTo("existing")==0){
 			System.out.println(existingFilePath());
 			return existingFilePath();
 		}

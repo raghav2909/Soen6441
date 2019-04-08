@@ -18,13 +18,13 @@ import controllers.EditCreateMapController;
 
 
 /**
- * The class Map_Frame  opens  JFrame view for selecting 
+ * The class FrameForMap  opens  JFrame view for selecting 
  * either a New map or an Existing map.
  * @author raghavsharda
  * @author gursharandeep
  * @version 2.0
  */
-public class Map_Frame extends JFrame {
+public class FrameForMap extends JFrame {
 
 	/**
 	 * Serial Version id for JFrame.
@@ -58,9 +58,9 @@ public class Map_Frame extends JFrame {
 	static String selectedAction ="";
 
 	/**
-	 * Map_Frame constructor calls initialize method of the class.
+	 * FrameForMap constructor calls initialize method of the class.
 	 */
-	public Map_Frame() {
+	public FrameForMap() {
 		initialize();
 	}
 
@@ -70,7 +70,7 @@ public class Map_Frame extends JFrame {
 	 * together with three text labels
 	 */
 	public void initialize() {
-		Map_Frame frame = this;
+		FrameForMap frame = this;
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(140, 140, 500, 340);

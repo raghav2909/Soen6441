@@ -24,7 +24,7 @@ import view.DiceRollConsole;
 import view.DominationConsole;
 import view.GameConsole;
 import view.MapConsole;
-import view.Map_Frame;
+import view.FrameForMap;
 import view.PlayerConsole;
 import view.ResultConsole;
 import view.TournamentConsole;
@@ -104,7 +104,7 @@ public class TheMainController {
 		mapEditListener =  new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Map_Frame newMapFrame = new Map_Frame();
+				FrameForMap newMapFrame = new FrameForMap();
 				setupBox.chooseOptionFrame().dispose();
 			}
 		};

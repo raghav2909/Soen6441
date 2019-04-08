@@ -10,7 +10,7 @@ import controllers.TheMainController;
 import player.Player;
 import Model.*;
 
-import view.Map_Frame;
+import view.FrameForMap;
 
 /**
  * This class handles the data for new map creation and also map editor.

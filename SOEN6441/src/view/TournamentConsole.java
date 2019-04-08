@@ -140,7 +140,7 @@ public class TournamentConsole extends JFrame{
 			browse.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
-					map.setText(sBox.getMapInfo("map"));
+					map.setText(sBox.getMapData("map"));
 				}
 			});
 			map.setEnabled(false);

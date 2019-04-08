@@ -24,7 +24,7 @@ import Model.NodeOfMap;
 
 
 
-/**This class opens jframe to open map file 
+/**This class opens jFrame to open map file 
  * @author raghavsharda
  * @author gursharandeep
  * @version 2.0
@@ -39,39 +39,40 @@ public class MapExist extends JFrame {
 	private static final long serialVersionUID = 257217734140252917L;
 
 	/**
-	 * Creates panel for existing map file display.
+	 * It Creates J-panel to display existing-map file .
 	 */
 	private JPanel contentPane;
-
-	/**
-	 * ArrayList of NodeOfMap type to receive all the information of existing map file selected by player.
-	 */
-	ArrayList<NodeOfMap> existingMap = new ArrayList<NodeOfMap>();
 	
 	/**
-	 * JButton to edit the existing map file.
+	 * Button to select option to edit the existing map file.
 	 */
-	private JButton btnEdit;
+	private JButton EditButton;
+
+	/**
+	 * ArrayList of NodeOfMap type that receives all  information of existing-map-file choosen
+	 */
+	ArrayList<NodeOfMap> mapExisting = new ArrayList<NodeOfMap>();
+	
+	public MapExist() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * Existing Map constructor calls initialize method of the class.
 	 * @param map arrayList of map nodes.
 	 */
 	public MapExist(ArrayList<NodeOfMap> map){
-		existingMap = map;
-		initialize();
+		mapExisting = map;
+		initialise();
 	}
 
-	public MapExist() {
-		// TODO Auto-generated constructor stub
-	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	public void initialize() {
+	public void initialise() {
 		this.setLocationRelativeTo(null);
-		this.setTitle("Existing Map");
+		this.setTitle("Existing-Map");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(140, 140, 500, 340);
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
@@ -79,24 +80,25 @@ public class MapExist extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_contentPane.rowWeights = new double[]{1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		setContentPane(contentPane);
+		
 		contentPane.setLayout(gbl_contentPane);
 
 		String[] column1 = {"Continents", "Control Value"};
 		DefaultTableModel model1 = new DefaultTableModel(column1, 0);
 
-		for (int i = 0; i < existingMap.size(); i++) {
-			String[] contName = {existingMap.get(i).getNameOfContinent(), Integer.toString(existingMap.get(i).getValue())};
+		for (int i = 0; i < mapExisting.size(); i++) {
+			String[] contName = {mapExisting.get(i).getNameOfContinent(), Integer.toString(mapExisting.get(i).getValue())};
 			model1.addRow(contName);
 		}
 
 		JTable table1 = new JTable(model1);
-		table1.setToolTipText("Map file displayed here");
+		table1.setToolTipText("Map file is to displayed here");
 		GridBagConstraints gbc_table1 = new GridBagConstraints();
 		gbc_table1.gridwidth = 2;
 		gbc_table1.gridheight = 2;
@@ -138,10 +140,10 @@ public class MapExist extends JFrame {
 				model2.setRowCount(0);
 				model3.setRowCount(0);
 				String selectedCell = table1.getValueAt(table1.getSelectedRow(), table1.getSelectedColumn()).toString();
-				for (int i = 0; i < existingMap.size(); i++) {
-					if (selectedCell.compareTo(existingMap.get(i).getNameOfContinent())==0) {
-						for (int j = 0; j < existingMap.get(i).getCountries().length; j++) {
-							String[] countryName = {existingMap.get(i).getCountries()[j].getNameOfCountry()};
+				for (int i = 0; i < mapExisting.size(); i++) {
+					if (selectedCell.compareTo(mapExisting.get(i).getNameOfContinent())==0) {
+						for (int j = 0; j < mapExisting.get(i).getCountries().length; j++) {
+							String[] countryName = {mapExisting.get(i).getCountries()[j].getNameOfCountry()};
 							model2.addRow(countryName);
 						}
 					}
@@ -155,12 +157,12 @@ public class MapExist extends JFrame {
 				model3.setRowCount(0);
 				String selectedCell1 = table1.getValueAt(table1.getSelectedRow(), table1.getSelectedColumn()).toString();
 				String selectedCell2 = table2.getValueAt(table2.getSelectedRow(), table2.getSelectedColumn()).toString();
-				for (int i = 0; i < existingMap.size(); i++) {
-					if (selectedCell1.compareTo(existingMap.get(i).getNameOfContinent())==0) {
-						for (int j = 0; j < existingMap.get(i).getCountries().length; j++) {
-							if (selectedCell2.compareTo(existingMap.get(i).getCountries()[j].getNameOfCountry())==0) {
-								for (int k = 0; k < existingMap.get(i).getCountries()[j].getNeighbourCountries().length; k++) {
-									String[] countryInfo = {existingMap.get(i).getCountries()[j].getNeighbourCountries()[k].getNameOfCountry()};
+				for (int i = 0; i < mapExisting.size(); i++) {
+					if (selectedCell1.compareTo(mapExisting.get(i).getNameOfContinent())==0) {
+						for (int j = 0; j < mapExisting.get(i).getCountries().length; j++) {
+							if (selectedCell2.compareTo(mapExisting.get(i).getCountries()[j].getNameOfCountry())==0) {
+								for (int k = 0; k < mapExisting.get(i).getCountries()[j].getNeighbourCountries().length; k++) {
+									String[] countryInfo = {mapExisting.get(i).getCountries()[j].getNeighbourCountries()[k].getNameOfCountry()};
 									model3.addRow(countryInfo);
 								}
 								break;
@@ -172,52 +174,53 @@ public class MapExist extends JFrame {
 			}
 		});
 
-		btnEdit = new JButton("Edit and Save Map");
-		btnEdit.setBackground(new Color(152, 251, 152));
-		btnEdit.setFont(new Font("Script MT Bold", Font.BOLD, 18));
+		EditButton = new JButton("Edit & Save Map");
+		EditButton.setBackground(new Color(152, 251, 152));
+		EditButton.setFont(new Font("Script MT Bold", Font.BOLD, 18));
 		GridBagConstraints gbc_btnEdit = new GridBagConstraints();
 		gbc_btnEdit.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnEdit.gridwidth = 3;
 		gbc_btnEdit.insets = new Insets(0, 0, 5, 0);
 		gbc_btnEdit.gridx = 13;
 		gbc_btnEdit.gridy = 2;
-		contentPane.add(btnEdit, gbc_btnEdit);
+		contentPane.add(EditButton, gbc_btnEdit);
 	}
 	
 	/**
-	 * Function to display error message dialog box.
+	 * to display error message-dialog-box for not able to load map
 	 */
-	public void cannotLoadMapError() {
-		JOptionPane.showMessageDialog(contentPane, "Map file validation error", "Error", JOptionPane.ERROR_MESSAGE);
+	public void mapCannotLoadedError() {
+		JOptionPane.showMessageDialog(contentPane, "Map-file validation-Error!", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	/**
-	 * Function to display error message dialog box.
+	 *  to display error message-dialog-box for unConneected continents.
 	 */
 	public void showUnconnectedContinentError() {
-		JOptionPane.showMessageDialog(contentPane, "Cannot load Map file with unconnected continent", "Error", JOptionPane.ERROR_MESSAGE);
+		JOptionPane.showMessageDialog(contentPane, "Cannot load Map-file having unconnected continents", "Error", JOptionPane.ERROR_MESSAGE);
 	}
 	
 	/**
-	 * displays dialog box with success message.
+	 * displays sucess dialog box with success-message on load of map
 	 */
-	public void successfullLoad() {
-		JOptionPane.showMessageDialog(contentPane, "Map file validated => Click ok to load the map data", "Message", JOptionPane.INFORMATION_MESSAGE);
+	public void mapSuccessfullyLoadedMsg() {
+		JOptionPane.showMessageDialog(contentPane, "Map file is validated => now Click ok to load the map-data", "Message", JOptionPane.INFORMATION_MESSAGE);
 	}
-
-	/**
-	 * @see risk.controller.mapeditor.mapEditorController
-	 * @param newAction actionListener for btnEdit
-	 */
-	public void addActionsToBtnEdit(ActionListener newAction) {
-		btnEdit.addActionListener(newAction);
-	}
-
+	
 	/**
 	 * getting all the information from existing map
-	 * @return existing map info
+	 * @return existing-map information
 	 */
-	public ArrayList<NodeOfMap> getExistingMapInfo() {
-		return existingMap;
+	public ArrayList<NodeOfMap> getInfoForExistingMap() {
+		return mapExisting;
 	}
+	/**
+	 * @see EditCreateMapController
+	 * @param actionNew actionListener for EditButton
+	 */
+	public void addActionsToEditButton(ActionListener actionNew) {
+		EditButton.addActionListener(actionNew);
+	}
+
+	
 }

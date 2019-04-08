@@ -120,14 +120,14 @@ public class EditCreateMapController {
 					if(mapModel.checkSavedMap()) {
 						if(mapModel.checkConnectedContinent()) {
 							//dialog box
-							existingMap1.successfullLoad();
+							existingMap1.mapSuccessfullyLoadedMsg();
 							/*pass the existing map file information to the existing file editor*/
 							existingMap = new MapExist(mapReader.readingMap(fc.getSelectedFile().getAbsolutePath()));
 							/*actionListener for edit button of existing map frame*/
-							existingMap.addActionsToBtnEdit(new ActionListener() {
+							existingMap.addActionsToEditButton(new ActionListener() {
 								public void actionPerformed(ActionEvent e) {
 									existingMap.setVisible(false);
-									ArrayList<NodeOfMap> existing_map_Info = existingMap.getExistingMapInfo();
+									ArrayList<NodeOfMap> existing_map_Info = existingMap.getInfoForExistingMap();
 									mapModel.existingMapWriter(existing_map_Info);
 									existingMapEditor = new ExistingMapModifier(existing_map_Info);
 									existingMapEditor.setVisible(true);
@@ -140,7 +140,7 @@ public class EditCreateMapController {
 						}
 						
 					}else {
-						existingMap1.cannotLoadMapError();
+						existingMap1.mapCannotLoadedError();
 					}
 				}
 			}

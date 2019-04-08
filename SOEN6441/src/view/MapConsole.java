@@ -33,7 +33,7 @@ public class MapConsole extends JPanel implements Observer {
 	
 
 
-private BufferedImage image;
+private BufferedImage bImage;
 	
 	/**
 	 * Boolean to check for .bmp file for the map.
@@ -47,40 +47,43 @@ private BufferedImage image;
 	private static final long serialVersionUID = 2353535256045293828L;
 
 	/**
-	 * Sets the map view of the main window.
-	 * @param newImage image file uploaded.
+	 * Sets the map console view of the main-window-frame
+	 * @param imageNew bImage file uploaded.
 	 */
-	public MapConsole(String newImage) {
+	public MapConsole(String imageNew) {
 		this();
-		if(newImage!=null){
+		if(imageNew!=null){
 	    	try {
-	    		image = ImageIO.read(new File(newImage));
+	    		bImage = ImageIO.read(new File(imageNew));
 	    	} catch (IOException e) {
 	    		e.printStackTrace();
 	    	}
 	    }
 	    this.setBackground(Color.WHITE);
-	    this.setOpaque(true);
 	    this.setLayout(null);
+	    this.setOpaque(true);
+	    
 	    this.graphicalMap = true;
 	}
 	
 	/**
-	 * Sets the dimensions of the map view.
+	 *  to Display the map-file on the map-view.
+	 */
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if(bImage!=null) {	
+	    	g.drawImage(bImage, 0, 0, this);
+	    }
+	}
+	
+	/**
+	 * Sets the dimensions of the map-view border.
 	 */
 	public MapConsole() {
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 
-	/**
-	 * Displays the map file onto the map view.
-	 */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(image!=null) {	
-	    	g.drawImage(image, 0, 0, this);
-	    }
-	}
+	
 
 	/**
 	 * Sets map data on the map view in a tabular format.
@@ -111,7 +114,7 @@ private BufferedImage image;
 	}
 	
 	/**
-	 * Sets the coordinates on the map file image.
+	 * Sets the coordinates on the map file bImage.
 	 * @param newMapData Map data to be displayed.
 	 */
 	public void setGraphicalMap(String[][] newMapData) {

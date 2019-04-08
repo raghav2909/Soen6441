@@ -129,7 +129,7 @@ public class TheMainController {
 	 * Calls chooseMapEditorOrPlayGame() function of the SetUpDialog class to display Edit Map and Play Game options.
 	 */
 	public void chooseMapEditorOrPlayGame() {
-		this.setupBox.chooseMapEditorOrPlayGame();
+		this.setupBox.selectMapEditorOrPlayGame();
 	}
 	
 	/**
@@ -140,7 +140,7 @@ public class TheMainController {
 		String mode = this.setupBox.gameMode();
 		if(mode.equals("single")) {
 			System.out.println("1");
-			this.setupBox.saveOrLoadGame();
+			this.setupBox.selectSaveOrLoadGame();
 		}
 		else if(mode.equals("tournament")){
 			getTournamentInfo();
@@ -204,9 +204,9 @@ public class TheMainController {
 	}
 
 	public void singleGameInit() {
-		String map = setupBox.getMapInfo("map");
-		String bmp = setupBox.getMapInfo("bmp");
-		String[][] players = setupBox.getPlayerInfo();
+		String map = setupBox.getMapData("map");
+		String bmp = setupBox.getMapData("bmp");
+		String[][] players = setupBox.getInfoOnPlayerData();
 		if(bmp!=null) {
 			gameMode = new Single(map, bmp, players, 0, this);
 		}else {

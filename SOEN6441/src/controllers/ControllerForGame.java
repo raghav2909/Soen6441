@@ -204,7 +204,7 @@ public class ControllerForGame {
 	 * @return the country selected by the user to place army.
 	 */
 	public String placeArmyDialog(String[] countriesNamesNoArmy, String message) {
-		return setupBox.placeTheArmyDialog(countriesNamesNoArmy, message);
+		return setupBox.dialogToPlaceTheArmy(countriesNamesNoArmy, message);
 	}
 	
 	/**

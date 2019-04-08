@@ -108,7 +108,7 @@ public class TheMainController {
 				setupBox.chooseOptionFrame().dispose();
 			}
 		};
-		this.setupBox.mapEditAction(mapEditListener);
+		this.setupBox.actionForMapEditButton(mapEditListener);
 	}
 	
 	/**
@@ -137,7 +137,7 @@ public class TheMainController {
 	 * to play tournament or single game, and accordingly create the tournament or single game object.
 	 */
 	private void init() {
-		String mode = this.setupBox.gameMode();
+		String mode = this.setupBox.modeOfGame();
 		if(mode.equals("single")) {
 			System.out.println("1");
 			this.setupBox.selectSaveOrLoadGame();

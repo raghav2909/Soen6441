@@ -109,8 +109,8 @@ public class Tournament implements Mode {
 	}
 
 	public static void main(String[] arg) {
-		String[][] myPs = {{"Gur","aggressive"},{"Raj","aggressive"}};
-		String[] maps = {"D:\\Gurpreet\\Study\\Meng\\SEM6\\SOEN6441\\project\\World2005.map","D:\\Gurpreet\\Study\\Meng\\SEM6\\SOEN6441\\project\\World2005.bmp"};
+		String[][] myPs = {{"Raghav","aggressive"},{"Saman","aggressive"}};
+		String[] maps = {"C:\\Users\\Gursharan\\git\\Soen6441\\SOEN6441\\Map_Data\\map\\World2005.map","C:\\Users\\Gursharan\\git\\Soen6441\\SOEN6441\\Map_Data\\map\\World2005.bmp"};
 		Tournament s = new Tournament(2,maps, myPs, 10, TheMainController.getInit());
 		TheMainController.getInit().setMode(s);
 		s.start();

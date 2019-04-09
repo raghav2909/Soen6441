@@ -97,6 +97,7 @@ public class Player
 	/**
 	 * Initialize player object with name.
 	 * @param name name of player.
+	 * @param nDriver object of game driver
 	 */
 	public Player(String name, GameDriver nDriver) {
 		this.name = name;
@@ -111,6 +112,7 @@ public class Player
 	 * Initialize player object with name and armies.
 	 * @param name name of the player.
 	 * @param newArmies armies of the player.
+	 * @param nDriver game driver object
 	 */
 	public Player(String name, int newArmies, GameDriver nDriver) {
 		this(name, nDriver);
@@ -122,7 +124,8 @@ public class Player
 	 * Initialize player object with name and armies.
 	 * @param name name of the player.
 	 * @param newArmies armies of the player.
-	 * @param countriesList ArrayList of all countries owned by player.
+	 * @param countriesList ArrayList of all countries owned by player
+	 * @param nDriver object of game driver.
 	 */
 	public Player(String name, int newArmies, ArrayList<NodeOfCountry> countriesList, GameDriver nDriver) {
 		this(name, nDriver);
@@ -695,6 +698,7 @@ public class Player
 	
 	/**
 	 * Set a new strategy for player
+	 * @param newStrategy startegy of player
 	 */
 	public void setStrategy(StrategyOfPlayer newStrategy) {
 		this.strategy = newStrategy;
@@ -710,10 +714,11 @@ public class Player
 	
 	/**
 	 * 
-	 * @param aArmies
-	 * @param i
-	 * @param string
-	 * @return
+	 * @param aArmies armies available
+	 * @param maxArmies maximum number of armies
+	 * @param message message to be passed
+	 * @return move armies
+	 * @return armies to be moved.
 	 */
 	public int moveArmies(int aArmies, int maxArmies, String message) {
 		return this.strategy.moveArmies(aArmies, maxArmies, message);

@@ -27,7 +27,6 @@ public class CActionStrategy implements StrategyOfPlayer{
 	
 	/**
 	 * Reinforcement phase of cheater player that doubles the number of armies on all its countries
-	 * @see risk.model.player.PlayerStrategy#reinforcementPhase(int, java.lang.String[])
 	 */
 	@Override
 	public void reinforcementPhase(int armies, String[] countryList) {
@@ -40,7 +39,6 @@ public class CActionStrategy implements StrategyOfPlayer{
 
 	/**
 	 * Attack phase: cheater player automatically conquers all the neighbors of all its countries.
-	 * @see risk.model.player.PlayerStrategy#attackPhase(java.util.ArrayList)
 	 */
 	@Override
 	
@@ -76,7 +74,6 @@ public class CActionStrategy implements StrategyOfPlayer{
 	/**
 	 * Fortification phase of cheater player: doubles the number of armies on 
 	 * its countries that have neighbors that belong to other players.  
-	 * @see risk.model.player.PlayerStrategy#fortificationPhase(java.util.ArrayList)
 	 */
 	@Override
 	public void fortificationPhase(ArrayList<String> countryList) {

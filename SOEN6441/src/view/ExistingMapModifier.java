@@ -559,8 +559,7 @@ import controllers.EditCreateMapController;
 			 		btnDeleteNeighbours.addActionListener(actionNew);
 		}
 		
-		/**Action event for button to delete selected neighbours
-		 * @see mapEditorController 
+		/**Action event for button to delete selected neighbours		 
 		 * @param actionNew actionListener for btnDeleteSelectedNeighbours.
 		 */
 		public void addActionsToDeleteSelectedNeighboursButton(ActionListener actionNew) {

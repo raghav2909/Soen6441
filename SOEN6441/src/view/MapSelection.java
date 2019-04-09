@@ -34,6 +34,7 @@ public class MapSelection {
 	 * @throws ClassNotFoundException it will throw classnotFound exception
 	 * @throws InstantiationException  it will throw Instantiation exception
 	 * @throws IllegalAccessException it will throw illegalAcess exception
+	 * @throws UnsupportedLookAndFeelException it will throw exception
 	 * 
 	 */
 	public MapSelection()throws UnsupportedLookAndFeelException,ClassNotFoundException,InstantiationException, IllegalAccessException

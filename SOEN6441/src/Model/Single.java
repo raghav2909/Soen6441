@@ -39,8 +39,12 @@ public class Single implements Mode{
 
 	/**
 	* constructor for initialzing the instance variables.
+	* @param players player names
+	* @param moveLimit limit of number of moves
+	* @param nController main controller object
+	* @param map map name
 	*/
-	public Single(String map, String[][] players, int moveLimit, TheMainController nController) {
+	public  Single(String map, String[][] players, int moveLimit, TheMainController nController) {
 		mController = nController;
 		myMap = map;
 		myPlayers = players;
@@ -54,7 +58,7 @@ public class Single implements Mode{
 
 	/**
 	* udating results using the winner player
-	* @param winnerPlayer
+	* @param winnerPlayer winner player name
 	*/
 	public void updateResults(String winnerPlayer) {
 		String[][] data = {{myMap , winnerPlayer}};
@@ -91,7 +95,7 @@ public class Single implements Mode{
 	
 	/**
 	 * 
-	 * @param file
+	 * @param file file name
 	 */
 	public void loadGameFromAFile(File file){ 
 

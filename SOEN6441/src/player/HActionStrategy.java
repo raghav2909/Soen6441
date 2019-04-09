@@ -18,7 +18,7 @@ public class HActionStrategy implements StrategyOfPlayer{
 	
 	/**
 	 * sets GameDriver instance
-	 * @param newDriver
+	 * @param newDriver game driver object
 	 */
 	public HActionStrategy(GameDriver newDriver) {
 		driver = newDriver;
@@ -41,8 +41,8 @@ public class HActionStrategy implements StrategyOfPlayer{
 	}
 	/**
 	 * Method for army placing
-	 * @param countries
-	 * @param name
+	 * @param countries countries list
+	 * @param name name of players
 	 * @return String
 	 */
 	public String armyPlacing(String[] countries, String name) {

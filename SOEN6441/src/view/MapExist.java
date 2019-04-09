@@ -215,7 +215,6 @@ public class MapExist extends JFrame {
 		return mapExisting;
 	}
 	/**
-	 * @see EditCreateMapController
 	 * @param actionNew actionListener for EditButton
 	 */
 	public void addActionsToEditButton(ActionListener actionNew) {

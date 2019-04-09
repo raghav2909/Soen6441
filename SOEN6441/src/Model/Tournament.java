@@ -59,11 +59,11 @@ public class Tournament implements Mode {
 
 	/**
 	 * parameterized constructor of class
-	 * @param gamesCount
-	 * @param mapDetails
-	 * @param playerBehaviorDetails
-	 * @param movesCount
-	 * @param newController
+	 * @param gamesCount count number of games
+	 * @param mapDetails details of map
+	 * @param playerBehaviorDetails behaviour of player
+	 * @param movesCount number of moves
+	 * @param newController main controller object
 	 */
 	public Tournament(int gamesCount, String[] mapDetails, String[][] playerBehaviorDetails, int movesCount, TheMainController newController) {
 		mController = newController;
@@ -88,7 +88,7 @@ public class Tournament implements Mode {
 	
 	/**
 	* updating results using winner obtained
-	* @param winner
+	* @param winner winner name
 	*/
 	public void updateResults(String winner) {
 		winners[currentMap][currentGame] = winner;

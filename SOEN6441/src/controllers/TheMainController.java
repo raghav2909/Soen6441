@@ -170,6 +170,7 @@ public class TheMainController {
 
 	/**
 	* string array of winners passed to initialize the winners
+	* @param winners winners name
 	*/
 	public void setResults(String[][] winners) {
 		ResultConsole result = new ResultConsole(winners);

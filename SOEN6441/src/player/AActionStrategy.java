@@ -37,7 +37,6 @@ public class AActionStrategy implements StrategyOfPlayer{
 	
 	/**
 	 * Reinforcement phase of aggressive player that reinforces its strongest countries.
-	 * @see risk.model.player.PlayerStrategy#reinforcementPhase(int, java.lang.String[])
 	 */
 	@Override
 	public void reinforcementPhase(int armies, String[] countryList) {
@@ -50,7 +49,6 @@ public class AActionStrategy implements StrategyOfPlayer{
 
 	/**
 	 * Attack phase: aggressive player always attack with it until it cannot attack anymore.
-	 * @see risk.model.player.PlayerStrategy#attackPhase(java.util.ArrayList)
 	 */
 	@Override
 	public void attackPhase(ArrayList<String> countryList) {
@@ -79,7 +77,8 @@ public class AActionStrategy implements StrategyOfPlayer{
 
 	/**
 	 * Fortification phase of aggressive player: maximizes aggregation of forces in one country.
-	 * @see risk.model.player.PlayerStrategy#fortificationPhase(java.util.ArrayList)
+	 * @param countryList list of countries
+	 * 
 	 */
 	@Override
 	public void fortificationPhase(ArrayList<String> countryList) {

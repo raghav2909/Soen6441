@@ -16,7 +16,7 @@ import player.Player;
 /**
  * this class is a testing the correct number of armies
  * @author samansoltani
- * @verison 1.0
+ * @version 1.0
  */
 public class PlayerTest {
 	

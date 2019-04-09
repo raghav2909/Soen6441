@@ -39,7 +39,6 @@ public class RActionStrategy implements StrategyOfPlayer {
 
 	/**
 	 * Reinforcement phase of random player that reinforces random a random country.
-	 * @see risk.model.player.PlayerStrategy#reinforcementPhase(int, java.lang.String[])
 	 */
 	@Override
 	public void reinforcementPhase(int armies, String[] countryList) {
@@ -52,7 +51,6 @@ public class RActionStrategy implements StrategyOfPlayer {
 
 	/**
 	 * Attack phase: random player  attacks a random number of times a random country.
-	 * @see risk.model.player.PlayerStrategy#attackPhase(java.util.ArrayList)
 	 */
 	@Override
 	public void attackPhase(ArrayList<String> countryList) {
@@ -82,7 +80,6 @@ public class RActionStrategy implements StrategyOfPlayer {
 
 	/**
 	 * Fortification phase of random player: fortifies a random country  
-	 * @see risk.model.player.PlayerStrategy#fortificationPhase(java.util.ArrayList)
 	 */
 	@Override
 	public void fortificationPhase(ArrayList<String> countryList) {

@@ -21,15 +21,15 @@ public class BActionStrategy implements StrategyOfPlayer{
 	 */
 	private GameDriver driver = new GameDriver();
 	
-<<<<<<< HEAD
+
 	private GameTurnDriver turnDriver;
 	
-=======
+
 	/**
 	 * sets GameDriver instance
-	 * @param nDriver
+	 * @param nDriver game driver object
 	 */
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
+
 	public BActionStrategy(GameDriver nDriver) {
 		driver = nDriver;
 		turnDriver = driver.getGameTurnDriver();
@@ -37,7 +37,6 @@ public class BActionStrategy implements StrategyOfPlayer{
 	
 	/**
 	 * Reinforcement phase of benevolent player that reinforces its weakest countries.
-	 * @see risk.model.player.PlayerStrategy#reinforcementPhase(int, java.lang.String[])
 	 */
 	@Override
 	public void reinforcementPhase(int armies, String[] countryList) {
@@ -49,7 +48,6 @@ public class BActionStrategy implements StrategyOfPlayer{
 
 	/**
 	 * Attack phase: benevolent player never attacks.
-	 * @see risk.model.player.PlayerStrategy#attackPhase(java.util.ArrayList)
 	 */
 	@Override
 	public void attackPhase(ArrayList<String> countryList) {
@@ -61,7 +59,6 @@ public class BActionStrategy implements StrategyOfPlayer{
 	
 	/**
 	 * Fortification phase of benevolent player: fortifies in order to move armies to weakest country.
-	 * @see risk.model.player.PlayerStrategy#fortificationPhase(java.util.ArrayList)
 	 */
 	@Override
 	public void fortificationPhase(ArrayList<String> countryList) {

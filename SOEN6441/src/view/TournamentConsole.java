@@ -176,7 +176,7 @@ public class TournamentConsole extends JFrame{
 	
 	/**
 	 * adds action for submit button
-	 * @param actionListener 
+	 * @param actionListener action listener
 	 */
 	public void setListeners(ActionListener actionListener) {
 		buttonToSubmit.addActionListener(actionListener);

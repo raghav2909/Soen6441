@@ -160,8 +160,8 @@ public class TheMainController {
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				System.out.print("Hello");
-				gameMode = new Tournament(infoView.getGamesCount(), infoView.getMapDetails(),
-						infoView.getPlayerBehaviorDetails(), infoView.getMovesCount(), mC);
+				gameMode = new Tournament(infoView.getCountOfGames(), infoView.getDetailsOfMap(),
+						infoView.getDetailsOfPlayerBehavior(), infoView.getCountOfMoves(), mC);
 				gameMode.start();
 				infoView.dispose();
 			}

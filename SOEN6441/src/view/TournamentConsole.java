@@ -21,63 +21,65 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- * This class provides a menu to go for tournament mode by providing the info asked
- * for Tournament mode maximum 4 players can play
+ * This class defines a menu for game for tournament-mode after entering specific information
+ * for Tournament mode only maximum of 4 players can play
  * @author Gursharan
  * @version 2.0
 */
 
 public class TournamentConsole extends JFrame{
 	
-	private JButton submitButton;
-	private JSpinner mapCount;
-	private JPanel mapPanel;
-	private ArrayList<JTextField> maps;
-	private JSpinner playerCount;
+	private JSpinner countOfPlayer;
 	private JPanel playerPanel;
 	private ArrayList<JComboBox<String>> behaviors;
 	private ArrayList<JTextField> names;
 	private JSpinner gameCount;
 	private JSpinner moveCount;
-	private Container frame; 
+	private Container frame;
+	private JButton buttonToSubmit;
+	private JSpinner countForMap;
+	private JPanel panelForMap;
+	private ArrayList<JTextField> maps;
+	
+	 
+	private void listenerFormapCount() {
+		countForMap.addChangeListener( new ChangeListener(){
+			public void stateChanged(ChangeEvent e) {
+				addContentToMapPanel();
+			}
+		});
+	}
+
+	
+	private void listenerForPlayerCount() {
+		countOfPlayer.addChangeListener( new ChangeListener(){
+			public void stateChanged(ChangeEvent e) {
+				addContentToPlayerPanel();
+			}
+		});
+	}
+
 	
 	public TournamentConsole(){
-		super("Enter tournament details");
-		mapCount = new JSpinner(new SpinnerNumberModel(1,1,5,1));
-		mapPanel = new JPanel();
-		playerCount = new JSpinner(new SpinnerNumberModel(2,2,4,1));
+		super("Enter details for tournament!");
+		countForMap = new JSpinner(new SpinnerNumberModel(1,1,5,1));
+		panelForMap = new JPanel();
+		countOfPlayer= new JSpinner(new SpinnerNumberModel(2,2,4,1));
 		playerPanel = new JPanel();
 		gameCount = new JSpinner(new SpinnerNumberModel(1,1,5,1));
 		moveCount = new JSpinner(new SpinnerNumberModel(10,10,50,1));
-		submitButton = new JButton("OK");
+		buttonToSubmit = new JButton("OK!");
 		frame = this.getContentPane();
-		init();
-		mapCountListener();
-		playerCountListener();
-		addPlayerPanelContent();
-		addMapPanelContent();
+		initTournament();
+		listenerFormapCount();
+		listenerForPlayerCount();
+		addContentToPlayerPanel();
+		addContentToMapPanel();
 		this.pack();
 		this.validate();
 		this.setVisible(true);
 	}
-	
-	private void playerCountListener() {
-		playerCount.addChangeListener( new ChangeListener(){
-			public void stateChanged(ChangeEvent e) {
-				addPlayerPanelContent();
-			}
-		});
-	}
-
-	private void mapCountListener() {
-		mapCount.addChangeListener( new ChangeListener(){
-			public void stateChanged(ChangeEvent e) {
-				addMapPanelContent();
-			}
-		});
-	}
-
-	private void init() {
+	private void initTournament() {
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		panel.setLayout(new GridBagLayout());
@@ -88,17 +90,17 @@ public class TournamentConsole extends JFrame{
 		c.gridy = 0;
 		panel.add(new JLabel("Enter number of maps: "), c);
 		c.gridx = 1;
-		panel.add(mapCount, c);
+		panel.add(countForMap, c);
 		c.gridwidth = 2;
 		c.gridy = 2;
 		c.gridx = 0;
-		panel.add(mapPanel, c);
+		panel.add(panelForMap, c);
 		c.gridwidth = 1;
 		c.gridy = 3;
 		c.gridx = 0;
 		panel.add(new JLabel("Enter number of players: "), c);
 		c.gridx = 1;
-		panel.add(playerCount, c);
+		panel.add(countOfPlayer, c);
 		c.gridwidth = 2;
 		c.gridy = 4;
 		c.gridx = 0;
@@ -116,27 +118,28 @@ public class TournamentConsole extends JFrame{
 		panel.add(moveCount, c);
 		c.gridy = 7;
 		c.gridx = 0;
-		panel.add(submitButton, c);
+		panel.add(buttonToSubmit, c);
 	}
 	
 	public void setListeners(ActionListener actionListener) {
-		submitButton.addActionListener(actionListener);
+		buttonToSubmit.addActionListener(actionListener);
 	}
 	
-	private void addMapPanelContent() {
-		mapPanel.removeAll();
-		mapPanel.setLayout(new GridBagLayout());
-		maps = new ArrayList<JTextField>();
+	private void addContentToMapPanel() {
+		panelForMap.removeAll();
 		openingdialog sBox = new openingdialog();
-		for(int i=0; i< (int) mapCount.getValue(); i++) {
+		panelForMap.setLayout(new GridBagLayout());
+		maps = new ArrayList<JTextField>();
+		
+		for(int i=0; i< (int) countForMap.getValue(); i++) {
 			GridBagConstraints c = new GridBagConstraints();
 			c.insets = new Insets(2,2,2,2);
 			c.gridx = 0;
 			c.gridy = i;
-			mapPanel.add(new JLabel("Select map "+(i+1)+": "), c);
+			panelForMap.add(new JLabel("Select map "+(i+1)+": "), c);
 			c.gridx = 1;
 			JTextField map = new JTextField(15);
-			JButton browse = new JButton("Browse");
+			JButton browse = new JButton("Browse!");
 			browse.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent arg0) {
@@ -145,22 +148,22 @@ public class TournamentConsole extends JFrame{
 			});
 			map.setEnabled(false);
 			maps.add(map);
-			mapPanel.add(map, c);
+			panelForMap.add(map, c);
 			c.gridx = 2;
-			mapPanel.add(browse,c);
+			panelForMap.add(browse,c);
 		}
 		revalidate();
 		pack();
 		repaint();
 	}
 	
-	private void addPlayerPanelContent() {
+	private void addContentToPlayerPanel() {
 		playerPanel.removeAll();
 		playerPanel.setLayout(new GridBagLayout());
 		behaviors = new ArrayList<JComboBox<String>>();
 		names = new ArrayList<JTextField>();
 		String[] tempBeh = {"aggressive", "benevolent", "cheater", "human","random"};
-		for(int i=0; i< (int) playerCount.getValue(); i++) {
+		for(int i=0; i< (int) countOfPlayer.getValue(); i++) {
 			GridBagConstraints c = new GridBagConstraints();
 			c.gridx = 0;
 			c.gridy = i;

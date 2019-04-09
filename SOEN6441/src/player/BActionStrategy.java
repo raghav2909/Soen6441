@@ -8,7 +8,10 @@ import java.util.Random;
 import Model.GameDriver;
 import Model.NodeOfCountry;
 
-
+/**
+ * This class handles the benevolent strategy of a player.
+ *
+ */
 
 public class BActionStrategy implements StrategyOfPlayer{
 	

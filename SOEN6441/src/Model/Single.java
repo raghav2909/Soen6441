@@ -54,6 +54,7 @@ public class Single implements Mode{
 
 	/**
 	* udating results using the winner player
+	* @param winnerPlayer
 	*/
 	public void updateResults(String winnerPlayer) {
 		String[][] data = {{myMap , winnerPlayer}};

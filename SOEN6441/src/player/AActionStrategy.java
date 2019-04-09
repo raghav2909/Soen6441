@@ -22,6 +22,10 @@ public class AActionStrategy implements StrategyOfPlayer{
 	 */
 	private GameTurnDriver GameTurnDriver;
 	
+	/**
+	 * constructor of class
+	 * @param nDriver object of GameDriver
+	 */
 	public AActionStrategy(GameDriver nDriver) {
 		driver = nDriver;
 		GameTurnDriver = driver.getGameTurnDriver();
@@ -156,6 +160,5 @@ public class AActionStrategy implements StrategyOfPlayer{
 	public String getNameOfStrategy() {
 		return "aggressive";
 	}
-
 
 }

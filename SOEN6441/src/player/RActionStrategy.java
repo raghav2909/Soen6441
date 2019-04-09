@@ -9,10 +9,8 @@ import Model.GameTurnDriver;
 import Model.NodeOfCountry;
 
 
-
 public class RActionStrategy implements StrategyOfPlayer {
 
-	
 	/**
 	 * GameDriver instance for Cheater player.
 	 */
@@ -57,7 +55,6 @@ public class RActionStrategy implements StrategyOfPlayer {
 		if(randomCountry.getConutOfArmies() > 1 && randomAttacknumber > countAttacks){
 			countAttacks++;
 			NodeOfCountry aCountry = randomCountry;
-			
 			
 			/*randomly select a country to be attacked.*/
 			NodeOfCountry dCountry = null;

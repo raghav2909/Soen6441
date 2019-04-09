@@ -1,7 +1,5 @@
 package player;
 
-
-
 import java.util.ArrayList;
 
 

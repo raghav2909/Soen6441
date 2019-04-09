@@ -1,7 +1,5 @@
 package Model;
 
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -9,9 +7,11 @@ import java.util.ArrayList;
 
 import controllers.ControllerForGame;
 import controllers.TheMainController;
-
-
-
+/**
+ * 
+ * This class handles the single game mode.
+ *
+ */
 public class Single implements Mode{
 
 	private TheMainController mController;
@@ -47,10 +47,14 @@ public class Single implements Mode{
 		myMoveLimit = moveLimit;
 	}
 
+	/**
+	 * constructor of class
+	 */
 	public Single() {}
 
 	/**
 	* udating results using the winner player
+	* @param winnerPlayer
 	*/
 	public void updateResults(String winnerPlayer) {
 		String[][] data = {{myMap , winnerPlayer}};
@@ -85,6 +89,10 @@ public class Single implements Mode{
 		return myMap;
 	}
 	
+	/**
+	 * 
+	 * @param file
+	 */
 	public void loadGameFromAFile(File file){ 
 
 		try{

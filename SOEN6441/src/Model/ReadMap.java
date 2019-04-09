@@ -6,8 +6,6 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 
-
-
 /**
  * This class is used to read the map file
  * @author YashNarra
@@ -92,6 +90,3 @@ public class ReadMap{
 		return map;		
 	}
 }
-
-	
-

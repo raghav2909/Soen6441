@@ -16,7 +16,6 @@ import java.awt.Font;
 import javax.swing.border.MatteBorder;
 import controllers.EditCreateMapController;
 
-
 /**
  * The class FrameForMap  opens  JFrame view for selecting 
  * either a New map or an Existing map.

@@ -15,8 +15,12 @@ import javax.swing.border.EmptyBorder;
 
 public class ResultConsole extends JFrame{
 	
+	/**
+	 * button for window closing
+	 */
 	private JButton closeWindow;
-	/*
+	
+	/**
 	 *  button to play again
 	 */
 	private JButton playAgain;
@@ -59,7 +63,10 @@ public class ResultConsole extends JFrame{
 		initData(data);
 	}
 
-	
+	/**
+	 * adds action listener on button
+	 * @param e actionListener
+	 */
 	public void addActionListenerToPlayAgainButton(ActionListener e) {
 		this.playAgain.addActionListener(e);
 	}

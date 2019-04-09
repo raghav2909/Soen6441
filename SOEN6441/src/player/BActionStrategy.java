@@ -9,18 +9,27 @@ import Model.GameDriver;
 import Model.GameTurnDriver;
 import Model.NodeOfCountry;
 
-
+/**
+ * This class handles the benevolent strategy of a player.
+ *
+ */
 
 public class BActionStrategy implements StrategyOfPlayer{
-
 	
 	/**
 	 * GameDriver instance for benevolent player.
 	 */
 	private GameDriver driver = new GameDriver();
 	
+<<<<<<< HEAD
 	private GameTurnDriver turnDriver;
 	
+=======
+	/**
+	 * sets GameDriver instance
+	 * @param nDriver
+	 */
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	public BActionStrategy(GameDriver nDriver) {
 		driver = nDriver;
 		turnDriver = driver.getGameTurnDriver();

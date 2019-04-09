@@ -2,9 +2,12 @@ package Model;
 
 import controllers.ControllerForGame;
 import controllers.TheMainController;
-
+/**
+ * 
+ *This class handles the tournament game mode.
+ *
+ */
 public class Tournament implements Mode {
-
 	
 	/**
 	 * mController varaiable for storing the reference of class the_main_controller
@@ -54,6 +57,14 @@ public class Tournament implements Mode {
 		this.mController = newController;
 	}
 
+	/**
+	 * parameterized constructor of class
+	 * @param gamesCount
+	 * @param mapDetails
+	 * @param playerBehaviorDetails
+	 * @param movesCount
+	 * @param newController
+	 */
 	public Tournament(int gamesCount, String[] mapDetails, String[][] playerBehaviorDetails, int movesCount, TheMainController newController) {
 		mController = newController;
 		games = gamesCount;
@@ -77,6 +88,7 @@ public class Tournament implements Mode {
 	
 	/**
 	* updating results using winner obtained
+	* @param winner
 	*/
 	public void updateResults(String winner) {
 		winners[currentMap][currentGame] = winner;
@@ -103,7 +115,5 @@ public class Tournament implements Mode {
 		TheMainController.getInit().setMode(s);
 		s.start();
 	}
-	
-
 
 }

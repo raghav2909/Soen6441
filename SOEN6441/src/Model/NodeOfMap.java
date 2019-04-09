@@ -2,8 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 
-
-
 /**
  * Map data is updated/stored using this class
  * @author YashNarra
@@ -134,6 +132,3 @@ public class NodeOfMap {
 		
 	}
 }
-	
-
-

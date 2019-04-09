@@ -1,7 +1,11 @@
 package player;
 
 import java.util.ArrayList;
-
+/**
+ * this is the interface for Player Strategy classes.
+ * @author NARRA
+ * @version 3.0
+ */
 public interface StrategyOfPlayer {
 	
 	public void reinforcementPhase(int armies, String[] countryList);

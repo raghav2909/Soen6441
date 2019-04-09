@@ -7,7 +7,9 @@ import Model.GameDriver;
 import Model.GameTurnDriver;
 import Model.NodeOfCountry;
 
-
+/**
+ * This class handles the cheater strategy of a player.
+ */
 public class CActionStrategy implements StrategyOfPlayer{
 
 

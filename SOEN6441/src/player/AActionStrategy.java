@@ -9,7 +9,11 @@ import Model.GameDriver;
 import Model.GameTurnDriver;
 import Model.NodeOfCountry;
 
-
+/**
+ * This class handles the aggressive strategy of a player.
+ * @author NARRA
+ *
+ */
 public class AActionStrategy implements StrategyOfPlayer{
 
 	/**
@@ -22,6 +26,10 @@ public class AActionStrategy implements StrategyOfPlayer{
 	 */
 	private GameTurnDriver GameTurnDriver;
 	
+	/**
+	 * constructor of class
+	 * @param nDriver object of GameDriver
+	 */
 	public AActionStrategy(GameDriver nDriver) {
 		driver = nDriver;
 		GameTurnDriver = driver.getGameTurnDriver();
@@ -159,6 +167,5 @@ public class AActionStrategy implements StrategyOfPlayer{
 	public String getNameOfStrategy() {
 		return "aggressive";
 	}
-
 
 }

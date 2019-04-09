@@ -88,6 +88,7 @@ public class Tournament implements Mode {
 	
 	/**
 	* updating results using winner obtained
+	* @param winner
 	*/
 	public void updateResults(String winner) {
 		winners[currentMap][currentGame] = winner;

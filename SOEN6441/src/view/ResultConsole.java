@@ -15,8 +15,12 @@ import javax.swing.border.EmptyBorder;
 
 public class ResultConsole extends JFrame{
 	
+	/**
+	 * button for window closing
+	 */
 	private JButton closeWindow;
-	/*
+	
+	/**
 	 *  button to play again
 	 */
 	private JButton playAgain;

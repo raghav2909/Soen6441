@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="controllers.Player_Information_Controller" project="Soen6441" 
-    file="/Soen6441/SOEN6441/src/controllers/Player_Information_Controller.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="controllers.InformationOfPlayerController" project="Soen6441" 
+    file="/Soen6441/SOEN6441/src/controllers/InformationOfPlayerController.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="53" width="195" x="1684" y="305"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      

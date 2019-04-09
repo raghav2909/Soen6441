@@ -19,17 +19,13 @@ import javax.swing.SpinnerNumberModel;
  * @author harmandeep
  *@version 2.0
  */
-public class Player_Information_Controller {
+public class InformationOfPlayerController {
+	
 	
 	/**
-	 * This array stores the player names.
-	 */
-	public static String[] Name_Of_Player; 
-	
-	/**
-	 * This function will give the information regarding the player.
-	 * In this function Spinner  model is used to define the minimum and maximum number of players
-	 * when the user starts the game play. 
+	 * This function will give the information regarding the players-like number of players.
+	 * In this function Spinner-model is  being used to define the minimum and maximum number of players
+	 * as game play begins. 
 	 * @param minimum number of minimum players
 	 * @param Mesg message to be passed 
 	 * @param	maximum maximum number of players
@@ -51,18 +47,23 @@ public class Player_Information_Controller {
        return minimum;
 	
 	}
+
+	/**
+	 * This array stores the player names.
+	 */
+	public static String[] Name_Of_Player; 
 	
 	/**
 	 * This function will give the information regarding the players
 	 * @return It will return the names of players as string array
 	 */
-	public String[] Information_OF_Playres()
+	public String[] informationOFPayres()
 	{
 		int n = NumberOfPlayer(2,"Player Numbers",6);
-		System.out.println("Number of players" + n);
+		System.out.println("Number of players are: " + n);
 		
 		 Name_Of_Player= new String[n];
-		 JFrame jf = new JFrame("Player Names");
+		 JFrame jf = new JFrame("Player-Names");
 		 
 		jf.setBackground(Color.BLUE);
 		 

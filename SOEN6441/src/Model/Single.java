@@ -7,7 +7,11 @@ import java.util.ArrayList;
 
 import controllers.ControllerForGame;
 import controllers.TheMainController;
-
+/**
+ * 
+ * This class handles the single game mode.
+ *
+ */
 public class Single implements Mode{
 
 	private TheMainController mController;

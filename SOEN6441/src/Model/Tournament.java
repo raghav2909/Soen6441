@@ -2,7 +2,11 @@ package Model;
 
 import controllers.ControllerForGame;
 import controllers.TheMainController;
-
+/**
+ * 
+ *This class handles the tournament game mode.
+ *
+ */
 public class Tournament implements Mode {
 	
 	/**

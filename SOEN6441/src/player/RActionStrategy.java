@@ -7,7 +7,11 @@ import java.util.Random;
 import Model.GameDriver;
 import Model.GameTurnDriver;
 import Model.NodeOfCountry;
-
+/**
+ * This class handles the random strategy
+ * @author NARRA
+ * @version 3.0
+ */
 
 public class RActionStrategy implements StrategyOfPlayer {
 

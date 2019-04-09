@@ -41,12 +41,12 @@ public class PlayerConsole extends JPanel{
 	}
 	
 	/**
-	 * Sets the player Info view content.
+	 * Sets the player Information-view data
 	 * @param playerNames Names of the players.
 	 */
 	public void putInfoOfPlayer(String[][] playerNames) {
-		for(String[] name : playerNames){
-			JLabel comp = new JLabel(name[0]);
+		for(String[] playerName : playerNames){
+			JLabel comp = new JLabel(playerName[0]);
 			Border border = comp.getBorder();
 			Border margin = new EmptyBorder(10,10,10,10);
 			comp.setBorder(new CompoundBorder(border, margin));

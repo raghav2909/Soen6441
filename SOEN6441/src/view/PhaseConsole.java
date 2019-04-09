@@ -34,7 +34,7 @@ private static final long serialVersionUID = 5240018585440964453L;
 	 */
 	private JPanel panel;
 	
-	private JScrollPane scroll;
+	private JScrollPane scrollPane;
 
 	/**
 	 * Constructor to initialize PhaseView.
@@ -42,15 +42,15 @@ private static final long serialVersionUID = 5240018585440964453L;
 	public PhaseConsole() {
 		panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel,BoxLayout.Y_AXIS));
-		scroll = new JScrollPane(panel);
-		scroll.setPreferredSize(new Dimension(this.getWidth(),this.getHeight()));
-		this.add(scroll);
+		scrollPane = new JScrollPane(panel);
+		scrollPane.setPreferredSize(new Dimension(this.getWidth(),this.getHeight()));
+		this.add(scrollPane);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
 		this.validate();
 	}
 
 	/**
-	 * Observer method called on notifyObservers for PhaseView.
+	 * It is Observer-method that is called on to notifyObservers for PhaseConsole
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -59,7 +59,7 @@ private static final long serialVersionUID = 5240018585440964453L;
 			this.phase = current;
 			panel.removeAll();
 		}
-		scroll.setPreferredSize(new Dimension(this.getWidth(),this.getHeight()));
+		scrollPane.setPreferredSize(new Dimension(this.getWidth(),this.getHeight()));
 		panel.add(new JLabel((String) arg));
 		this.validate();
 		this.repaint();

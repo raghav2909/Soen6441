@@ -46,7 +46,7 @@ public class TournamentModeMenu extends JFrame {
          public JComboBox TurnsInTournament = new JComboBox(ListoftournamentTurns);
          
          /**
-          * class constructor displaying the frame
+          * class constructor  that display the frame
           * @param messageWindow message window
           */
          public TournamentModeMenu(MessageWindow messageWindow) {

@@ -59,7 +59,10 @@ public class ResultConsole extends JFrame{
 		initData(data);
 	}
 
-	
+	/**
+	 * adds action listener on button
+	 * @param e actionListener
+	 */
 	public void addActionListenerToPlayAgainButton(ActionListener e) {
 		this.playAgain.addActionListener(e);
 	}

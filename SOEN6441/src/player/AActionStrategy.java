@@ -9,7 +9,11 @@ import Model.GameDriver;
 import Model.GameTurnDriver;
 import Model.NodeOfCountry;
 
-
+/**
+ * This class handles the aggressive strategy of a player.
+ * @author NARRA
+ *
+ */
 public class AActionStrategy implements StrategyOfPlayer{
 
 	/**

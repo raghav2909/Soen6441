@@ -84,7 +84,9 @@ public class TournamentConsole extends JFrame{
 	 */
 	private ArrayList<JTextField> maps;
 	
-	 
+	 /**
+	  * add action for countForMap 
+	  */
 	private void listenerFormapCount() {
 		countForMap.addChangeListener( new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
@@ -93,7 +95,9 @@ public class TournamentConsole extends JFrame{
 		});
 	}
 
-	
+	/**
+	  * add action for countOfPlayer
+	  */
 	private void listenerForPlayerCount() {
 		countOfPlayer.addChangeListener( new ChangeListener(){
 			public void stateChanged(ChangeEvent e) {
@@ -102,7 +106,9 @@ public class TournamentConsole extends JFrame{
 		});
 	}
 
-	
+	/**
+	 * shows the main tournament frame to get tournament information
+	 */
 	public TournamentConsole(){
 		super("Enter details for tournament!");
 		countForMap = new JSpinner(new SpinnerNumberModel(1,1,5,1));
@@ -122,6 +128,10 @@ public class TournamentConsole extends JFrame{
 		this.validate();
 		this.setVisible(true);
 	}
+	
+	/**
+	 * sets the tournament information
+	 */
 	private void initTournament() {
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -164,10 +174,17 @@ public class TournamentConsole extends JFrame{
 		panel.add(buttonToSubmit, c);
 	}
 	
+	/**
+	 * adds action for submit button
+	 * @param actionListener 
+	 */
 	public void setListeners(ActionListener actionListener) {
 		buttonToSubmit.addActionListener(actionListener);
 	}
 	
+	/**
+	 * adds the information to the map panel
+	 */
 	private void addContentToMapPanel() {
 		panelForMap.removeAll();
 		openingdialog sBox = new openingdialog();
@@ -200,6 +217,9 @@ public class TournamentConsole extends JFrame{
 		repaint();
 	}
 	
+	/**
+	 * adds the information to player panel
+	 */
 	private void addContentToPlayerPanel() {
 		playerPanel.removeAll();
 		playerPanel.setLayout(new GridBagLayout());
@@ -226,9 +246,19 @@ public class TournamentConsole extends JFrame{
 		pack();
 		repaint();
 	}
+	
+	/**
+	 * gets the game count
+	 * @return number of games
+	 */
 	public int getCountOfGames() {
 		return (int) gameCount.getValue();
 	}
+	
+	/**
+	 * gets all details of map
+	 * @return array of maps
+	 */
 	public String[] getDetailsOfMap() {
 		ArrayList<String> b = new ArrayList<String>();
 		for(JTextField cb: maps) {
@@ -236,6 +266,11 @@ public class TournamentConsole extends JFrame{
 		}
 		return b.toArray(new String[b.size()]);
 	}
+	
+	/**
+	 * gets the all players behaviour
+	 * @return array of behaviours
+	 */
 	public String[][] getDetailsOfPlayerBehavior() {
 		ArrayList<String[]> b = new ArrayList<String[]>();
 		for(int i=0;i<names.size();i++) {
@@ -247,13 +282,11 @@ public class TournamentConsole extends JFrame{
 		return b.toArray(new String[b.size()][]);
 	}
 	
-	
-	
-	
-	
+	/**
+	 * gets the number of moves
+	 * @return count of moves
+	 */
 	public int getCountOfMoves() {
 		return (int) countOfMoves.getValue();
 	}
-
 }
-

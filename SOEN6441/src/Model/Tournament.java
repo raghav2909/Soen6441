@@ -4,7 +4,6 @@ import controllers.ControllerForGame;
 import controllers.TheMainController;
 
 public class Tournament implements Mode {
-
 	
 	/**
 	 * mController varaiable for storing the reference of class the_main_controller
@@ -54,6 +53,14 @@ public class Tournament implements Mode {
 		this.mController = newController;
 	}
 
+	/**
+	 * parameterized constructor of class
+	 * @param gamesCount
+	 * @param mapDetails
+	 * @param playerBehaviorDetails
+	 * @param movesCount
+	 * @param newController
+	 */
 	public Tournament(int gamesCount, String[] mapDetails, String[][] playerBehaviorDetails, int movesCount, TheMainController newController) {
 		mController = newController;
 		games = gamesCount;
@@ -97,13 +104,11 @@ public class Tournament implements Mode {
 	}
 
 	public static void main(String[] arg) {
-		String[][] myPs = {{"Gur","aggressive"},{"Raj","aggressive"}};
+		String[][] myPs = {{"Harman","aggressive"},{"Raghav","aggressive"}};
 		String[] maps = {"D:\\Gurpreet\\Study\\Meng\\SEM6\\SOEN6441\\project\\World2005.map","D:\\Gurpreet\\Study\\Meng\\SEM6\\SOEN6441\\project\\World2005.bmp"};
 		Tournament s = new Tournament(2,maps, myPs, 10, TheMainController.getInit());
 		TheMainController.getInit().setMode(s);
 		s.start();
 	}
-	
-
 
 }

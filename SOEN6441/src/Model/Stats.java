@@ -1,7 +1,10 @@
 package Model;
 
-
-
+/**
+ * This class sets the new mode for game
+ * @author Harman
+ *
+ */
 public class Stats {
 	
 	/**
@@ -16,7 +19,5 @@ public class Stats {
 	public Stats(Mode newMode) {
 		mode = newMode;
 	}
-	
-	
-	
+
 }

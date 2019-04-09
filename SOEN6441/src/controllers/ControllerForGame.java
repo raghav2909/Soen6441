@@ -80,6 +80,8 @@ public class ControllerForGame {
 	 */
 	private GameLogging gameLogger;
 	
+	private GameTurnDriver turnManager;
+	
 	/**
 	 * Constructor for object creation
 	 * @param newSetupBox openingdialog object
@@ -96,6 +98,7 @@ public class ControllerForGame {
 	public ControllerForGame(GameDriver newDriver, openingdialog newSetupBox) {
 		this.setupBox = newSetupBox;
 		this.driver = newDriver;
+		turnManager = driver.getGameTurnDriver();
 		driver.setController(this);
 		init();
 	}
@@ -112,6 +115,7 @@ public class ControllerForGame {
 		setupBox = new openingdialog();
 		driver = new GameDriver(newMap, moveLimit);
 		driver.setController(this);
+		turnManager = driver.getGameTurnDriver();
 		playerInfoGUI = new PlayerConsole();
 		playerInfoGUI.setPlayerInfo(playerNames);
 		init();
@@ -128,6 +132,7 @@ public class ControllerForGame {
 		mapGUI = new MapConsole();
 		setupBox = new openingdialog();
 		driver = new GameDriver(newMap, moveLimit);
+		turnManager = driver.getGameTurnDriver();
 		driver.setController(this);
 		playerInfoGUI = new PlayerConsole();
 		playerInfoGUI.setPlayerInfo(playerNames);
@@ -148,6 +153,7 @@ public class ControllerForGame {
 		mapGUI = new MapConsole();
 		setupBox = new openingdialog();
 		driver = new GameDriver(newMap, 0);
+		turnManager = driver.getGameTurnDriver();
 		driver.setController(this);
 		playerInfoGUI = new PlayerConsole();
 		int i = 0;
@@ -177,6 +183,8 @@ public class ControllerForGame {
 			driver.getCurrent().assignArmies(driver.getCurrent().getCountOfArmies());
 		}
 		driver.continuePhase();
+		turnManager.playTurn();
+		
 	}
 	
 	/**
@@ -241,6 +249,7 @@ public class ControllerForGame {
 							controlsGUI.getSelectedNeighbor(), controlsGUI.getValueForArmies());
 				}
 				driver.switchPhase();
+				turnManager.playTurn();
 			}
 		});
 	}
@@ -279,6 +288,7 @@ public class ControllerForGame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				driver.switchPhase();
+				turnManager.playTurn();
 			}
 		});
 	}

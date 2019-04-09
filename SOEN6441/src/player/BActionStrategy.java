@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.Random;
 
 import Model.GameDriver;
+import Model.GameTurnDriver;
 import Model.NodeOfCountry;
 
 
@@ -18,8 +19,11 @@ public class BActionStrategy implements StrategyOfPlayer{
 	 */
 	private GameDriver driver = new GameDriver();
 	
+	private GameTurnDriver turnDriver;
+	
 	public BActionStrategy(GameDriver nDriver) {
 		driver = nDriver;
+		turnDriver = driver.getGameTurnDriver();
 	}
 	
 	/**
@@ -31,6 +35,7 @@ public class BActionStrategy implements StrategyOfPlayer{
 		reinforcement(armies, countryList);
 		driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
 		driver.switchPhase();
+		turnDriver.playTurn();
 	}
 
 	/**
@@ -42,6 +47,7 @@ public class BActionStrategy implements StrategyOfPlayer{
 		/*skip attack phase.*/
 		driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
 		driver.switchPhase();
+		turnDriver.playTurn();
 	}
 	
 	/**
@@ -53,6 +59,7 @@ public class BActionStrategy implements StrategyOfPlayer{
 		fortify(countryList);
 		driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
 		driver.switchPhase();
+		turnDriver.playTurn();
 	}
 
 	/**

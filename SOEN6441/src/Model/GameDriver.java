@@ -17,11 +17,12 @@ import controllers.ControllerForGame;
 import controllers.TheMainController;
 import player.AActionStrategy;
 import player.BActionStrategy;
-import player.CActionStrategy;
+
 import player.HActionStrategy;
 import player.*;
 import player.RActionStrategy;
 import player.StrategyOfPlayer;
+import view.openingdialog;
 
 /**
  * This class controls the turns - Startup phase, Fortification, reinforcement and attack phase.
@@ -35,6 +36,8 @@ public class GameDriver extends Observable {
 	 * map variable to store reference of class Map
 	 */
 	private Map map;
+	
+	public String modes;
 	
 	/**
 	 * ArrayList to store elements of player type.
@@ -50,6 +53,8 @@ public class GameDriver extends Observable {
 	 * turnManager variable to store reference of class GameTurnDriver
 	 */
 	private GameTurnDriver turnManager;
+	
+	private openingdialog openDialog;
 	
 	/**
 	 * currentPlayer variable to store reference of class Player
@@ -74,7 +79,7 @@ public class GameDriver extends Observable {
 	/**
 	 * Counts the number of moves
 	 */
-	private int moveCounter = 0;
+	public int moveCounter = 0;
 	
 	/**
 	 * Constructor initialize the GUI and  map class object.
@@ -86,6 +91,7 @@ public class GameDriver extends Observable {
 		this();
 		moveLimit = newMoveLimit;
 		map = new Map(newMap);
+		openDialog = new openingdialog();
 	}
 	
 	/**
@@ -95,6 +101,7 @@ public class GameDriver extends Observable {
 	public GameDriver() {
 		turnManager = new GameTurnDriver("Reinforcement", this);
 		cards = Card.cardPileGenerator();
+		openDialog = new openingdialog();
 	}
 
 	/**
@@ -114,6 +121,8 @@ public class GameDriver extends Observable {
 		playerCreation(playerData);
 		startUpPhase();
 		turnManager.startFromReinforcement(this.currentPlayer);
+		switchPhase();
+		turnManager.playTurn();
 	}
 	
 	/**
@@ -223,16 +232,21 @@ public class GameDriver extends Observable {
 	 */
 	public void setNextPlayer() {
 		int currentPlayerIndex = players.indexOf(getCurrent());
-		this.currentPlayer.setFalse();
-		if (currentPlayerIndex == players.size()-1){
-			moveCounter();
-			this.currentPlayer = players.get(0);
-		}else{
-			this.currentPlayer = players.get(currentPlayerIndex+1);
+		moveCounter();
+		if(!turnManager.isGameOver()) {
+			this.currentPlayer.setFalse();
+			if (currentPlayerIndex == players.size()-1){
+				this.currentPlayer = players.get(0);
+			}else{
+				this.currentPlayer = players.get(currentPlayerIndex+1);
+			}
+			this.currentPlayer.setTrue();
+			nottifyObservers("Turn changed to "+ this.currentPlayer.getPlayerName());
+			this.getCurrent().setArmies(this.getCurrent().getNumberOfArmies());
+		}	
+		else {
+			callGameOver(this.currentPlayer.getPlayerName());
 		}
-		this.currentPlayer.setTrue();
-		nottifyObservers("Turn changed to "+ this.currentPlayer.getPlayerName());
-		this.getCurrent().setArmies(this.getCurrent().getNumberOfArmies());
 	}
 	
 	/**
@@ -301,7 +315,7 @@ public class GameDriver extends Observable {
 	 */
 	public void continuePhase() {
 		updateMap();
-		turnManager.continuePhase();
+		turnManager.setContinuePhase();
 	}
 
 	/**
@@ -309,7 +323,7 @@ public class GameDriver extends Observable {
 	 * @see #updateMap()
 	 */
 	public void switchPhase() {
-		turnManager.switchPhase();
+		turnManager.setSwitchPhase();
 		updateMap();
 	}
 	
@@ -357,10 +371,12 @@ public class GameDriver extends Observable {
 		if(this.currentPlayer.shiftArmiesOnReinforcement(countrySelected, armies)==0) {
 			nottifyObservers(getGameTurnDriver().getPhase());
 			switchPhase();
+			turnManager.playTurn();
 		}
 		else {
 			nottifyObservers(getGameTurnDriver().getPhase());
 			continuePhase();
+			turnManager.playTurn();
 		}
 	}
 	
@@ -455,6 +471,7 @@ public class GameDriver extends Observable {
 		setPlayerOut(defender);
 		if(!checkStateOfGame()) {
 			continuePhase();
+			turnManager.playTurn();
 		}
 		else {
 			callGameOver(players.get(0).getPlayerName());
@@ -579,7 +596,7 @@ public class GameDriver extends Observable {
 	public void callGameOver(String winner) {
 		nottifyObservers("GameOver");
 		controller.removeAllControls();
-		System.out.print("Winner "+winner);
+		System.out.print("Thw winner is :"+winner);
 		TheMainController.getInit().notifyGameResult(winner);
 	}
 	
@@ -702,6 +719,15 @@ public class GameDriver extends Observable {
 	    }catch(Exception e) {   
 	        System.out.println("Failed to save game state. "+e);   
 	    }   
+	}
+	
+	public String getOpen() {
+		modes = openDialog.setMode();
+		return modes;
+	}
+	
+	public openingdialog setOpen() {
+		return this.openDialog;
 	}
 
 }

@@ -69,14 +69,14 @@ public class Single implements Mode{
 		}
 	}
 	
-	public static void main(String[] arg) {
-		String[][] myPs = {{"Gur","human"},{"Raj","human"}};
-//		SingleMode s = new SingleMode("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\data\\map\\World2005.map", "D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\data\\map\\World2005.bmp", myPs, 0, the_mainController.getInstance());
-//		the_mainController.getInstance().setMode(s);
-//		s.start();
-		Single s = new Single();
-		s.loadGameFromAFile(new File("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\SaveGame2017.11.30.23.36.53.sav"));
-	}
+//	public static void main(String[] arg) {
+//		String[][] myPs = {{"Gur","human"},{"Raj","human"}};
+////		SingleMode s = new SingleMode("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\data\\map\\World2005.map", "D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\data\\map\\World2005.bmp", myPs, 0, the_mainController.getInstance());
+////		the_mainController.getInstance().setMode(s);
+////		s.start();
+//		Single s = new Single();
+//		s.loadGameFromAFile(new File("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\SaveGame2017.11.30.23.36.53.sav"));
+//	}
 	
 	/**
 	* @return map

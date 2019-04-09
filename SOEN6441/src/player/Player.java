@@ -9,6 +9,7 @@ import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.Card;
 import Model.GameDriver;
+import Model.GameTurnDriver;
 
 /**
  * This class is responsible to represent the player
@@ -93,6 +94,8 @@ public class Player
 	 */
 	private GameDriver driver;
 	
+	private GameTurnDriver turnManager;
+	
 	/**
 	 * Initialize player object with name.
 	 * @param name name of player.
@@ -100,6 +103,7 @@ public class Player
 	public Player(String name, GameDriver nDriver) {
 		this.name = name;
 		this.driver = nDriver;
+		turnManager = driver.getGameTurnDriver();
 		this.countries = new ArrayList<NodeOfCountry>();
 		this.continents = new ArrayList<NodeOfMap>();
 		this.cards = new ArrayList<Card>();
@@ -235,7 +239,11 @@ public class Player
 				System.out.println("Inside If Stametment");
 				addContinent(continent);
 				System.out.println("Added" + continent.getNameOfContinent());
+				break;
+			}else {
+				break;
 			}
+			
 		}
 	}
 	
@@ -244,7 +252,7 @@ public class Player
 	 * @return army count
 	 */
 	public int getNumberOfArmies() {
-		checkContinent();
+		//checkContinent();
 		int countriesCount = this.countries.size();
 		int continentsCount = this.continents.size();
 		int cardsCount = this.cards.size();
@@ -333,6 +341,7 @@ public class Player
 	public void reinforcementPhase(){
 		System.out.print("Checkpoint 1");
 		strategy.reinforcementPhase(armiesCount, getNameOfCountries());
+		
 	}
 	
 	/**
@@ -343,15 +352,23 @@ public class Player
 		for(NodeOfCountry c : this.countries) {
 			if(c.getConutOfArmies()>1) {
 				for(NodeOfCountry n: c.getNeighbourCountries()) {
-					if(!n.getOwner().equals(this)) {
-						countriesList.add(c.getNameOfCountry());
+					if(n.getOwner() != null) {
+						if(!n.getOwner().equals(this)) {
+							countriesList.add(c.getNameOfCountry());
+							break;
+						}
+					}
+					else {
 						break;
 					}
+					
 				}
 			}
 		}
 		if(countriesList.isEmpty()) {
 			driver.switchPhase();
+			turnManager.playTurn();
+			
 		}
 		else {
 			strategy.attackPhase(countriesList);
@@ -366,16 +383,22 @@ public class Player
 		for(NodeOfCountry c : this.countries) {
 			if(c.getConutOfArmies()>1) {
 				for(NodeOfCountry n: c.getNeighbourCountries()) {
-					if(n.getOwner().equals(this)) {
-						countriesList.add(c.getNameOfCountry());
+					if(n.getOwner() != null) {
+						if(n.getOwner().equals(this)) {
+							countriesList.add(c.getNameOfCountry());
+							
+						}
+					}else {
 						break;
 					}
+					
 				}
 			}
 		}
 		if(countriesList.isEmpty()) {
 			driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
 			driver.switchPhase();
+			turnManager.playTurn();
 		}
 		else {
 			strategy.fortificationPhase(countriesList);

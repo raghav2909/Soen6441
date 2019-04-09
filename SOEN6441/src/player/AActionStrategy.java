@@ -34,8 +34,9 @@ public class AActionStrategy implements StrategyOfPlayer{
 	@Override
 	public void reinforcementPhase(int armies, String[] countryList) {
 		reinforcement(armies,countryList);
-		driver.notifyObservers("Armies moved according to Aggresive Strategy reinforcement");
+		driver.nottifyObservers("Armies moved according to Aggresive Strategy reinforcement");
 		driver.switchPhase();
+		GameTurnDriver.playTurn();
 		
 	}
 
@@ -65,6 +66,7 @@ public class AActionStrategy implements StrategyOfPlayer{
 			}
 		}
 		driver.declareAttack(aCountry.getNameOfCountry(), dCountry.getNameOfCountry());
+		driver.callGameOver(driver.getCurrent().getPlayerName());
 	}
 
 	/**
@@ -80,8 +82,9 @@ public class AActionStrategy implements StrategyOfPlayer{
 //		int average = (int)(weakest.getArmiesCount() + strongest.getArmiesCount()) / 2;
 //		strongest.addArmy(average);
 //		weakest.removeArmies(average);
-		driver.notifyObservers("Armies moved according to Aggresive Strategy fortification");
+		driver.nottifyObservers("Armies moved according to Aggresive Strategy fortification");
 		driver.switchPhase();
+		GameTurnDriver.playTurn();
 
 	}
 

@@ -56,6 +56,8 @@ public class openingdialog {
 	 */
 	private String readMap = null;
 	
+	public  String modeOfGame;
+	
 	public void selectSaveOrLoadGame(){
 		JFrame frame1 = new JFrame();
 		frame1.setLayout(new BoxLayout(frame1.getContentPane(),BoxLayout.Y_AXIS));
@@ -188,7 +190,7 @@ public class openingdialog {
 		frame.setVisible(true);
 		/*JFile-Chooser to let user to choose existing map-file.*/
 		JFileChooser jfc = new JFileChooser();
-		jfc.setCurrentDirectory(new File("./Soen6441/Map_Data/Map"));
+		jfc.setCurrentDirectory(new File("./SOEN6441/Map_Data/Map"));
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 		jfc.setFileFilter(filter);
 
@@ -264,9 +266,12 @@ public class openingdialog {
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 		frame.dispose();
 		if(n==0) {
+			modeOfGame = "single";
 			return "single";
+			
 		}
 		else if(n==1) {
+			modeOfGame = "tournament";
 			return "tournament";
 		}
 		return "noMode";
@@ -278,6 +283,12 @@ public class openingdialog {
 			behaviorsForGame[i] = "human";
 		}
 		return behaviorsForGame;
+	}
+	
+	
+	public String setMode() {
+		String modes=modeOfGame; 
+		return modes;
 	}
 }
 

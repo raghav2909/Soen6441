@@ -45,6 +45,7 @@ public class RActionStrategy implements StrategyOfPlayer {
 		reinforcement(armies, countryList);
 		driver.nottifyObservers("Random Player has reinforced a random country");
 		driver.switchPhase();
+		turnManager.playTurn();
 	}
 
 	/**
@@ -73,6 +74,7 @@ public class RActionStrategy implements StrategyOfPlayer {
 		else{
 			driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
 			driver.switchPhase();
+			turnManager.playTurn();
 		}
 
 	}
@@ -86,6 +88,7 @@ public class RActionStrategy implements StrategyOfPlayer {
 		fortify(countryList);
 		driver.nottifyObservers("Random player has fortified a random country");
 		driver.switchPhase();
+		turnManager.playTurn();
 	}
 
 	/**

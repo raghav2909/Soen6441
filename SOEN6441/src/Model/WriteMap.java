@@ -35,7 +35,7 @@ public class WriteMap {
 		Date date = new Date();
 		
 		/*FILENAME Stores the file name of the newly created map file.*/
-		FILENAME = System.getProperty("user.dir") + "\\data\\map\\map-"+ dateFormat.format(date) + ".map";
+		FILENAME = System.getProperty("user.dir") + "\\SOEN6441\\Map_Data\\map\\map-"+ dateFormat.format(date) + ".map";
 		
 		/*Stores BufferedWriter object.*/
 		BufferedWriter bw = null;

@@ -31,6 +31,8 @@ public class GameTurnDriver {
 	 */
 	private GameDriver driver;
 	
+	public boolean phaseCon;
+	
 	/**
 	 * Empty constructor to create object for observer.
 	 * @param nDriver GameDriver instance.
@@ -154,6 +156,23 @@ public class GameTurnDriver {
 	 */
 	public void setWonCard(boolean wonCard) {
 		this.wonCard = wonCard;
+	}
+	
+	public void playTurn() {
+		if(this.phaseCon) {
+			continuePhase();
+		}
+		else {
+			switchPhase();
+		}
+	}
+	
+	
+	public void setSwitchPhase () {
+		this.phaseCon= false;
+	}
+	public void setContinuePhase() {
+		this.phaseCon = true;
 	}
 
 }

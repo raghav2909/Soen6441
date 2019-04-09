@@ -15,14 +15,14 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  * 
- * File_Open_Controller  performs action  for 
+ * FileOpenController  performs action  for 
  * for loading the map file on the system and 
  * loading the similar "bmp" file on the front end 
  * @author Raghav_Sharda
  * @version 2.0
  *
  */
-public class File_open_Controller extends JFrame {
+public class FileOpenController extends JFrame {
 
 	
 JFileChooser fc = new JFileChooser("Map Selection");
@@ -30,7 +30,7 @@ JFileChooser fc = new JFileChooser("Map Selection");
 private  String mapRead= null;
 
 
-public   File_open_Controller() {
+public   FileOpenController() {
 		
 	}
 
@@ -49,7 +49,7 @@ public String map_location(String newExtension) {
  		fc.setFileFilter(filter);
      }
 
-         switch (fc.showOpenDialog(File_open_Controller.this))
+         switch (fc.showOpenDialog(FileOpenController.this))
          {
             case JFileChooser.APPROVE_OPTION:
         File selectedFile = fc.getSelectedFile();
@@ -62,13 +62,13 @@ public String map_location(String newExtension) {
 		break;
 
             case JFileChooser.CANCEL_OPTION:
-               JOptionPane.showMessageDialog(File_open_Controller.this, "Cancelled",
+               JOptionPane.showMessageDialog(FileOpenController.this, "Cancelled",
                                              "Not Open",
                                              JOptionPane.OK_OPTION);
                break;
 
             case JFileChooser.ERROR_OPTION:
-               JOptionPane.showMessageDialog(File_open_Controller.this, "Error",
+               JOptionPane.showMessageDialog(FileOpenController.this, "Error",
                                              "Map Opening Error",
                                              JOptionPane.OK_OPTION);
          }

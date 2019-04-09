@@ -34,7 +34,7 @@ public class TournamentConsole extends JFrame{
 	private ArrayList<JComboBox<String>> behaviors;
 	private ArrayList<JTextField> names;
 	private JSpinner gameCount;
-	private JSpinner moveCount;
+	private JSpinner countOfMoves;
 	private Container frame;
 	private JButton buttonToSubmit;
 	private JSpinner countForMap;
@@ -67,7 +67,7 @@ public class TournamentConsole extends JFrame{
 		countOfPlayer= new JSpinner(new SpinnerNumberModel(2,2,4,1));
 		playerPanel = new JPanel();
 		gameCount = new JSpinner(new SpinnerNumberModel(1,1,5,1));
-		moveCount = new JSpinner(new SpinnerNumberModel(10,10,50,1));
+		countOfMoves = new JSpinner(new SpinnerNumberModel(10,10,50,1));
 		buttonToSubmit = new JButton("OK!");
 		frame = this.getContentPane();
 		initTournament();
@@ -115,7 +115,7 @@ public class TournamentConsole extends JFrame{
 		c.gridx = 0;
 		panel.add(new JLabel("Enter number of moves for each game: "), c);
 		c.gridx = 1;
-		panel.add(moveCount, c);
+		panel.add(countOfMoves, c);
 		c.gridy = 7;
 		c.gridx = 0;
 		panel.add(buttonToSubmit, c);
@@ -183,8 +183,17 @@ public class TournamentConsole extends JFrame{
 		pack();
 		repaint();
 	}
-	
-	public String[][] getPlayerBehaviorDetails() {
+	public int getCountOfGames() {
+		return (int) gameCount.getValue();
+	}
+	public String[] getDetailsOfMap() {
+		ArrayList<String> b = new ArrayList<String>();
+		for(JTextField cb: maps) {
+			b.add(cb.getText());
+		}
+		return b.toArray(new String[b.size()]);
+	}
+	public String[][] getDetailsOfPlayerBehavior() {
 		ArrayList<String[]> b = new ArrayList<String[]>();
 		for(int i=0;i<names.size();i++) {
 			String[] temp = new String[2];
@@ -195,20 +204,12 @@ public class TournamentConsole extends JFrame{
 		return b.toArray(new String[b.size()][]);
 	}
 	
-	public String[] getMapDetails() {
-		ArrayList<String> b = new ArrayList<String>();
-		for(JTextField cb: maps) {
-			b.add(cb.getText());
-		}
-		return b.toArray(new String[b.size()]);
-	}
 	
-	public int getGamesCount() {
-		return (int) gameCount.getValue();
-	}
 	
-	public int getMovesCount() {
-		return (int) moveCount.getValue();
+	
+	
+	public int getCountOfMoves() {
+		return (int) countOfMoves.getValue();
 	}
 
 }

@@ -29,6 +29,7 @@ public class MapSelection {
 	
 	/**
 	 * Constructor for the frame setting MapSelection class
+	 * 
 	 * @throws IllegalAccessException  it will throw illegal exception
 	 * @throws ClassNotFoundException it will throw classnotFound exception
 	 * @throws InstantiationException  it will throw Instantiation exception

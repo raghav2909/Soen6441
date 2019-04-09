@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import Model.GameDriver;
 
+/**
+ * This class handles the Human Strategy of a player.
+ * @author NARRA
+ *@version 3.0
+ */
 public class HActionStrategy implements StrategyOfPlayer{
 	
 	/**

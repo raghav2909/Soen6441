@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package view;
 
 import java.awt.Color;
@@ -32,20 +30,21 @@ public class PlayerConsole extends JPanel{
 	private static final long serialVersionUID = -7512274442706727095L;
 
 	/**
-	 * Creates the Player Info view on the main window.
+	 * makes the Player Information view on the main-window of Game.
 	 */
 	public PlayerConsole() {
-		JLabel label = new JLabel("Players data Here.");
-		this.add(label);
-		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		JLabel playerLabel = new JLabel("Players-data-Here:");
+		this.add(playerLabel);
 		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
+		
 	}
 	
 	/**
 	 * Sets the player Info view content.
 	 * @param playerNames Names of the players.
 	 */
-	public void setPlayerInfo(String[][] playerNames) {
+	public void putInfoOfPlayer(String[][] playerNames) {
 		for(String[] name : playerNames){
 			JLabel comp = new JLabel(name[0]);
 			Border border = comp.getBorder();

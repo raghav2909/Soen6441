@@ -113,7 +113,7 @@ public class ControllerForGame {
 		driver = new GameDriver(newMap, moveLimit);
 		driver.setController(this);
 		playerInfoGUI = new PlayerConsole();
-		playerInfoGUI.setPlayerInfo(playerNames);
+		playerInfoGUI.putInfoOfPlayer(playerNames);
 		init();
 		driver.startGame(playerNames);
 	}
@@ -130,7 +130,7 @@ public class ControllerForGame {
 		driver = new GameDriver(newMap, moveLimit);
 		driver.setController(this);
 		playerInfoGUI = new PlayerConsole();
-		playerInfoGUI.setPlayerInfo(playerNames);
+		playerInfoGUI.putInfoOfPlayer(playerNames);
 		init();
 		driver.startGame(playerNames);
 	}
@@ -170,7 +170,7 @@ public class ControllerForGame {
 			i++;
 		}
 
-		playerInfoGUI.setPlayerInfo(players);
+		playerInfoGUI.putInfoOfPlayer(players);
 		init();
 		driver.getGameTurnDriver().setPhase(phaseName);
 		if(phaseName.trim().equals("Reinforcement")){

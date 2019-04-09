@@ -153,5 +153,3 @@ public class WriteMap {
 		return FILENAME;
 	}
 }
-
-

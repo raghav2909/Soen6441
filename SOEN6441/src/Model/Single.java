@@ -1,7 +1,5 @@
 package Model;
 
-
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
@@ -9,8 +7,6 @@ import java.util.ArrayList;
 
 import controllers.ControllerForGame;
 import controllers.TheMainController;
-
-
 
 public class Single implements Mode{
 
@@ -47,6 +43,9 @@ public class Single implements Mode{
 		myMoveLimit = moveLimit;
 	}
 
+	/**
+	 * constructor of class
+	 */
 	public Single() {}
 
 	/**
@@ -85,6 +84,10 @@ public class Single implements Mode{
 		return myMap;
 	}
 	
+	/**
+	 * 
+	 * @param file
+	 */
 	public void loadGameFromAFile(File file){ 
 
 		try{

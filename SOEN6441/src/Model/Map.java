@@ -251,7 +251,3 @@ public class Map extends Observable
 		
 	}
 }
-
-
-
-

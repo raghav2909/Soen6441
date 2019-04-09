@@ -11,13 +11,16 @@ import Model.NodeOfCountry;
 
 
 public class BActionStrategy implements StrategyOfPlayer{
-
 	
 	/**
 	 * GameDriver instance for benevolent player.
 	 */
 	private GameDriver driver = new GameDriver();
 	
+	/**
+	 * sets GameDriver instance
+	 * @param nDriver
+	 */
 	public BActionStrategy(GameDriver nDriver) {
 		driver = nDriver;
 	}

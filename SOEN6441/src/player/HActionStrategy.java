@@ -6,8 +6,15 @@ import Model.GameDriver;
 
 public class HActionStrategy implements StrategyOfPlayer{
 	
+	/**
+	 * instance of GameDriver
+	 */
 	private GameDriver driver;
 	
+	/**
+	 * sets GameDriver instance
+	 * @param newDriver
+	 */
 	public HActionStrategy(GameDriver newDriver) {
 		driver = newDriver;
 	}

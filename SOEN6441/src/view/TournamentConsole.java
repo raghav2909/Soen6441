@@ -29,16 +29,59 @@ import javax.swing.event.ChangeListener;
 
 public class TournamentConsole extends JFrame{
 	
+	/**
+	 * Jspinner to get player count
+	 */
 	private JSpinner countOfPlayer;
+	
+	/**
+	 * shows the player panel
+	 */
 	private JPanel playerPanel;
+	
+	/**
+	 * list contains behaviour of player
+	 */
 	private ArrayList<JComboBox<String>> behaviors;
+	
+	/**
+	 * list for player names
+	 */
 	private ArrayList<JTextField> names;
+	
+	/**
+	 * spinner to get count of game
+	 */
 	private JSpinner gameCount;
+	
+	/**
+	 * spinner for count of moves
+	 */
 	private JSpinner countOfMoves;
+	
+	/**
+	 * container for main frame
+	 */
 	private Container frame;
+	
+	/**
+	 * button to submit information
+	 */
 	private JButton buttonToSubmit;
+	
+	/**
+	 * spinner for count of map
+	 */
 	private JSpinner countForMap;
+	
+	/**
+	 * panel for map
+	 */
 	private JPanel panelForMap;
+	
+	/**
+	 * list for maps
+	 */
 	private ArrayList<JTextField> maps;
 	
 	 

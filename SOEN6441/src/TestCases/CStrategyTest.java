@@ -128,7 +128,7 @@ public class CStrategyTest {
 		country3.addArmy(3);
 		driver.getCurrent().setArmies(driver.getCurrent().getNumberOfArmies());
 		((CActionStrategy) cheater).reinforcement(driver.getCurrent().getNameOfCountries());
-		assertEquals(6, country3.getConutOfArmies());
+		assertEquals(9, country3.getConutOfArmies());
 		
 		
 	}
@@ -173,7 +173,7 @@ public class CStrategyTest {
 		}
 		
 		((CActionStrategy) cheater).fortify(countriesList);
-		assertEquals(8,country3.getConutOfArmies());
+		assertEquals(12,country3.getConutOfArmies());
 	}
 	
 	@Test

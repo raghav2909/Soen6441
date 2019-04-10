@@ -37,6 +37,8 @@ public class GameDriver extends Observable {
 	 */
 	private Map map;
 	
+	public boolean saveGame =false;
+	
 	public String modes;
 	
 	/**
@@ -714,6 +716,7 @@ public class GameDriver extends Observable {
 	        
 	        objectStream.close();   
 	        fileStream.close(); 
+	        saveGame = true;
 	        System.out.println("Game saved successfully");
 	    
 	    }catch(Exception e) {   
@@ -728,6 +731,10 @@ public class GameDriver extends Observable {
 	
 	public openingdialog setOpen() {
 		return this.openDialog;
+	}
+	
+	public boolean saveG() {
+		return this.saveGame;
 	}
 
 }

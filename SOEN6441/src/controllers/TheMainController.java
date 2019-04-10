@@ -95,8 +95,9 @@ public class TheMainController {
 	 */
 	public void start() {
 		setupBoxOpenDialogue = new openingdialog();
-		listenerForMapEditor();
 		choosePlayGameOrMapEditor();
+		listenerForMapEditor();
+		
 		
 		listenerForPlayGame();
 	}
@@ -220,14 +221,15 @@ public class TheMainController {
 	}
 
 	public void singleGameInit() {
-		String bmpFile = setupBoxOpenDialogue.getMapData("bmpFile");
-		String mapFile = setupBoxOpenDialogue.getMapData("mapFile");
+		String map= setupBoxOpenDialogue.getMapData("map");
+		String bmp = setupBoxOpenDialogue.getMapData("bmp");
+		
 	
 		String[][] gamePlayers = setupBoxOpenDialogue.getInfoOnPlayerData();
-		if(bmpFile!=null) {
-			modeOfGame = new Single(mapFile, bmpFile, gamePlayers, 0, this);
+		if(bmp!=null) {
+			modeOfGame = new Single(map, bmp, gamePlayers, 0, this);
 		}else {
-			modeOfGame = new Single(mapFile, gamePlayers, 0, this);	
+			modeOfGame = new Single(map, gamePlayers, 0, this);	
 		}
 		modeOfGame.start();
 	}

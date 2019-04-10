@@ -33,14 +33,15 @@ public class InformationOfPlayerController {
 	 */
 	public int NumberOfPlayer(int minimum,String Mesg,int maximum)
 	{
-		JPanel jp = new JPanel();
+		
        SpinnerModel S_M = new SpinnerNumberModel(minimum, minimum, maximum, 1);
        JSpinner jsm= new JSpinner(S_M);
+       JPanel jp = new JPanel();
        jp.add(new JLabel("Enter Number Of Players"));
        jp.add(jsm);
        
-       int result = JOptionPane.showConfirmDialog(null, jp, "Enter Number Of Players", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
-       if (result == JOptionPane.OK_OPTION) {
+       int getResult = JOptionPane.showConfirmDialog(null, jp, "Enter Number Of Players", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+       if (getResult == JOptionPane.OK_OPTION) {
     	   return (int) jsm.getValue();
     	   
        }
@@ -49,18 +50,18 @@ public class InformationOfPlayerController {
 	}
 
 	/**
-	 * This array stores the player names.
+	 *  stores the player-names in game.
 	 */
 	public static String[] Name_Of_Player; 
 	
 	/**
-	 * This function will give the information regarding the players
-	 * @return It will return the names of players as string array
+	 * contains the information regarding the players
+	 * @return returns the names-of-players in the form of a string array.
 	 */
 	public String[] informationOFPayres()
 	{
 		int n = NumberOfPlayer(2,"Player Numbers",6);
-		System.out.println("Number of players are: " + n);
+		System.out.println("Number-of-players are: " + n);
 		
 		 Name_Of_Player= new String[n];
 		 JFrame jf = new JFrame("Player-Names");
@@ -85,7 +86,7 @@ public class InformationOfPlayerController {
 	}
 
 	/**
-	 *The countries that are selected to place army
+	 *The countries that are choosen by players to place armies in
 	 * @param CL List of countries where the player can place armies.
 	 * @param Msg message to be passed
 	 * @return country name selected.

@@ -75,7 +75,7 @@ public class openingdialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				frame1.dispose();
-				TheMainController.getInit().singleGameInit();
+				TheMainController.getInitialize().singleGameInit();
 				
 			}
 		});
@@ -103,7 +103,7 @@ public class openingdialog {
 					saveFileRead = selectedFile.getAbsolutePath();
 					saveFileLoad.dispose();
 				}
-		TheMainController .getInit().singleGameLoadInit(saveFileRead);	
+		TheMainController .getInitialize().initLoadOfSingleGame(saveFileRead);	
 			}
 			
 		});

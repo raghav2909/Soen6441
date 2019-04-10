@@ -28,11 +28,21 @@ public class MapSelection {
 	JButton OpenMapFile = new JButton("Select Map");
 	
 	/**
+<<<<<<< HEAD
 	 * Constructor for the frame setting
 	 * @throws IllegalAccessException  it will throw ilegal exception
 	 * @throws ClassNotFoundException it will
 	 * @throws InstantiationException  it will 
 	 * @throws IllegalAccessException it will
+=======
+	 * Constructor for the frame setting MapSelection class
+	 * 
+	 * @throws IllegalAccessException  it will throw illegal exception
+	 * @throws ClassNotFoundException it will throw classnotFound exception
+	 * @throws InstantiationException  it will throw Instantiation exception
+	 * @throws IllegalAccessException it will throw illegalAcess exception
+	 * @throws UnsupportedLookAndFeelException it will throw exception
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	 * 
 	 */
 	public MapSelection()throws UnsupportedLookAndFeelException,ClassNotFoundException,InstantiationException, IllegalAccessException

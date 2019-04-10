@@ -86,6 +86,74 @@ public class GameDriverTest {
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	@Test
+	public void testBattle2() {
+		ArrayList<NodeOfCountry> countries = new ArrayList<NodeOfCountry>();
+		countries.add(country3);
+		countries.add(country4);
+		countries.add(country5);
+		ArrayList<NodeOfCountry> countries1 = new ArrayList<NodeOfCountry>();
+		countries1.add(country1);
+		countries1.add(country2);
+		player1 = new Player("Player1", 20, countries, driver);
+		player2 = new Player("Player2", 15, countries1, driver);
+		country1.addArmy(1);
+		country2.addArmy(1);
+		country3.addArmy(1);
+		country4.addArmy(1);
+		country5.addArmy(1);
+		player1.setTrue();
+		player2.setFalse();
+		driver.setListOfPlayer(player1);
+		driver.setListOfPlayer(player2);
+		driver.setCurrent(player1);
+		ArrayList<Integer> aResults = new ArrayList<Integer>();
+		aResults.add(5);
+		aResults.add(3);
+		aResults.add(6);
+		ArrayList<Integer> dResults = new ArrayList<Integer>();
+		dResults.add(6);
+		dResults.add(6);
+		country3.addArmy(3);
+		country1.addArmy(1);
+		driver.battle(country1, player2, country3, 3, 2, aResults, dResults);
+		assertEquals(2, country1.getConutOfArmies());
+	}
+	
+	/**
+	 * This method tests the max method from GameDriver class.
+	 */
+	@Test
+	public void testMax() {
+		ArrayList<NodeOfCountry> countries = new ArrayList<NodeOfCountry>();
+		countries.add(country1);
+		countries.add(country2);
+		countries.add(country3);
+		ArrayList<NodeOfCountry> countries1 = new ArrayList<NodeOfCountry>();
+		countries1.add(country4);
+		countries1.add(country5);
+		player1 = new Player("Player1", 15, countries, driver);
+		player2 = new Player("Player2", 10, countries1, driver);
+		country1.addArmy(1);
+		country2.addArmy(1);
+		country3.addArmy(1);
+		country4.addArmy(1);
+		country5.addArmy(1);
+		player1.setTrue();
+		player2.setFalse();
+		driver.setListOfPlayer(player1);
+		driver.setListOfPlayer(player2);
+		driver.setCurrent(player1);
+		ArrayList<Integer> aResults = new ArrayList<Integer>();
+		aResults.add(4);
+		aResults.add(2);
+		aResults.add(3);
+		aResults.add(6);
+		assertEquals(3,driver.max(aResults));
+	}
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	
 	/**
 	 * test for AllocatingCountries method

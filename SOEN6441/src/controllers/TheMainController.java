@@ -47,177 +47,193 @@ import java.io.File;
 public class TheMainController {
 	
 	/**
-	 * setupBox variable used to store reference of class SetUpDialog
+	 *  this is Action event defined to add listener relating "Play-Game" Button.
 	 */
-	private openingdialog setupBox;
+
+	private ActionListener listenerForPlayGame;
 	
 	/**
-	 * ActionListener to add listener to "Edit Map" button.
+	 * modeOfGame variable stores reference of class Mode
 	 */
-	private ActionListener mapEditListener;
+	private Mode modeOfGame;
+	/**
+	 * setupBoxOpenDialogue variable used to store the reference for the class-VIEW openingdialog
+	 */
+
+	private openingdialog setupBoxOpenDialogue;
 	
 	/**
-	 * ActionListener to add listener to "Play Game" button.
+	 * this is Action event defined to add listener relating to "Edit-Map" Button.
 	 */
-	private ActionListener playGameListener;
+	private ActionListener editTheMapListener;
+	
 	
 	/**
-	 * gameMode variable stores reference of class Mode
-	 */
-	private Mode gameMode;
-	
-	/**
-	 * mController variable stores reference of class MainController
-	 */
-	private static TheMainController mController;
-	
-	/**
-	 * private constructor for Singleton pattern imlementation
+	 * private constructor for Singleton-pattern implementation (TheMainController)
 	 */
 	private TheMainController() {}
+	/**
+	 *  stores-reference for class MainController
+	 */
+	private static TheMainController ControllerForMain;
+	
+	
 	
 	/**
-	 * Get instance of MainController class
-	 * @return initialize the instance of class MainController
+	 * stores-reference of MainController class
+	 * @return  the instance of class-MainController
 	 */
-	public static TheMainController getInit() {
-		if(mController==null) {
-			mController = new TheMainController();
+	public static TheMainController getInitialize() {
+		if(ControllerForMain==null) {
+			ControllerForMain = new TheMainController();
 		}
-		return mController;
+		return ControllerForMain;
 	}
 	
 	/**
-	 * Method to initialize setupBox and listeners.
+	 * Method that initialize setupBoxOpenDialogue and other-listeners.
 	 */
 	public void start() {
-		setupBox = new openingdialog();
-		chooseMapEditorOrPlayGame();
-		mapEditorListener();
-		playGameListener();
+		setupBoxOpenDialogue = new openingdialog();
+		choosePlayGameOrMapEditor();
+		listenerForMapEditor();
+		
+		
+		listenerForPlayGame();
 	}
 
 	/**
-	 * Sets listener for Edit Map button.
+	 * this is Action event defined for functionality of Edit-Map-button.
 	 */
-	public void mapEditorListener() {
-		mapEditListener =  new ActionListener() {
+	public void listenerForMapEditor() {
+		editTheMapListener =  new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FrameForMap newMapFrame = new FrameForMap();
-				setupBox.chooseOptionFrame().dispose();
+				setupBoxOpenDialogue.chooseOptionFrame().dispose();
 			}
 		};
-		this.setupBox.actionForMapEditButton(mapEditListener);
+		this.setupBoxOpenDialogue.actionForMapEditButton(editTheMapListener);
 	}
 	
 	/**
-	 * Sets listener for Play Game button.
+	 * Calls choosePlayGameOrMapEditor() function from openingdialog class to display Edit-Map and Play-Game selection-options
 	 */
-	public void playGameListener() {
-		playGameListener =  new ActionListener() {
+	public void choosePlayGameOrMapEditor() {
+		this.setupBoxOpenDialogue.selectMapEditorOrPlayGame();
+	}
+	
+	/**
+	 * this is Action event defined for play Game Button
+	 */
+	public void listenerForPlayGame() {
+		listenerForPlayGame =  new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				init();
-				setupBox.chooseOptionFrame().dispose();
+				initialize();
+				setupBoxOpenDialogue.chooseOptionFrame().dispose();
 			}
 		};
-		this.setupBox.actionToPlayGameButton(playGameListener);
+		this.setupBoxOpenDialogue.actionToPlayGameButton(listenerForPlayGame);
 	}
 	
-	/**
-	 * Calls chooseMapEditorOrPlayGame() function of the SetUpDialog class to display Edit Map and Play Game options.
-	 */
-	public void chooseMapEditorOrPlayGame() {
-		this.setupBox.selectMapEditorOrPlayGame();
-	}
+	
 	
 	/**
-	 * This method is responsible for taking input from user to whether user wants 
-	 * to play tournament or single game, and accordingly create the tournament or single game object.
+	 * Takes input from user - to play tournament-mode or single-game-mode, and creates the required game object accordingly.
 	 */
-	private void init() {
-		String mode = this.setupBox.modeOfGame();
-		if(mode.equals("single")) {
+	private void initialize() {
+		String gameMode = this.setupBoxOpenDialogue.modeOfGame();
+		if(gameMode.equals("single")) {
 			System.out.println("1");
-			this.setupBox.selectSaveOrLoadGame();
+			this.setupBoxOpenDialogue.selectSaveOrLoadGame();
 		}
-		else if(mode.equals("tournament")){
-			getTournamentInfo();
+		else if(gameMode.equals("tournament")){
+			getInfoForTournament();
 		}
 		else {
-			init();
+			initialize();
 		}
 	}
 	
 	/**
-	* starting the game mode
+	* starts the game: game-Mode for tournament
 	*/
-	private void getTournamentInfo() {
-		TournamentConsole infoView = new TournamentConsole();
+	private void getInfoForTournament() {
+		
+		
 		TheMainController mC = this;
+		TournamentConsole infoView = new TournamentConsole();
+		System.out.println("getInfoForTournament");
 		infoView.setListeners(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent a) {
 				System.out.print("Hello");
-				gameMode = new Tournament(infoView.getCountOfGames(), infoView.getDetailsOfMap(),
+				modeOfGame = new Tournament(infoView.getCountOfGames(), infoView.getDetailsOfMap(),
 						infoView.getDetailsOfPlayerBehavior(), infoView.getCountOfMoves(), mC);
-				gameMode.start();
+				modeOfGame.start();
 				infoView.dispose();
 			}
 		});
 	}
 
 	/**
-	* string array of winners passed to initialize the winners
+	* string-array of game-gameWinners passed to initialize the gameWinners in REsultConsole
+	* @param gameWinners gameWinners-name
 	*/
-	public void setResults(String[][] winners) {
-		ResultConsole result = new ResultConsole(winners);
+	public void setResults(String[][] gameWinners) {
+		ResultConsole result = new ResultConsole(gameWinners);
 	}
 	
 	/**
-	 * notify mode (TournamentMode/SingleMode) class about winner of game
-	 * @param winnerPlayer the name of the winner or draw.
+	 *  send notification for game-Mode (Tournament-Mode/Single-Mode) class for game winner
+	 * @param winnerPlayer the name of-the-winner or Game-draw.
 	 */
-	public void notifyGameResult(String winnerPlayer) {
-		if(gameMode!=null) {
-			gameMode.updateResults(winnerPlayer);
+	public void notifyResultOfGame(String winnerPlayer) {
+		if(modeOfGame!=null) {
+			modeOfGame.updateResults(winnerPlayer);
 		}
 		else {
-			System.out.print("Error here");
+			System.out.print("Error!!!");
 		}
 	}
-	
 	/**
-	* initialize mode of the game.
-	* @param mode game mode to be set
+	 * to-load Single-game initilaization
+	 * @param saveFileRead read the saved file
+	 */
+	public void initLoadOfSingleGame(String saveFileRead) {
+		modeOfGame = new Single();
+		((Single) modeOfGame).loadGameFromAFile(new File(saveFileRead));
+	}
+	/**
+	* sets the contents for set-gameMode of the-game.
+	* @param gameMode game gameMode to be set
 	*/
-	public void setMode(Mode mode) {
-		this.gameMode = mode;
+	public void setGameMode(Mode gameMode) {
+		this.modeOfGame = gameMode;
 	}
 	
-	/**
-	* @return game mode
+	/** sets the contents for  get-gameMode of the-game.
+	* @return game gameMode
 	*/
-	public Mode getMode(){
-		return this.gameMode;
+	public Mode getGameMode(){
+		return this.modeOfGame;
 	}
 
 	public void singleGameInit() {
-		String map = setupBox.getMapData("map");
-		String bmp = setupBox.getMapData("bmp");
-		String[][] players = setupBox.getInfoOnPlayerData();
+		String map= setupBoxOpenDialogue.getMapData("map");
+		String bmp = setupBoxOpenDialogue.getMapData("bmp");
+		
+	
+		String[][] gamePlayers = setupBoxOpenDialogue.getInfoOnPlayerData();
 		if(bmp!=null) {
-			gameMode = new Single(map, bmp, players, 0, this);
+			modeOfGame = new Single(map, bmp, gamePlayers, 0, this);
 		}else {
-			gameMode = new Single(map, players, 0, this);	
+			modeOfGame = new Single(map, gamePlayers, 0, this);	
 		}
-		gameMode.start();
+		modeOfGame.start();
 	}
 
-	public void singleGameLoadInit(String saveFileRead) {
-		gameMode = new Single();
-		((Single) gameMode).loadGameFromAFile(new File(saveFileRead));
-	}
+	
 	
 }

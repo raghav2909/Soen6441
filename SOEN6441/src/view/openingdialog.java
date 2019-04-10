@@ -52,6 +52,7 @@ public class openingdialog {
 	 */
 	private JButton loadgame;
 	
+<<<<<<< HEAD
 	/**
 	 * button to edit map
 	 */
@@ -66,6 +67,23 @@ public class openingdialog {
 	 * declared a null string
 	 */
 	private String mapRead1= null;
+=======
+	public  String modeOfGame;
+	
+	public void selectSaveOrLoadGame(){
+		JFrame frame1 = new JFrame();
+		frame1.setLayout(new BoxLayout(frame1.getContentPane(),BoxLayout.Y_AXIS));
+		JButton loadTheGame = new JButton("Load-Game");
+		frame1.add(loadTheGame);
+		JButton newGameButton = new JButton("New-Game");
+		
+		frame1.add(newGameButton);
+		
+		frame1.pack();
+		frame1.setVisible(true);
+		
+		newGameButton.addActionListener(new ActionListener(){
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 
 	/**
 	 * asks player to go for 'single' or 'tournament' mode 
@@ -163,6 +181,7 @@ public class openingdialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				
 				first_frame.dispose();
 				try {
@@ -172,6 +191,10 @@ public class openingdialog {
 					
 					e1.printStackTrace();
 				}
+=======
+				frame1.dispose();
+				TheMainController.getInitialize().singleGameInit();
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 				
 			}
 		});
@@ -183,11 +206,38 @@ public class openingdialog {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 				
 				first_frame.dispose();
 				the_main_controller.getInstance().single_Mode_Saved_Start();
 				
 				
+=======
+				frame1.dispose();
+				JFrame saveFileLoad = new JFrame("Saved File Chooser!");
+				saveFileLoad.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				saveFileLoad.validate();
+				saveFileLoad.setVisible(true);
+				/*JFileChooser to ask user to choose a map file.*/
+				JFileChooser jfc = new JFileChooser();
+				jfc.setCurrentDirectory(new File("./"));
+				FileNameExtensionFilter filter = new FileNameExtensionFilter(null, "sav");
+				jfc.setFileFilter(filter);
+
+				int returnTheValue = jfc.showOpenDialog(frame);
+				String saveFileRead = null;
+				/*Get the path of the map file chosen*/
+				if (returnTheValue == JFileChooser.APPROVE_OPTION) {
+					File selectedFile = jfc.getSelectedFile();
+					saveFileRead = selectedFile.getAbsolutePath();
+					saveFileLoad.dispose();
+				}
+
+		TheMainController .getInitialize().initLoadOfSingleGame(saveFileRead);	
+
+		TheMainController.getInitialize().initLoadOfSingleGame(saveFileRead);	
+
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 			}
 		});
 
@@ -275,7 +325,11 @@ public static String[] name_Of_Player;
 		frame.setVisible(true);
 		/*JFileChooser to ask user to choose a map file.*/
 		JFileChooser jfc = new JFileChooser();
+<<<<<<< HEAD
 		jfc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
+=======
+		jfc.setCurrentDirectory(new File("./SOEN6441/Map_Data/Map"));
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 		jfc.setFileFilter(filter);
 
@@ -308,7 +362,77 @@ public static String[] name_Of_Player;
 		
 		String country = CL[List_Of_countries.getSelectedIndex()];
 		
+<<<<<<< HEAD
 		return country;
+=======
+		frame.validate();
+		frame.setVisible(true);
+	}
+	
+	/**
+	 * Returns the J-frame .
+	 * @return JFrame
+	 */
+	public JFrame chooseOptionFrame() {
+		return this.frame;
+	}
+	
+	/**
+	 * add action-Listener to map-edit Button.
+	 * @param newAction return actionlistener for map-edit button.
+	 */
+	public void actionForMapEditButton(ActionListener newAction) {
+		this.editMap.addActionListener(newAction);
+	}
+	
+	/**
+	 * add action-listener to Play-Game Button.
+	 * @param newAction ActionListener for Play Game button
+	 */
+	public void actionToPlayGameButton(ActionListener newAction) {
+		this.playTheGame.addActionListener(newAction);
+	}
+	
+	/**
+	 * to display a message-dialog box having two buttons to user to select game-mode: single or tournamenbt.
+	 * @return returns the string object containing game mode.
+	 */
+	public String modeOfGame() {
+		JFrame frame = new JFrame("Map File Chooser!");
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.validate();
+		frame.setVisible(true);
+		Object[] options = {"Single Mode", "Tournament Mode"};
+		int n = JOptionPane.showOptionDialog(frame,	"Please select a mode:", "Game Mode",	
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+		frame.dispose();
+		if(n==0) {
+			modeOfGame = "single";
+			return "single";
+			
+		}
+		else if(n==1) {
+			modeOfGame = "tournament";
+			return "tournament";
+		}
+		return "noMode";
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
 
+<<<<<<< HEAD
+=======
+	public String[] getPlayerBehavior(String[] playerInfo) {
+		String[] behaviorsForGame = new String[playerInfo.length];
+		for(int i=0;i<playerInfo.length;i++) {
+			behaviorsForGame[i] = "human";
+		}
+		return behaviorsForGame;
+	}
+	
+	
+	public String setMode() {
+		String modes=modeOfGame; 
+		return modes;
+	}
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 }

@@ -29,7 +29,30 @@ public class WriteMap {
 				"scroll=vertical\r\n" + 
 				"warn=no\r\n\r\n";
 
+<<<<<<< HEAD
 		String MapPath = System.getProperty("user.dir")+"\\MapData\\Map_"+ D.format(date)+".map";
+=======
+	/**
+	 * This function implements the file write operation
+	 * @param map receives the NodeOfMap with all the map details.
+	 */
+	public void writeMap(ArrayList<NodeOfMap> map) {
+		
+		/*Date object for writing the date and time of creation map file*/
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm");
+		
+		/*Stores the Date Object.*/ 
+		Date date = new Date();
+		
+		/*FILENAME Stores the file name of the newly created map file.*/
+		FILENAME = System.getProperty("user.dir") + "\\SOEN6441\\Map_Data\\map\\map-"+ dateFormat.format(date) + ".map";
+		
+		/*Stores BufferedWriter object.*/
+		BufferedWriter bw = null;
+		
+		/*Stores FileWriter object.*/
+		FileWriter fw = null;
+>>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 
 		
 		FileWriter F= new FileWriter(MapPath);

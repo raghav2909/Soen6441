@@ -37,19 +37,18 @@ public class AActionStrategy implements StrategyOfPlayer{
 	
 	/**
 	 * Reinforcement phase of aggressive player that reinforces its strongest countries.
-	 * @see risk.model.player.PlayerStrategy#reinforcementPhase(int, java.lang.String[])
 	 */
 	@Override
 	public void reinforcementPhase(int armies, String[] countryList) {
 		reinforcement(armies,countryList);
-		driver.notifyObservers("Armies moved according to Aggresive Strategy reinforcement");
+		driver.nottifyObservers("Armies moved according to Aggresive Strategy reinforcement");
 		driver.switchPhase();
+		GameTurnDriver.playTurn();
 		
 	}
 
 	/**
 	 * Attack phase: aggressive player always attack with it until it cannot attack anymore.
-	 * @see risk.model.player.PlayerStrategy#attackPhase(java.util.ArrayList)
 	 */
 	@Override
 	public void attackPhase(ArrayList<String> countryList) {
@@ -73,11 +72,13 @@ public class AActionStrategy implements StrategyOfPlayer{
 			}
 		}
 		driver.declareAttack(aCountry.getNameOfCountry(), dCountry.getNameOfCountry());
+		driver.callGameOver(driver.getCurrent().getPlayerName());
 	}
 
 	/**
 	 * Fortification phase of aggressive player: maximizes aggregation of forces in one country.
-	 * @see risk.model.player.PlayerStrategy#fortificationPhase(java.util.ArrayList)
+	 * @param countryList list of countries
+	 * 
 	 */
 	@Override
 	public void fortificationPhase(ArrayList<String> countryList) {
@@ -88,8 +89,9 @@ public class AActionStrategy implements StrategyOfPlayer{
 //		int average = (int)(weakest.getArmiesCount() + strongest.getArmiesCount()) / 2;
 //		strongest.addArmy(average);
 //		weakest.removeArmies(average);
-		driver.notifyObservers("Armies moved according to Aggresive Strategy fortification");
+		driver.nottifyObservers("Armies moved according to Aggresive Strategy fortification");
 		driver.switchPhase();
+		GameTurnDriver.playTurn();
 
 	}
 

@@ -1,0 +1,15 @@
+[Map]
+author=Iceworm72
+image=001_I72_Ghtroc 720.bmp
+wrap=no
+scroll=vertical
+warn=no
+
+[Continents]
+abc=1
+
+[Territories]
+china,250,250,abc,india,indonesia,xyz
+india,250,250,abc,china,indonesia,xyz
+indonesia,250,250,abc,china,india,xyz
+xyz,250,250,abc,china,india,indonesia

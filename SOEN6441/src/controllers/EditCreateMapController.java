@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 
 import javax.swing.JFileChooser;
@@ -104,7 +105,7 @@ public class EditCreateMapController {
 		existingBtnAction=(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				final JFileChooser fc = new JFileChooser();
-				fc.setCurrentDirectory(new java.io.File("user.home"));
+				fc.setCurrentDirectory(new File("./SOEN6441/Map_Data/Map"));
 				FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", "map");
 				fc.setFileFilter(filter);
 				fc.setDialogTitle("Choose your Conquest Map File");

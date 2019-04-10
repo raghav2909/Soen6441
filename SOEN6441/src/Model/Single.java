@@ -39,8 +39,12 @@ public class Single implements Mode{
 
 	/**
 	* constructor for initialzing the instance variables.
+	* @param players player names
+	* @param moveLimit limit of number of moves
+	* @param nController main controller object
+	* @param map map name
 	*/
-	public Single(String map, String[][] players, int moveLimit, TheMainController nController) {
+	public  Single(String map, String[][] players, int moveLimit, TheMainController nController) {
 		mController = nController;
 		myMap = map;
 		myPlayers = players;
@@ -54,7 +58,7 @@ public class Single implements Mode{
 
 	/**
 	* udating results using the winner player
-	* @param winnerPlayer
+	* @param winnerPlayer winner player name
 	*/
 	public void updateResults(String winnerPlayer) {
 		String[][] data = {{myMap , winnerPlayer}};
@@ -74,12 +78,13 @@ public class Single implements Mode{
 	}
 	
 	public static void main(String[] arg) {
-		String[][] myPs = {{"Gur","human"},{"Raj","human"}};
-//		SingleMode s = new SingleMode("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\data\\map\\World2005.map", "D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\data\\map\\World2005.bmp", myPs, 0, the_mainController.getInstance());
-//		the_mainController.getInstance().setMode(s);
-//		s.start();
-		Single s = new Single();
-		s.loadGameFromAFile(new File("D:\\Gurpreet\\Study\\Meng\\Projects\\Risk\\SaveGame2017.11.30.23.36.53.sav"));
+		String[][] myPs = {{"Saman","human"},{"Raghav","human"}};
+		Single s = new Single("C:\\Users\\saman\\git\\SOEN6441final\\SaveGame2019.04.09.16.41.14.sav", "C:\\Users\\saman\\git\\SOEN6441final\\SaveGame2019.04.09.16.41.14.sav", myPs, 0, TheMainController.getInitialize());
+		TheMainController.getInitialize().setGameMode(s);
+		Single s1 = new Single();
+		s1.loadGameFromAFile(new File("C:\\Users\\saman\\git\\SOEN6441final\\SaveGame2019.04.09.16.41.14.sav"));
+		s.start();
+		
 	}
 	
 	/**
@@ -91,7 +96,7 @@ public class Single implements Mode{
 	
 	/**
 	 * 
-	 * @param file
+	 * @param file file name
 	 */
 	public void loadGameFromAFile(File file){ 
 

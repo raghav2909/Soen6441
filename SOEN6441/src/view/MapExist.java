@@ -199,13 +199,5 @@ public class MapExist extends JFrame{
 	public ArrayList<NodeOfMap> getMapExistsInfo() {
 		return MapExists;
 	}
-<<<<<<< HEAD
 				
-=======
-	/**
-	 * @param actionNew actionListener for EditButton
-	 */
-	public void addActionsToEditButton(ActionListener actionNew) {
-		EditButton.addActionListener(actionNew);
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}

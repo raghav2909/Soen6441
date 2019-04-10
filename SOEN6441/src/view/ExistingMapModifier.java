@@ -580,30 +580,9 @@ import controllers.Edit_create_Map_Controller;
 		 * add Listener to delete country
 		 * @param newAction Listener to be attached
 		 */
-<<<<<<< HEAD
 		public void addActionsToDeleteCountryButton(ActionListener newAction) {
 			deleteCountryButton.addActionListener(newAction);
 		} 
-=======
-		public void addActionsToAddNeighboursButton(ActionListener actionNew) {
-			btnAddNeighbours.addActionListener(actionNew);
-		}
-		
-		/**Action event for button to delete  neighbours
-		 * @see EditCreateMapController
-		 * @param actionNew actionListener for btnDeleteNeighbors.
-		 */
-		public void addActionstoDeleteNeighboursButton(ActionListener actionNew) {
-			 		btnDeleteNeighbours.addActionListener(actionNew);
-		}
-		
-		/**Action event for button to delete selected neighbours		 
-		 * @param actionNew actionListener for btnDeleteSelectedNeighbours.
-		 */
-		public void addActionsToDeleteSelectedNeighboursButton(ActionListener actionNew) {
-			 		btnDeleteSelectedNeighbours.addActionListener(actionNew);
-		}
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 		
 		/**
 		 * add Listener to add a button to add continent

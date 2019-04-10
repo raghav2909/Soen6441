@@ -82,7 +82,7 @@ public class TournamentModeMenu extends JFrame {
             }
          
          /**
-          * @return returns the panel to select number of players for game
+          * returns the panel to select number of players for game
           */
          private JPanel playernumber() {
         	 JPanel playernumberpanel = new JPanel();
@@ -107,8 +107,7 @@ public class TournamentModeMenu extends JFrame {
 }
 
         /**
-         *  allows selection of maps in tournament mode . At max 4 maps can be selected
-         *  @return number of maps selcted
+         * allows selection of maps in tournament mode . At max 4 maps can be selected
          */
 private JPanel mapSelector() {
     JPanel mapSelectionPanel = new JPanel();
@@ -156,7 +155,6 @@ private JPanel mapSelector() {
 }
 /**
  * This method returns player strategies and create separate panel for it
- * @return jpanel 
  */
         private JPanel player_strategy_selector() {
         JPanel strategy_selector_panel = new JPanel();
@@ -206,7 +204,6 @@ private JPanel mapSelector() {
     
         /**
          * This method set settings like number of maps, number of games to play for each game in Tournament mode
-         * @return japanel 
          */
         private JPanel numberSelector() {
         JPanel numberSelectorPanel = new JPanel();

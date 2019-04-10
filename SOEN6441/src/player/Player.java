@@ -9,7 +9,6 @@ import Model.NodeOfCountry;
 import Model.NodeOfMap;
 import Model.Card;
 import Model.GameDriver;
-import Model.GameTurnDriver;
 
 /**
  * This class is responsible to represent the player
@@ -80,7 +79,6 @@ public class Player
 	/**
 	 * Strategy of Player
 	 */
-<<<<<<< HEAD
 	private StrategyOfPlayer SOP;
     
     /**
@@ -113,85 +111,9 @@ public class Player
     }
     
     /**
-=======
-	private int cardsUsedCount = 1;
-	
-	/**
-	 * number of armies player has.
-	 */
-	private int armiesCount;
-	
-	/**
-	 * turn of player
-	 */
-	private boolean turn = false;
-	
-	/**
-	 * ArrayList of all continents in the Map.
-	 */
-	private ArrayList<NodeOfMap> mapData;
-	
-	/**
-	 * shows if player is still in game 
-	 */
-	private boolean lost = false;
-	
-	/**
-	 * Stores reinforcement Country selected.
-	 */
-	public String countrySelected;
-	
-	/**
-	 * Stores the armies moved in Reinforcement.
-	 */
-	public int armiesMoved;
-	
-	/**
-	 * Stores Fortification Country selected .
-	 */
-	private NodeOfCountry countrySelect;
-	
-	/**
-	 * Stores Neightbour Countries of country selected.
-	 */
-	private NodeOfCountry neighbourC;
-	
-	/**
-	 * Strategy for the player that can be changed on runtime
-	 */
-	private StrategyOfPlayer strategy;
-	
-	/**
-	 * Stores instance of GameDriver class.
-	 */
-	private GameDriver driver;
-	
-	private GameTurnDriver turnManager;
-	
-	/**
-	 * Initialize player object with name.
-	 * @param name name of player.
-	 * @param nDriver object of game driver
-	 */
-	public Player(String name, GameDriver nDriver) {
-		this.name = name;
-		this.driver = nDriver;
-		turnManager = driver.getGameTurnDriver();
-		this.countries = new ArrayList<NodeOfCountry>();
-		this.continents = new ArrayList<NodeOfMap>();
-		this.cards = new ArrayList<Card>();
-	}
-	
-	/**
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	 * Initialize player object with name and armies.
 	 * @param name name of the player.
-<<<<<<< HEAD
 	 * @param armies armies of the player.
-=======
-	 * @param newArmies armies of the player.
-	 * @param nDriver game driver object
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	 */
 	public Player(String name, int armies) {
 		this(name);
@@ -205,7 +127,6 @@ public class Player
 	}
    
 	/**
-<<<<<<< HEAD
      * return Player Name
      * @return Player Name
      */
@@ -339,91 +260,6 @@ public class Player
         int CountCountries = this.PlayerCountries.size();
         int CountContinents = this.PlayerContinents.size();
        int CountCards = this.Cards.size();
-=======
-	 * Initialize player object with name and armies.
-	 * @param name name of the player.
-	 * @param newArmies armies of the player.
-	 * @param countriesList ArrayList of all countries owned by player
-	 * @param nDriver object of game driver.
-	 */
-	public Player(String name, int newArmies, ArrayList<NodeOfCountry> countriesList, GameDriver nDriver) {
-		this(name, nDriver);
-		this.armiesCount = newArmies;
-		this.mapData = new ArrayList<NodeOfMap>();
-		for(NodeOfCountry c: countriesList) {
-			this.addCountry(c);
-		}
-	}
-	
-	/**
-	 * return name of the player.
-	 * @return name of player in string format.
-	 */
-	public String getPlayerName() {
-		return this.name;
-	}
-	
-	/**
-	 * Add country to the list of countries owned by player.
-	 * @param country country owned by player
-	 */
-	public void addCountry(NodeOfCountry country) {
-		this.countries.add(country);
-		if(country.getOwner()!=this) {
-			country.setOwner(this);
-		}
-	}
-	
-	/**
-	 * returns list of countries owned by the player.
-	 * @return ArrayList containing countries.
-	 */
-	public ArrayList<NodeOfCountry> getCountries() {
-		return this.countries ;	
-	}
-	
-	/**
-	 * Gets the list of countries owned by the player.
-	 * @return list of country names
-	 */
-	public String[] getNameOfCountries() {
-		String[] names = new String[this.countries.size()];
-		for(int i=0;i<names.length;i++){
-			names[i] = this.countries.get(i).getNameOfCountry();
-			System.out.println(names[i]);
-		}
-		return names;
-	}
-	
-	/**
-	 * Gives the countries owned by the player having no armies.
-	 * @return list of country names with no army.
-	 */
-	public String[] getEmptyCountries(){
-		ArrayList<String> names = new ArrayList<String>();
-		for(NodeOfCountry c : this.countries){
-			if(c.getConutOfArmies()==0)
-				names.add(c.getNameOfCountry());
-		}
-		return names.toArray(new String[names.size()]);
-	}
-	
-	/**
-	 * Removes country from list of countries owned by player.
-	 * @param country Country object to be removed from list
-	 */
-	public void removeCountry(NodeOfCountry country) {
-		this.countries.remove(country);
-	}
-	
-	/**
-	 * Add new card to list of cards player has.
-	 * @param card new card to be added to list.
-	 */
-	public void addCard(Card card) {
-		this.cards.add(card);
-	}
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 
        int CountArmies= CountCountries/3;
        
@@ -524,7 +360,6 @@ public class Player
  */
 public void RPhase(){
 	
-<<<<<<< HEAD
 	SOP.RPhase(CalArmy(),getNameOfCountries());
 }
 
@@ -539,174 +374,10 @@ public void APhase(){
 				if(!n.getOwner().equals(this)) {
 					cl.add(c.getNameOfCountry());
 					break; 
-=======
-	/**
-	 * Add new continent to the list of continents.
-	 * @param continent continent to be added to list of continent owned by player.
-	 */
-	public void addContinent(NodeOfMap continent) {
-		this.continents.add(continent);
-	}
-	
-	/**
-	 * remove continent from the list of continent owned by the player.
-	 * @param continent continent to be removed from list of continents owned by player.
-	 */
-	public void removeContinent(NodeOfMap continent) {
-		this.continents.remove(continent);
-	}
-	
-	/**
-	 * Checks for the continents owned by the player.
-	 */
-	public void checkContinent() {
-		for (NodeOfMap continent : this.mapData) {
-			System.out.println("Inside ForLoop");
-			System.out.println(continent.getNameOfContinent());
-			if (this.countries.containsAll(continent.getListOfCountries())) {
-				System.out.println("Inside If Stametment");
-				addContinent(continent);
-				System.out.println("Added" + continent.getNameOfContinent());
-				break;
-			}else {
-				break;
-			}
-			
-		}
-	}
-	
-	/**
-	 * Calculates the armies to be alloted to the player at each turn.
-	 * @return army count
-	 */
-	public int getNumberOfArmies() {
-		//checkContinent();
-		int countriesCount = this.countries.size();
-		int continentsCount = this.continents.size();
-		int cardsCount = this.cards.size();
-		int armyCount = countriesCount/3;
-		if(armyCount<3) {
-			armyCount = 3;
-		}
-		if (continentsCount > 0) {
-			continentsCount = 0;
-			for (NodeOfMap continent : this.continents){
-				continentsCount =+ continent.getValue();
-			}
-		}
-		armyCount += continentsCount;
-		System.out.println(armyCount);
-		
-		return armyCount;
-	}
-	
-	/**
-	 *  Assign armies to the player.
-	 *  @param newCount armies to be assigned.
-	 */
-	public void assignArmies(int newCount) {
-		this.armiesCount += newCount;
-	}
-	
-	/**
-	 *  Remove Armies from player.
-	 *  @param newCount armies to be removed.
-	 */
-	public void removeArmies(int newCount) {
-		this.armiesCount -= newCount;
-	}
-	
-	/**
-	 * Gives the number of armies the player has.
-	 * @return number of armies player has.
-	 */
-	public int getCountOfArmies() {
-		return this.armiesCount;
-	}
-	
-	/**
-	 * Gives the country node for the given country name.
-	 * @param newCountry country name whose country node is required.
-	 * @return country node matching the string 
-	 */
-	public NodeOfCountry getCountry(String newCountry) {
-		return NodeOfCountry.getCountry(countries, newCountry);
-	}
-	
-	/**
-	 * Sets player turn to true
-	 */
-	public void setTrue() {
-		this.turn = true;
-	}
-	
-	/**
-	 * Sets player turn to false
-	 */
-	public void setFalse() {
-		this.turn = false;
-	}
-	
-	/**
-	 * Gives the value of the turn of the player (True or False).
-	 * @return turn of player
-	 */
-	public boolean getTurn() {
-		return this.turn;
-	}
-	
-	/**
-	 * Sets the armies of the player to the new value.
-	 * @param newArmies new value of the army to be set.
-	 */
-	public void setArmies(int newArmies) {
-		this.armiesCount = newArmies;
-	}
-	
-	/**
-	 * This method runs the reinforcement phase
-	 */
-	public void reinforcementPhase(){
-		System.out.print("Checkpoint 1");
-		strategy.reinforcementPhase(armiesCount, getNameOfCountries());
-		
-	}
-	
-	/**
-	 * This method runs attack phase.
-	 */
-	public void attackPhase(){
-		ArrayList<String> countriesList = new ArrayList<String>();
-		for(NodeOfCountry c : this.countries) {
-			if(c.getConutOfArmies()>1) {
-				for(NodeOfCountry n: c.getNeighbourCountries()) {
-					if(n.getOwner() != null) {
-						if(!n.getOwner().equals(this)) {
-							countriesList.add(c.getNameOfCountry());
-							break;
-						}
-					}
-					else {
-						break;
-					}
-					
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 				}
 			}
 		}
-<<<<<<< HEAD
-=======
-		if(countriesList.isEmpty()) {
-			driver.switchPhase();
-			turnManager.playTurn();
-			
-		}
-		else {
-			strategy.attackPhase(countriesList);
-		}
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
-<<<<<<< HEAD
 	if(cl.isEmpty()) {
 		GameDriver.GetInit().ChangePhase();
 	}
@@ -726,40 +397,9 @@ public void FPhase(){
 				if(n.getOwner().equals(this)) {
 					list.add(c.getNameOfCountry());
 					break;
-=======
-	
-	/**
-	 * This method runs the fortification phase
-	 */
-	public void fortificationPhase(){
-		ArrayList<String> countriesList = new ArrayList<String>();
-		for(NodeOfCountry c : this.countries) {
-			if(c.getConutOfArmies()>1) {
-				for(NodeOfCountry n: c.getNeighbourCountries()) {
-					if(n.getOwner() != null) {
-						if(n.getOwner().equals(this)) {
-							countriesList.add(c.getNameOfCountry());
-							
-						}
-					}else {
-						break;
-					}
-					
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 				}
 			}
 		}
-<<<<<<< HEAD
-=======
-		if(countriesList.isEmpty()) {
-			driver.nottifyObservers(driver.getGameTurnDriver().getPhase());
-			driver.switchPhase();
-			turnManager.playTurn();
-		}
-		else {
-			strategy.fortificationPhase(countriesList);
-		}
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
 	if(list.isEmpty()) {
 		GameDriver.GetInit().ChangePhase();
@@ -955,19 +595,8 @@ public boolean HaveThreeCCards(){
 	else{
 		return false;
 	}
-<<<<<<< HEAD
 		
 }
-=======
-	
-	/**
-	 * Set a new strategy for player
-	 * @param newStrategy startegy of player
-	 */
-	public void setStrategy(StrategyOfPlayer newStrategy) {
-		this.strategy = newStrategy;
-	}
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 
 /**
  * checks player that have three Infantry cards
@@ -980,22 +609,8 @@ public boolean HaveThreeICards(){
 			infantry++;
 		}
 	}
-<<<<<<< HEAD
 	if(infantry == 3){
 		return true;
-=======
-	
-	/**
-	 * 
-	 * @param aArmies armies available
-	 * @param maxArmies maximum number of armies
-	 * @param message message to be passed
-	 * @return move armies
-	 * @return armies to be moved.
-	 */
-	public int moveArmies(int aArmies, int maxArmies, String message) {
-		return this.strategy.moveArmies(aArmies, maxArmies, message);
->>>>>>> branch 'master' of https://github.com/raghav2909/Soen6441
 	}
 	else{
 		return false;

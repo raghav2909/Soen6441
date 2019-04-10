@@ -14,79 +14,87 @@ import java.util.ArrayList;
 public class ReadMap{
 	
 	/**
-	 * This method reads the map file.
-	 * @see NodeOfMap
-	 * @param filename URL of map file.
-	 * @return map data in form of <code>ArrayList</code>
+	 * Method to read map.
+	 * Takes Filename as input
+	 * @param filename  name of the file
+	 * @return maplist
+	 * @throws IOException it will throw input output exception
 	 */
-	public ArrayList<NodeOfMap> readingMap(String filename) {	
-		BufferedReader br = null;
-		FileReader fr = null;
-		ArrayList<NodeOfMap> map = new ArrayList<NodeOfMap>();
-		ArrayList<NodeOfCountry> stack = new ArrayList<NodeOfCountry>();
+	public ArrayList<NodeOfMap> mapreader(String filename) throws IOException{
 		
-		try {
-			String sCurrentLine;
-			fr = new FileReader(filename);
-			br = new BufferedReader(fr);
-			boolean t = false;
-			boolean c = false;
-			while ((sCurrentLine = br.readLine()) != null){
-				if(!sCurrentLine.equals("")){
-					if(sCurrentLine.contains("[Territories]")){
-						t = true;
-						c = false;
+		FileReader F=null;;
+		BufferedReader B= null;
+		ArrayList<NodeOfMap> maplist=new ArrayList<NodeOfMap>();
+		ArrayList<NodeOfCountry> countrylist=new ArrayList<NodeOfCountry>();
+			String s;
+			/**
+			 * Reads filename
+			 */
+			
+			F=new FileReader(filename);
+			/**
+			 * Reads data from file
+			 */
+			 B=new BufferedReader(F);
+			 boolean Territories = false;
+			 boolean Continents= false;
+			
+			while ((s =B.readLine()) != null){
+				if(!s.equals("")){
+					if(s.contains("[Territories]")){
+						Territories= true;
+						Continents = false;
 						continue;
 					}
-					if(sCurrentLine.contains("[Continents]")){
-						c = true;
-						t = false;
+					if(s.contains("[Continents]")){
+						Continents= true;
+						Territories= false;
 						continue;
 					}
-					//check if current line is for continent
-					if(c){
-						int indexEqualTo = sCurrentLine.indexOf("=");
-						map.add(new NodeOfMap(sCurrentLine.substring(0, indexEqualTo), null, Integer.parseInt(sCurrentLine.substring(indexEqualTo+1).trim())));
+					
+					/**
+					 * Adds continents to the arraylist maplist.
+					 */
+					if(Continents){
+						maplist.add(new NodeOfMap(s.substring(0, s.indexOf("=")), null, Integer.parseInt(s.substring(s.indexOf("=")+1).trim())));
 					}
-					else if(t){  //check if current line is for territory
-						String[] temp = sCurrentLine.split(",");
-						for(NodeOfMap n : map){
-							if(n.getNameOfContinent().equals(temp[3])){
-								if(!NodeOfCountry.contains(stack, temp[0])){//check if the neighbor country object not already created
-									stack.add(new NodeOfCountry(temp[0], null, null,null));
+					
+					/**
+					 * Adds new countries and set coordinates
+					 */
+					else if(Territories){
+						String[] temp = s.split(",");
+						for(NodeOfMap n : maplist){
+							if(n.getContinent().equals(temp[3])){
+								if(!NodeOfCountry.Contains(countrylist, temp[0])){
+									countrylist.add(new NodeOfCountry(temp[0], null, null,null));
 								}
-								//get country object from stack and update its neighbours and other information
-								NodeOfCountry newCountry = NodeOfCountry.getCountry(stack, temp[0]);
+								
+								NodeOfCountry AddCountry= NodeOfCountry.getCountry(countrylist, temp[0]);
 								int[] newCoordinates = {Integer.parseInt(temp[1]),Integer.parseInt(temp[2])};
-								newCountry.setCoordinates(newCoordinates);
+								AddCountry.SetCoordinate(newCoordinates);
 								if(temp.length>4) {
 									for(int i=4;i<temp.length;i++){
-										if(!NodeOfCountry.contains(stack, temp[i])){
-											stack.add(new NodeOfCountry(temp[i], null, null,null));
+										if(!NodeOfCountry.Contains(countrylist, temp[i])){
+											countrylist.add(new NodeOfCountry(temp[i], null, null,null));
 										}
-										newCountry.addNeighbour(NodeOfCountry.getCountry(stack, temp[i]));
+										AddCountry.AddNeighbour(NodeOfCountry.getCountry(countrylist, temp[i]));
 									}
 								}
-								n.addCountry(newCountry);
+								n.addcountry(AddCountry);
 								break;
 							}
 						}
 					}
 				}
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} 
-		finally {
-			try {
-				if (br != null)
-					br.close();
-				if (fr != null)
-					fr.close();
-			}catch (IOException ex) {
-				ex.printStackTrace();
-			}
-		}
-		return map;		
+	B.close();
+	F.close();
+	
+		return maplist;		
+		
 	}
 }
+
+	
+

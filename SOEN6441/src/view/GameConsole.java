@@ -11,142 +11,153 @@ import javax.swing.SpringLayout;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
 
-
-
 /**
  *This class is the main view of the front end of the game console where the players will play the game
  *and all other information while playing the game will be displayed.
  *@author raghavsharda
  *@version 2.0
  */
-public class GameConsole extends JFrame{	
-	
+public class GameConsole extends JFrame  {
 	/**
 	 * Serial Version id for JFrame.
-	 * {@inheritDoc}
+	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Gameconsole object
+	 */
+	private static GameConsole gmc;
+	/**
+	 * PlayerConsole class object.
+	 */
+	private PlayerConsole plc;
 	
 	/**
-	 * MainView object.
+	 * MapConsole class object.
 	 */
-	private static GameConsole mainView;
+	private MapConsole mpc;
 	
 	/**
-	 * PlayerInfoView class object.
+	 * DiceRollConsole class object.
 	 */
-	private PlayerConsole dataForPlayer;
+	private DiceRollConsole drc;
+	/**
+	 * Domination in the world by players
+	 */
+	private DominationConsole dc;
+	/**
+	 * CardsConsole class object.
+	 */
+	private CardsConsole csc;
 	
 	/**
-	 * Map-View class object.
+	 * ControlsConsole class object.
 	 */
-	private MapConsole map;
-	
+	private ControlsConsole controlc;
 	/**
-	 * Controls-View class object.
+	 * PhaseConsole object
 	 */
-	private ControlsConsole controlsArea;
+	private phaseConsole phc;
 	
-	/**
-	 * Phase-View class object.
+	/**class constructor setting main game window by calling starts method
+	 * @param palyerinfo PlayerConsole object 
+	 * @param mapsinfo MapConsole object
+	 * @param controlsinfo ControlsConsole object
+	 *@param phaseinfo phase console object
+	 *@param dominationinfo domination console object
 	 */
-	private PhaseConsole phaseArea;
-	
-	/**
-	 * View for WorldDomination class object.
-	 */
-	private DominationConsole dominationConsole;
-	
-	/**
-	 * Initialize each view with the object of corresponding type.
-	 * @param newPlayerData PlayerInfoView object.
-	 * @param mapNew MapView object.
-	 * @param newControls ControlsView object.
-	 * @param phaseNew PhaseView Object.
-	 * @param newDominationView WorldDominationView object.
-	 */
-	private GameConsole(PlayerConsole newPlayerData, MapConsole mapNew, ControlsConsole newControls, PhaseConsole phaseNew, DominationConsole newDominationView){	
-		dataForPlayer = newPlayerData;
-        map = mapNew;
-        controlsArea = newControls;
-        phaseArea = phaseNew;
-        dominationConsole = newDominationView;
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        init();
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
-        this.setVisible(true);
+	public GameConsole(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo,phaseConsole phaseinfo,DominationConsole dominationinfo )
+	{
+		plc = playerinfo;
+		mpc = mapsinfo;
+		//drc =  diceinfo;
+		//csc = cardsinfo;
+		phc= phaseinfo;
+	    controlc = controlsinfo;
+	   dc = dominationinfo;
+	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    starts();
+	    this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+	    this.setVisible(true);
+	    
+		
+		
 	}
-
 	/**
-	 * Makes the container for the main-window.
+	 * making the frame for the main game console
 	 */
-	private void init(){
+	public void starts() {
 		Container contentPane = this.getContentPane();
-        SpringLayout layout = new SpringLayout();
+  SpringLayout layout = new SpringLayout();
         contentPane.setLayout(layout);
+        this.setBackground(Color.GRAY);
+        dc.setPreferredSize(new Dimension(mpc.getWidth(),300));
+        plc.setPreferredSize(new Dimension(400,150));
         
-        dominationConsole.setPreferredSize(new Dimension(map.getWidth(), 400));
-        dataForPlayer.setPreferredSize(new Dimension(400, 150));
-        
-        contentPane.add(dataForPlayer);
-        contentPane.add(map);
-        contentPane.add(controlsArea);
-        contentPane.add(phaseArea);
-        contentPane.add(dominationConsole);
-        
+        contentPane.add(plc);
+        contentPane.add(mpc);
+        contentPane.add(dc);
+       // contentPane.add(csc);
+        contentPane.add(controlc);
+        contentPane.add(phc);
+        /*constraints for controls console*/
+        layout.putConstraint(SpringLayout.WEST, controlc, 5,  SpringLayout.EAST, plc);
+        layout.putConstraint(SpringLayout.EAST, controlc, -5,  SpringLayout.EAST, contentPane);
+        layout.putConstraint(SpringLayout.NORTH, controlc, 0, SpringLayout.NORTH, plc);
+        layout.putConstraint(SpringLayout.SOUTH, controlc, -5, SpringLayout.SOUTH, contentPane);
+        /* constraints for map console*/
+        layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.EAST, plc);
+       layout.putConstraint(SpringLayout.NORTH, mpc, 5, SpringLayout.NORTH, contentPane);
+       layout.putConstraint(SpringLayout.SOUTH, mpc, -50, SpringLayout.NORTH, controlc);
+       layout.putConstraint(SpringLayout.EAST, mpc, -5, SpringLayout.EAST, contentPane);
        
+    	/*
+    	 *  constraints for phase console
+    	 */
+        layout.putConstraint(SpringLayout.WEST, phc, 5,  SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.EAST, phc, 0,  SpringLayout.EAST, mpc);
+        layout.putConstraint(SpringLayout.NORTH, phc, 5, SpringLayout.NORTH, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, phc, -5,  SpringLayout.NORTH, plc);
         
-		/* dataForPlayer .*/
-        layout.putConstraint(SpringLayout.WEST, dataForPlayer, 5,  SpringLayout.WEST, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, dataForPlayer, -5,  SpringLayout.SOUTH, contentPane);
+      /* constraints for Player console*/
+        layout.putConstraint(SpringLayout.WEST, plc, 5,  SpringLayout.WEST, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, plc, -5,  SpringLayout.SOUTH, contentPane);
         
-        /*constraints for phaseArea .*/
-        layout.putConstraint(SpringLayout.WEST, phaseArea, 5,  SpringLayout.WEST, contentPane);
-        layout.putConstraint(SpringLayout.EAST, phaseArea, -5,  SpringLayout.WEST, map);
-        layout.putConstraint(SpringLayout.NORTH, phaseArea, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, phaseArea, -5,  SpringLayout.NORTH, dataForPlayer);
+        /* constraints for map console*/
+         layout.putConstraint(SpringLayout.WEST, mpc, 5,  SpringLayout.EAST, plc);
+        layout.putConstraint(SpringLayout.NORTH, mpc, 5, SpringLayout.NORTH, contentPane);
+        layout.putConstraint(SpringLayout.SOUTH, mpc, -50, SpringLayout.NORTH, controlc);
+        layout.putConstraint(SpringLayout.EAST, mpc, -5, SpringLayout.EAST, contentPane);
         
-        /*constraints for map constraints.*/
-        layout.putConstraint(SpringLayout.WEST, map, 5,  SpringLayout.EAST, dataForPlayer);
-        layout.putConstraint(SpringLayout.NORTH, map, 5, SpringLayout.NORTH, contentPane);
-        layout.putConstraint(SpringLayout.SOUTH, map, -50, SpringLayout.NORTH, controlsArea);
-        layout.putConstraint(SpringLayout.EAST, map, -5, SpringLayout.EAST, contentPane);
-        
-        /*constraints for dominationConsole.*/
-        layout.putConstraint(SpringLayout.NORTH, dominationConsole, 5, SpringLayout.SOUTH, map);
-        layout.putConstraint(SpringLayout.SOUTH, dominationConsole, -5, SpringLayout.NORTH, controlsArea);
-        layout.putConstraint(SpringLayout.WEST, dominationConsole, 0, SpringLayout.WEST, map);
-        layout.putConstraint(SpringLayout.EAST, dominationConsole, -5, SpringLayout.EAST, contentPane);
-        
-        /* constraints for controlsArea .*/
-        layout.putConstraint(SpringLayout.WEST, controlsArea, 5,  SpringLayout.EAST, dataForPlayer);
-        layout.putConstraint(SpringLayout.EAST, controlsArea, -5,  SpringLayout.EAST, contentPane);
-        layout.putConstraint(SpringLayout.NORTH, controlsArea, 0, SpringLayout.NORTH, dataForPlayer);
-        layout.putConstraint(SpringLayout.SOUTH, controlsArea, -5, SpringLayout.SOUTH, contentPane);
-        this.pack();
-        this.validate();
+        /*constraints for domination console.*/
+        layout.putConstraint(SpringLayout.NORTH, dc, 5, SpringLayout.SOUTH, mpc);
+        layout.putConstraint(SpringLayout.SOUTH, dc, -5, SpringLayout.NORTH, controlc);
+        layout.putConstraint(SpringLayout.WEST, dc, 0, SpringLayout.WEST, mpc);
+        layout.putConstraint(SpringLayout.EAST, dc, -5, SpringLayout.EAST, contentPane);
+       
+          this.pack();   
+	
 	}
-
 	/**
-	 * return the instance of the singleton-Main-View class.
-	 * @return Main-View object.
+	 * Gives the instance of the singleton MainView class.
+	 * @return MainView object.
 	 */
 	public static GameConsole getInstance() {
-		return mainView;
+		return gmc;
     }
 	
 	/**
-	 * Creates the instance of the Main-console class.
-	 * @param newPlayerData Player console object.
-	 * @param mapNew MapConsole object.
-	 * @param newControls ControlsConsole object.
-	 * @param phaseNew PhaseConsole object.
-	 * @param newDominationView WorldDominationConsole object.
+	 * creates instance of this class
+	 * @param palyerinfo PlayerConsole object 
+	 * @param mapsinfo MapConsole object
+	 * @param phaseinfo phase Console object
+	 * @param dominationinfo domination Console object
+	 * @param controlsinfo ControlsConsole object
 	 */
-	public static void createInstance(PlayerConsole newPlayerData, MapConsole mapNew, ControlsConsole newControls, PhaseConsole phaseNew, DominationConsole newDominationView)
-	{
-		if(mainView == null){
-			mainView = new GameConsole(newPlayerData, mapNew, newControls, phaseNew, newDominationView);
+	public static void createInstance(PlayerConsole playerinfo, MapConsole mapsinfo,ControlsConsole controlsinfo, phaseConsole phaseinfo, DominationConsole dominationinfo ){
+		if(gmc == null){
+			gmc = new GameConsole(playerinfo,mapsinfo, controlsinfo, phaseinfo,dominationinfo);
 		}
 	}
-}
+	
+	}

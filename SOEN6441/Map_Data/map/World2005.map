@@ -103,20 +103,3 @@ Madagascar,587,353,AfricaS,Mozambique
 
 Iberica,425,140,Europa,Marruecos,Francia,
 Francia,446,118,Europa,RUnido,Alemania,Italia,Iberica
-RUnido,435,97,Europa,Islandia,Francia,Alemania
-Islandia,397,58,Europa,Groenlandia,RUnido
-Alemania,466,103,Europa,RUnido,Francia,Polonia,Yugoslavia,Italia,Noruega
-Italia,470,123,Europa,Francia,Alemania,Yugoslavia
-Yugoslavia,489,116,Europa,Italia,Alemania,Polonia,Rumania,Grecia,Ukrania
-Grecia,502,139,Europa,Turquia,Yugoslavia,Rumania
-Rumania,513,120,Europa,Grecia,Yugoslavia,Ukrania
-Polonia,494,99,Europa,Alemania,Bielorrusia,Ukrania,Yugoslavia
-Bielorrusia,513,91,Europa,Polonia,RusiaN,RusiaS,Ukrania
-Ukrania,533,110,Europa,Polonia,Bielorusia,RusiaS,Rumania
-RusiaS,563,99,Europa,Ukrania,Bielorrusia,RusiaN,SiberiaW,Kazajstan,Iran,Turquia
-RusiaN,552,67,Europa,Bielorrusia,Finlandia,Noruega,SiberiaW,RusiaS
-Finlandia,510,62,Europa,Noruega,Suecia,RusiaN
-Noruega,465,67,Europa,RusiaN,Finlandia,Suecia,Alemania
-Suecia,482,64,Europa,Noruega,Finlandia
-
-

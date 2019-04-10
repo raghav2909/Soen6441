@@ -46,7 +46,7 @@ public class TournamentModeMenu extends JFrame {
          public JComboBox TurnsInTournament = new JComboBox(ListoftournamentTurns);
          
          /**
-          * class constructor  that display the frame
+          * class constructor displaying the frame
           * @param messageWindow message window
           */
          public TournamentModeMenu(MessageWindow messageWindow) {
@@ -91,67 +91,67 @@ public class TournamentModeMenu extends JFrame {
         	 TitledBorder title = BorderFactory.createTitledBorder("Select Player count");
         	 playernumberpanel.setBorder(title);
 	
-        	 playernumberpanel.setLayout(new GridBagLayout());
-        	 GridBagConstraints grid_bag = new GridBagConstraints();
-        	 grid_bag.insets = new Insets(5, 15, 5, 15);
+	playernumberpanel.setLayout(new GridBagLayout());
+	GridBagConstraints grid_bag = new GridBagConstraints();
+    grid_bag.insets = new Insets(5, 15, 5, 15);
     
-        	 playernumberpanel.add(player, grid_bag);
-        	 grid_bag.gridx= 1;
-        	 grid_bag.gridy=0;
+    playernumberpanel.add(player, grid_bag);
+    grid_bag.gridx= 1;
+    grid_bag.gridy=0;
     
-        	 playernumberpanel.add(numberofplayers,grid_bag);
-        	 grid_bag.gridx= 2;
-        	 grid_bag.gridy=0;
+    playernumberpanel.add(numberofplayers,grid_bag);
+    grid_bag.gridx= 2;
+    grid_bag.gridy=0;
 	
-        	 return playernumberpanel;
+	return playernumberpanel;
 }
 
         /**
          * allows selection of maps in tournament mode . At max 4 maps can be selected
          */
-         private JPanel mapSelector() {
-        	 JPanel mapSelectionPanel = new JPanel();
-        	 JPanel mapSelection = new JPanel();
+private JPanel mapSelector() {
+    JPanel mapSelectionPanel = new JPanel();
+    JPanel mapSelection = new JPanel();
 
-        	 TitledBorder title = BorderFactory.createTitledBorder("First map selection to make: Select here");
-        	 mapSelectionPanel.setBorder(title);
+    TitledBorder title = BorderFactory.createTitledBorder("First map selection to make: Select here");
+    mapSelectionPanel.setBorder(title);
 
-        	 mapSelectionPanel.setLayout(new GridBagLayout());
-        	 GridBagConstraints grid_bag_cons = new GridBagConstraints();
-        	 grid_bag_cons.insets = new Insets(5, 15, 5, 15);
+    mapSelectionPanel.setLayout(new GridBagLayout());
+    GridBagConstraints grid_bag_cons = new GridBagConstraints();
+    grid_bag_cons.insets = new Insets(5, 15, 5, 15);
 
-        	 JButton map1 = new JButton(("Select Map 1"));
-        	 JButton map2 = new JButton(("Select Map 2"));
-        	 JButton map3 = new JButton(("Select Map 3"));
-        	 JButton map4 = new JButton(("Select Map 4"));
-        	 grid_bag_cons.gridx = 1;
-        	 grid_bag_cons.gridy = 1;
-        	 mapSelectionPanel.add(map1, grid_bag_cons);
-        	 grid_bag_cons.gridx = 2;
-        	 grid_bag_cons.gridy = 1;
-        	 mapSelectionPanel.add(map2, grid_bag_cons);
-        	 grid_bag_cons.gridx = 3;
-        	 grid_bag_cons.gridy = 1;
-        	 mapSelectionPanel.add(map3, grid_bag_cons);
-        	 grid_bag_cons.gridx = 4;
-        	 grid_bag_cons.gridy = 1;
-        	 mapSelectionPanel.add(map4, grid_bag_cons);
-        	 grid_bag_cons.gridx = 5;
-        	 grid_bag_cons.gridy = 1;
-        	 grid_bag_cons.gridx = 1;
-        	 grid_bag_cons.gridy = 2;
-        	 mapSelectionPanel.add(mapLabel1, grid_bag_cons);
-        	 grid_bag_cons.gridx = 2;
-        	 grid_bag_cons.gridy = 2;
-        	 mapSelectionPanel.add(mapLabel2, grid_bag_cons);
-        	 grid_bag_cons.gridx = 3;
-        	 grid_bag_cons.gridy = 2;
-        	 mapSelectionPanel.add(mapLabel3, grid_bag_cons);
-        	 grid_bag_cons.gridx = 4;
-        	 grid_bag_cons.gridy = 2;
-        	 mapSelectionPanel.add(mapLabel4, grid_bag_cons);
-        	 mapSelection.add(mapSelectionPanel);
-        	 return mapSelection;
+    JButton map1 = new JButton(("Select Map 1"));
+    JButton map2 = new JButton(("Select Map 2"));
+    JButton map3 = new JButton(("Select Map 3"));
+    JButton map4 = new JButton(("Select Map 4"));
+    grid_bag_cons.gridx = 1;
+    grid_bag_cons.gridy = 1;
+    mapSelectionPanel.add(map1, grid_bag_cons);
+    grid_bag_cons.gridx = 2;
+    grid_bag_cons.gridy = 1;
+    mapSelectionPanel.add(map2, grid_bag_cons);
+    grid_bag_cons.gridx = 3;
+    grid_bag_cons.gridy = 1;
+    mapSelectionPanel.add(map3, grid_bag_cons);
+    grid_bag_cons.gridx = 4;
+    grid_bag_cons.gridy = 1;
+    mapSelectionPanel.add(map4, grid_bag_cons);
+    grid_bag_cons.gridx = 5;
+    grid_bag_cons.gridy = 1;
+    grid_bag_cons.gridx = 1;
+    grid_bag_cons.gridy = 2;
+    mapSelectionPanel.add(mapLabel1, grid_bag_cons);
+    grid_bag_cons.gridx = 2;
+    grid_bag_cons.gridy = 2;
+    mapSelectionPanel.add(mapLabel2, grid_bag_cons);
+    grid_bag_cons.gridx = 3;
+    grid_bag_cons.gridy = 2;
+    mapSelectionPanel.add(mapLabel3, grid_bag_cons);
+    grid_bag_cons.gridx = 4;
+    grid_bag_cons.gridy = 2;
+    mapSelectionPanel.add(mapLabel4, grid_bag_cons);
+       mapSelection.add(mapSelectionPanel);
+    return mapSelection;
 }
 /**
  * This method returns player strategies and create separate panel for it

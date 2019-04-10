@@ -25,15 +25,14 @@ public class MapSelection {
 	/**
 	 * This button helps to choose the map file
 	 */
-	JButton OpenTheMapFile = new JButton("Select-Map!");
+	JButton OpenMapFile = new JButton("Select Map");
 	
 	/**
-	 * Constructor for the frame setting MapSelection class
-	 * 
-	 * @throws IllegalAccessException  it will throw illegal exception
-	 * @throws ClassNotFoundException it will throw classnotFound exception
-	 * @throws InstantiationException  it will throw Instantiation exception
-	 * @throws IllegalAccessException it will throw illegalAcess exception
+	 * Constructor for the frame setting
+	 * @throws IllegalAccessException  it will throw ilegal exception
+	 * @throws ClassNotFoundException it will
+	 * @throws InstantiationException  it will 
+	 * @throws IllegalAccessException it will
 	 * 
 	 */
 	public MapSelection()throws UnsupportedLookAndFeelException,ClassNotFoundException,InstantiationException, IllegalAccessException
@@ -51,18 +50,18 @@ public class MapSelection {
 		jf.add(BorderLayout.LINE_START,jp);
 		jf.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		jf.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 15));
-		OpenTheMapFile.setForeground(Color.BLACK);
-		OpenTheMapFile.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 15));
-		jp.add(OpenTheMapFile);
+		OpenMapFile.setForeground(Color.BLACK);
+		OpenMapFile.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC , 15));
+		jp.add(OpenMapFile);
 		jf.setVisible(true);
 		
 	}
 	/**
-     * add Action Listener for the Open-Map file Button!!
+     * ActionListener for the Open Map file button
      * @param ae reference for ActionListener object
      */
-	public void openFileChooseBtnAction(ActionListener ae)
+	public void openfilebuttonaction(ActionListener ae)
 	{
-		OpenTheMapFile.addActionListener(ae);
+		OpenMapFile.addActionListener(ae);
 	}
 }

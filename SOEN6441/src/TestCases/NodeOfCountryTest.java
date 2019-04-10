@@ -13,37 +13,28 @@ import Model.NodeOfCountry;
  */
 public class NodeOfCountryTest {
 	
-	/**
-	 * NodeOfCountry variable.
-	 */
-	NodeOfCountry in;
-	
-	/**
-	 * ArrayList of type NodeOfCountry.
-	 */
-	ArrayList<NodeOfCountry> list;
-	
-	/**
-	 * Set up dummy data required for test.
-	 */
+	private NodeOfCountry c;
+	private ArrayList<NodeOfCountry> l;
+
 	@Before
-	public void setUp(){
-		in = new NodeOfCountry("India", null, null, null);
-		list = new ArrayList<NodeOfCountry>();
-		list.add(new NodeOfCountry("Canada", null, null, null));
-		list.add(in);
-		list.add(new NodeOfCountry("Pakistan", null, null, null));
-		list.add(new NodeOfCountry("Ireland", null, null, null));
-		list.add(new NodeOfCountry("Russia", null, null, null));
+	public void setUp() throws Exception {
+		c= new NodeOfCountry("Iran",null,null,null);
+		l= new ArrayList<NodeOfCountry>();
+		l.add(new NodeOfCountry("America",null,null,null));
+		l.add(c);
+		l.add(new NodeOfCountry("India",null,null,null));
+		l.add(new NodeOfCountry("England",null,null,null));
+		l.add(new NodeOfCountry("Sweden",null,null,null));
 	}
 
+	
 	/**
-	 * Test the getCountries method for retrieving a NodeOfCountry from a list of NodeOfCountry by the name of country.
+	 * test getNameOfCountry method
 	 */
 	@Test
-	public void testGetCountries() {
-		NodeOfCountry actual = NodeOfCountry.getCountry(list, "India");
-		assertEquals(in.getNameOfCountry(),actual.getNameOfCountry());
+	public void testgetNameOfCountry() {
+		NodeOfCountry a = NodeOfCountry.getCountry(l, "Iran");
+		assertEquals(c.getNameOfCountry(),a.getNameOfCountry());
 	}
 
 }

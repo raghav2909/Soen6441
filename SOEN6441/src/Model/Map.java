@@ -6,11 +6,11 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Observable;
 
-import controllers.TheMainController;
+import controllers.the_main_controller;
 import player.Player;
 import Model.*;
 
-import view.FrameForMap;
+import view.Map_Frame;
 
 /**
  * This class handles the data for new map creation and also map editor.
@@ -19,132 +19,166 @@ import view.FrameForMap;
  */
 public class Map extends Observable
 {
-	
-	/**
-	 * ArrayList containing map data.
-	 * @see NodeOfMap
-	 */
-	private ArrayList<NodeOfMap> mapData;
-	
-	/**
-	 * Number of total countries in the Map
-	 */
-	private int countryCount;
 		
 	/**
-	 * This constructor create object of ReadMap class and read data from map.
-	 * @param filename address of the mapfile to be loaded.
+	 * Number of Map's total countries
 	 */
-	public Map(String filename) {
-		ReadMap reader = new ReadMap();
-		mapData = reader.readingMap(filename);
+	private int count_Country;
+	
+	
+	/**
+	 * creating a arraylist for saving map data
+	 */
+	public static  ArrayList<NodeOfMap> DataMap;
+	
+	 /**
+	  * this constructor handles getting map data from map reader
+	  * @param FileName the address of map
+	 * @throws IOException  it will throw input output exception
+	  */
+	public Map(String FileName) throws IOException 
+	{
+		    ReadMap Reader = new ReadMap();
+			DataMap = Reader.mapreader(FileName);		 
 	}
 	
-	/** 
-	 * Returns the arraylist of map data.
-	 * @return return map data in form of arraylist.
+	public Map() {
+		
+	}
+
+	/**
+	 * returning the map data as an arraylist
+	 * @return return the map data as an arraylist
 	 */
-	public ArrayList<NodeOfMap> getMapData() {
-		return this.mapData;
+	public  ArrayList<NodeOfMap> GetMapData()
+	{
+		
+		return this.DataMap;
+	
 	}
 	
 	/**
-	 * Return map data.
-	 * @return multidimensional array containing map data.
+	 * returning the map data 
+	 * @return multidimensional array of map data
 	 */
-	public String[][] getObjectOfMapData() {
-		ArrayList<Object[]> newData = new ArrayList<Object[]>();
-		for(NodeOfMap m : mapData){
-			for(NodeOfCountry n : m.getCountries()){
-				String[] tempObject = new String[5];
-				tempObject[1] = n.getNameOfCountry();
-				if(n.getOwner()!=null){
-					tempObject[3] = n.getOwner().getPlayerName();
-				}else{
+	public String[][] GetMapInfo()
+	{
+		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
+		for (NodeOfMap n : DataMap) 
+		{
+			for (NodeOfCountry m : n.getCountries()) 
+			{
+				String[] tempObject = new String [5];
+				tempObject[1] = m.getNameOfCountry();
+				if(m.getPlayerCountry() != null)
+				{
+					tempObject [3] = m.getPlayerCountry().getPlayerName();
+				}
+				else
+				{
 					tempObject[3] = "";
 				}
-				tempObject[2] = String.valueOf(n.getConutOfArmies());
-				newData.add(tempObject);
-				tempObject[0] = Integer.toString(n.getCoordinates()[0]);
-				tempObject[4] = Integer.toString(n.getCoordinates()[1]);
+				tempObject[2] = String.valueOf(m.getArmyCount());
+				NewData.add(tempObject);
+				tempObject[0] = Integer.toString(m.getCoordinate()[0]);
+				tempObject[4] = Integer.toString(m.getCoordinate()[1]);
 			}
-		}
-		return newData.toArray(new String[newData.size()][]);
+		} 
+		return NewData.toArray(new String[NewData.size()][]);
 	}
 	
+	
 	/**
-	 * Return map data
-	 * @return multidimensional array containing map data.
+	 * returning the map data
+	 * @return multidimensional array of map data
 	 */
-	public String[][] getObjectOfMap() {
-		ArrayList<Object[]> newData = new ArrayList<Object[]>();
-		for(NodeOfMap m : mapData){
-			for(NodeOfCountry n : m.getCountries()){
-				
+	public String[][] GetMap()
+	{
+		ArrayList<Object[]> NewData = new ArrayList<Object[]>();
+		for (NodeOfMap n : DataMap)
+		{
+			for(NodeOfCountry m : n.getCountries()) 
+			{
 				String[] tempObject = new String[5];
-				tempObject[0] = m.getNameOfContinent() +", "+ m.getValue();
-				tempObject[1] = n.getNameOfCountry();
-				String neighbours = "";
-				for(String s: n.getNeighbourCountriesString()){
-					neighbours = neighbours + s + ", ";
+				tempObject[0] = n.getContinent() +", "+n.getControlValue();
+				tempObject[1] = m.getNameOfCountry();
+				String Neighbours ="";
+				for(String s : m.getNeighboursString())
+				{
+					Neighbours = Neighbours + s + ", ";
 				}
-				
-				tempObject[4] = neighbours;
-				if(n.getOwner()!=null){
-					tempObject[3] = n.getOwner().getPlayerName();
-				}else{
+				tempObject[4]= Neighbours;
+				if(m.getPlayerCountry() != null) 
+				{
+					tempObject[3] = m.getPlayerCountry().getPlayerName();
+				}
+				else 
+				{
 					tempObject[3] = "";
 				}
-				tempObject[2] = String.valueOf(n.getConutOfArmies());
-				newData.add(tempObject);
+				tempObject[2] = String.valueOf(m.getArmyCount());
+				NewData.add(tempObject);
 			}
 		}
-		return newData.toArray(new String[newData.size()][]);
+		return NewData.toArray(new String[NewData.size()][]);
 	}
 	
 	/**
-	 * Print map data on console.
+	 * This method displays the data on the console
 	 */
-	public void printMapConsole() {
-		Object[][] map = this.getObjectOfMapData();
-		for(Object[] m : map){
-			System.out.println("Continent Name: "+m[0]);
-			System.out.println("\tCountry Name: "+m[1]+", Neighbours: "+m[4]+", Owner: "+m[3]+", Armies: "+m[2]);
+	public void MapPrint()
+	{
+		Object[][] map = this.GetMapInfo();
+		for(Object[] m : map)
+		{
+			System.out.println("Continent Name: "+ m[0]);
+			System.out.println("Country Name: "+m[1]+", Neighbours: "+m[4]+", Owner: "+m[3]+", Armies: "+m[2]);
 		}
 	}
 	
+	
 	/**
-	 * Notify Observer(MapView) of the change in Observable
+	 * notify Observer for a change
 	 */
-	public void updateMap(){
+	public void UpdateMap() 
+	{
 		setChanged();
-		notifyObservers(this);
+		notifyObservers(this); 
+		
 	}
 	
 	/**
-	 * This method check if loaded map is valid.
-	 * @return true if map is valid false if map is not valid
-	 * */
-	public boolean mapValidation() {
-		if(isMapConnectedGraph() && isNodeOfMapsContainUniqueCountries()) {
+	 * checking if the loaded map is valid
+	 * @return true if map is valid
+	 */
+	public boolean MapValid() 
+	{
+		if (isMapConnectedGragh() && isMapNodesContainUniqueCountries())
+		{
 			return true;
 		}
 		return false;
 	}
 	
+	
 	/**
-	 * Check if map is connected graph.
-	 * @return true if map is connected graph false if map is not connected graph
+	 * checking if a map is a connected graph or not
+	 * @return true if it is
 	 */
-	public boolean isMapConnectedGraph()
+	public boolean isMapConnectedGragh() 
 	{
-		for(NodeOfMap m: this.mapData){
-			for(NodeOfCountry c: m.getCountries()){
-				if(c.getNeighbourCountries()==null || c.getNeighbourCountries().length==0){
+		for (NodeOfMap n : this.DataMap) 
+		{
+			for (NodeOfCountry m : n.getCountries()) 
+			{
+				if (m.getNeighboursCountries() == null || m.getNeighboursCountries().length ==0) 
+				{
 					return false;
 				}
-				for(NodeOfCountry n: c.getNeighbourCountries()){
-					if(!n.getNeighbours().contains(c)) {
+				for (NodeOfCountry b : m.getNeighboursCountries()) 
+				{
+					if(!b.getNeighbours().contains(m)) 
+					{
 						return false;
 					}
 				}
@@ -153,84 +187,120 @@ public class Map extends Observable
 		return true;
 	}
 	
+	
 	/**
-	 * Check if every country belongs to only one NodeOfMap.
-	 * @return true if all continents have unique countries; false if one country belongs to more than one continent
+	 *check if every country belongs to a map
+	 *@return true if all continents have unique countries ;else false 
 	 */
-	public boolean isNodeOfMapsContainUniqueCountries() {
-		ArrayList<NodeOfCountry> stack = new ArrayList<NodeOfCountry>();
-		for(NodeOfMap m: this.mapData) {
-			for(NodeOfCountry c: m.getCountries()) {
-				if(stack.contains(c)) {
+	public boolean isMapNodesContainUniqueCountries() 
+	{
+		ArrayList <NodeOfCountry> s = new ArrayList<NodeOfCountry>();
+		for (NodeOfMap n : this.DataMap) 
+		{
+			for (NodeOfCountry m : n.getCountries()) 
+			{
+				if (s.contains(m)) 
+				{
 					return false;
 				}
-				else {
-					stack.add(c);
+				else 
+				{
+					s.add(m);
 				}
 			}
 		}
 		return true;
 	}
 	
-	/**
-	 * return Arraylist of neighbouring countries owned by a player or not owned by player, depending on flag value
-	 * @param newCountry Country node whose neighbors are required.
-	 * @param newPlayer player who owns the required neighbours.
-	 * @param flag if true, method returns countries owned by newPlayer, if false return countries owned by other players except newPlayer.
-	 * @return playerNeighbouringCountries returns neighbouring countries of the country of same owner
-	 */
-	public ArrayList<String> getPlayerNeighbourCountries(NodeOfCountry newCountry, Player newPlayer,boolean flag) {
-		ArrayList<String> playerNeighbourCountries = new ArrayList<String>();
-		for (NodeOfCountry country : newCountry.getNeighbourCountries()){
-			if(flag) {
-				if (country.getOwner().equals(newPlayer)){
-					playerNeighbourCountries.add(country.getNameOfCountry());
-				}
-			}
-			else {
-				if(!country.getOwner().equals(newPlayer)) {
-					playerNeighbourCountries.add(country.getNameOfCountry());
-				}
-			}
+		
+	
+	public ArrayList<String> getPlayerNeighbours(NodeOfCountry newCountry,Player newPLayer,boolean v){
+		ArrayList<String> NeighbourCountries= new ArrayList<String>();
+		for (NodeOfCountry country : newCountry.getNeighboursCountries()){
+			if(v && country.getOwner().equals(newPLayer)) 
+					NeighbourCountries.add(country.getNameOfCountry());
+			
+			if(!v && !country.getOwner().equals(newPLayer)) 
+					NeighbourCountries.add(country.getNameOfCountry());	
+			
 		}
-		return playerNeighbourCountries;
+		return NeighbourCountries;
+		
+	}
+	
+	
+	
+	
+	/**
+	 * to check if the continent is owned by the player who won the  country.
+	 * @param player For whom the continent is checked
+	 * @param c COuntry for which continent check is done.
+	 * @return  false is continent does not belong to the player  and true if it belongs
+	 */
+	public boolean WonPlayerContinent(Player player,NodeOfCountry c) {
+		boolean b=false;
+		NodeOfMap m = c.getContinent();	
+		for(NodeOfCountry noc : m.getCountries()) {
+			if(c.getOwner()!=player) {
+				b=false;
+			}
+			else b=true;
+		}
+		return b;
+
+	}
+	
+	
+	
+	public int CountryCount()
+	{
+		this.count_Country=0;
+		for(NodeOfMap cont:this.DataMap)
+		{
+			count_Country+=cont.getCountOfCountries();
+		}
+		return this.count_Country;
 	}
 	
 	/**
-	 * Get object of country from its name
-	 * @param countryName name of country
-	 * @return object of NodeOfCountry required
+	 * This method gets the object of country from its name
+	 * @param CN country name 
+	 * @return Total map countries
 	 */
-	public NodeOfCountry getCountry(String countryName) {
-		NodeOfCountry c = null;
-		for(NodeOfMap m: this.mapData) {
-			c = NodeOfCountry.getCountry(m.getListOfCountries(), countryName);
-			if(c!=null) {
-				break;
+	
+	public NodeOfCountry gettingCountry(String CN)
+	{
+		NodeOfCountry noc= null;
+		for(NodeOfMap nom: this.DataMap)
+		{
+			noc= NodeOfCountry.getCountry(nom.getClst(), CN);
+			if(noc!=null)
+			{
+			break;	
 			}
 		}
-		return c;
+		return noc;
 	}
 
 	/**
 	 * Returns the number of countries in map
 	 * @return number of countries in map
 	 */
-	public int getCountOfCountries(){
-		this.countryCount = 0;
-		for (NodeOfMap continent : this.mapData){
-			countryCount += continent.getCountOfCountries();
+	public int getCountryCount(){
+		this.count_Country = 0;
+		for (NodeOfMap continent : this.DataMap){
+			count_Country += continent.getCountOfCountries();
 		}
-		return this.countryCount;
+		return this.count_Country;
 	}
-
+//try
 	/**
-	 * Check if a continent is owned by a player to which country belongs
-	 * @param player player for which the continent to be checked
-	 * @param country a country from continent to be checked
-	 * @return true if continent belongs to player, false if continent not belongs to player
+	 * Check if a continent is owned by a player to which the specific country belongs
+	 * @param player is player for which the continent is to be checked
+	 * @param country a country from which continent is to be checked
+	 * @return false if continent not belongs to player and true if continent belongs to player 
 	 */
-	public boolean continentPlayerWon(Player player,NodeOfCountry country) {
+	public boolean continentWonByPlayer(Player player,NodeOfCountry country) {
 		NodeOfMap m = country.getContinent();	
 		for(NodeOfCountry c : m.getCountries()) {
 			if(c.getOwner()!=player) {
@@ -241,13 +311,8 @@ public class Map extends Observable
 		return false;
 
 	}
-	
-	/**
-	 * Set map Data to mapData
-	 * @param mapData2 ArrayList of NodeOfMap objects
-	 */
-	public void setDataOfMap(ArrayList<NodeOfMap> mapData2) {
-		this.mapData = mapData2;
-		
-	}
 }
+
+
+
+

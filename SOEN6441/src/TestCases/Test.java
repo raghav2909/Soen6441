@@ -18,10 +18,6 @@ import org.junit.runners.Suite.SuiteClasses;
 	GameDriverTest.class,
 	MapTest.class,
 	TestMapWrite.class,
-	AStrategyTest.class,
-	BStrategyTest.class,
-	CStrategyTest.class,
-	RStrategyTest.class,
 })
 public class Test{
 	

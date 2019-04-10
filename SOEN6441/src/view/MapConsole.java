@@ -30,74 +30,61 @@ import Model.Map;
 public class MapConsole extends JPanel implements Observer {
 	
 
-	
-
-
-private BufferedImage bImage;
-	
-	/**
-	 * Boolean to check for .bmp file for the map.
-	 */
-	private boolean graphicalMap = false;
-	
-	/**
-	 * Serial Version id for JFrame.
-	 * {@inheritDoc}
-	 */
-	private static final long serialVersionUID = 2353535256045293828L;
+	Map map = new Map();
 
 	/**
-	 * Sets the map console view of the main-window-frame
-	 * @param imageNew bImage file uploaded.
+	 * object of Map class
 	 */
-	public MapConsole(String imageNew) {
-		this();
-		if(imageNew!=null){
-	    	try {
-	    		bImage = ImageIO.read(new File(imageNew));
-	    	} catch (IOException e) {
-	    		e.printStackTrace();
-	    	}
-	    }
-	    this.setBackground(Color.WHITE);
+
+
+	/**
+	 * object of BufferedImage for image data
+	 */
+	private BufferedImage picture;
+	
+	/**
+	 * boolean variable
+	 */
+
+	
+	private boolean mapgraph = false;
+	
+	/**
+	 * class constructor locating image of map
+	 * @param mapimage location of map file
+	 */
+	public MapConsole(String mapimage) {
+	
+
+		if(mapimage!=null)
+		{
+			try {
+				picture = ImageIO.read(new File(mapimage));
+			}
+			catch(IOException i){
+				i.printStackTrace();
+			}
+		}
+		this.setBackground(Color.LIGHT_GRAY);
+		this.setOpaque(true);
 	    this.setLayout(null);
-	    this.setOpaque(true);
 	    
-	    this.graphicalMap = true;
-	}
-	
-	/**
-	 *  to Display the map-file on the map-view.
-	 */
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		if(bImage!=null) {	
-	    	g.drawImage(bImage, 0, 0, this);
-	    }
-	}
-	
-	/**
-	 * Sets the dimensions of the map-view border.
-	 */
-	public MapConsole() {
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
 	}
 
-	
 
 	/**
-	 * Sets map data on the map view in a tabular format.
-	 * @param newMapData Map data to be displayed.
+	 * Sets the coordinates on the map file image.
+	 * @param newMap Map data to be displayed.
 	 */
-	public void setMap(String[][] newMapData){
+	public void setLogicalMap(String[][] newMap) {
 		this.removeAll();
 		JPanel pane = new JPanel();
 		GridBagLayout gb = new GridBagLayout();
 		pane.setLayout(gb);
 		int i = 0;
-		for(String[] o : newMapData){
+		for(String[] o : newMap){
 			int j=0;
-			for(String k: o){
+			for(String k: o) {
 			    GridBagConstraints gbc = new GridBagConstraints();
 			    gbc.ipadx = 20;
 			    gbc.gridx = j;
@@ -112,15 +99,14 @@ private BufferedImage bImage;
 		this.add(scroll);
 		this.validate();
 	}
-	
-	/**
-	 * Sets the coordinates on the map file bImage.
-	 * @param newMapData Map data to be displayed.
+
+	 /** Sets the coordinates on the map file image.
+	 * @param newMap Map data to be displayed.
 	 */
-	public void setGraphicalMap(String[][] newMapData) {
+	public void setGraphical(String[][] newMap) {
 		this.removeAll();
 		
-		for(String[] o: newMapData){
+		for(String[] o: newMap){
 			JPanel panel = new JPanel();
 			panel.setSize(5, 5);
 			panel.setBackground(Color.BLACK);
@@ -130,18 +116,86 @@ private BufferedImage bImage;
 			panel.setToolTipText(text);
 			this.add(panel);
 		}
+		this.validate(); 
+	}
+	
+
+	
+	/**
+	 * Set dimension of main frame
+	 */
+	public MapConsole() {
+	
+		this.setBorder(BorderFactory.createLineBorder(Color.black));
+	}
+	
+	 /**
+     * Display the map image on map frame
+     */
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+	    	g.drawImage(picture, 0, 0, this);
+	}
+
+	
+	/**
+	 * set map data on map frame
+	 * @param mapinfo contains map data
+	 */
+	public void Mapset(String[][] mapinfo) {
+		this.removeAll();
+		JPanel jpane = new JPanel();
+		GridBagLayout gbl = new GridBagLayout();
+		jpane.setLayout(gbl);
+		int i = 0;
+		for(String[] r : mapinfo){
+			int j=0;
+			for(String k: r) {
+			    GridBagConstraints gbc = new GridBagConstraints();
+			    gbc.ipadx = 20;
+			    gbc.gridx = j;
+			    gbc.gridy = i;
+				jpane.add(new JLabel(k), gbc);
+				j++;
+			}
+			i++;
+		}
+		JScrollPane scrollpane = new JScrollPane(jpane);
+		scrollpane.setPreferredSize(getSize());
+		this.add(scrollpane);
+		this.validate();
+	}
+	
+	/**
+	 * set coordinates on image file
+	 * @param mapinfo contains map data
+	 */
+	public void setCoordinates(String[][] mapinfo) {
+		this.removeAll();
+		
+		for(String[] r: mapinfo){
+			JPanel jpanel = new JPanel();
+			jpanel.setSize(5, 5);
+			jpanel.setBackground(Color.BLACK);
+			jpanel.setLocation(Integer.parseInt(r[0]), Integer.parseInt(r[4]));
+			jpanel.add(new JLabel(" "));
+			String s = r[1]+" "+r[3]+" "+r[2];
+			jpanel.setToolTipText(s);
+			this.add(jpanel);
+		}
 		this.validate();
 	}
 
 	/**
-	 * Observer pattern function for Observers to update when there is a notification from the observable.
+	 * method of observer pattern which to update if there are updates from observable
 	 */
 	@Override
-	public void update(Observable obs, Object map) {
-		if(graphicalMap){
-			setGraphicalMap(((Map) obs).getObjectOfMapData());
+	public void update(Observable arg0, Object arg1) {
+		if(mapgraph){
+			setCoordinates(map.GetMapInfo());
 		}else{
-			setMap(((Map) obs).getObjectOfMap());
+			Mapset(map.GetMap());
 		}
+	
 	}
-}
+	}

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import player.Player;
 
-
 /**
  * This is class is used for storing the data of country
  * @author samansoltani
@@ -14,259 +13,334 @@ import player.Player;
 
 public class NodeOfCountry 
 {
-	
 	/**
-	 * Stores name of country.
+	 * Save the country name
 	 */
-	private String countryName;
 	
+	private String CountryName;
 	/**
-	 * Stores neighboring countries in ArrayList.
+	 * Save country neighbours
 	 */
-	private ArrayList<NodeOfCountry> neighbourCountries;
 	
+	private ArrayList<NodeOfCountry> Neighbours;
 	/**
-	 * Stores the x and y coordinates of country at index 0 and 1 respectively.
+	 * Save the country coordinates with 1 and 0 index in x and y 
 	 */
-	private int[] coordiantes;
 	
+	private int[] Coordinate;
 	/**
-	 * Stores the name of player to whom this country belongs.
+	 * Save the player name who owns the country
 	 */
-	private Player owner;
 	
+	private Player PlayerCountry;
 	/**
-	 * Stores number of armies in this country placed by owner.
+	 * Save the number of armies in this country
 	 */
-	private int armies;
 	
+	private int Armies;
 	/**
-	 * Continent this country belongs to.
+	 * Save the neighbours of player
 	 */
+	
+	private ArrayList<NodeOfCountry> PlayerNeighbours;
+	
 	private NodeOfMap continent;
 	
 	/**
-	 * This constructor initialize the attributes of this country.
-	 * @param newName name of country.
-	 * @param newNeighbours neighboring countries of this country.
-	 * @param newCoordinates x and y coordinates of country.
-	 * @param newContinent name of the continent.
+	 * Save the name of neighbours f player
 	 */
-	public NodeOfCountry(String newName,ArrayList<NodeOfCountry> newNeighbours, int[] newCoordinates, NodeOfMap newContinent) {
-		this.countryName = newName;
-		this.neighbourCountries = newNeighbours;
-		this.coordiantes = newCoordinates;
-		this.continent = newContinent;
-		this.owner = null;
-		this.armies = 0;
+	
+	private ArrayList<String> PlayerNeighboursName;
+	/**
+	 * Set up country 
+	 * @param name name of country
+	 * @param neighbour neighbour countries
+	 * @param coordinate coordinate of the country
+	 * @param c node of map 
+	 */
+	
+	public NodeOfCountry (String name , ArrayList<NodeOfCountry> neighbour , int[] coordinate,NodeOfMap c )
+	{
+		this.CountryName = name;
+		this.Neighbours = neighbour;
+		this.Coordinate = coordinate;
+		this.continent = c;
+		this.PlayerCountry = null;
+		this.Armies = 0;
+	}
+	/**
+	 * Give the name of country
+	 * @return the name of country
+	 */
+	
+	public String getNameOfCountry()
+	{
+		return this.CountryName;
 	}
 	
 	/**
-	 * Gives the name of the country node.
-	 * @return Returns the name of country.
+	 * Save a list of neighbour countries of a country
+	 * @return ArrayList of neighbour countries
 	 */
-	public String getNameOfCountry() {
-		return this.countryName;
+	public ArrayList<NodeOfCountry> getNeighbours()
+	{
+		return this.Neighbours;
 	}
 	
-	/**
-	 * Gives the list of the neighboring country nodes of a given country node.
-	 * @return ArrayList containing neighboring countries.
-	 */
-	public ArrayList<NodeOfCountry> getNeighbours() {
-		return this.neighbourCountries;
-	}
 	
 	/**
-	 * Gives the list of the neighboring country nodes of a given country node.
-	 * @return Array containing neighboring countries.
+	 * give a list of neighbours country
+	 * @return Array of countries
 	 */
-	public NodeOfCountry[] getNeighbourCountries() {
-		if(this.neighbourCountries!=null)
-			return this.neighbourCountries.toArray(new NodeOfCountry[this.neighbourCountries.size()]);
+	public NodeOfCountry[] getNeighboursCountries() 
+	{
+		if(this.Neighbours != null) 
+	    return this.Neighbours.toArray(new NodeOfCountry[this.Neighbours.size()]);
 		return null;
 	}
 	
+	
 	/**
-	 * Gives the list of the names of the neighboring country nodes of a given country.
-	 * @return Array containing names of neighboring countries.
+	 * Save a list of neighbour countries of a country
+	 * @return Array of neighbour countries
 	 */
-	public String[] getNeighbourCountriesString() {
-		ArrayList<String> countries = new ArrayList<String>();
-		for(NodeOfCountry c : this.neighbourCountries){
-			countries.add(c.countryName);
+	public String[] getNeighboursString()
+	{
+		ArrayList <String> countries = new ArrayList<String>();
+		for(NodeOfCountry c : this.Neighbours)
+		{
+			countries.add(c.CountryName);
 		}
-		return countries.toArray(new String[this.neighbourCountries.size()]);
-	}
-
-	/**
-	 * Gets the coordinates of the country on the map.
-	 * @return coordinates of country.
-	 */
-	public int[] getCoordinates() {
-		return this.coordiantes;
+		return countries.toArray(new String [this.Neighbours.size()]);
 	}
 	
 	/**
-	 * Gets the player who is the owner of the country.
-	 * @return player who owns this country.
+	 * Save the coordinates of a country
+	 * @return coordinates of a country
 	 */
+	 public int[] getCoordinate()
+	 {
+		 return this.Coordinate;
+	 }
+	 
+	 /**
+	  * gets the Player who owns the country
+	  * @return the player who owns the country
+	  */
+	 public Player getPlayerCountry()
+	 {
+		 return this.PlayerCountry;
+	 }
+	 /**
+	  * Save the number of armies in the country
+	  * @return number of armies 
+	  */
+	 public int getArmyCount()
+	 {
+		 return this.Armies;
+	 }
+	 /**
+	  * Sets owner
+	  * @param player player name 
+	  */
+	 public void SetOwner(Player player)
+	 {
+		 if(this.PlayerCountry != null) {
+				if(!this.PlayerCountry.equals(player))
+				{
+					this.PlayerCountry.RemoveCountry(this);
+					System.out.println("Country removed");
+				}
+			}
+			this.PlayerCountry = player;
+			if(!player.getCountries().contains(this)) {
+				player.AddCountry(this);
+			}
+	 }
+	 /**
+	  * places armies in the country
+	  * @param armies number of armies
+	  */
+	 public void SetArmies(int armies)
+	 {
+		 this.Armies = armies;
+	 }
+	 /**
+	  * This method subtracts the given multiple armies from the country it belongs to.
+	  * @param delarmy number of armies to be deleted
+	  */
+	 public void AmriesRemoved(int delarmy)
+	 {
+		Armies-=delarmy;
+	 }
+	 /**
+	  * Add armies to the  country
+	  * @param NewArmy number of armies
+	  */
+	 public void AddArmy(int NewArmy)
+	 {
+		 this.Armies += NewArmy;
+	 }
+	 /**
+	  * This function reduces the army count by 1.
+	  * 
+	  */
+	 public void deleteArmy()
+	  {
+		  Armies= Armies-1;
+	  }
+	
+	 /**
+	  * Add new neighbour
+	  * @param NewNieghbour  neighbour name
+	  */
+	
+	 public void AddNeighbour(NodeOfCountry NewNeighbour)
+	 {
+		 if (this.Neighbours==null)
+		 {
+			 this.Neighbours = new ArrayList<NodeOfCountry>();
+		 }
+		 if(!this.Neighbours.contains(NewNeighbour))
+		 {
+			 this.Neighbours.add(NewNeighbour);
+			 NewNeighbour.AddNeighbour(this);
+		 }
+	 }
+	  /**
+	   * checking for same countries 
+	   * @param C country
+	   * @return true or false
+	   */
+	 public boolean equal(Object C)
+	 {
+		 if (C instanceof NodeOfCountry)
+		 {
+			 if(((NodeOfCountry) C).CountryName.equals(this.CountryName))
+			 {
+				 for (int i=0; i< this.getNeighboursString().length;i++)
+				 {
+					 if(!this.getNeighboursString()[i].equals(((NodeOfCountry) C).getNeighboursString()[i]))
+					 {
+						 return false;
+					 }
+				 }
+				 return true;
+			 }
+		 }
+		 return false;
+	 }
+	 /**
+	  * checking for arraylist contains country
+	  * @param list ArrayList list of countries
+	  * @param country country to be found
+	  * @return true or false
+	  */
+	 public static boolean Contains(ArrayList<NodeOfCountry> list,String country)
+	 {
+		 for (NodeOfCountry l: list)
+		 {
+			 if(l.CountryName.equals(country))
+			 {
+				 return true;
+			 }
+		 }
+		 return false;
+	 }
+	 /**
+	  * getting a country using name
+	  * @param list ArrayList of countries
+	  * @param country name of the country
+	  * @return object of the country
+	  */
+	 public static NodeOfCountry getCountry(ArrayList<NodeOfCountry> list,String country)
+	 {
+		 for (NodeOfCountry l : list)
+		 {
+			 if(l.CountryName.equals(country))
+			 {
+				 return l;
+			 }
+		 }
+		 return null;
+	 }
+	 /**
+	  * Set coordinate of country
+	  * @param NewCoo new coordinate
+	  */
+	 public void SetCoordinate(int[] NewCoo)
+	 {
+		 this.Coordinate =NewCoo;
+	 }
+	 /**
+	  * give a ArrayList of neighbours of country with same player
+	  * @return PlayerNeighbours ArrayList
+	  */
+	 public ArrayList<NodeOfCountry> getPlayerNeighbours()
+	 {
+		 PlayerNeighbours = new ArrayList<NodeOfCountry>();
+		 for (NodeOfCountry country : getNeighbours())
+		 {
+			 if(country.getOwner().equals(this.getOwner()))
+			 {
+				 PlayerNeighbours.add(country);
+			 }
+		 }
+		 return PlayerNeighbours;
+	 }
+	 /**
+	  * give a ArrayList of name of neighbours of country with same player
+	  * @return PlayerNeighboursName List
+	  */
+	 public ArrayList<String> getPlayerNeighboursName()
+	 {
+		 PlayerNeighboursName = new ArrayList<String>();
+		 for(NodeOfCountry country : getPlayerNeighbours())
+		 {
+			 PlayerNeighboursName.add(country.getNameOfCountry());
+		 }
+		 return PlayerNeighboursName;
+	 }
+	 
+	 /**
+	  * getting the continent that this country belongs to it
+	  * @return continent name
+	  */
+	 public NodeOfMap getContinent() {
+			return this.continent;
+		}
+	 
+	 /**
+	  * getting the owner of this country
+	  * @return owner of country
+	  */
 	public Player getOwner() {
-		return this.owner;
+		
+		return this.PlayerCountry;
 	}
 	
-	/**
-	 * Gets the armies count of a particular country.
-	 * @return number of armies placed in this country.
-	 */
-	public int getConutOfArmies() {
-		return this.armies;
-	}
 	
 	/**
-	 * Sets owner of this country.
-	 * @param player player instance.
+	 * setting the continent that this country belong
+	 * @param c continent to set
 	 */
-	public void setOwner(Player player) {
-		if(this.owner != null) {
-			if(!this.owner.equals(player))
-			{
-				this.owner.removeCountry(this);
-				System.out.println("Country removed");
+	public void setContinent(NodeOfMap c) {
+		this.continent = c;
+	}
+	
+	
+	
+	/**
+	 * removing a neighbour
+	 * @param n country to be  removed
+	 */
+	public void neighbourRemoved(NodeOfCountry n) {
+		NodeOfCountry n1 = new NodeOfCountry(null,null,null,null);
+		for(NodeOfCountry c : Neighbours) {
+			if(c.getNameOfCountry().compareTo(n.getNameOfCountry())==0) {
+				n1 =c;
 			}
 		}
-		this.owner = player;
-		if(!player.getCountries().contains(this)) {
-			player.addCountry(this);
-		}
+		Neighbours.remove(n1);
 	}
-	
-	/**
-	 * Places armies in this country.
-	 * @param newArmies number of armies
-	 */
-	public void setArmies(int newArmies) {
-		this.armies = newArmies;
-	}
-	
-	/**
-	 * Adds more armies in this country.
-	 * @param newCount number of armies
-	 */
-	public void addArmy(int newCount){
-		this.armies += newCount;
-	}
-	
-	/**
-	 * Adds new neighbor country.
-	 * @param newNeighbour country
-	 */
-	public void addNeighbour(NodeOfCountry newNeighbour) {
-		if(this.neighbourCountries==null){
-			this.neighbourCountries = new ArrayList<NodeOfCountry>();
-		}
-		if(!this.neighbourCountries.contains(newNeighbour)){
-			this.neighbourCountries.add(newNeighbour);
-			newNeighbour.addNeighbour(this);
-		}
-	}
-	
-	/**
-	 * Check if two objects of this class are same.
-	 * @param o object of NodeOfCountry
-	 * @return true of two objects are same; false if not.
-	 */
-	public boolean equals(Object o) {
-		if(o instanceof NodeOfCountry){
-			if(((NodeOfCountry) o).countryName.equals(this.countryName)){
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * Check if an ArrayList contains a country.
-	 * @param list ArrayList of countries
-	 * @param country country to be found in list
-	 * @return true if list contains country; false if not.
-	 */
-	public static boolean contains(ArrayList<NodeOfCountry> list, String country) {
-		for(NodeOfCountry c: list){
-			if(c.countryName.equals(country)){
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	/**
-	 * To get object of a NodeOfCountry using name.
-	 * @param list list of countries.
-	 * @param name name of required country.
-	 * @return object of required country
-	 */
-	public static NodeOfCountry getCountry(ArrayList<NodeOfCountry>list, String name) {
-		for(NodeOfCountry c: list){
-			if(c.countryName.equals(name)){
-				return c;
-			}
-		}
-		return null;
-	}
-	
-	/**
-	 * Set new coordinates of country.
-	 * @param newCoordinates x and y coordinates
-	 */
-	public void setCoordinates(int[] newCoordinates) {
-		this.coordiantes = newCoordinates;		
-	}
-
-	/**
-	 * Removes a neighbor country.
-	 * @param neighbourNode receives country to be deleted as neighbor.  
-	 */
-	public void removeNeighbour(NodeOfCountry neighbourNode) {
-		NodeOfCountry cn1 = new NodeOfCountry(null,null,null,null);
-		for (NodeOfCountry cn : neighbourCountries ) {
-			if(cn.getNameOfCountry().compareTo(neighbourNode.getNameOfCountry())==0) {
-				cn1 = cn;
-				
-			}
-		}
-		neighbourCountries.remove(cn1);
-	}
-  
-	/**
-	 * Decreases the count of armies by 1.
-	 */
-	public void removedArmy() {
-		armies = armies-1;	
-	}
-	
-	/**
-	 * Return continent to which this country belongs.
-	 * @return object of NodeOfMap this country belongs to.
-	 */
-	public NodeOfMap getContinent() {
-		return this.continent;
-	}
-	
-	/**
-	 * Set continent this country belongs to.
-	 * @param newContinent Set continent this country belongs to.
-	 */
-	public void setContinent(NodeOfMap newContinent) {
-		this.continent = newContinent;
-	}
-	
-	/**
-	 * Subtract multiple armies from the country
-	 * @param moveArmies number of armies to subtract
-	 */
-	public void removedArmies(int moveArmies) {
-		armies -= moveArmies;
-	}
-	
 }

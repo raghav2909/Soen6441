@@ -1,16 +1,15 @@
 package Model;
-import controllers.TheMainController;
+import controllers.the_main_controller;
 import player.Player;
-
 import Model.*;
-//import risk.model.map.NodeOfMap;
-import view.FrameForMap;
+//import risk.model.map.MapNode;
+import view.Map_Frame;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Hashtable;
-import controllers.TheMainController;
+import controllers.the_main_controller;
 
 /**
  * contains main logic functionality behind map editor
@@ -18,268 +17,234 @@ import controllers.TheMainController;
  *@version 2.0
  */
 public class ModelOfMap {
-	
 	/**
-	 * Creates hashtable for storing all countries as keys and their corresponding boolean visited values.
+	 * reference of NodeOfMap object
 	 */
-	Hashtable<String, Boolean> countryTable = new Hashtable<String, Boolean>();
+	NodeOfMap MapNode;
+	/**
+	 * Stores the path of new created map file
+	 */
+	private String NewFileMap;
+	/**
+	 * It will store the path of existing map file
+	 */
+	private String OldFileMap;
+
+	/**
+ * Array list containing of all information about map
+ */
+ArrayList <NodeOfMap> continents = new ArrayList<NodeOfMap>();
+
+/**
+ * writing the map contents to map file
+ */
+WriteMap MapWriter = new WriteMap();
 	
 	/**
-	 * creates hashtable for a continent to store all its countries.
+	 * creates hash table to store all the countries of a continent
 	 * the country names are stored as keys and their corresponding boolean visited values.
 	 */
-	Hashtable<String, Boolean> continentTable = new Hashtable<String, Boolean>();
+	Hashtable<String, Boolean> TableOfContinent = new Hashtable<String, Boolean>();
 	
 	/**
-	 * mapNode variable stores reference of the class NodeOfMap
+	 * It will  create hash table for storing the data of all countries and the time it has been visited
 	 */
-	NodeOfMap mapNode;
-	
+	Hashtable<String, Boolean> TableOfCountry = new Hashtable<String,Boolean>();
+
 	/**
-	 * Stores path of newly created map file.
+	 * The_Main_Controller object
 	 */
-	private String newFilePath;
-	
+	the_main_controller tmc= new the_main_controller();
 	/**
-	 * Stores path of existing map file.
+	 * This method initializes the data with existing continents of the map
+	 * @param continents it is the arraylist of NodeOfMap that contains continents
 	 */
-	private String existingFilePath;
-	
-	/**
-	 * NodeOfMap arraylist containing all the map information
-	 */
-	ArrayList<NodeOfMap> continents = new ArrayList<NodeOfMap>();
-		
-	/**
-	 * WriteMap object for writing the map contents to the map file
-	 */
-	WriteMap mapWriter = new WriteMap();
-	
-	/**
-	 * Initializes the continent list with existing continents in the map file. 
-	 * @param continents ArrayList of NodeOfMap containing continents.
-	 */
-	public void existingMapWriter(ArrayList<NodeOfMap> continents) {
+	public void WritingOldMap(ArrayList<NodeOfMap> continents) {
 		this.continents = continents;
 	}
-	
 	/**
-	 * checks for unique continents.
-	 * @param cn receives the continent to be checked for uniqueness.
-	 * @return true if the continent already exist.
+	 * This functions checks for the unique continents
+	 * @param c it the continent to be checked
+	 * @return true if continent exists
 	 */
-	public boolean checkContinentExistence(String cn) {
-		Boolean continentExist = false;
-		for (NodeOfMap con: continents){
-			/*if the continent with same name is found, return true*/
-			if(con.getNameOfContinent().compareTo(cn)==0){
-				continentExist = true;
+	public boolean CheckContinentExist(String c) {
+		boolean ContinentExist = false;
+		for (NodeOfMap n : continents) {
+			if (n.getContinent().compareTo(c)!=0) {
+				
+			}else
+			{ContinentExist = true;
+			
 			}
 		}
-		return continentExist;
+		return ContinentExist;
 	}
 	
-	/**
-	 * Function to add a new continent
-	 * @param cn1 receives continent name.
-	 * @param countryArr arrayList of countries within the continent.
-	 * @param cv1 control value of the continent.
-	 */
-	public void addContinents(String cn1,ArrayList<NodeOfCountry> countryArr,int cv1) {
-		continents.add(new NodeOfMap(cn1, countryArr, cv1));
+	public void AddContinents(String c1,ArrayList<NodeOfCountry> CountryArray,int v1) {
+		continents.add(new NodeOfMap(c1,CountryArray,v1));
 	}
 	
-	/**
-	 * function to get the list of continents.
-	 * @return the continent arrayList.
-	 */
-	public ArrayList<NodeOfMap> getContinents() {
+	
+	
+	public ArrayList<NodeOfMap> getContinents(){
 		return continents;
 	}
-	
 	/**
-	 * function to implement validations before saving the map file.
-	 * @return true if map is valid.
+	 * implement map-validation before saving
+	 * @return true, if Map is found to be valid
 	 */
-	public boolean checkSavedMap() {
-		Boolean saveMap = true;
-		for (NodeOfMap i :continents) {
-			//a map file with zero countries cannot be saved.
-			if(i.getCountries().length == 0) {
-				saveMap = false;
+	public boolean CheckSaveMap() {
+		boolean SaveMap = true;
+		for (NodeOfMap n: continents) {
+			if (n.getCountries().length == 0) {
+				SaveMap = false;
 			}
-			/*connected map check*/
-			if(!connectedMap()) {
-				saveMap = false;
+			for(NodeOfCountry c : n.getCountries()) {
+				if(c.getNeighboursCountries().length ==0) {
+					SaveMap = false;
+				}
 			}
 		}
-		return saveMap;
+		return SaveMap;
 	}
-	
 	/**
 	 * checks that all the country nodes form a connected graph.
 	 * @return true if the map is a connected graph.
 	 */
 	public boolean connectedMap() {
-		for (NodeOfMap mapNode : continents) {
-			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				countryTable.put(cNode.getNameOfCountry(), false);
+		for (NodeOfMap nom : continents) {
+			for (NodeOfCountry noc : nom.getCountries()) {
+				TableOfCountry.put(noc.getNameOfCountry(), false);
 			}
 		}
-		/* Get the first country from the hashtable*/
-		String first = countryTable.keySet().iterator().next();
+		String f = TableOfCountry.keySet().iterator().next();
 		/*call to search function which recurs over the neighbor countries*/
-		search(first);
-		if(countryTable.containsValue(false)) {
+		Searching(f);
+		if(TableOfCountry.containsValue(false)) {
 			return false;
 		}else {
 			return true;
 		}
 	}
-	
 	/**
-	 * Checks that each continent in itself is a connected continent.
-	 * @return true if all continents are connected continents.
+	 * To check that every continent is connected in itself
+	 * @return true if all continents are connected.
 	 */
-	public boolean checkConnectedContinent() {
-		for (NodeOfMap mapNode : continents) {
-			continentTable.clear();
-			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				continentTable.put(cNode.getNameOfCountry(), false);
+	public boolean ContinentConnectedCheck()
+	{
+		for (NodeOfMap nom: continents) {
+			TableOfContinent.clear();
+			for (NodeOfCountry noc : nom.getCountries()) {
+				TableOfContinent.put(noc.getNameOfCountry(), false);
 			}
-			/*Get the first country from the hashtable for the current continent*/
-			String firstCountry = continentTable.keySet().iterator().next();
-			searchForUnconnectedContinent(firstCountry);
-			if(continentTable.containsValue(false)) {
+			
+			String fc = TableOfContinent.keySet().iterator().next();
+			UnconnectedContinentSearch(fc);
+			if(TableOfContinent.containsValue(false)) {
 				return false;
 			}
 		}
-		return true;	
+		return true;
 	}
-	
 	/**
-	 * This function recurs over the countries of each continent to check their connectivity within the continent.
-	 * @param f receives the country to traverse over its neighbors.
+	 * This function recurs over the countries of each continent to check for connectivity
+	 * @param fc receives the country to traverse over the neighbors.
 	 */
-	public void searchForUnconnectedContinent(String f) {
-		/* Mark the current node as visited by setting it true*/ 
-		continentTable.put(f, true);
+	
+	private void UnconnectedContinentSearch(String fc) {
+       TableOfContinent.put(fc, true);
 		
-		for (NodeOfMap mapNode : continents) {
-			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				if(cNode.getNameOfCountry().compareTo(f)==0) {
-					/* get the list of all possible neighbors.*/
-			        Iterator<NodeOfCountry> i = cNode.getNeighbours().listIterator();
+		for (NodeOfMap nom : continents) {
+			for (NodeOfCountry noc : nom.getCountries()) {
+				if(noc.getNameOfCountry().compareTo(fc)==0) {
+			        Iterator<NodeOfCountry> i = noc.getNeighbours().listIterator();
 			        while (i.hasNext())
 			        {
-			        	/*pick a neighbor for this country*/
 			        	NodeOfCountry n = i.next();
 			        	/*if this neighbor belongs to the same continent, then recur*/
-			        	if(continentTable.containsKey(n.getNameOfCountry())) {
-				            if (continentTable.get(n.getNameOfCountry())==false)
-				            	searchForUnconnectedContinent(n.getNameOfCountry());
+			        	if(TableOfContinent.containsKey(n.getNameOfCountry())) {
+				            if (TableOfContinent.get(n.getNameOfCountry())==false)
+				            	UnconnectedContinentSearch(n.getNameOfCountry());
 			        	}
 			            
 			        }
 				}
 			}
 		}
-	}
 	
-	/**
-	 * this function implements search algorithm on mapNode to check connectedness of graph.
-	 * @param s receives a country to traverse over its neighbors and set its boolean visited value as true.
-	 */
-	public void search(String s)
-        {
-        /* Mark the current node as visited by setting it true */
-        countryTable.put(s, true);
-        for (NodeOfMap mapNode : continents) {
-			for (NodeOfCountry cNode : mapNode.getCountries()) {
-				if(cNode.getNameOfCountry().compareTo(s)==0) {
-					/* Recur for all the connected neighbor countries*/
-			        Iterator<NodeOfCountry> i = cNode.getNeighbours().listIterator();
-			        while (i.hasNext())
-			        {
-			            NodeOfCountry n = i.next();
-			            try {
-			            	if (countryTable.get(n.getNameOfCountry())==false)
-			            		search(n.getNameOfCountry());
-			            }catch(NullPointerException e) {
-			            }
-			        }
+		
+	}
+
+/**
+ * This function implements search algo on NodeOfMap to check connectivity of graph.
+ * @param f receives a country to traverse over its neighbors 
+ */
+
+	private void Searching(String f) {
+		
+		 TableOfCountry.put(f, true);
+	        for (NodeOfMap nom : continents) {
+				for (NodeOfCountry noc : nom.getCountries()) {
+					if(noc.getNameOfCountry().compareTo(f)==0) {
+						/* Recur for all the connected neighbor countries*/
+				        Iterator<NodeOfCountry> i = noc.getNeighbours().listIterator();
+				        while (i.hasNext())
+				        {
+				            NodeOfCountry n = i.next();
+				            if (TableOfCountry.get(n.getNameOfCountry())==false)
+				                Searching(n.getNameOfCountry());
+				        }
+					}
 				}
 			}
+	}
+	public void SaveMapFile() throws IOException {
+		MapWriter.MapWriter(continents);
+		NewFileMap = MapWriter.getMapFilePath();
+	}
+	
+	
+	public void SaveToOldFile(String p) throws IOException {
+		MapWriter.ExistingMapWriter(continents,p);
+		OldFileMap = MapWriter.getMapFilePath();
+	}
+	
+	
+	
+	public String newFileMap() {
+		return NewFileMap;
+	}
+	
+	public String oldFileMap() {
+		return OldFileMap;
+	}
+		public String getOlfFileMap() {
+			return OldFileMap;
 		}
-        
-    }
 	
-	/**
-	 * Saving the new Map file.
-	 */
-	public void saveMapFile() {
-		mapWriter.writeMap(continents);
-		newFilePath = mapWriter.getMapPath();
-	}
-	
-	/**
-	 * Function to save existing map file.
-	 * @param path receives the path of the existing map file.
-	 */
-	public void saveToExistingMapFile(String path) {
-		mapWriter.existingMapWriter(continents, path);
-		existingFilePath = mapWriter.getMapPath();
-	}
-	
-	/**
-	 * Function to get the path of the new map file.
-	 * @return path of the new map file.
-	 */
-	public String newFilePath() {
-		return newFilePath;
-	}
-	
-	/**
-	 * Function to get the path of the existing map file.
-	 * @return the path of the existing map file.
-	 */
-	public String existingFilePath() {
-		return existingFilePath;
-	}
-	
-	/**
-	 * function to get the final path of the file saved.
-	 * @return the path of the file saved.
-	 */
-	public String getFinalPath() {
-		/*if new map file is created, get its path*/
-		if(FrameForMap.selectedAction().compareTo("new")==0) {
-			System.out.println(newFilePath());
-			return newFilePath(); 
+	public String getFinalMap() {
+		if (Map_Frame.ActionChoosen().compareTo("new")==0) {
+		System.out.println(newFileMap());
+			return newFileMap();
+			
 		}
-		/*if existing file is edited, get its path*/
-		else if(FrameForMap.selectedAction().compareTo("existing")==0){
-			System.out.println(existingFilePath());
-			return existingFilePath();
+		else if (Map_Frame.ActionChoosen().compareTo("existing")==0) {
+			System.out.println(oldFileMap());
+			return oldFileMap();
 		}
 		return null;
 	}
-	
-	/**
-	 * function to check for unique countries.
-	 * @param cn1 receives the country name
-	 * @return true if the country is already present.
-	 */
-	public boolean checkCountryExist(String cn1) {
-		Boolean countryExist = false;
-		for (NodeOfMap node: continents) {
-			for (NodeOfCountry country : node.getCountries()) {
-				/*if country with same name is found, return true*/
-				if(country.getNameOfCountry().compareTo(cn1)==0) {
-					countryExist=true;
+	public boolean CheckCountryExist(String c) {
+		boolean ce = false;
+		for (NodeOfMap n : continents) {
+			for (NodeOfCountry i : n.getCountries()) {
+				if(i.getNameOfCountry().compareTo(c)==0) {
+					ce = true;
 				}
 			}
 		}
-		return countryExist;
+		return ce;
 	}
+	
+	
 }

@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package view;
 
 import java.awt.Color;
@@ -9,26 +12,29 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * class creates the dice-roll VIEW on Main-Game-Window
+ * class creates the dice roll view on main game window
  * @author raghavsharda
  * @author Harman
  *@version 2.0
  */
-public class DiceRollConsole extends JPanel{
+public class DiceRollConsole extends JPanel {
 	
 	/**
 	 * Serial Version id for JFrame.
 	 * {@inheritDoc}
 	 */
-	private static final long serialVersionUID = 2080193456450432494L;
+	private static final long serialVersionUID = 2080098977850432494L;
 
 	/**
-	 * Creates Dice roll view.
+	 * class constructor displays dice roll view 
 	 */
-	public DiceRollConsole(){
-		JLabel label = new JLabel("Dice-Here.");
+	public DiceRollConsole() {
+		JLabel lab=  new JLabel("Dice Roll");
 		this.setLayout(new FlowLayout());
-		this.add(label);
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
+		this.add(lab);
+
+		this.setBackground(Color.LIGHT_GRAY);
+		this.setBorder(BorderFactory.createDashedBorder(Color.black));
+		this.setPreferredSize(new Dimension(450,170));
 	}
 }

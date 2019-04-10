@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,13 +20,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import controllers.*;
-
+import game.messages.MessageWindow;
 
 /**
  * This class is from where the game starts
@@ -37,247 +35,280 @@ import controllers.*;
  *@version 2.0
  */
 public class openingdialog {
-	/**
-	 * JFrame for dialog boxes.
-	 */
-	private JFrame frame;
+	 private  MessageWindow messageWindow = new MessageWindow();
+ 
+	 /**
+	  * frame declared
+	  */
+	 private JFrame first_frame;
+	 
+	 /**
+	  * Button for new game
+	  */
+	private JButton newgame;
 	
 	/**
-	 * Button to begin the game.
+	 * Button for load game
 	 */
-	private JButton playTheGame;
-	/**
-	 * Button to edit map.
-	 */
-	private JButton editMap;
-		
-	/**
-	 * Stores the path of the map file uploaded.
-	 */
-	private String readMap = null;
+	private JButton loadgame;
 	
-	public void selectSaveOrLoadGame(){
-		JFrame frame1 = new JFrame();
-		frame1.setLayout(new BoxLayout(frame1.getContentPane(),BoxLayout.Y_AXIS));
-		JButton loadTheGame = new JButton("Load-Game");
-		frame1.add(loadTheGame);
-		JButton newGameButton = new JButton("New-Game");
-		
-		frame1.add(newGameButton);
-		
-		frame1.pack();
-		frame1.setVisible(true);
-		
-		newGameButton.addActionListener(new ActionListener(){
+	/**
+	 * button to edit map
+	 */
+	private JButton mapedit;
+	
+	/**
+	 * object of edit create map controller class
+	 */
+	private Edit_create_Map_Controller ecm;
+	
+	/**
+	 * declared a null string
+	 */
+	private String mapRead1= null;
 
+	/**
+	 * asks player to go for 'single' or 'tournament' mode 
+	 */
+	public void start()
+	{
+		JRadioButton j1, j2;
+		j1=new JRadioButton("Single");
+		j1.setBackground(Color.cyan);
+		j2=new JRadioButton("tournament");
+		j2.setBackground(Color.cyan);
+		JButton b = new JButton("OK");
+		b.setBackground(Color.cyan);
+		ButtonGroup bg=new ButtonGroup();
+		bg.add(j1); bg.add(j2);
+		JLabel l=new JLabel("SELECT MODE TO PLAY");
+		first_frame=new JFrame("RISK GAME- Team 35");
+		
+		
+		first_frame.setSize(200, 200);
+		first_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		first_frame.setLayout(new FlowLayout());
+		first_frame.add(l);
+		first_frame.add(j1);
+		first_frame.add(j2);
+		first_frame.add(b);
+		Container c = first_frame.getContentPane(); 
+		c.setBackground(Color.orange);
+		first_frame.setVisible(true);
+		
+		/**
+		 * listener for radiobutton
+		 */
+			b.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					first_frame.dispose();
+					if(j1.isSelected())
+					{
+					chooseplayoredit();
+					}
+					else
+					{
+						tournament_mode();
+					}
+				}
+			});
+		}
+	
+	/**
+	 * This method shows the frame to select the option 'play game' or 'edit map'
+	 */
+	public void chooseplayoredit()
+	{
+		first_frame = new JFrame("Select an option");
+		newgame = new JButton("New Game");
+		newgame.setBackground(Color.CYAN);
+		loadgame = new JButton("Load Game");
+		loadgame.setBackground(Color.CYAN);
+		mapedit = new JButton("Edit Map");
+		mapedit.setBackground(Color.CYAN);
+		first_frame.setSize(150, 150);
+		first_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		first_frame.setLayout(new FlowLayout());
+		first_frame.add(newgame);
+		first_frame.add(loadgame);
+		first_frame.add(mapedit);
+		Container c = first_frame.getContentPane();
+		c.setBackground(Color.black);
+		first_frame.setVisible(true);
+		
+		
+		/**
+		 * Map edit button action listener 
+		 */
+		mapedit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e)
+			{
+				first_frame.dispose();
+				ecm = new Edit_create_Map_Controller();
+				 ecm.tobegin();
+				
+		
+		}
+	
+	});
+		/**
+		 * new game listener
+		 */
+		newgame.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame1.dispose();
-				TheMainController.getInit().singleGameInit();
+				
+				first_frame.dispose();
+				try {
+					the_main_controller.getInstance().Single_Mode_Start();
+					
+				} catch (IOException e1) {
+					
+					e1.printStackTrace();
+				}
 				
 			}
 		});
 		
-		loadTheGame.addActionListener(new ActionListener(){
-
+		/**
+		 * load game listener
+		 */
+		loadgame.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				frame1.dispose();
-				JFrame saveFileLoad = new JFrame("Saved File Chooser!");
-				saveFileLoad.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				saveFileLoad.validate();
-				saveFileLoad.setVisible(true);
-				/*JFileChooser to ask user to choose a map file.*/
-				JFileChooser jfc = new JFileChooser();
-				jfc.setCurrentDirectory(new File("./"));
-				FileNameExtensionFilter filter = new FileNameExtensionFilter(null, "sav");
-				jfc.setFileFilter(filter);
-
-				int returnTheValue = jfc.showOpenDialog(frame);
-				String saveFileRead = null;
-				/*Get the path of the map file chosen*/
-				if (returnTheValue == JFileChooser.APPROVE_OPTION) {
-					File selectedFile = jfc.getSelectedFile();
-					saveFileRead = selectedFile.getAbsolutePath();
-					saveFileLoad.dispose();
-				}
-		TheMainController .getInit().singleGameLoadInit(saveFileRead);	
+				
+				first_frame.dispose();
+				the_main_controller.getInstance().single_Mode_Saved_Start();
+				
+				
 			}
-			
 		});
-	}
-	
-	
-	
-	/**
-	 * show message to user to enter the name of player one-by-one.
-	 * @return string returns an array with number of players.
-	 */
-	public String[][] getInfoOnPlayerData() {
-		int n = getInput(2,6,"Enter number of Players");
-		String[][] namesOfPlayer = new String[n][2];
-		String[] behaviorsForGame = {"aggressive", "benevolent", "cheater", "human", "random"};
-		JPanel panel = new JPanel();
-		JTextField field = new JTextField(10);
-		JComboBox<String> options = new JComboBox<String>(behaviorsForGame);
-		panel.add(new JLabel("Name: "));
-		panel.add(field);
-		panel.add(new JLabel("Type: "));
-		panel.add(options);
-		for(int i=0;i< n;){
-			field.setText("");
-			options.setSelectedIndex(0);
-			int s = JOptionPane.showConfirmDialog(
-					frame,
-					panel,
-                    "Enter name of player "+ (i+1),
-                    JOptionPane.OK_CANCEL_OPTION);
 
-			if (s == JOptionPane.OK_OPTION) {
-				namesOfPlayer[i][0] = field.getText();
-				namesOfPlayer[i][1] = (String) options.getSelectedItem();
-				i++;
-			}
-		}
-		return namesOfPlayer;
 	}
 	
 	/**
-	 * Places armies on the selected countries.
-	 * @param countryList List of countries where the player can place its armies.
-	 * @param message Message  displayed
-	 * @return country name of country selected.
+	 * @return the initial frame 
 	 */
-	public String dialogToPlaceTheArmy(String[] countryList, String message) {
-		String[] options = {"OK"};		
-		JOptionPane.showOptionDialog(null, new JComboBox<String>(countryList), message, JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null,		
-		options, options[0]);
-		String country = countryList[new JComboBox<String>(countryList).getSelectedIndex()];
-		return country;
+	public JFrame returnframe()
+	{
+		return this.first_frame;
 	}
+	
+	
+	public void tournament_mode() {
+		
+		new TournamentModeMenu(messageWindow);
+		
+	}
+public static String[] name_Of_Player; 
+	
 	/**
-	 * Ask user to enter an integer value for spinner.
-	 * @param minimum Minimum value for the spinner.
-	 * @param maximum Maximum value for the  Spinner.
-	 * @param message The message to be displayed on the spinner.
-	 * @return number of players entered by user or by default 2.
+	 * This function will give the information regarding the player.
+	 * In this function Spinner  model is used to define the minimum and maximum number of players
+	 * when the user starts the game play. 
+	 * @param minimum minimum number of players
+	 * @param Mesg to be displayed
+	 * @param maximum maximum number of players
+	 * @return This method will return the Number of players.
 	 */
-	public int getInput(int minimum, int maximum, String message){
-		 JPanel Jbox = new JPanel();
-		 SpinnerModel sm = new SpinnerNumberModel(minimum, minimum, maximum, 1); 
-		 JSpinner inputSpinner = new JSpinner(sm);
-         Jbox.add(new JLabel("Input"));
-         Jbox.add(inputSpinner);
-         
-         int result = JOptionPane.showConfirmDialog(null, Jbox, message, JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-         if (result == JOptionPane.OK_OPTION) {
-             return (int) inputSpinner.getValue();
-         }
-		return minimum;
+	public int NumberOfPlayer(int minimum,String Mesg,int maximum)
+	{
+		
+		JPanel jp = new JPanel();
+       SpinnerModel S_M = new SpinnerNumberModel(minimum, minimum, maximum, 1);
+       JSpinner jsm= new JSpinner(S_M);
+       jp.add(new JLabel("Enter Number Of Players"));
+       jp.add(jsm);
+       
+       int result = JOptionPane.showConfirmDialog(null, jp, "Enter Number Of Players", JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE);
+       if (result == JOptionPane.OK_OPTION) {
+    	   return (int) jsm.getValue();
+    	  
+    	   
+       }
+       return minimum;
+	
 	}
 	
 	/**
-	 * make user select the the map file to be used for the game.
-	 * @param newExtension extension of the file to be picked.
-	 * @return readMap Stores the absolute path of the map file read.
+	 * This function will give the information regarding the players
+	 * @return It will return the names of players as string array
 	 */
-	public String getMapData(String newExtension) {
-		JFrame frame = new JFrame("Map-File-Chooser!");
+	public String[] Information_OF_Playres()
+	{
+		System.out.println("infoofplayer");
+		int n = NumberOfPlayer(2,"Player Numbers",6);
+		System.out.println("Number of players" + n);
+		
+		 name_Of_Player= new String[n];
+		 JFrame jf = new JFrame("Player Names");
+		 
+		jf.setBackground(Color.BLUE);
+		 
+		for (int i=1;i<=n;i++)
+		 {
+			 String name= (String)JOptionPane.showInputDialog(
+						jf,
+	                    "Enter name "+ i,
+	                    "Player Information",
+	                    JOptionPane.PLAIN_MESSAGE);
+			 if((name!= null )&& (name.length()>0))
+			 {
+				 name_Of_Player[i-1]=name; 
+			 }
+			
+			 System.out.println(name);
+		 }
+		return name_Of_Player;
+	}
+	public String InfoOfMap(String newExtension) {
+		JFrame frame = new JFrame("Map File Chooser");
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.validate();
 		frame.setVisible(true);
-		/*JFile-Chooser to let user to choose existing map-file.*/
+		/*JFileChooser to ask user to choose a map file.*/
 		JFileChooser jfc = new JFileChooser();
-		jfc.setCurrentDirectory(new File("./Soen6441/Map_Data/Map"));
+		jfc.setCurrentDirectory(new File("./SOEN6441/Map_Data/map"));
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("Map Files", newExtension);
 		jfc.setFileFilter(filter);
 
-		int returnTheValue = jfc.showOpenDialog(frame);
-		/* path of the map-file selected*/
-		if (returnTheValue == JFileChooser.APPROVE_OPTION) {
+		int returnValue = jfc.showOpenDialog(frame);
+		/*Get the path of the map file chosen*/
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			File selectedFile = jfc.getSelectedFile();
-			readMap = selectedFile.getAbsolutePath();
+			mapRead1 = selectedFile.getAbsolutePath();
 			frame.dispose();
-			if(readMap.substring(readMap.lastIndexOf("."),readMap.length()).equalsIgnoreCase("."+newExtension)){
-				return readMap;
+			if(mapRead1.substring(mapRead1.lastIndexOf("."),mapRead1.length()).equalsIgnoreCase("."+newExtension)){
+				return mapRead1;
 			}
 		}
 		if(newExtension.equals("map")) {
-			return getMapData(newExtension);
+			return InfoOfMap(newExtension);
 		}
 		return null;
 	}
-	
 	/**
-	 * Displays the JavaFrame to choose from Map-Edit and Play-the-Game options on initiating game.
+	 *The countries that are selected to place army
+	 * @param CL List of countries where the player can place armies.
+	 * @param Msg message to be displayed
+	 * @return country name selected.
 	 */
-	public void selectMapEditorOrPlayGame() {
-		frame = new JFrame("Choose-any-one!");
-		frame.setSize(new Dimension(200,200));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		editMap = new JButton("Edit-Map");
-		frame.add(editMap);
-		playTheGame = new JButton("Play-Game");
-		frame.add(playTheGame);
-		frame.setLayout(new FlowLayout());
+	public String ArmyPlacing(String[] CL, String Msg) {
+		JComboBox<String> List_Of_countries = new JComboBox<String>(CL);
+		String[] opt= {"Ok"};
+		JOptionPane.showOptionDialog(null,List_Of_countries , Msg, JOptionPane.DEFAULT_OPTION,JOptionPane.PLAIN_MESSAGE, null,		
+				opt, opt[0]);
 		
+		String country = CL[List_Of_countries.getSelectedIndex()];
 		
-		frame.validate();
-		frame.setVisible(true);
-	}
-	
-	/**
-	 * Returns the J-frame .
-	 * @return JFrame
-	 */
-	public JFrame chooseOptionFrame() {
-		return this.frame;
-	}
-	
-	/**
-	 * add action-Listener to map-edit Button.
-	 * @param newAction return actionlistener for map-edit button.
-	 */
-	public void actionForMapEditButton(ActionListener newAction) {
-		this.editMap.addActionListener(newAction);
-	}
-	
-	/**
-	 * add action-listener to Play-Game Button.
-	 * @param newAction ActionListener for Play Game button
-	 */
-	public void actionToPlayGameButton(ActionListener newAction) {
-		this.playTheGame.addActionListener(newAction);
-	}
-	
-	/**
-	 * to display a message-dialog box having two buttons to user to select game-mode: single or tournamenbt.
-	 * @return returns the string object containing game mode.
-	 */
-	public String modeOfGame() {
-		JFrame frame = new JFrame("Map File Chooser!");
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.validate();
-		frame.setVisible(true);
-		Object[] options = {"Single Mode", "Tournament Mode"};
-		int n = JOptionPane.showOptionDialog(frame,	"Please select a mode:", "Game Mode",	
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-		frame.dispose();
-		if(n==0) {
-			return "single";
-		}
-		else if(n==1) {
-			return "tournament";
-		}
-		return "noMode";
+		return country;
 	}
 
-	public String[] getPlayerBehavior(String[] playerInfo) {
-		String[] behaviorsForGame = new String[playerInfo.length];
-		for(int i=0;i<playerInfo.length;i++) {
-			behaviorsForGame[i] = "human";
-		}
-		return behaviorsForGame;
-	}
 }
-

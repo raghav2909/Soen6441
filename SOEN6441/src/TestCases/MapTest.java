@@ -46,8 +46,8 @@ public class MapTest {
 		ca.add(new NodeOfCountry("Mexico",cn2,coor,null));
 		ca.add(new NodeOfCountry("Canada",cn3,coor,null));
 		ca.add(new NodeOfCountry("USA",cn4,coor,null));
-		map.addContinents(c, ca, v);
-		boolean a = map.checkSavedMap();
+		map.AddContinents(c, ca, v);
+		boolean a = map.CheckSaveMap();
 		boolean e = true;
 		Assert.assertEquals(e, a);
 	}
@@ -78,9 +78,9 @@ public class MapTest {
 		ca1.add(new NodeOfCountry("G2",cn3,coor,null));
 		ca2.add(new NodeOfCountry("G3",cn4,coor,null));
 		ca2.add(new NodeOfCountry("G4",cn5,coor,null));
-		map.addContinents(c1, ca1, v1);
-		map.addContinents(c2, ca2, v2);
-		boolean a = map.checkConnectedContinent();
+		map.AddContinents(c1, ca1, v1);
+		map.AddContinents(c2, ca2, v2);
+		boolean a = map.ContinentConnectedCheck();
 		boolean e = false;
 		Assert.assertEquals(e, a);
 		
@@ -98,11 +98,11 @@ public class MapTest {
 		int v1 = 4;
 		String C ="";
 		ArrayList<NodeOfCountry> ca = new ArrayList<NodeOfCountry>();
-		map.addContinents(c, ca, v);
-		map.addContinents(c1, ca, v1);
+		map.AddContinents(c, ca, v);
+		map.AddContinents(c1, ca, v1);
 		ArrayList<NodeOfMap> TC = map.getContinents();
 		for(NodeOfMap mn : TC) {
-			C = mn.getNameOfContinent();
+			C = mn.getContinent();
 			break;
 		}
 		Assert.assertEquals(C, "Asia");
@@ -120,8 +120,8 @@ public class MapTest {
 		ArrayList<NodeOfCountry> ca = new ArrayList<NodeOfCountry>();
 		ArrayList<NodeOfCountry> cn = new ArrayList<NodeOfCountry>();
 		ca.add(new NodeOfCountry("Iran",cn,coor,null));
-		map.addContinents(c, ca, v);
-		boolean a = map.checkCountryExist("Iran");
+		map.AddContinents(c, ca, v);
+		boolean a = map.CheckCountryExist("Iran");
 		boolean e = true;
 		Assert.assertEquals(e, a);
 	}
@@ -139,9 +139,9 @@ public class MapTest {
 		int v2 =4;
 		int[] coor = {350,350};
 		ArrayList<NodeOfCountry> ca = new ArrayList<NodeOfCountry>();
-		map.addContinents(c1, ca, v2);
-		map.addContinents(c, ca, v);
-		boolean a = map.checkContinentExistence(c);
+		map.AddContinents(c1, ca, v2);
+		map.AddContinents(c, ca, v);
+		boolean a = map.CheckContinentExist(c);
 		boolean e = true;
 		Assert.assertEquals(e, a);
 	}

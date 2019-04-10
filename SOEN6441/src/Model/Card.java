@@ -3,56 +3,58 @@ package Model;
 import java.util.ArrayList;
 
 /**
- * This class defines the card user-defined type.
+ * This class handles all actions about card.
  * @author samansoltani
+ * @version 2.0
  */
-public class Card {
-	
+
+public class Card
+{
 	/**
-	 * Stores the name of the card.
+	 * Save the name of the card
 	 */
-	private String name;
-	
+	private String Name;
 	/**
-	 * Stores the type of the card.
+	 * Save the type of the card
 	 */
-	private String type;
-	
+	private String Type;
 	/**
-	 * Constructor to assign value to name and type of the card.
-	 * @param name Stores the name of the card.
-	 * @param type Stores the type of the card.
+	 * Set up a card with name and type
+	 * @param Name the name of card
+	 * @param Type the type of the card
 	 */
-	public Card(String name, String type) {
-		this.name = name;
-		this.type = type;
+	public Card (String Name ,String Type)
+	{
+		this.Name = Name;
+		this.Type = Type;
+	}
+	/**
+	 * getting the name of card
+	 * @return the name of card
+	 */
+	public String getName()
+	{
+		return this.Name;
+	}
+	/**
+	 * getting the type of card
+	 * @return the type of card
+	 */
+	String getType()
+	{
+		return this.Type;
 	}
 	
-	/**
-	 * Function to get the name of the card.
-	 * @return name of the card.
-	 */
-	public String getCardName() {
-		return this.name;
-	}
 	
 	/**
-	 * Function to get the type of the card.
-	 * @return type of the card.
-	 */
-	public String getCardType() {
-		return this.type;
-	}
-	
-	/**
-	 * Generate a pile of 44 cards
+	 * Generate a collection of 44 cards
 	 * @return ArrayList containing 44 cards.
 	 */
-	public static ArrayList<Card> cardPileGenerator() {
-		ArrayList<Card> cardPile = new ArrayList<Card>();
+	public static ArrayList<Card> CardGeneration() {
+		ArrayList<Card> c = new ArrayList<Card>();
 		for(int i=0;i<44;i++) {
-			cardPile.add(new Card("Artillery","Normal"));
+			c.add(new Card("Artillery","Normal"));
 		}
-		return cardPile;
+		return c;
 	}
 }

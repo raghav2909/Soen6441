@@ -1,4 +1,6 @@
-
+/**
+ * 
+ */
 package view;
 
 import java.awt.Color;
@@ -13,11 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import Model.Card;
-import Model.GameDriver;
 import player.Player;
-
-
 
 
 /**
@@ -25,100 +23,79 @@ import player.Player;
  * @author raghavsharda
  *@version 2.0
  */
-public class CardsConsole extends JPanel implements Observer {
-	
+public class CardsConsole extends JPanel implements Observer{
 	/**
 	 * Serial Version id for JFrame.
 	 * {@inheritDoc}
 	 */
-	private static final long serialVersionUID = 9127819244400811786L;
+	private static final long serialVersionUID = 91213123892139L;
+	
+	private JButton exchangeCards;
 
 	/**
-	 * JButton to initiate card exchange.
+	 * class constructor creating view of card option in main window of game
 	 */
-	private JButton cardsToExchange;
-	
-	/**
-	 * Creates cards view.
-	 */
-	public CardsConsole(){
-		JLabel label = new JLabel("Cards Here.");
+	public CardsConsole()
+	{
+		JLabel lab=  new JLabel("Cards");
 		this.setLayout(new FlowLayout());
-		this.add(label);
+		this.add(lab);
+		this.setBackground(Color.LIGHT_GRAY);
+		this.setBorder(BorderFactory.createDashedBorder(Color.BLACK));
+		this.setPreferredSize(new Dimension(450,170));
 		
-		this.setBorder(BorderFactory.createLineBorder(Color.black));
-		this.setPreferredSize(new Dimension(400,150));
 	}
 	
 	/**
 	 * Shows a dialog to the player to exchange the cards to get additional armies
 	 * @param player current player whose turn is going on
 	 */
-	public void cardsToShow(Player player){
+	public void showCards(Player player){
 		this.removeAll();
 		/*Cards exchange Dialog Box.*/
 		String cards = "";
-		for (Card card : player.getCards()){ 
-			cards += (card.getCardName()+",");
+		for (Model.Card card : player.GetCards()){ 
+			cards += (card.getName()+",");
 		}
 		int cardExchange = JOptionPane.showConfirmDialog (null, cards,"Warning",JOptionPane.YES_OPTION);
 		if(cardExchange == JOptionPane.YES_OPTION){
-			cardsToExchange(player);
+			exchangeCards(player);
 		}
 		
 	}
 	
-
 	/**
 	 * Removes cards from the player and assign additional armies
 	 * @param player current player whose turn is going on
 	 */
 	public void exchangeCards(Player player){
-		if (player.isDistincsCards()){
-			player.removeDistinctCards();
+		if (player.HaveDCard()){
+			player.RemoveDCards();
 		}
-		else if (player.isSameThree()){
-			player.removingSimilarThreeCards();
+		else if (player.SameTypeCards()){
+			player.SameThreeCardsRemoved();
 		}
 	}
-
 	
 	/**
-	 * Observer pattern function for Observers to update when there is a notification from the observable.
-	 * It checks if the player has atleast 3 similar cards or 3 distinct cards or 5 cards.
-	 * If user has 3 or more cards it asks player if he wants to exchange cards for armies.
-	 * if user has 5 armies it forces player to exchange card for armies.
+	 * Observer pattern to update if there is a notification from the observable.
+	 * It checks if the player has at least 3 same cards or 3 different cards or 5 cards.
+	 * it asks player if he wants to exchange cards for armies, if player has 3 or more cards 
+	 * if player has 5 armies it forces player to exchange card for armies.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		Player player = ((GameDriver) o).getCurrent();
+		Player player;
+		player = Model.GameDriver.GetInit().GetCurrent();
 		if (((String) arg).equals("Cards")){
-			if( player.getCards().size()>2 && player.getCards().size() <5){
-
-				if(player.isDistincsCards() || player.isSameThree()){					
-					this.cardsToShow(player);
-
-				if(player.isDistincsCards() || player.isSameThree()){					
-					this.cardsToShow(player);
-
+			if( player.GetCards().size()>2 && player.GetCards().size() <5){
+				if(player.HaveDCard() || player.SameTypeCards()){					
+					this.showCards(player);
 				}
 			}
-			if (player.getCards().size()==5){
-				this.cardsToExchange(player);
+			if (player.GetCards().size()==5){
+				this.exchangeCards(player);
 			}
-		}
-	}
-}
-	/**
-	 * Removes cards from the player and assign additional armies
-	 * @param player current player whose turn is going on
-	 */
-	public void cardsToExchange(Player player){
-		if (player.isDistincsCards()){
-			player.removeDistinctCards();
-		}
-		else if (player.isSameThree()){
-			player.removingSimilarThreeCards();
 		}
 	}
 }

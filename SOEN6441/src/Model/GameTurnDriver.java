@@ -9,151 +9,136 @@ import Model.GameDriver;
  * @version 2.0
  */
 public class GameTurnDriver {
+
 	
 	/**
-	 * Stores the current phase name.
+	 * Stores the current phasename name.
 	 */
-	private String phase;
+	private String phasename;
 	
 	/**
 	 * Shows if game is over
 	 */
-	private boolean gameOver = false;
+	private boolean gamestatus = false;
 	
 	/**
-	 * Variable stores the information if a player win a territory in attack phase.
+	 * Variable stores the information if a player win a territory in attack phasename.
 	 * Value is true if player win atleast one territory and false if none.
 	 */
-	private boolean wonCard = false;
-	
-	/**
-	 * Stores instance of GameDriver class.
-	 */
-	private GameDriver driver;
+	private boolean cardwin = false;
 	
 	/**
 	 * Empty constructor to create object for observer.
-	 * @param nDriver GameDriver instance.
 	 */
-	public GameTurnDriver(GameDriver nDriver){
-		driver = nDriver;
+	public GameTurnDriver(){
 	}
 	
 	/**
-	 * Constructor to set the phase name.
-	 * @param string Phase name.
-	 * @param nDriver GameDriver instance.
+	 * Constructor to set the phasename name.
+	 * @param string phasename name.
 	 */
-	public GameTurnDriver(String string, GameDriver nDriver){
-		this(nDriver);
+	public GameTurnDriver(String string){
 		this.setPhase(string);
 	}
 	/**
-	 * This method starts the turn from reinforcement phase
+	 * This method starts the turn from reinforcement phasename
 	 * @param currentPlayer player having first turn
 	 */
-	public void startFromReinforcement(Player currentPlayer) {
-		currentPlayer.setArmies(this.getCurrent().getNumberOfArmies());
-		currentPlayer.reinforcementPhase();
+	public void StartPlayerTurn(Player currentPlayer) {
+		currentPlayer.ArmySet(this.ongoingplayer().getCountArmies());
+		currentPlayer.RPhase();
 	}
 	
 	/**
-	 * Function to switch between different phases and notify observers. Also if a player win a territory during attack phase
+	 * Function to switch between different phases and notify observers. Also if a player win a territory during attack phasename
 	 * calls <code>issueCard()</code> method from <code>GameDriver</code>.
 	 */
-	public void switchPhase() {
-		if(!isGameOver()) {
-			if(this.getPhase().equals("Reinforcement")) {
-				this.setPhase("Attack");
-				getCurrent().attackPhase();
-			}
-			else if(this.getPhase().equals("Attack")) {
-				if(wonCard) {
-					driver.cardIssued();
-					wonCard = false;
-				}
-				this.setPhase("Fortification");
-				getCurrent().fortificationPhase();
-			}
-			else if(this.getPhase().equals("Fortification")) {
-				driver.setNextPlayer();
-				if(!isGameOver()) {
-					this.setPhase("Reinforcement");
-					getCurrent().reinforcementPhase();
-				}
-			}
-			else {
-				driver.callGameOver(getCurrent().getPlayerName());
-			}
+	public void switchphase() {
+		if(this.getPhase().equals("Reinforcement")) {
+			this.setPhase("Attack");
+			ongoingplayer().APhase();
 		}
+		else if(this.getPhase().equals("Attack")) {
+			if(cardwin) {
+				GameDriver.GetInit().GivenCard();
+				cardwin = false;
+			}
+			this.setPhase("Fortification");
+			ongoingplayer().FPhase();
+		}
+		else if(this.getPhase().equals("Fortification") && !isGameOver()) {
+			GameDriver.GetInit().setNextPlayer();
+			this.setPhase("Reinforcement");
+			ongoingplayer().RPhase();
+		}
+		else {
+			GameDriver.GetInit().CallGameOver();		}
 	}
 	
 	/**
 	 * Returns the current player object.
 	 * @return current player.
 	 */
-	private Player getCurrent() {
-		return driver.getCurrent();
+	private Player ongoingplayer() {
+		return GameDriver.GetInit().GetCurrent();
 	}
 
 	/**
 	 * Refreshes the phases.
 	 */
-	public void continuePhase() {
-		if(!isGameOver()) {
-			if(this.getPhase().equals("Reinforcement")) {
-				getCurrent().reinforcementPhase();
-			}
-			else if(this.getPhase().equals("Attack")) {
-				getCurrent().attackPhase();
-			}
-			else if(this.getPhase().equals("Fortification")) {
-				getCurrent().fortificationPhase();
-			}
+	public void runningPhase() {
+		if(this.getPhase().equals("Reinforcement")) {
+			ongoingplayer().RPhase();
+		}
+		else if(this.getPhase().equals("Attack")) {
+			ongoingplayer().APhase();
+		}
+		else if(this.getPhase().equals("Fortification")) {
+			ongoingplayer().FPhase();
 		}
 	}
 
 	/**
-	 * Get the current phase name.
-	 * @return the phase
+	 * Get the current phasename name.
+	 * @return the phasename
 	 */
 	public String getPhase() {
-		return this.phase;
+		return this.phasename;
 	}
 
 	/**
-	 * @param phase the phase to set
+	 * @param phasename the phasename to set
 	 */
-	public void setPhase(String phase) {
-		this.phase = phase.trim();
+	public void setPhase(String phasename) {
+		this.phasename = phasename;
 	}
 
 	/**
-	 * @return the gameOver
+	 * @return the gamestatus
 	 */
 	public boolean isGameOver() {
-		return gameOver;
+		return gamestatus;
 	}
 
 	/**
-	 * @param gameOver the gameOver to set
+	 * @param gamestatus the gamestatus to set
 	 */
-	public void setGameOver(boolean gameOver) {
-		this.gameOver = gameOver;
+	public void setGameOver(boolean gamestatus) {
+		this.gamestatus = gamestatus;
 	}
 
 	/**
-	 * @return value of wonCard
+	 * @return value of cardwin
 	 */
 	public boolean isWonCard() {
-		return wonCard;
+		return cardwin;
 	}
 
 	/**
-	 * @param wonCard the wonCard to set
+	 * @param cardwin the cardwin to set
 	 */
-	public void setWonCard(boolean wonCard) {
-		this.wonCard = wonCard;
+	public void setWonCard(boolean cardwin) {
+		this.cardwin = cardwin;
 	}
 
 }

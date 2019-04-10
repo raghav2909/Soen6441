@@ -25,7 +25,9 @@ import javax.swing.border.EmptyBorder;
 import Model.*;
 import Model.NodeOfMap;
 import Model.WriteMap;
-import controllers.EditCreateMapController;
+import controllers.Edit_create_Map_Controller;
+
+
 
 	/** class opens the JFrame view for  
 	 *  delete/add country and continent while modifying Map
@@ -41,69 +43,69 @@ import controllers.EditCreateMapController;
 		private static final long serialVersionUID = -5188102736306067380L;
 		
 		/**
-		 * Creates a new NodeOfMap.
+		 * Creates a new NodeOfMap (imported from class NodeOfMap.
 		 */
 		ArrayList<NodeOfMap> continents = new ArrayList<NodeOfMap>();
 
 		/**
-		 * Stores the JPanel of the frame this class
+		 * Stores the JPanel of the main frame for this class
 		 */
 		private JPanel contentPane;
 
 		/**
-		 * Text field that receives continent name. 
+		 * Text field to receive continent-name. 
 		 */
 		private JTextField continentNameText;
 
 		/**
-		 * Text field that receives control value.
+		 * Text field to receive control-values.
 		 */
 		private JTextField continentControlValueText;
 
 		/**
-		 * Text Field to hold country name
+		 * Text Field to hold country-name
 		 */
-		private JTextField txtCountryName;
+		private JTextField countryNameText;
 
 		/**
-		 * ComboBox for continent dropdown.
+		 * ComboBox for continent Drop-down List.
 		 */
 		private JComboBox continentComboBox;
 
 		/**
-		 * ComboBox for continent dropdown.
+		 * ComboBox for continent Drop-down List.
 		 */
 		private JComboBox continentDeletionComboBox;
 
 		/**
-		 * Stores reference to the NodeOfMap object.
+		 *  reference to the NodeOfMap object.
 		 */
-		private NodeOfMap mapNode;
+		private NodeOfMap nodeOfMap;
 
 		/**
-		 * Stores add continent button.
+		 * action on add continent button.
 		 */
-		private JButton btnDone;
+		private JButton btnComplete;
 
 		/**
-		 * Stores add neighbours button
+		 * save add neighbours Button
 		 */
-		private JButton btnAddNeighbours;
+		private JButton addNeighboursButton;
 
 		/**
-		 * Button to enable add continent field.
+		 * Button to enable addition of continent fields.
 		 */
-		private JButton btnAddContinent;
+		private JButton addContinentButton;
 		
 		/**
-		 * Creates WriteMap object.
+		 * Creates object of WriteMap.
 		 */
-		private WriteMap mapWriter = new WriteMap();
+		private WriteMap writerMap = new WriteMap();
 
 		/**
-		 * Stores the continent name.
+		 * Save the continent name.
 		 */
-		private String continentName;
+		private String nameContinent;
 
 		/**
 		 * Stores the continent control value.
@@ -116,347 +118,377 @@ import controllers.EditCreateMapController;
 		private JList list;
 
 		/**
-		 * Stores list of countries.
+		 * Saves list of countries.
 		 */
 		private JComboBox countriesComboBox;
 
 		/**
-		 * Stores list model for neighbours JList.
+		 * Saves list model for neighbours JList.
 		 */
 		private DefaultListModel<String> model2;
 
 		/**
-		 * Stores list model for JList for deleting neighbors.
-		 */
-		private DefaultListModel<String> model1;
-		
-		/**
 		 * Button for selected neighbours. 
 		 */
-		private JButton btnSelectedNeighbours;
+		private JButton neighbourChooseButton;
 
 		/**
 		 * Button for continent deletion.
 		 */
-		private JButton btnDeleteContinent;
+		private JButton deleteContinentButton;
 
 		/**
 		 * Button for saving map file.
 		 */
-		private JButton btnSaveMap;
+		private JButton saveMapButton;
 
 		/**
-		 * Button for country deletion.
+		 * Button to delete country.
 		 */
-		private JButton btnDeleteCountry;
+		private JButton deleteCountryButton;
 
 		/**
-		 * Stores and displays list of continents.
+		 * Saves and displays list of continents.
 		 */
 		private JComboBox countryListCombobox;
 
 		/**
 		 * Button to add a new country.
 		 */
-		private JButton btnAdd;
-		
+		private JButton addButton;
 		/**
-		 * Button to update country arrayList
+		 * Button to add a new country.
 		 */
-		private JButton btnAddCountry;
-		
+		private JButton addCountryButton;
+		/**
+		 * Saves list-model for JList for deleting the neighbors.
+		 */
+		private DefaultListModel<String> model1;
 		/**
 		 * JButton to get possible neighbors of a country for deletion.
 		 */
-		private JButton btnDeleteNeighbours;
+		private JButton DeleteNeighboursButton;
 		
 		/**
 		 * ComboBox to display country list for deleting neighbors.
 		 */
 		private JComboBox comboBox_4;
-		
 		/**
 		 * JLabel for list of neighbors of each country.
 		 */
-		private JLabel lblNeighboursOfSelected;
+		private JLabel NeighboursOfSelectedLabel;
 		
 		/**
 		 * JList to display neighbors of selected country.
 		 */
-		private JList list_1;
+		private JList list1;
 		
 		/**
 		 * JButton to delete selected countries.
 		 */
-		private JButton btnDeleteSelectedNeighbours;
-
+		private JButton DeleteSelectedNeighbours;
 		/**
-		 * NewMap constructor calls initialize method of the class
-		 * @param editMap arraylist of continents.
+		 *  class constructor that calls begin method of the class
+		 * @param editMap arraylist of all continents.
 		 */
 		public ExistingMapModifier(ArrayList<NodeOfMap> editMap) {
 			continents = editMap;
-			initialize();
+			begin();
 		}
 
 		/**
-		 * Initialize the contents of the frame.
+		 * set the contents of the frame.
 		 */
-		public void initialize() {
+		public void begin() {
 			this.setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			setBounds(140, 140, 500, 340);
-			this.setTitle("Existing map editor");
+			setBounds(130, 130, 480, 330);
+			this.setTitle("Existing Map Modifier Window");
 			this.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 
+			GridBagLayout Global_contentPane = new GridBagLayout();
+			Global_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+			Global_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+			Global_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+			Global_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 			contentPane = new JPanel();
-			contentPane.setBackground(Color.GRAY);
+			contentPane.setBackground(Color.DARK_GRAY);
 			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 			setContentPane(contentPane);
-			GridBagLayout gbl_contentPane = new GridBagLayout();
-			gbl_contentPane.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
-			gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-			gbl_contentPane.columnWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-			gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-			contentPane.setLayout(gbl_contentPane);
+			
+			contentPane.setLayout(Global_contentPane);
 
-			JLabel lblCreateYourOwn = new JLabel("Edit the existing map file!");
-			lblCreateYourOwn.setFont(new Font("Script MT Bold", Font.PLAIN, 48));
-			GridBagConstraints gbc_lblCreateYourOwn = new GridBagConstraints();
-			gbc_lblCreateYourOwn.insets = new Insets(0, 0, 5, 0);
-			gbc_lblCreateYourOwn.gridwidth = 7;
-			gbc_lblCreateYourOwn.gridx = 0;
-			gbc_lblCreateYourOwn.gridy = 0;
-			contentPane.add(lblCreateYourOwn, gbc_lblCreateYourOwn);
+			GridBagConstraints gbc_labl_MapExist = new GridBagConstraints();
+			gbc_labl_MapExist.insets = new Insets(0, 0, 5, 0);
+			gbc_labl_MapExist.insets = new Insets(0, 0, 5, 0);
+			gbc_labl_MapExist.gridwidth = 7;
+			gbc_labl_MapExist.gridx = 0;
+			gbc_labl_MapExist.gridy = 0;
+			JLabel labl_MapExist = new JLabel("EDIT- Existing Map file..");
+			labl_MapExist.setFont(new Font("Bookman Old Style", Font.BOLD|Font.PLAIN, 45));
+			labl_MapExist.setForeground(Color.WHITE);
+			
+			contentPane.add(labl_MapExist, gbc_labl_MapExist);
 
-			btnAddContinent = new JButton("New Continent");
-			btnAddContinent.setForeground(Color.BLACK);
-			btnAddContinent.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			btnAddContinent.setBackground(new Color(240, 255, 255));
-			GridBagConstraints gbc_btnAddContinent = new GridBagConstraints();
-			gbc_btnAddContinent.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnAddContinent.insets = new Insets(0, 0, 5, 5);
-			gbc_btnAddContinent.gridx = 1;
-			gbc_btnAddContinent.gridy = 2;
-			contentPane.add(btnAddContinent, gbc_btnAddContinent);
+			addContinentButton = new JButton("New Continent");
+			addContinentButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 17));
+			addContinentButton.setForeground(new Color(0, 0, 255));
+			GridBagConstraints gbc_addContinentBtn = new GridBagConstraints();
+			gbc_addContinentBtn.fill = GridBagConstraints.HORIZONTAL;
+			gbc_addContinentBtn.insets = new Insets(0, 0, 5, 5);
+			gbc_addContinentBtn.gridx = 6;
+			gbc_addContinentBtn.gridy = 3;
+			contentPane.add(addContinentButton, gbc_addContinentBtn);
 
-			JLabel lblName = new JLabel("Continent Name");
-			GridBagConstraints gbc_lblName = new GridBagConstraints();
-			gbc_lblName.anchor = GridBagConstraints.EAST;
-			gbc_lblName.insets = new Insets(0, 0, 5, 5);
-			gbc_lblName.gridx = 5;
-			gbc_lblName.gridy = 2;
-			contentPane.add(lblName, gbc_lblName);
+			JLabel NameLabel = new JLabel("Continent Name");
+			NameLabel.setForeground(new Color(255, 255, 255));
+			GridBagConstraints gbc_NameLabel = new GridBagConstraints();
+			gbc_NameLabel.anchor = GridBagConstraints.EAST;
+			gbc_NameLabel.insets = new Insets(0, 0, 5, 5);
+			gbc_NameLabel.gridx = 5;
+			gbc_NameLabel.gridy = 4;
+			contentPane.add(NameLabel, gbc_NameLabel);
 
+			GridBagConstraints gbc_continentNameText = new GridBagConstraints();
+			gbc_continentNameText.insets = new Insets(0, 0, 5, 0);
+			gbc_continentNameText.fill = GridBagConstraints.HORIZONTAL;
+			gbc_continentNameText.gridx = 6;
+			gbc_continentNameText.gridy = 4;
 			continentNameText = new JTextField();
 			continentNameText.setFont(new Font("Tahoma", Font.ITALIC, 13));
-			continentNameText.setForeground(Color.BLACK);
-			GridBagConstraints gbc_txtContinentNameHere = new GridBagConstraints();
-			gbc_txtContinentNameHere.insets = new Insets(0, 0, 5, 0);
-			gbc_txtContinentNameHere.fill = GridBagConstraints.HORIZONTAL;
-			gbc_txtContinentNameHere.gridx = 6;
-			gbc_txtContinentNameHere.gridy = 2;
+			continentNameText.setForeground(Color.BLUE);
+			continentNameText.setText("Enter new Continent Name here");
 			continentNameText.setEnabled(false);
-			contentPane.add(continentNameText, gbc_txtContinentNameHere);
+			
+			
+			contentPane.add(continentNameText, gbc_continentNameText);
 			continentNameText.setColumns(10);
 
+			GridBagConstraints gbc_continentControlValueText = new GridBagConstraints();
+			gbc_continentControlValueText.insets = new Insets(0, 0, 5, 0);
+			gbc_continentControlValueText.fill = GridBagConstraints.HORIZONTAL;
+			gbc_continentControlValueText.gridx = 6;
+			gbc_continentControlValueText.gridy = 5;
 			continentControlValueText = new JTextField();
+			continentControlValueText.setText("Enter new Continent CONTROL VALUE Name here");
 			continentControlValueText.setFont(new Font("Tahoma", Font.ITALIC, 13));
 			continentControlValueText.setForeground(Color.BLACK);
 			continentControlValueText.setEnabled(false);
-			GridBagConstraints gbc_txtContinentControlValue = new GridBagConstraints();
-			gbc_txtContinentControlValue.insets = new Insets(0, 0, 5, 0);
-			gbc_txtContinentControlValue.fill = GridBagConstraints.HORIZONTAL;
-			gbc_txtContinentControlValue.gridx = 6;
-			gbc_txtContinentControlValue.gridy = 3;
-			contentPane.add(continentControlValueText, gbc_txtContinentControlValue);
+			
+			contentPane.add(continentControlValueText, gbc_continentControlValueText);
 			continentControlValueText.setColumns(10);
 
-			JLabel lblValue = new JLabel("Control Value");
-			GridBagConstraints gbc_lblValue = new GridBagConstraints();
-			gbc_lblValue.anchor = GridBagConstraints.EAST;
-			gbc_lblValue.insets = new Insets(0, 0, 5, 5);
-			gbc_lblValue.gridx = 5;
-			gbc_lblValue.gridy = 3;
-			contentPane.add(lblValue, gbc_lblValue);
+			GridBagConstraints globalPane_valueLabel = new GridBagConstraints();
+			globalPane_valueLabel.anchor = GridBagConstraints.EAST;
+			globalPane_valueLabel.insets = new Insets(0, 0, 5, 5);
+			globalPane_valueLabel.gridx = 5;
+			globalPane_valueLabel.gridy = 5;
+			JLabel valueLabel = new JLabel("Continent Control Value");
+			valueLabel.setForeground(new Color(255, 255, 255));
+			
+			
+			contentPane.add(valueLabel, globalPane_valueLabel);
 
-			btnDone = new JButton("Add Continent");
-			btnDone.setBackground(new Color(240, 255, 255));
-			btnDone.setFont(new Font("Tahoma", Font.BOLD, 13));
-			btnDone.setForeground(Color.BLACK);
-			GridBagConstraints gbc_btnDone = new GridBagConstraints();
-			gbc_btnDone.anchor = GridBagConstraints.EAST;
-			gbc_btnDone.insets = new Insets(0, 0, 5, 0);
-			gbc_btnDone.gridx = 6;
-			gbc_btnDone.gridy = 4;
-			contentPane.add(btnDone, gbc_btnDone);
+			btnComplete = new JButton("Add Continent");
+			btnComplete.setBackground(new Color(240, 255, 255));
+			btnComplete.setFont(new Font("Tahoma", Font.BOLD, 13));
+			btnComplete.setForeground(new Color(0, 0, 255));
+			GridBagConstraints gbc_btnComplete = new GridBagConstraints();
+			gbc_btnComplete.anchor = GridBagConstraints.EAST;
+			gbc_btnComplete.insets = new Insets(0, 0, 5, 0);
+			gbc_btnComplete.gridx = 6;
+			gbc_btnComplete.gridy = 6;
+			contentPane.add(btnComplete, gbc_btnComplete);
 
-			btnAddCountry = new JButton("New Country");
-			btnAddCountry.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			btnAddCountry.setForeground(Color.BLACK);
-			btnAddCountry.setBackground(new Color(240, 255, 255));
+			addCountryButton = new JButton("New Country");
+			addCountryButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+			addCountryButton.setForeground(new Color(0, 0, 255));
+			addCountryButton.setBackground(new Color(240, 255, 255));
 			GridBagConstraints gbc_btnAddCountry = new GridBagConstraints();
 			gbc_btnAddCountry.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnAddCountry.insets = new Insets(0, 0, 5, 5);
 			gbc_btnAddCountry.gridx = 1;
 			gbc_btnAddCountry.gridy = 5;
-			contentPane.add(btnAddCountry, gbc_btnAddCountry);
+			contentPane.add(addCountryButton, gbc_btnAddCountry);
 
 			continentComboBox = new JComboBox();			/*continent list*/
-			continentComboBox.setToolTipText("Choose existing continent to add new country");
-			GridBagConstraints gbc_comboBox = new GridBagConstraints();
-			gbc_comboBox.gridwidth = 3;
-			gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBox.gridx = 2;
-			gbc_comboBox.gridy = 5;
-			contentPane.add(continentComboBox, gbc_comboBox);
-			for (NodeOfMap mapNode : continents) {
-				continentComboBox.addItem(mapNode.getNameOfContinent());
+			continentComboBox.setToolTipText("Choose continent that already exist to enable addition of new country");
+			GridBagConstraints globalPane_comboBox = new GridBagConstraints();
+			globalPane_comboBox.gridwidth = 3;
+			globalPane_comboBox.insets = new Insets(0, 0, 5, 5);
+			globalPane_comboBox.fill = GridBagConstraints.HORIZONTAL;
+			globalPane_comboBox.gridx = 2;
+			globalPane_comboBox.gridy = 5;
+			contentPane.add(continentComboBox, globalPane_comboBox);
+			for (NodeOfMap nodeOfMap : continents) {
+				continentComboBox.addItem(nodeOfMap.getContinent());//from NodeOfMap
 			}
 
-			JLabel lblName_1 = new JLabel("Country Name");
-			GridBagConstraints gbc_lblName_1 = new GridBagConstraints();
-			gbc_lblName_1.anchor = GridBagConstraints.EAST;
-			gbc_lblName_1.insets = new Insets(0, 0, 5, 5);
-			gbc_lblName_1.gridx = 5;
-			gbc_lblName_1.gridy = 6;
-			contentPane.add(lblName_1, gbc_lblName_1);
+			
+			GridBagConstraints gbc_NameLabel_1 = new GridBagConstraints();
+			gbc_NameLabel_1.anchor = GridBagConstraints.EAST;
+			gbc_NameLabel_1.insets = new Insets(0, 0, 5, 5);
+			gbc_NameLabel_1.gridx = 5;
+			gbc_NameLabel_1.gridy = 7;
+			JLabel NameLabel_1 = new JLabel("Country Name");
+			NameLabel_1.setForeground(new Color(255, 255, 255));
+			contentPane.add(NameLabel_1, gbc_NameLabel_1);
 
-			txtCountryName = new JTextField();
-			txtCountryName.setFont(new Font("Tahoma", Font.ITALIC, 13));
-			txtCountryName.setForeground(Color.BLACK);
-			txtCountryName.setEnabled(false);
-			txtCountryName.setText("");
-			GridBagConstraints gbc_txtCountryName = new GridBagConstraints();
-			gbc_txtCountryName.insets = new Insets(0, 0, 5, 0);
-			gbc_txtCountryName.fill = GridBagConstraints.HORIZONTAL;
-			gbc_txtCountryName.gridx = 6;
-			gbc_txtCountryName.gridy = 6;
-			contentPane.add(txtCountryName, gbc_txtCountryName);
-			txtCountryName.setColumns(10);
+			GridBagConstraints gbc_countryNameText = new GridBagConstraints();
+			gbc_countryNameText.insets = new Insets(0, 0, 5, 0);
+			gbc_countryNameText.fill = GridBagConstraints.HORIZONTAL;
+			gbc_countryNameText.gridx = 6;
+			gbc_countryNameText.gridy = 7;
+			countryNameText = new JTextField();
+			countryNameText.setFont(new Font("Tahoma", Font.ITALIC, 14));
+			countryNameText.setForeground(Color.BLUE);
+			countryNameText.setEnabled(false);
+			countryNameText.setText("Enter new Country Name here");
+			
+			contentPane.add(countryNameText, gbc_countryNameText);
+			countryNameText.setColumns(10);
 
-			btnDeleteCountry = new JButton("Delete Country");
-			btnDeleteCountry.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			btnDeleteCountry.setForeground(Color.BLACK);
-			btnDeleteCountry.setBackground(new Color(240, 255, 255));
-			GridBagConstraints gbc_btnDeleteCountry = new GridBagConstraints();
-			gbc_btnDeleteCountry.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnDeleteCountry.insets = new Insets(0, 0, 5, 5);
-			gbc_btnDeleteCountry.gridx = 1;
-			gbc_btnDeleteCountry.gridy = 8;
-			contentPane.add(btnDeleteCountry, gbc_btnDeleteCountry);
+			GridBagConstraints gbc_deleteCountryButton = new GridBagConstraints();
+			gbc_deleteCountryButton.fill = GridBagConstraints.HORIZONTAL;
+			gbc_deleteCountryButton.insets = new Insets(0, 0, 5, 5);
+			gbc_deleteCountryButton.gridx = 1;
+			gbc_deleteCountryButton.gridy = 8;
+			deleteCountryButton = new JButton("Delete Country");
+			deleteCountryButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+			deleteCountryButton.setForeground(Color.BLUE);
+			deleteCountryButton.setBackground(new Color(240, 255, 255));
+			
+			contentPane.add(deleteCountryButton, gbc_deleteCountryButton);
 
 			countryListCombobox = new JComboBox();			/*list of countries.*/
-			GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
+			GridBagConstraints global_countryListCombobox = new GridBagConstraints();
 			ArrayList<String> choice = new ArrayList<>();
-			gbc_comboBox_2.gridwidth = 3;
-			gbc_comboBox_2.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBox_2.gridx = 2;
-			gbc_comboBox_2.gridy = 8;
-			contentPane.add(countryListCombobox, gbc_comboBox_2);
-			for (NodeOfMap mapNode : continents) {
-				for (NodeOfCountry countryNode : mapNode.getCountries()) {
-					countryListCombobox.addItem(countryNode.getNameOfCountry());
+			global_countryListCombobox.gridwidth = 3;
+			global_countryListCombobox.insets = new Insets(0, 0, 5, 5);
+			global_countryListCombobox.fill = GridBagConstraints.HORIZONTAL;
+			global_countryListCombobox.gridx = 2;
+			global_countryListCombobox.gridy = 8;
+			contentPane.add(countryListCombobox, global_countryListCombobox);
+			for (NodeOfMap nodeOfMap : continents) {
+				for (NodeOfCountry nodeOfCountry : nodeOfMap.getCountries()) {
+					countryListCombobox.addItem(nodeOfCountry.getNameOfCountry()); //from NodeOfcountry
 				}
 			}
 
-			btnAdd = new JButton("Add Country");
-			btnAdd.setBackground(new Color(240, 255, 255));
-			btnAdd.setFont(new Font("Bookman Old Style", Font.BOLD, 13));
-			GridBagConstraints gbc_btnAdd = new GridBagConstraints();
-			gbc_btnAdd.insets = new Insets(0, 0, 5, 0);
-			gbc_btnAdd.anchor = GridBagConstraints.EAST;
-			gbc_btnAdd.gridx = 6;
-			gbc_btnAdd.gridy = 8;
-			contentPane.add(btnAdd, gbc_btnAdd);
+			addButton = new JButton("Click to Add Country");
+			addButton.setBackground(new Color(240, 255, 255));
+			addButton.setFont(new Font("Bookman Old Style", Font.BOLD, 13));
+			addButton.setForeground(Color.BLUE);
+			GridBagConstraints globalPane_addButton = new GridBagConstraints();
+			globalPane_addButton.insets = new Insets(0, 0, 5, 0);
+			globalPane_addButton.anchor = GridBagConstraints.EAST;
+			globalPane_addButton.gridx = 6;
+			globalPane_addButton.gridy = 8;
+			contentPane.add(addButton, globalPane_addButton);
 
-			btnDeleteContinent = new JButton("Delete Continent");
-			btnDeleteContinent.setBackground(new Color(240, 255, 255));
-			btnDeleteContinent.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			btnDeleteContinent.setForeground(Color.BLACK);
 			GridBagConstraints gbc_btnDeleteContinent = new GridBagConstraints();
 			gbc_btnDeleteContinent.fill = GridBagConstraints.HORIZONTAL;
 			gbc_btnDeleteContinent.insets = new Insets(0, 0, 5, 5);
 			gbc_btnDeleteContinent.gridx = 1;
 			gbc_btnDeleteContinent.gridy = 11;
-			contentPane.add(btnDeleteContinent, gbc_btnDeleteContinent);
+			deleteContinentButton = new JButton("Delete Continent");
+			deleteContinentButton.setBackground(new Color(240, 255, 255));
+			deleteContinentButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 19));
+			deleteContinentButton.setForeground(Color.BLUE);
+			
+			contentPane.add(deleteContinentButton, gbc_btnDeleteContinent);
 
-			continentDeletionComboBox = new JComboBox();
-			GridBagConstraints gbc_comboBox_3 = new GridBagConstraints();
-			gbc_comboBox_3.gridwidth = 3;
-			gbc_comboBox_3.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBox_3.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBox_3.gridx = 2;
-			gbc_comboBox_3.gridy = 11;
-			contentPane.add(continentDeletionComboBox, gbc_comboBox_3);
-			for (NodeOfMap mapNode : continents) {
-				continentDeletionComboBox.addItem(mapNode.getNameOfContinent());
+			continentDeletionComboBox = new JComboBox(); //List of Continents
+			GridBagConstraints gbc_comboBox3 = new GridBagConstraints();
+			gbc_comboBox3.gridwidth = 3;
+			gbc_comboBox3.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBox3.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBox3.gridx = 2;
+			gbc_comboBox3.gridy = 11;
+			contentPane.add(continentDeletionComboBox, gbc_comboBox3);
+			for (NodeOfMap nodeOfMap : continents) {
+				continentDeletionComboBox.addItem(nodeOfMap.getContinent());//from NodeOfMap 
 			}
 
-			btnAddNeighbours = new JButton("Choose Neighbours");
-			btnAddNeighbours.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			GridBagConstraints gbc_btnAddNeighbours = new GridBagConstraints();
-			gbc_btnAddNeighbours.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnAddNeighbours.insets = new Insets(0, 0, 5, 5);
-			gbc_btnAddNeighbours.gridx = 1;
-			gbc_btnAddNeighbours.gridy = 14;
-			contentPane.add(btnAddNeighbours, gbc_btnAddNeighbours);
+			addNeighboursButton = new JButton("Select Neighbours:");
+			addNeighboursButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+			addNeighboursButton.setBackground(new Color(240, 255, 255));
+			addNeighboursButton.setForeground (Color.BLUE);
+			GridBagConstraints globalPane_addNeighboursButton = new GridBagConstraints();
+			globalPane_addNeighboursButton.fill = GridBagConstraints.HORIZONTAL;
+			globalPane_addNeighboursButton.insets = new Insets(0, 0, 5, 5);
+			globalPane_addNeighboursButton.gridx = 1;
+			globalPane_addNeighboursButton.gridy = 14;
+			contentPane.add(addNeighboursButton, globalPane_addNeighboursButton);
 
-			countriesComboBox = new JComboBox();
-			GridBagConstraints gbc_comboBox_11 = new GridBagConstraints();
-			countriesComboBox.setToolTipText("Select country for adding neighbours");
-			gbc_comboBox_11.insets = new Insets(0, 0, 5, 5);
-			gbc_comboBox_11.fill = GridBagConstraints.HORIZONTAL;
-			gbc_comboBox_11.gridx = 2;
-			gbc_comboBox_11.gridy = 14;
+			countriesComboBox = new JComboBox();// country to select for adding neighbours
+			GridBagConstraints gbc_comboBox11 = new GridBagConstraints();
+			countriesComboBox.setToolTipText("Select country to add neighbours");
+			gbc_comboBox11.insets = new Insets(0, 0, 5, 5);
+			gbc_comboBox11.fill = GridBagConstraints.HORIZONTAL;
+			gbc_comboBox11.gridx = 2;
+			gbc_comboBox11.gridy = 14;
 			countriesComboBox.setEnabled(true);
-			contentPane.add(countriesComboBox, gbc_comboBox_11);
-			for (NodeOfMap mapNode : continents) {
-				for (NodeOfCountry countryNode : mapNode.getCountries()) {
-					countriesComboBox.addItem(countryNode.getNameOfCountry());
+			contentPane.add(countriesComboBox, gbc_comboBox11);
+			for (NodeOfMap nodeOfMap : continents) {
+				for (NodeOfCountry nodeOfCountry : nodeOfMap.getCountries()) {
+					countriesComboBox.addItem(nodeOfCountry.getNameOfCountry());
 				}
 			}
 
-			JLabel lblChooseNeighbours = new JLabel("Possible neighbours for selected country");
-			lblChooseNeighbours.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			GridBagConstraints gbc_lblChooseNeighbours = new GridBagConstraints();
-			gbc_lblChooseNeighbours.insets = new Insets(0, 0, 5, 5);
-			gbc_lblChooseNeighbours.gridx = 1;
-			gbc_lblChooseNeighbours.gridy = 16;
-			contentPane.add(lblChooseNeighbours, gbc_lblChooseNeighbours);
+			GridBagConstraints gbc_chooseNeighboursLabel = new GridBagConstraints();
+			gbc_chooseNeighboursLabel.insets = new Insets(0, 0, 5, 5);
+			gbc_chooseNeighboursLabel.gridx = 1;
+			gbc_chooseNeighboursLabel.gridy = 16;
+			JLabel chooseNeighboursLabel = new JLabel("possible Neighbours for country selected ");
+			chooseNeighboursLabel.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 18));
+			chooseNeighboursLabel.setBackground(new Color(240, 255, 255));
+			chooseNeighboursLabel.setForeground(new Color(255, 255, 255));
+			
+			contentPane.add(chooseNeighboursLabel, gbc_chooseNeighboursLabel);
 
 			model2 = new DefaultListModel<String>();
-			list = new JList();
-			JScrollPane scrollPane = new JScrollPane(list);
-			scrollPane.setViewportView(list);
-			list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-			list.setModel(model2);
+			
 			GridBagConstraints gbc_list = new GridBagConstraints();
 			gbc_list.insets = new Insets(0, 0, 5, 5);
 			gbc_list.fill = GridBagConstraints.BOTH;
 			gbc_list.gridx = 2;
-			gbc_list.gridy = 16;
+			gbc_list.gridy = 16;list = new JList();
+			JScrollPane scrollPane = new JScrollPane(list);
+			scrollPane.setViewportView(list);
+			list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			list.setModel(model2);
+			
 			contentPane.add(scrollPane, gbc_list);
 			list.setEnabled(false);
 
-			btnSelectedNeighbours = new JButton("Add selected countries as neighbours");
-			GridBagConstraints gbc_btnDeleteNeighbours = new GridBagConstraints();
-			gbc_btnDeleteNeighbours.anchor = GridBagConstraints.EAST;
-			gbc_btnDeleteNeighbours.insets = new Insets(0, 0, 5, 5);
-			gbc_btnDeleteNeighbours.gridx = 2;
-			gbc_btnDeleteNeighbours.gridy = 17;
-			contentPane.add(btnSelectedNeighbours, gbc_btnDeleteNeighbours);
 			
-			btnDeleteNeighbours = new JButton("Delete Neighbours");
-			btnDeleteNeighbours.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			gbc_btnDeleteNeighbours = new GridBagConstraints();
-			gbc_btnDeleteNeighbours.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnDeleteNeighbours.insets = new Insets(0, 0, 5, 5);
-			gbc_btnDeleteNeighbours.gridx = 1;
-			gbc_btnDeleteNeighbours.gridy = 20;
-			contentPane.add(btnDeleteNeighbours, gbc_btnDeleteNeighbours);
+			GridBagConstraints gbc_neighbourButton = new GridBagConstraints();
+			gbc_neighbourButton.anchor = GridBagConstraints.EAST;
+			gbc_neighbourButton.insets = new Insets(0, 0, 5, 5);
+			gbc_neighbourButton.gridx = 2;
+			gbc_neighbourButton.gridy = 17;
+			neighbourChooseButton = new JButton("Click to add as neighbours");
+			neighbourChooseButton.setBackground(new Color(240, 255, 255));
+			neighbourChooseButton.setForeground(new Color(0, 0, 255)); 
+			contentPane.add(neighbourChooseButton, gbc_neighbourButton);
+			
+			DeleteNeighboursButton = new JButton("Delete Neighbour");
+			DeleteNeighboursButton.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+			GridBagConstraints gbc_deleteNeighbourButton = new GridBagConstraints();
+			gbc_deleteNeighbourButton.fill = GridBagConstraints.HORIZONTAL;
+			gbc_deleteNeighbourButton.insets = new Insets(0, 0, 5, 5);
+			gbc_deleteNeighbourButton.gridx = 1;
+			gbc_deleteNeighbourButton.gridy = 20;
+			contentPane.add( DeleteNeighboursButton , gbc_deleteNeighbourButton);
+			
+			NeighboursOfSelectedLabel = new JLabel("Neighbours of selected country");
+			NeighboursOfSelectedLabel.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
+			GridBagConstraints gbc_lblNeighboursOfSelected = new GridBagConstraints();
+			gbc_lblNeighboursOfSelected.insets = new Insets(0, 0, 5, 5);
+			gbc_lblNeighboursOfSelected.gridx = 1;
+			gbc_lblNeighboursOfSelected.gridy = 22;
+			contentPane.add(NeighboursOfSelectedLabel, gbc_lblNeighboursOfSelected);
 			
 			comboBox_4 = new JComboBox();
 			GridBagConstraints gbc_comboBox_4 = new GridBagConstraints();
@@ -471,322 +503,150 @@ import controllers.EditCreateMapController;
 				}
 			}
 			
-			lblNeighboursOfSelected = new JLabel("Neighbours of selected country");
-			lblNeighboursOfSelected.setFont(new Font("Bookman Old Style", Font.BOLD | Font.ITALIC, 18));
-			GridBagConstraints gbc_lblNeighboursOfSelected = new GridBagConstraints();
-			gbc_lblNeighboursOfSelected.insets = new Insets(0, 0, 5, 5);
-			gbc_lblNeighboursOfSelected.gridx = 1;
-			gbc_lblNeighboursOfSelected.gridy = 22;
-			contentPane.add(lblNeighboursOfSelected, gbc_lblNeighboursOfSelected);
-			
 			model1 = new DefaultListModel<String>();
-			list_1 = new JList();
-			list_1.setModel(model1);
-			JScrollPane scrollPane1 = new JScrollPane(list_1);
-			list_1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+			list1 = new JList();
+			list1.setModel(model1);
+			JScrollPane scrollPane1 = new JScrollPane(list1);
+			list1.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 			GridBagConstraints gbc_list_1 = new GridBagConstraints();
 			gbc_list_1.insets = new Insets(0, 0, 5, 5);
 			gbc_list_1.fill = GridBagConstraints.BOTH;
 			gbc_list_1.gridx = 2;
 			gbc_list_1.gridy = 22;
-			contentPane.add(list_1, gbc_list_1);
-			list_1.setEnabled(false);
+			contentPane.add(list1, gbc_list_1);
+			list1.setEnabled(false);
 			
-			btnDeleteSelectedNeighbours = new JButton("Delete selected Neighbours");
+			DeleteSelectedNeighbours = new JButton("Delete selected Neighbours");
 			GridBagConstraints gbc_btnDeleteSelectedNeighbours = new GridBagConstraints();
 			gbc_btnDeleteSelectedNeighbours.anchor = GridBagConstraints.EAST;
 			gbc_btnDeleteSelectedNeighbours.insets = new Insets(0, 0, 5, 5);
 			gbc_btnDeleteSelectedNeighbours.gridx = 2;
 			gbc_btnDeleteSelectedNeighbours.gridy = 23;
-			contentPane.add(btnDeleteSelectedNeighbours, gbc_btnDeleteSelectedNeighbours);
+			contentPane.add(DeleteSelectedNeighbours, gbc_btnDeleteSelectedNeighbours);
 
-			btnSaveMap = new JButton("Save Map");
-			btnSaveMap.setBackground(new Color(152, 251, 152));
-			btnSaveMap.setFont(new Font("Lucida Calligraphy", Font.BOLD, 16));
+
 			GridBagConstraints gbc_btnSaveMap = new GridBagConstraints();
 			gbc_btnSaveMap.fill = GridBagConstraints.HORIZONTAL;
-			gbc_btnSaveMap.gridx = 6;
-			gbc_btnSaveMap.gridy = 29;
-			contentPane.add(btnSaveMap, gbc_btnSaveMap);
+			gbc_btnSaveMap.gridx = 5;
+			gbc_btnSaveMap.gridy = 28;saveMapButton = new JButton("Save Modified Map");
+			saveMapButton.setBackground(new Color(192, 192, 192));
+			saveMapButton.setFont(new Font("Bookman Old Style", Font.BOLD, 18));
+			
+			contentPane.add(saveMapButton, gbc_btnSaveMap);
 		
+		}
+		
+		/** action events  for button to enable add New country
+		 * add Listener to add country
+		 * @param newAction Listener to be attached
+		 */
+		public void addActionsToAddCountryButton(ActionListener newAction) {
+			addCountryButton.addActionListener(newAction);
 		}
 		
 		/**
-		 * Function to add actionListener to add country button.
-		 * @param actionNew receives the actionListener for this function.
+		 * Action Listener to delete continent
+		 * @param newAction Listener to be attached
 		 */
-		public void addActionsToAddCountryButton(ActionListener actionNew) {
-			btnAddCountry.addActionListener(actionNew);
+		public void addActionsToDeleteContinentButton(ActionListener newAction) {
+			deleteContinentButton.addActionListener(newAction);
+		}
+
+		/**
+		 * add Listener to add continent 
+		 * @param newAction Listener to be attached
+		 */
+		public void addActionsToAddContinentButton(ActionListener newAction) {
+			addContinentButton.addActionListener(newAction);
 		}
 		
 		/**
-		 * Function to add actionListener to add-continent Button.
-		 * @param actionNew receives the actionListener for this function.
+		 * add Listener to add Neighbor
+		 * @param newAction Listener to be attached
 		 */
-		public void addActionsToAddContinentButton(ActionListener actionNew) {
-			btnAddContinent.addActionListener(actionNew);
-		}
-	    
-		/**
-		 * Function to add actionListener to button for updating list of continent .
-		 * @param actionNew receives the actionListener for this function.
-		 */
-		public void addActionsToBtnComplete(ActionListener actionNew) {
-			btnDone.addActionListener(actionNew);
+		public void addActionsToAddNeighboursButton(ActionListener newAction) {
+			addNeighboursButton.addActionListener(newAction);
 		}
 		
 		/**
-		 * Function to add actionListener to button for updating country list.
-		 * @param actionNew receives the actionListener for this function.
+		 * add Listener to save map
+		 * @param newAction Listener to be attached
 		 */
-		public void addActionsToAddButton(ActionListener actionNew) {
-			btnAdd.addActionListener(actionNew);
+		public void addActionsToSaveMapButton(ActionListener newAction) {
+			saveMapButton.addActionListener(newAction);
 		}
-		
-		/**Action event for button to Add  neighbours
-		 * Function to add actionListener to add neighbours button.
-		 * @param actionNew receives the actionListener for this function.
+
+		/**
+		 * add Listener to delete country
+		 * @param newAction Listener to be attached
 		 */
-		public void addActionsToAddNeighboursButton(ActionListener actionNew) {
-			btnAddNeighbours.addActionListener(actionNew);
-		}
-		
-		/**Action event for button to delete  neighbours
-		 * @see EditCreateMapController
-		 * @param actionNew actionListener for btnDeleteNeighbors.
-		 */
-		public void addActionstoDeleteNeighboursButton(ActionListener actionNew) {
-			 		btnDeleteNeighbours.addActionListener(actionNew);
-		}
-		
-		/**Action event for button to delete selected neighbours
-		 * @see mapEditorController 
-		 * @param actionNew actionListener for btnDeleteSelectedNeighbours.
-		 */
-		public void addActionsToDeleteSelectedNeighboursButton(ActionListener actionNew) {
-			 		btnDeleteSelectedNeighbours.addActionListener(actionNew);
-		}
+		public void addActionsToDeleteCountryButton(ActionListener newAction) {
+			deleteCountryButton.addActionListener(newAction);
+		} 
 		
 		/**
-		 * Function to add actionListener to select the Neighbours Bbutton.
-		 * @param actionNew receives the actionListener for this function.
+		 * add Listener to add a button to add continent
+		 * @param newAction Listener to be attached
 		 */
-		public void addActionsToNeighbourChooseButton(ActionListener actionNew) {
-			btnSelectedNeighbours.addActionListener(actionNew);
+		public void addActionsToBtnComplete(ActionListener newAction) {
+			btnComplete.addActionListener(newAction);
 		}
-		
+
 		/**
-		 * Function to add actionListener to delete existing continent button.
-		 * @param actionNew receives the actionListener for this function.
+		 * adds Listener to add a button to add country
+		 * @param newAction Listener to be attached
 		 */
-		public void addActionsToDeleteContinentButton(ActionListener actionNew) {
-			btnDeleteContinent.addActionListener(actionNew);
-		}
-		
-		/**
-		 *  add actionListener to save mAP button.
-		 * @param actionNew receives the actionListener for this function.
-		 */
-		public void addActionsToSaveMapButton(ActionListener actionNew) {
-			btnSaveMap.addActionListener(actionNew);
-		}
-		
-		/**
-		 *  add actionListener to delete country button.
-		 * @param actionNew receives the actionListener for this function.
-		 */
-		public void addActionsToDeleteCountryButton(ActionListener actionNew) {
-			btnDeleteCountry.addActionListener(actionNew);
+		public void addActionsToAddButton(ActionListener newAction) {
+			addButton.addActionListener(newAction);
 		}
 		
 		/**
 		 * shows error message for not selecting neighbours
 		 */
 		public void noNeighboursSelecteError() {
-			JOptionPane.showMessageDialog(contentPane, "Select neighbours first", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "You are expected to select neighbours first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
-		/**
-		 *  enable the fields of continent.
-		 */
-		public void continentFieldsEnable() {
-			continentNameText.setEnabled(true);
-			continentControlValueText.setEnabled(true);
-		}
-		
-		/**
-		 * checks for unique continents..
-		 * @return true if continent already exist.
-		 */
-		public boolean continentExistCheck() {
-			Boolean continentExist = false;
-			if(continentComboBox.getItemCount()!=0) {
-				continentExist = true;
-			}
-			return continentExist;
-		}
-		
-		/**
-		 *  get the country name mentioned.
-		 * @return the country name entered.
-		 */
-		public String getNAmeOfCountry() {
-			return (txtCountryName.getText());
-		}
 
 		/**
-		 * Funtion to return list of selected neighbours.
-		 * @return list of selected neighbours.
+		 * add Listener to select neighbors
+		 * @param newAction Listener to be attached
 		 */
-		public List getListOfNeighbours() {
-			return (list.getSelectedValuesList());
+		public void addActionsToNeighbourChooseButton(ActionListener newAction) {
+			neighbourChooseButton.addActionListener(newAction);
 		}
-		
 		/**
-		 * gives list of neighbors for deletion
-		 * @return list of neighbor countries for deletion.
+		 * select country to delete its neighbours
+		 * @param newAction action listener for DeleteNeighbourButton 
 		 */
-		public List getNeighboursList_1() {
-			 return (list_1.getSelectedValuesList());
-		}
-		
-		/**
-		 * enable JList.
+		public void addActionstoDeleteNeighboursButton(ActionListener newAction) {
+	 		DeleteNeighboursButton.addActionListener(newAction);
+}
+		/**Action event for button to delete selected neighbours
+		 * @param newAction actionListener for deleteNeighbourButton
 		 */
-		public void jListEnabled() {
-			list.setEnabled(true);
+		public void addActionsToDeleteSelectedNeighboursButton(ActionListener newAction) {
+			DeleteSelectedNeighbours.addActionListener(newAction);
 		}
-		
 		/**
-		 * enables JList of neighbors.
-		 */
-		public void jListEnabled_1() {
-			list_1.setEnabled(true);
-		}
-		
-		/**
-		 * clears and disables the country-name-field..
-		 */
-		public void countryFieldDisable() {
-			txtCountryName.setText("");
-			txtCountryName.setEnabled(false);
-		}
-		
-		/**
-		 *  to enable the country-text field.
-		 */
-		public void countryfieldEnable() {
-			txtCountryName.setEnabled(true);
-		}
-		
-		/**
-		 * to disable continent-fields
-		 */
-		public void continentFieldDisabled() {
-			continentNameText.setText("");
-			continentControlValueText.setText("");
-			continentNameText.setEnabled(false);
-			continentControlValueText.setEnabled(false);
-		}
-		
-		/**
-		 *  get selected country to add as neighbours.
-		 * @return selected country for adding neighbours.
-		 */
-		public String getSelectedCountryForNeighbours() {
-			return (countriesComboBox.getSelectedItem().toString());
-		}
-		
-		/**
-		 *  get the selected country for deletion of its neighbors.
-		 * @return selected country for deleting its neighbors.
-		 */
-		public String getSelectedCountryForNeighbourDeletion() {
-			return (comboBox_4.getSelectedItem().toString());
-		}
-		
-		/**
-		 *Function to get selected country for deletion.
-		 * @return selected country for deletion.
-		 */
-		public String getCountryForDeletion() {
-			return (countryListCombobox.getSelectedItem().toString());
-		}
-		
-		/**
-		 *  get the selected continent to be deleted.
-		 * @return the contintent selected for deletion.
-		 */
-		public String getContinentForDeletion() {
-			return (continentDeletionComboBox.getSelectedItem().toString());
-		}
-		
-		/**
-		 * retuen selected continent name.
-		 * @return the selected continent.
-		 */
-		public String getSelectedContinent() {
-			return (continentComboBox.getSelectedItem().toString());
-		}
-		
-		/**
-		 *  clear the List of neighbours.
-		 */
-		public void clearNeighboursJList() {
-			model2.removeAllElements();
-		}
-		
-		/**
-		 * Clears the JList of neighbors.
-		 */
-		public void clearNeighboursJList_1() {
-			model1.removeAllElements();
-		}
-
-		/**
-		 * Function to update the neighbour JList view.
-		 * @param neighbour receives the neighbour to be added.
-		 */
-		public void addPossibleNeighboursToJList(String neighbour) {
-			model2.addElement(neighbour);
-		}
-		
-		/**
-		 * This function adds neighbors to JList.
-		 * @param neighbour receives the neighbor to be added to the list.
-		 */
-		public void addPossibleNeighboursToJList_1(String neighbour) {
-			model1.addElement(neighbour);
-		}
-
-		/**
-		 *  get the continent name.
-		 * @return the continent name.
-		 */
-		public String getContinentName() {
-			continentName = continentNameText.getText();
-			return continentName;
-		}
-
-		/**
-		 *  display error message for not entering values box.
+		 * display error message for not entering value
 		 */
 		public void errorEnterValues() {
-			JOptionPane.showMessageDialog(contentPane, "Enter values first", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "Values are expected to enter first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		/**
-		 *  displays error message for already existing continent
+		 * displays error message for already existing continent
 		 */
-		public void errorContinentAlreadyExist() {
-			JOptionPane.showMessageDialog(contentPane, "Continent already exist", "Error", JOptionPane.ERROR_MESSAGE);
+		public void errorcontinentAlreadyExist() {
+			JOptionPane.showMessageDialog(contentPane, "this Continent already exist, choose other country", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		/**
-		 *  displays error message for already existing country
+		 * displays error message for already existing country
 		 */
 		public void errorCountryAlreadyExist() {
-			JOptionPane.showMessageDialog(contentPane, "Country already exist", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "this country already exist, choose other country", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 
 		/**
@@ -797,72 +657,72 @@ import controllers.EditCreateMapController;
 		}
 
 		/**
-		 * displays error message for null country.
+		 * displays error message for null country
 		 */
 		public void errorNullCountry() {
-			JOptionPane.showMessageDialog(contentPane, "Map validation error", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(contentPane, "Add country first", "Error", JOptionPane.ERROR_MESSAGE);
 		}
-		
+
 		/**
-		 * displays  success message.
+		 * displays dialog box with success message.
 		 */
 		public void successMessage() {
 			JOptionPane.showMessageDialog(contentPane, "Successfully saved", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		/**
-		 * displays  with success message on successfully addition of neighbours.
+		 * displays dialog box with success message.
 		 */
-		public void successfullyAddedNeighbours() {
+		public void successAddedNeighbours() {
 			JOptionPane.showMessageDialog(contentPane, "Successfully added neighbours", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		/**
-		 * displays  success message on deletion of neighbours.
+		 * displays dialog box with success message.
 		 */
-		public void successfullyDeletedNeighbours() {
+		public void successDeletedNeighbours() {
 			JOptionPane.showMessageDialog(contentPane, "Successfully deleted neighbours", "Message", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		/**
-		 *  provides control value from textfield.
-		 * @return the continent control value.
+		 * provides control value from textfield
+		 * @return it will controo value
 		 */
 		public String getControlValue() {
 			cv = (continentControlValueText.getText());
 			return cv;
 		}
-
 		/**
-		 *removes all continents from textfield 
+		 * removes all continents
 		 */
-		public void removeContinentFromFields() {
+		public void removeContinentFields() {
 			continentNameText.setText("");
 			continentControlValueText.setText("");
 			continentNameText.setEnabled(false);
 			continentControlValueText.setEnabled(false);
 		}
-
+	
+	
 		/**
 		 * clears all data in continent lists displayed in continentComboBox
 		 */
-		public void continentComboBoxContentCleared() {
+		public void continentContentsCleared() {
 			continentComboBox.removeAllItems();
 			continentDeletionComboBox.removeAllItems();
 		}
 
 		/**
-		 * clears all data in country lists displayed in continentComboBox
+		 * clears all data in country lists displayed in country ComboBox
 		 */
-		public void countriesComboBoxContentClear() {
+		public void countriesContentsCleared() {
 			countryListCombobox.removeAllItems();
-			countriesComboBox.removeAllItems();
-			comboBox_4.removeAllItems();
+			countriesComboBox.removeAllItems();comboBox_4.removeAllItems();
+			
 		}
 
 		/**
 		 * adds data in continent lists displayed in continentComboBox
-		 * @param continent receives the newly-added continent name.
+		 * @param continent continent name 
 		 */
 		public void setDataInContinentsComboBox(String continent) {
 			continentComboBox.addItem(continent);
@@ -870,8 +730,7 @@ import controllers.EditCreateMapController;
 		}
 
 		/**
-		 * adds data in country lists displayed in continentComboBox
-		 * @param country receives the newly added-country name.
+		 * adds data in country lists displayed in country ComboBox
 		 */
 		public void setDataInCountriesComboBox(String country) {
 			countriesComboBox.addItem(country);
@@ -880,11 +739,166 @@ import controllers.EditCreateMapController;
 		}
 		
 		/**
-		 *provides existing map-editor frame  for this class .
-		 * @return returns the existing map editor frame.
+		 * provides object of this class
+		 * @return object
 		 */
 		public ExistingMapModifier getFrame() {
 			return this;
 		}
-	}
+		
+		/**
+		 * enables continent fields
+		 */
+		public void continentFieldsEnable() {
+			continentNameText.setEnabled(true);
+			continentControlValueText.setEnabled(true);
+		}
+		
+		/**
+		 * Function to get selected country to add as neighbor.
+		 * @return selected country as neighbor.
+		 */
+		public String getSelectedCountriesForNeighbours() {
+			return (countriesComboBox.getSelectedItem().toString());
+		}
+		
+		/**
+		 *Enable to delete selected country.
+		 * @return  country for deletion.
+		 */
+		public String getCountriesToRemove() {
+			return (countryListCombobox.getSelectedItem().toString());
+		}
+		
+		/**
+		 * checks for unique continents.
+		 * @return true if same continent that you try to add already exist.
+		 */
+		public boolean continentExistCheck() {
+			Boolean ContinentPresent = false;
+			if(continentComboBox.getItemCount()!=0) {
+				ContinentPresent = true;
+			}
+			return ContinentPresent;
+		}
+		
+		/**
+		 * return complete list of selected neighbours to add.
+		 * @return list of selected neighbours.
+		 */
+		public List getListOfNeighbours() {
+			return (list.getSelectedValuesList());
+		}
+		
+		/**
+		 * enables jlist.
+		 */
+		public void JListEnabled() {
+			list.setEnabled(true);
+		}
+		/**
+		 * enables JList of neighbors.
+		 */
+		public void enableJList_1() {
+			list1.setEnabled(true);
+		}
+		
+		/**
+		 *clears and disables the country-name-field.
+		 */
+		public void countryFieldDisable() {
+			countryNameText.setText("");
+			countryNameText.setEnabled(false);
+		}
+		/**
+		 * Enable the country-name-field.
+		 */
+		public void countryfieldEnable() {
+			countryNameText.setEnabled(true);
+		}
+		
+		/**
+		 * get the country name that is entered.
+		 * @return the country name entered.
+		 */
+		public String getNAmeOfCountry() {
+			return (countryNameText.getText());
+		}
+		/**
+		 * disable continent fields
+		 */
+		public void continentFieldDisabled() {
+			continentNameText.setText("");
+			continentControlValueText.setText("");
+			continentNameText.setEnabled(false);
+			continentControlValueText.setEnabled(false);
+		}
+		
+		
+		/**
+		 *delete the selected Continent from list.
+		 * @return  continent for deletion.
+		 */
+		public String continentForDeletion() {
+			return (continentDeletionComboBox.getSelectedItem().toString());
+		}
+		/**
+		 * gets list of selected neighbors to delete.
+		 * @return list of selected neighbors for deletion.
+		 */
+		
+		public List getNeighboursList_1() {
+			return (list1.getSelectedValuesList());
+		}
+		/**
+		 * Gets the country for deleting its neighbors.
+		 * @return the country for neighbor deletion.
+		 */
+		public String getSelectedCountryForNeighbourDeletion() {
+			return (comboBox_4.getSelectedItem().toString());
+		}
+		/**
+		 * return list of selected continents
+		 * @return list of selected continents
+		 */
+		public String getSelectedContinent() {
+			return (continentComboBox.getSelectedItem().toString());
+		}
+		
+		/**
+		 * remove all neighbours in the list
+		 */
+		public void clearNeighboursJList() {
+			model2.removeAllElements();
+		}
+		/**
+		 * Clears the JList of neighbors.
+		 */
+		public void clearNeighboursJList_1() {
+			model1.removeAllElements();
+		}
 
+		/**
+		 * adds coming neighbor to list
+		 * @param neighbour neighbor country
+		 */
+		public void addPossibleNeighboursToJList(String neighbour) {
+			model2.addElement(neighbour);
+		}
+
+		/**
+		 * This function adds neighbors to JList.
+		 * @param neighbour receives the neighbor to be added to the list.
+		 */
+		public void addPossibleNeighboursToJList1(String neighbour) {
+			model1.addElement(neighbour);
+		}
+		/**
+		 * get name of continent
+		 * @return continent name
+		 */
+		public String getContinentName() {
+			nameContinent = continentNameText.getText();
+			return nameContinent;
+		}
+	}

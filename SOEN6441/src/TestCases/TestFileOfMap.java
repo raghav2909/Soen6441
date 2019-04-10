@@ -24,14 +24,14 @@ public class TestFileOfMap {
 
 	@Test
 	public void testReadingMap() throws IOException {
-		ArrayList <NodeOfMap> result = RM.readingMap(".//SOEN6441//Map_Data//test//MapTest3.map");
+		ArrayList <NodeOfMap> result = RM.mapreader(".//SOEN6441//Map_Data//test//MapTest3.map");
 		String Eresult = "AmericaN,5,Alaska,Canada,Canada,Alaska,Montana,Groenlandia,Montana,Montana,Canada,Groenlandia,";
 		String Aresult ="";
 		for (NodeOfMap m: result) {
-			Aresult += (m.getNameOfContinent()+","+m.getValue()+",");
+			Aresult += (m.getContinent()+","+m.getControlValue()+",");
 			for (NodeOfCountry n : m.getCountries()) {
 				Aresult += (n.getNameOfCountry()+",");
-				for (String s: n.getNeighbourCountriesString()) {
+				for (String s: n.getNeighboursString()) {
 					Aresult += (s+",");
 				}
 			}
